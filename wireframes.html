@@ -277,8 +277,9 @@
   .vp .amt{font-weight:800; font-size:15px; letter-spacing:-.01em; color:#fff;}
   .vp .pr{font-size:12px; color:var(--mut); margin-top:3px; font-variant-numeric:tabular-nums;}
   .vp .tag{position:absolute; top:-9px; right:8px; font-size:9px; letter-spacing:.5px; text-transform:uppercase; background:var(--brand); color:#fff; padding:2px 7px; border-radius:4px;}
-  .vp-qty{display:flex; align-items:center; justify-content:space-between; margin-top:10px; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
-  .vp-qty .q-btn{flex:0 0 30px; text-align:center; padding:6px 0; font-size:14px; background:var(--surface2); cursor:pointer; user-select:none;}
+  .vp-qty{display:flex; align-items:center; justify-content:space-between; margin-top:11px; border:1px solid rgba(19,106,236,.4); border-radius:6px; overflow:hidden;}
+  .vp-qty .q-btn{flex:0 0 32px; text-align:center; padding:7px 0; font-size:15px; font-weight:600; color:#cfe0ff; background:rgba(19,106,236,.12); cursor:pointer; user-select:none; transition:background-color .12s var(--ease-out);}
+  .vp-qty .q-btn:hover{background:rgba(19,106,236,.28); color:#fff;}
   .vp-qty .q-btn:hover{background:var(--fill);}
   .vp-qty .q-val{flex:1; text-align:center; font-size:13px; font-weight:600;}
   @media(max-width:720px){ .vp-grid{grid-template-columns:repeat(2,1fr);} }
