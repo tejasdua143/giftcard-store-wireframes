@@ -601,6 +601,8 @@
   .gmodal.open{display:flex;}
   .gbox{background:var(--surface); width:340px; max-width:100%; border:1px solid var(--line); border-radius:16px; padding:28px 24px; text-align:center; box-shadow:0 24px 70px rgba(0,0,0,.6);}
   .gbox .gh{font-family:var(--font-display); font-size:19px; font-weight:700; letter-spacing:-.02em; margin-bottom:18px;}
+  .gbox-warn{position:relative; border-top:2px solid var(--warn);}
+  #rwOk{background:var(--warn); border-color:var(--warn); color:#231703;}
   .gbtn{border:1px solid var(--line); background:var(--surface2); border-radius:9px; padding:12px; display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; font-size:13.5px; font-weight:600; transition:border-color .15s var(--ease-out), background-color .15s var(--ease-out);}
   .gbtn:hover{border-color:#34404f; background:#23262e;}
   .gbtn:hover{background:var(--fill);}
@@ -966,8 +968,8 @@
 
 <!-- cross-region purchase warning -->
 <div class="gmodal" id="regionWarn">
-  <div class="gbox" style="text-align:left;">
-    <div class="gh" style="display:flex; gap:8px; align-items:center;">&#9888; Different region</div>
+  <div class="gbox gbox-warn" style="text-align:left;">
+    <div class="gh" style="display:flex; gap:8px; align-items:center; color:#f0c986;">&#9888; Different region</div>
     <div style="font-size:13px; color:var(--ink); line-height:1.5;" id="regionWarnText">
       You're shopping from <b>United States</b> but picked <b>Valorant India</b>. This card may not activate on your account. Global and your-region cards activate normally.
     </div>
