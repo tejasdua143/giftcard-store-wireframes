@@ -196,11 +196,12 @@
   .grid-span{grid-column:1/-1; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.5px; border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;}
   /* featured single-SKU band */
   /* full-bleed image card; denominations surfaced on top */
-  .feat-sku{position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; min-height:440px;
-    background:#0e1014 url('assets/valorant-featured.jpg') right center/cover;}
+  .feat-sku{position:relative; overflow:hidden; border:1px solid rgba(255,70,85,.18); border-radius:16px; min-height:440px;
+    background:#0F1923 url('assets/valorant-featured.jpg') right center/cover;}
   .feat-sku::before{content:""; position:absolute; inset:0; z-index:0;
-    background:linear-gradient(90deg, rgba(8,9,12,.85) 0%, rgba(8,9,12,.35) 42%, transparent 72%),
-              linear-gradient(180deg, transparent 50%, rgba(8,9,12,.9) 100%);}
+    background:linear-gradient(90deg, rgba(15,25,35,.92) 0%, rgba(15,25,35,.45) 44%, transparent 74%),
+              linear-gradient(180deg, rgba(15,25,35,.35) 0%, transparent 38%, rgba(11,17,24,.95) 100%),
+              radial-gradient(130% 130% at 50% 45%, transparent 58%, rgba(7,11,16,.7) 100%);}
   .feat-sku-content{position:relative; z-index:2; height:100%; min-height:420px; padding:26px; display:flex; flex-direction:column; justify-content:space-between; gap:24px;}
   /* tactical HUD overlay: scanlines + corner brackets */
   .val-fx{position:absolute; inset:14px; z-index:1; pointer-events:none;
@@ -221,7 +222,7 @@
     background:rgba(15,25,35,.72); border:none; padding:15px 14px 16px; position:relative; overflow:hidden;}
   .feat-sku .fs-denom::after{content:""; position:absolute; inset:0; pointer-events:none;
     background:repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 1px, transparent 1px 8px);}
-  .feat-sku .fs-denom::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:#FF4655; box-shadow:0 0 12px rgba(255,70,85,.55); z-index:1;}
+  .feat-sku .fs-denom::before{content:""; position:absolute; top:0; left:0; width:34px; height:2px; background:#FF4655; box-shadow:0 0 10px rgba(255,70,85,.5); z-index:1;}
   .feat-sku .fs-denom .amt{position:relative; z-index:1; display:flex; align-items:baseline; gap:5px;}
   .feat-sku .fs-denom .amt-n{font-family:"Oswald",sans-serif; font-weight:700; font-size:28px; letter-spacing:.01em; color:#fff; line-height:1;}
   .feat-sku .fs-denom .amt-u{font-family:"Oswald",sans-serif; font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#FF4655;}
