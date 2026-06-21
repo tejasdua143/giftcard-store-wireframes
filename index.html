@@ -30,7 +30,7 @@
   /* ===== motion system (emil + transitions.dev) ===== */
   .btn, .pc-view, .signin, .gbtn, .fs-buy, .chip, .vp, .sku-row, .nsel, .um-item, .faq-q, .soc{
     transition:transform .13s var(--ease-out), filter .16s var(--ease-out), background-color .16s var(--ease-out), border-color .16s var(--ease-out), color .16s var(--ease-out);
-  }
+  } @media(hover:hover){.soc:hover{border-color:var(--brand); color:#fff;}}
   .btn:active, .pc-view:active, .signin:active, .gbtn:active, .fs-buy:active, .chip:active, .vp:active{ transform:scale(.97); }
 
   @media (hover:hover) and (pointer:fine){
@@ -61,7 +61,7 @@
     body{ background-attachment:scroll; }
   }
   /* persistent global site header */
-  .site-nav{position:sticky; top:0; z-index:90; background:var(--bg); border-bottom:1px solid var(--line);}
+  .site-nav{position:sticky; top:0; z-index:90; background:rgba(14,15,18,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
   .site-nav-in{max-width:var(--maxw); margin:0 auto; padding:12px 16px; display:flex; align-items:center; gap:18px;}
 
   /* one screen visible at a time (real-site navigation) */
@@ -94,7 +94,7 @@
   .btn:active{transform:translateY(1px);}
   .btn.ghost{background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius);}
   .chip{border:1px solid var(--line); background:var(--surface2); padding:8px 14px; font-size:12px; text-align:center;}
-  .chip.on{border-color:var(--brand); background:var(--fill); font-weight:600;}
+  .chip.on{border-color:var(--brand); background:rgba(19,106,236,.16); color:#fff; font-weight:600;}
   .chips{display:flex; gap:8px; flex-wrap:wrap;}
 
   /* layout helpers */
@@ -155,7 +155,7 @@
   .sku-list{display:flex; flex-direction:column; gap:8px;}
   .sku-row{display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--line); padding:10px 12px; cursor:pointer; font-size:13px;}
   .sku-row:hover{background:var(--fill);}
-  .sku-row.on{border-color:var(--brand); background:var(--fill); font-weight:600;}
+  .sku-row.on{border-color:var(--brand); background:rgba(19,106,236,.12); font-weight:600;}
   .sku-row .act{font-size:11px; padding:2px 9px; border-radius:12px; border:1px solid var(--line); color:var(--mut); white-space:nowrap;}
   .sku-row.ok .act{border-color:var(--success); color:var(--success);}      /* activates in region */
   .sku-row.cross .act{border-color:var(--warn); color:var(--warn);}   /* available, won't activate */
@@ -172,7 +172,7 @@
   .vp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
   .vp{position:relative; border:1px solid var(--line); padding:12px 10px; cursor:pointer; text-align:left;}
   .vp:hover{background:var(--fill);}
-  .vp.on{border-color:var(--brand); background:var(--fill);}
+  .vp.on{border-color:var(--brand); background:rgba(19,106,236,.12); box-shadow:0 0 0 1px var(--brand) inset;}
   .vp .amt{font-weight:700; font-size:14px; color:var(--ink);}
   .vp .pr{font-size:12px; color:var(--mut); margin-top:3px;}
   .vp .tag{position:absolute; top:-9px; right:8px; font-size:9px; letter-spacing:.5px; text-transform:uppercase; background:var(--brand); color:#fff; padding:2px 7px; border-radius:4px;}
@@ -200,11 +200,11 @@
 
   /* ===== storefront content sections ===== */
   .sec{margin-top:36px;}
-  .sec-h{font-size:17px; font-weight:600; color:var(--ink); margin-bottom:3px;}
+  .sec-h{font-size:19px; font-weight:700; letter-spacing:-.01em; color:var(--ink); margin-bottom:3px;}
   .sec-sub{font-size:13px; color:var(--mut); margin-bottom:16px;}
 
   /* stats band (fans served / discount / value sold / rating) */
-  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
   .stat{background:var(--surface); padding:22px 14px; text-align:center;}
   .stat .num{font-size:26px; font-weight:700; color:var(--ink); line-height:1.1;}
   .stat .cap{font-size:12px; color:var(--mut); margin-top:4px;}
@@ -220,12 +220,15 @@
   .badge-trust{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--fill); padding:6px 12px; font-size:12px; color:var(--ink); border-radius:20px;}
 
   /* creator showcase */
-  .cshow{border:1px solid var(--line);}
-  .cshow-cover{height:130px; background:#1B1F27; color:#aab; font-size:11px; letter-spacing:2px;
-    display:flex; align-items:center; justify-content:center;}
-  .cshow-id{display:flex; gap:16px; align-items:flex-start; padding:0 18px 16px; margin-top:-32px;}
-  .cshow-av{width:84px; height:84px; border-radius:50%; border:3px solid var(--bg); background:#3a3f44;
-    color:#aab; font-size:10px; text-align:center; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .cshow{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface);}
+  .cshow-cover{height:140px; position:relative;
+    background:linear-gradient(120deg,#ff4655,#7c4dff 60%,#1f7cff);}
+  .cshow-cover::after{content:""; position:absolute; inset:0; background:
+    radial-gradient(80% 120% at 80% -20%, rgba(255,255,255,.18), transparent 50%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,.06) 0 2px, transparent 2px 10px);}
+  .cshow-id{display:flex; gap:16px; align-items:flex-start; padding:0 18px 16px; margin-top:-36px; position:relative;}
+  .cshow-av{width:84px; height:84px; border-radius:50%; border:3px solid var(--surface); background:linear-gradient(135deg,#ff4655,#7a1020);
+    color:#fff; font-size:34px; font-weight:800; text-align:center; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
   .cshow-meta{flex:1; padding-top:40px;}
   .cshow-name{font-size:16px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:6px;}
   .cshow-verif{width:16px; height:16px; border-radius:50%; background:var(--brand); color:#fff; font-size:9px; display:inline-flex; align-items:center; justify-content:center;}
@@ -297,7 +300,7 @@
   .offer-timer .ot-x{position:absolute; top:8px; right:10px; cursor:pointer; color:#999; font-size:13px;}
 
   /* sign in + google mock */
-  .signin{border:1px solid var(--brand); background:var(--brand); color:#fff; padding:8px 14px; font-size:12px; cursor:pointer; flex:0 0 auto;}
+  .signin{border:1px solid var(--brand); background:var(--brand); color:#fff; padding:8px 14px; font-size:12px; cursor:pointer; flex:0 0 auto; border-radius:var(--radius); font-weight:600;}
   .usermenu{position:relative; display:none; flex:0 0 auto;}
   .usermenu.on{display:block;}
   .userchip{display:flex; align-items:center; gap:8px; border:1px solid var(--line); padding:5px 10px 5px 6px; font-size:12px; cursor:pointer; user-select:none;}
@@ -310,7 +313,7 @@
   .um-item:hover{background:var(--fill);}
   /* orders list */
   .ord-row{display:flex; gap:12px; align-items:center; border:1px solid var(--line); padding:12px;}
-  .ord-row .art{width:46px; height:46px; background:#1B1F27; color:#aab; font-size:8px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .ord-row .art{width:46px; height:46px; background:linear-gradient(135deg,#1f7cff,#0a3aa0); color:#aab; font-size:8px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
   .ord-row .meta{flex:1; min-width:0;}
   .ord-row .t{font-weight:600; font-size:13px;}
   .ord-row .s{font-size:11px; color:var(--mut);}
@@ -337,7 +340,7 @@
   .co-head .co-x{cursor:pointer; color:var(--mut); font-size:18px;}
   .co-body{padding:18px; display:flex; flex-direction:column; gap:12px;}
   .co-summary{border:1px solid var(--line); padding:12px; display:flex; gap:12px; align-items:center;}
-  .co-summary .art{width:48px; height:48px; background:#1B1F27; color:#aab; font-size:8px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .co-summary .art{width:48px; height:48px; background:linear-gradient(135deg,#ff4655,#7a1020); color:#aab; font-size:8px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
   .co-summary .meta{flex:1; min-width:0;}
   .co-summary .t{font-weight:600; font-size:13px;}
   .co-summary .s{font-size:11px; color:var(--mut);}
@@ -394,7 +397,7 @@
   .search .mag{width:16px; height:16px; border:2px solid var(--mut); border-radius:50%; position:relative; flex:0 0 auto;}
   .search .mag::after{content:""; position:absolute; right:-5px; bottom:-3px; width:7px; height:2px; background:var(--mut); transform:rotate(45deg);}
   .search .ph{color:var(--mut); font-size:13px;}
-  .search{position:relative;}
+  .search{position:relative;} .search:focus-within{border-color:var(--brand); box-shadow:0 0 0 3px rgba(19,106,236,.16);}
   .search input{flex:1; border:none; outline:none; background:transparent; font-size:13px; color:var(--ink); min-width:0;}
   .search .clr{display:none; cursor:pointer; color:var(--mut); font-size:15px; flex:0 0 auto;}
   .search.has .clr{display:block;}
@@ -407,7 +410,7 @@
     padding:7px 12px; font-size:10px; letter-spacing:.5px; text-transform:uppercase; color:var(--mut);}
   .sdd-row{display:flex; align-items:center; gap:10px; padding:9px 12px; border-bottom:1px solid var(--line); cursor:pointer;}
   .sdd-row:hover{background:var(--fill);}
-  .sdd-logo{width:30px; height:30px; border-radius:6px; background:#1B1F27; color:#aab; font-size:8px;
+  .sdd-logo{width:30px; height:30px; border-radius:6px; background:linear-gradient(135deg,#1f7cff,#0a3aa0); color:#aab; font-size:8px;
     display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
   .sdd-main{flex:1; min-width:0;}
   .sdd-title{font-size:13px; font-weight:600; color:var(--ink);}
@@ -769,11 +772,11 @@
 
         <div class="cshow">
           <!-- cover + identity -->
-          <div class="cshow-cover">COVER ART</div>
+          <div class="cshow-cover"></div>
           <div class="cshow-id">
-            <div class="cshow-av">CREATOR<br>PHOTO</div>
+            <div class="cshow-av">P</div>
             <div class="cshow-meta">
-              <div class="cshow-name">Creator Name <span class="cshow-verif">&#10003;</span></div>
+              <div class="cshow-name">PhantomAce <span class="cshow-verif">&#10003;</span></div>
               <div class="muted">Pro Valorant content · 120,000+ fans</div>
               <div class="cshow-socials">
                 <span class="soc">YouTube</span><span class="soc">Twitch</span>
