@@ -632,6 +632,24 @@
   .search .ph{color:var(--mut); font-size:13px;}
   .search{position:relative;} .search:focus-within{border-color:var(--brand); box-shadow:0 0 0 3px rgba(19,106,236,.16);}
   #searchWrap{display:none;}   /* search hidden for now */
+  /* in-house custom select (settings modal) */
+  #settingsModal .co-box{overflow:visible;}
+  .cs{position:relative;}
+  .cs-toggle{width:100%; height:44px; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:0 14px; background:var(--surface2); border:1px solid var(--line); border-radius:9px; color:var(--ink); font-size:14px; font-weight:500; font-family:inherit; cursor:pointer; transition:border-color .15s var(--ease-out);}
+  .cs-toggle:hover{border-color:#34404f;}
+  .cs.open .cs-toggle{border-color:var(--brand);}
+  .cs-caret{color:var(--mut); font-size:11px; transition:transform .16s var(--ease-out);}
+  .cs.open .cs-caret{transform:rotate(180deg);}
+  .cs-menu{display:none; position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; max-height:248px; overflow-y:auto;
+    background:var(--surface); border:1px solid var(--ink); border-radius:11px; box-shadow:0 16px 40px rgba(0,0,0,.55); padding:5px; transform-origin:top;}
+  .cs.open .cs-menu{display:block; transition:opacity .16s var(--ease-out), transform .16s var(--ease-out);}
+  @starting-style{ .cs.open .cs-menu{opacity:0; transform:scale(.98) translateY(-5px);} }
+  .cs-opt{display:flex; align-items:center; gap:9px; padding:9px 10px; border-radius:8px; font-size:13.5px; color:var(--ink); cursor:pointer;}
+  .cs-opt:hover{background:rgba(19,106,236,.1);}
+  .cs-opt .cs-dot{width:14px; height:14px; border-radius:50%; border:1px solid var(--mut); flex:0 0 auto;}
+  .cs-opt.sel{background:rgba(19,106,236,.14); font-weight:600;}
+  .cs-opt.sel .cs-dot{background:var(--brand); border-color:var(--brand); position:relative;}
+  .cs-opt.sel .cs-dot::after{content:"\2713"; color:#fff; font-size:9px; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
   .site-nav-in .region{margin-left:auto;}   /* fill gap left by hidden search */
   .search input{flex:1; border:none; outline:none; background:transparent; font-size:13px; color:var(--ink); min-width:0;}
   .search .clr{display:none; cursor:pointer; color:var(--mut); font-size:15px; flex:0 0 auto;}
@@ -780,9 +798,9 @@
     <div class="co-head"><span>Update your settings</span><span class="co-x" id="setClose">&times;</span></div>
     <div class="co-body">
       <div class="muted" style="margin-top:-2px;">Set your preferred region, language and currency.</div>
-      <div><div class="lbl">Region</div><select class="nsel" id="setRegion"></select></div>
-      <div><div class="lbl">Language</div><select class="nsel" id="setLang"></select></div>
-      <div><div class="lbl">Currency</div><select class="nsel" id="setCur"></select></div>
+      <div><div class="lbl">Region</div><div class="cs" id="csRegion"></div></div>
+      <div><div class="lbl">Language</div><div class="cs" id="csLang"></div></div>
+      <div><div class="lbl">Currency</div><div class="cs" id="csCur"></div></div>
     </div>
     <div class="co-foot" style="display:flex; gap:10px;">
       <div class="btn ghost" id="setCancel" style="flex:1;">Cancel</div>
@@ -1414,27 +1432,54 @@
   function setRegionLabel(){ label.textContent = selected+' · '+selCur+' · '+(LANG_SHORT[selLang]||'EN'); }
   setRegionLabel();
 
-  /* ---- settings modal: region / language / currency (apply on Save) ---- */
+  /* ---- settings modal: in-house dropdowns (apply on Save) ---- */
   var setModal = document.getElementById('settingsModal');
-  var selRegion = document.getElementById('setRegion');
-  var selLangEl = document.getElementById('setLang');
-  var selCurEl  = document.getElementById('setCur');
-  // populate selects once
-  selRegion.innerHTML = ALL_COUNTRIES.slice().sort().map(function(c){ return '<option value="'+c+'">'+c+'</option>'; }).join('');
-  selLangEl.innerHTML = LANG_LIST.map(function(l){ return '<option value="'+l.val+'">'+l.val+'</option>'; }).join('');
-  selCurEl.innerHTML  = CUR_LIST.map(function(c){ return '<option value="'+c.code+'">'+c.name+'</option>'; }).join('');
+  // reusable custom-select component
+  function makeSelect(host, items, current, onPick){
+    host.innerHTML =
+      '<button type="button" class="cs-toggle"><span class="cs-val"></span><span class="cs-caret">&#9662;</span></button>'+
+      '<div class="cs-menu"></div>';
+    var valEl = host.querySelector('.cs-val'), menu = host.querySelector('.cs-menu');
+    var val = current;
+    function labelOf(v){ for(var i=0;i<items.length;i++){ if(items[i].value===v) return items[i].label; } return v; }
+    function renderMenu(){
+      menu.innerHTML = items.map(function(i){
+        return '<div class="cs-opt'+(i.value===val?' sel':'')+'" data-v="'+i.value.replace(/"/g,'&quot;')+'">'+
+          '<span class="cs-dot"></span><span>'+i.label+'</span></div>';
+      }).join('');
+    }
+    function setVal(v, fire){ val=v; valEl.textContent=labelOf(v); renderMenu(); if(fire&&onPick) onPick(v); }
+    host.querySelector('.cs-toggle').addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.cs.open').forEach(function(x){ if(x!==host) x.classList.remove('open'); });
+      host.classList.toggle('open');
+      var s=menu.querySelector('.cs-opt.sel'); if(s && host.classList.contains('open')) s.scrollIntoView({block:'nearest'});
+    });
+    menu.addEventListener('click', function(e){
+      var o=e.target.closest('.cs-opt'); if(!o) return;
+      setVal(o.getAttribute('data-v'), true); host.classList.remove('open');
+    });
+    setVal(current,false);
+    return { get:function(){ return val; }, set:function(v){ setVal(v,false); } };
+  }
+  document.addEventListener('click', function(){ document.querySelectorAll('.cs.open').forEach(function(x){ x.classList.remove('open'); }); });
+
+  var regionItems = ALL_COUNTRIES.slice().sort().map(function(c){ return {value:c,label:c}; });
+  var langItems   = LANG_LIST.map(function(l){ return {value:l.val,label:l.val}; });
+  var curItems    = CUR_LIST.map(function(c){ return {value:c.code,label:c.name}; });
+  var csLang, csCur;
+  var csRegion = makeSelect(document.getElementById('csRegion'), regionItems, selected, function(v){
+    csLang.set(suggestLang(v)); csCur.set(curOf(v));   // region pre-fills language + currency
+  });
+  csLang = makeSelect(document.getElementById('csLang'), langItems, selLang);
+  csCur  = makeSelect(document.getElementById('csCur'),  curItems,  selCur);
 
   function openSettings(){
-    selRegion.value = selected; selLangEl.value = selLang; selCurEl.value = selCur;
+    csRegion.set(selected); csLang.set(selLang); csCur.set(selCur);
     setModal.classList.add('open');
   }
-  // region change inside modal pre-fills language + currency (still editable)
-  selRegion.addEventListener('change', function(){
-    selLangEl.value = suggestLang(this.value);
-    selCurEl.value  = curOf(this.value);
-  });
   document.getElementById('setSave').addEventListener('click', function(){
-    selected = selRegion.value; selLang = selLangEl.value; selCur = selCurEl.value;
+    selected = csRegion.get(); selLang = csLang.get(); selCur = csCur.get();
     currentLang = selLang;
     setRegionLabel();
     renderGrid(selected);
