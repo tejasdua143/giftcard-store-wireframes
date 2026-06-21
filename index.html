@@ -696,6 +696,11 @@
   .panel::after{content:""; position:absolute; inset:0; background:
     repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 2px, transparent 2px 9px); pointer-events:none;}
   .panel.active{flex:8;}
+  /* image panel: dedicated collapsed/expanded crops, no text overlay */
+  .panel-img{box-shadow:none;}
+  .panel-img::after{display:none;}
+  .panel-steam{background:#0b2a52 url('assets/steam-collapsed.png') center/cover;}
+  .panel-steam.active{background:#0b2a52 url('assets/steam-expanded.png') center/cover;}
   .panel .tag{position:absolute; top:14px; left:14px; z-index:2; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.32); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.16); padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .panel .mini{font-size:13px; font-weight:600; color:rgba(255,255,255,.92); writing-mode:vertical-rl; transform:rotate(180deg); position:absolute; bottom:18px; left:16px; white-space:nowrap; transition:opacity .3s var(--ease-out);}
   .panel .full{position:relative; z-index:2; opacity:0; transition:opacity .3s var(--ease-out); max-width:70%;}
@@ -956,16 +961,7 @@
             <div class="btn hero-cta">Explore the store</div>
           </div>
         </div>
-        <div class="panel" style="--g1:#7c4dff; --g2:#3b1f9e;">
-          <span class="tag">Steam · 8% off</span>
-          <span class="mini">Steam</span>
-          <div class="full">
-            <div class="hero-kicker">Best seller</div>
-            <h2 class="hero-h">Steam Wallet, instant</h2>
-            <p class="hero-p">Codes in your inbox in seconds. Always below face value.</p>
-            <div class="btn hero-cta">Shop Steam</div>
-          </div>
-        </div>
+        <div class="panel panel-img panel-steam"></div>
       </div>
 
       <!-- ===== TRUSTED BRANDS STRIP ===== -->
