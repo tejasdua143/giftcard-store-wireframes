@@ -227,9 +227,14 @@
   .pc-view{border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:10px 16px; font-size:13px; white-space:nowrap; display:flex; align-items:center; gap:6px;}
 
   /* ===== storefront content sections ===== */
-  .sec{margin-top:36px;}
-  .sec-h{font-size:19px; font-weight:700; letter-spacing:-.01em; color:var(--ink); margin-bottom:3px;}
-  .sec-sub{font-size:13px; color:var(--mut); margin-bottom:16px;}
+  .sec{margin-top:44px;}
+  .sec-over{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--brand-2); margin-bottom:6px;}
+  .sec-h{position:relative; font-size:22px; font-weight:800; letter-spacing:-.02em; color:var(--ink); margin-bottom:3px;}
+  .sec-sub{font-size:13px; color:var(--mut); margin-bottom:18px;}
+  .sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:18px;}
+  .sec-link{display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:600; color:#c3c9d2; text-decoration:none; cursor:pointer; white-space:nowrap; padding:8px 0; transition:color .15s var(--ease-out);}
+  .sec-link:hover{color:#fff;}
+  .sec-link:hover .pc-arrow{transform:translateX(3px);}
 
   /* stats band (fans served / discount / value sold / rating) */
   .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
@@ -778,7 +783,7 @@
 
       <!-- ===== FEATURED SINGLE SKU (buy any denomination directly) ===== -->
       <div class="sec" style="margin-top:24px;">
-        <div class="sec-h">Featured: Valorant Points</div>
+        <div class="sec-over">Top up</div><div class="sec-h">Featured: Valorant Points</div>
         <div class="sec-sub">Top up instantly. Pick an amount and buy in one tap.</div>
         <div class="feat-sku">
           <div class="feat-sku-art">
@@ -791,8 +796,13 @@
       </div>
 
       <!-- section title -->
-      <div class="lbl">Gift Cards · full catalogue</div>
-      <div class="bar m" style="margin-bottom:14px;"></div>
+      <div class="sec-head">
+        <div>
+          <div class="sec-over">Catalogue</div>
+          <div class="sec-h">All gift cards</div>
+        </div>
+        <a class="sec-link">View all <span class="pc-arrow">&#8250;</span></a>
+      </div>
 
       <!-- product grid: each card carries logo · discount · category · title · delivery · denominations · strike+now price · save% · View -->
       <div class="grid" id="productGrid"><!-- populated by JS --></div>
@@ -807,7 +817,7 @@
 
       <!-- ===== CREATOR SHOWCASE ===== -->
       <div class="sec">
-        <div class="sec-h">From the creator</div>
+        <div class="sec-over">Creator store</div><div class="sec-h">From the creator</div>
         <div class="sec-sub">Their latest drops, streams and merch.</div>
 
         <div class="cshow">
@@ -838,7 +848,7 @@
 
       <!-- ===== HOW TO BUY (3 steps) ===== -->
       <div class="sec">
-        <div class="sec-h">How to buy a gift card</div>
+        <div class="sec-over">How it works</div><div class="sec-h">How to buy a gift card</div>
         <div class="sec-sub">Three steps, instant delivery.</div>
         <div class="steps">
           <div class="step"><div class="n">1</div><div class="st-h">Pick a card</div><div class="st-p">Choose brand and amount.</div></div>
@@ -849,7 +859,7 @@
 
       <!-- ===== WHY BUY + FEATURES ===== -->
       <div class="sec">
-        <div class="sec-h">Why buy from us</div>
+        <div class="sec-over">Why Reload</div><div class="sec-h">Why buy from us</div>
         <div class="sec-sub">Built by gamers, savings for everyone.</div>
         <div class="why">
           <div class="wh">Built by gamers, savings for everyone</div>
@@ -864,7 +874,7 @@
 
       <!-- ===== REVIEWS ===== -->
       <div class="sec">
-        <div class="sec-h">What fans say</div>
+        <div class="sec-over">Reviews</div><div class="sec-h">What fans say</div>
         <div class="sec-sub">4.9 / 5 from 8,400+ reviews.</div>
         <div class="reviews">
           <div class="review">
@@ -887,7 +897,7 @@
 
       <!-- ===== FAQ (tap to expand) ===== -->
       <div class="sec">
-        <div class="sec-h">Questions</div>
+        <div class="sec-over">FAQ</div><div class="sec-h">Questions</div>
         <div class="sec-sub">Tap a question to see the answer.</div>
         <div class="faq" id="faq">
           <div class="faq-item">
