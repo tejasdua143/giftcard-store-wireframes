@@ -385,13 +385,22 @@
 
   /* sticky offer countdown timer */
   .offer-timer{
-    position:fixed; top:64px; right:18px; z-index:80; width:200px;
-    background:var(--surface2); color:#fff; border-radius:8px; padding:12px 14px; box-shadow:0 6px 20px rgba(0,0,0,.22);
+    position:fixed; bottom:20px; right:20px; z-index:80; width:230px;
+    color:#fff; border-radius:14px; padding:15px 16px; overflow:hidden;
+    background:radial-gradient(120% 140% at 100% 0%, rgba(19,106,236,.4), transparent 55%), linear-gradient(160deg,#161a2c,#0e1018);
+    border:1px solid rgba(19,106,236,.3); box-shadow:0 16px 44px rgba(0,0,0,.5);
+    animation:timerIn .4s var(--ease-out) both;
   }
-  .offer-timer .ot-tag{font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#bbb; margin-bottom:3px;}
-  .offer-timer .ot-title{font-size:13px; font-weight:600; margin-bottom:8px;}
-  .offer-timer .ot-clock{font-size:22px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:1px;}
-  .offer-timer .ot-x{position:absolute; top:8px; right:10px; cursor:pointer; color:#999; font-size:13px;}
+  @keyframes timerIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  .offer-timer .ot-tag{display:inline-flex; align-items:center; gap:6px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9fb6e0; margin-bottom:6px;}
+  .offer-timer .ot-tag::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--warn); box-shadow:0 0 8px var(--warn); animation:pulseDot 1.4s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  .offer-timer .ot-title{font-size:14px; font-weight:700; margin-bottom:10px;}
+  .offer-timer .ot-clock{display:flex; gap:5px; font-size:20px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .offer-timer .ot-clock .seg{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:7px; padding:6px 8px; min-width:38px; text-align:center;}
+  .offer-timer .ot-clock .colon{align-self:center; color:#6f7a8c; font-weight:700;}
+  .offer-timer .ot-x{position:absolute; top:10px; right:11px; cursor:pointer; color:#7a8395; font-size:14px;}
+  .offer-timer .ot-x:hover{color:#fff;}
 
   /* sign in + google mock */
   .signin{border:1px solid var(--brand); background:var(--brand); color:#fff; padding:8px 14px; font-size:12px; cursor:pointer; flex:0 0 auto; border-radius:var(--radius); font-weight:600;}
@@ -633,8 +642,8 @@
 <div class="offer-timer" id="offerTimer">
   <span class="ot-x" id="timerClose">&times;</span>
   <div class="ot-tag">Best offer ends in</div>
-  <div class="ot-title">Extra 12% off Steam</div>
-  <div class="ot-clock" id="otClock">02:59:59</div>
+  <div class="ot-title">Extra 12% off Valorant</div>
+  <div class="ot-clock"><span class="seg" id="otH">02</span><span class="colon">:</span><span class="seg" id="otM">59</span><span class="colon">:</span><span class="seg" id="otS">59</span></div>
 </div>
 
 <!-- update settings: region / language / currency -->
@@ -1835,7 +1844,7 @@
   });
 
   /* ---- best-offer countdown (always running) ---- */
-  var clockEl = document.getElementById('otClock');
+  var otH = document.getElementById('otH'), otM = document.getElementById('otM'), otS = document.getElementById('otS');
   var remaining = 3*3600 - 1; // 2:59:59
   function tick(){
     if(remaining < 0) remaining = 3*3600 - 1; // loop the offer
@@ -1843,7 +1852,7 @@
     var m = Math.floor((remaining%3600)/60);
     var s = remaining%60;
     function p(n){ return (n<10?'0':'')+n; }
-    clockEl.textContent = p(h)+':'+p(m)+':'+p(s);
+    otH.textContent = p(h); otM.textContent = p(m); otS.textContent = p(s);
     remaining--;
   }
   tick();
