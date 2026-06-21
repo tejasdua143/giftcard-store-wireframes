@@ -227,6 +227,16 @@
   .pc-view{border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:10px 16px; font-size:13px; white-space:nowrap; display:flex; align-items:center; gap:6px;}
 
   /* ===== storefront content sections ===== */
+  /* PDP breadcrumb + trust row */
+  .crumb{display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:13px;}
+  .crumb-link{color:var(--mut); cursor:pointer; transition:color .15s var(--ease-out);}
+  .crumb-link:hover{color:#fff;}
+  .crumb-sep{color:var(--line);}
+  .crumb-cur{color:var(--ink); font-weight:600;}
+  .trust-row{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:16px; padding-top:16px; border-top:1px solid var(--line);}
+  .trust-item{display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; font-size:11px; color:var(--mut); line-height:1.25;}
+  .trust-ic{width:34px; height:34px; border-radius:10px; background:var(--surface2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--brand-2);}
+
   .sec{margin-top:44px;}
   .sec-over{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--brand-2); margin-bottom:6px;}
   .sec-h{position:relative; font-size:22px; font-weight:800; letter-spacing:-.02em; color:var(--ink); margin-bottom:3px;}
@@ -946,7 +956,7 @@
     <div class="frame-label">Screen 2 — Product Detail (PDP) <span>instant-buy</span></div>
     <div class="pad">
 
-      <div class="muted" style="margin-bottom:14px; cursor:pointer;" id="pdpBack">&larr; Back to store</div>
+      <div class="crumb"><span class="crumb-link" id="pdpBack">Home</span> <span class="crumb-sep">/</span> <span class="crumb-link" id="pdpBack2">Gift cards</span> <span class="crumb-sep">/</span> <span class="crumb-cur">Valorant</span></div>
 
       <div class="twocol">
         <!-- left: big card visual -->
@@ -988,6 +998,12 @@
           <div style="height:12px"></div>
           <div class="btn" id="pdpBuy">Buy now · €9.49</div>
           <div class="muted" style="margin-top:6px;">Code emailed in seconds · secure checkout · max 5 per person</div>
+          <div class="trust-row">
+            <div class="trust-item"><span class="trust-ic">&#9889;</span><span>Instant<br>delivery</span></div>
+            <div class="trust-item"><span class="trust-ic">&#10003;</span><span>Official<br>codes</span></div>
+            <div class="trust-item"><span class="trust-ic">&#128274;</span><span>Buyer<br>protection</span></div>
+            <div class="trust-item"><span class="trust-ic">&#8635;</span><span>24/7<br>refunds</span></div>
+          </div>
         </div>
       </div>
 
@@ -1601,6 +1617,7 @@
   // navigation like a real site
   document.getElementById('navLogo').addEventListener('click', function(){ goScreen('home'); });
   document.getElementById('pdpBack').addEventListener('click', function(){ goScreen('home'); });
+  document.getElementById('pdpBack2').addEventListener('click', function(){ goScreen('home'); });
   document.getElementById('checkoutPay').addEventListener('click', function(){ goScreen('confirm'); });
   document.getElementById('checkoutBack').addEventListener('click', function(){ goScreen('pdp'); });
   document.getElementById('confirmBack').addEventListener('click', function(){ goScreen('home'); });
