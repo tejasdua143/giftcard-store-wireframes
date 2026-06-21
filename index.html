@@ -269,11 +269,12 @@
   .sku-opt.cross .act{border-color:var(--warn); color:var(--warn);}
 
   .vp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
-  .vp{position:relative; border:1px solid var(--line); padding:12px 10px; cursor:pointer; text-align:left;}
-  .vp:hover{background:var(--fill);}
-  .vp.on{border-color:var(--brand); background:rgba(19,106,236,.12); box-shadow:0 0 0 1px var(--brand) inset;}
-  .vp .amt{font-weight:700; font-size:14px; color:var(--ink);}
-  .vp .pr{font-size:12px; color:var(--mut); margin-top:3px;}
+  .vp{position:relative; border:1px solid var(--line); border-radius:6px; padding:13px 12px; cursor:pointer; text-align:left; overflow:hidden; transition:border-color .15s var(--ease-out), background-color .15s var(--ease-out);}
+  .vp:hover{border-color:#34404f; background:var(--surface2);}
+  .vp.on{border-color:var(--brand); background:rgba(19,106,236,.1);}
+  .vp.on::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:var(--brand);}
+  .vp .amt{font-weight:800; font-size:15px; letter-spacing:-.01em; color:#fff;}
+  .vp .pr{font-size:12px; color:var(--mut); margin-top:3px; font-variant-numeric:tabular-nums;}
   .vp .tag{position:absolute; top:-9px; right:8px; font-size:9px; letter-spacing:.5px; text-transform:uppercase; background:var(--brand); color:#fff; padding:2px 7px; border-radius:4px;}
   .vp-qty{display:flex; align-items:center; justify-content:space-between; margin-top:10px; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
   .vp-qty .q-btn{flex:0 0 30px; text-align:center; padding:6px 0; font-size:14px; background:var(--surface2); cursor:pointer; user-select:none;}
