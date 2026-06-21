@@ -195,18 +195,25 @@
   .pc-plain-title{color:#cfd6dd; font-size:20px; font-weight:800; letter-spacing:1px; margin-top:6px;}
   .grid-span{grid-column:1/-1; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.5px; border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;}
   /* featured single-SKU band */
-  .feat-sku{display:grid; grid-template-columns:300px 1fr; gap:18px; border:1px solid var(--line);}
-  .feat-sku-art{position:relative; overflow:hidden; padding:18px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:230px;
-    background:linear-gradient(180deg, rgba(11,13,18,.15), rgba(11,13,18,.85)), url('assets/valorant.jpg') center 22%/cover;}
-  .feat-sku-art .art-badge{position:absolute; top:14px; left:14px; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:4px 10px; border-radius:20px;}
-  .feat-sku-art .art-title{position:absolute; left:18px; bottom:34px; font-size:30px; font-weight:800; letter-spacing:-.02em; color:#fff; text-shadow:0 2px 16px rgba(0,0,0,.6);}
-  .feat-sku-art .art-sub{position:absolute; left:18px; bottom:16px; font-size:13px; color:rgba(255,255,255,.85);}
-  .feat-sku-denoms{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:18px;}
-  .fs-denom{border:1px solid var(--line); padding:12px; display:flex; flex-direction:column; gap:8px;}
-  .fs-denom .amt{font-weight:700; font-size:14px;}
-  .fs-denom .pr{font-size:12px; color:var(--mut);}
-  .fs-denom .btn{padding:8px; font-size:11px;}
-  @media(max-width:720px){ .feat-sku{grid-template-columns:1fr;} .feat-sku-denoms{grid-template-columns:repeat(2,1fr);} }
+  /* full-bleed image card; denominations surfaced on top */
+  .feat-sku{position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; min-height:420px;
+    background:#0e1014 url('assets/valorant-featured.jpg') center 22%/cover;}
+  .feat-sku::before{content:""; position:absolute; inset:0; z-index:0;
+    background:linear-gradient(180deg, rgba(8,9,12,.35) 0%, rgba(8,9,12,.05) 32%, rgba(8,9,12,.55) 66%, rgba(8,9,12,.92) 100%);}
+  .feat-sku-content{position:relative; z-index:1; height:100%; min-height:420px; padding:26px; display:flex; flex-direction:column; justify-content:space-between; gap:24px;}
+  .feat-sku-head{max-width:60%;}
+  .feat-sku-head .art-badge{display:inline-block; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:4px 11px; border-radius:20px;}
+  .feat-sku-head .art-title{font-size:clamp(26px,3.4vw,38px); font-weight:800; letter-spacing:-.02em; color:#fff; margin-top:12px; text-shadow:0 2px 18px rgba(0,0,0,.6);}
+  .feat-sku-head .art-sub{font-size:14px; color:rgba(255,255,255,.9); margin-top:6px; text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  .feat-sku-denoms{display:grid; grid-template-columns:repeat(6,1fr); gap:10px;}
+  .fs-denom{display:flex; flex-direction:column; gap:9px; padding:14px; border-radius:12px;
+    background:rgba(18,20,28,.5); border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(10px); transition:transform .18s var(--ease-out), border-color .18s var(--ease-out), background-color .18s var(--ease-out);}
+  @media(hover:hover){ .fs-denom:hover{transform:translateY(-3px); border-color:rgba(255,255,255,.35); background:rgba(24,27,38,.62);} }
+  .fs-denom .amt{font-weight:800; font-size:15px; color:#fff;}
+  .fs-denom .pr{font-size:13px; color:rgba(255,255,255,.78);}
+  .fs-denom .btn{padding:9px; font-size:12px; margin-top:auto;}
+  @media(max-width:860px){ .feat-sku-denoms{grid-template-columns:repeat(3,1fr);} .feat-sku-head{max-width:100%;} }
+  @media(max-width:520px){ .feat-sku-denoms{grid-template-columns:repeat(2,1fr);} }
   .pdp-art{position:relative; min-height:300px; background:#14161b; padding:18px; border:1px solid var(--line);}
   .pdp-art .pc-logo{width:40px; height:40px;}
   .pdp-art .pc-cat{font-size:11px;}
@@ -922,12 +929,14 @@
         <div class="sec-over">Top up</div><div class="sec-h">Featured: Valorant Points</div>
         <div class="sec-sub">Top up instantly. Pick an amount and buy in one tap.</div>
         <div class="feat-sku">
-          <div class="feat-sku-art">
-            <span class="art-badge">Official · region-tagged</span>
-            <div class="art-title">VALORANT</div>
-            <div class="art-sub">Valorant Points</div>
+          <div class="feat-sku-content">
+            <div class="feat-sku-head">
+              <span class="art-badge">Official · region-tagged · instant</span>
+              <div class="art-title">Valorant Points</div>
+              <div class="art-sub">Pick an amount and buy in one tap.</div>
+            </div>
+            <div class="feat-sku-denoms" id="featSkuDenoms"><!-- filled by JS --></div>
           </div>
-          <div class="feat-sku-denoms" id="featSkuDenoms"><!-- filled by JS --></div>
         </div>
       </div>
 
