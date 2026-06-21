@@ -816,8 +816,8 @@
 <!-- persistent global site header -->
 <header class="site-nav">
   <div class="site-nav-in">
-    <div class="logo" id="navLogo" style="cursor:pointer;"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#fff"/></svg></span>Reload</div>
-    <div class="nav-link" id="refundsLink"><span class="dot-live"></span>24/7 Refunds</div>
+    <div class="logo kbtn" id="navLogo" role="button" tabindex="0" aria-label="Reload home" style="cursor:pointer;"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#fff"/></svg></span>Reload</div>
+    <div class="nav-link kbtn" id="refundsLink" role="button" tabindex="0"><span class="dot-live"></span>24/7 Refunds</div>
     <div class="search" id="searchWrap">
       <span class="mag"></span>
       <input id="searchInput" type="text" placeholder="Search gift cards…" autocomplete="off">
@@ -825,12 +825,12 @@
       <div class="search-dd" id="searchDD"><!-- results --></div>
     </div>
     <div class="region" id="region">
-      <div class="lang" id="regionToggle"><span class="globe"></span> <span id="regionLabel">United States</span> <span class="car">&#9662;</span></div>
+      <div class="lang kbtn" id="regionToggle" role="button" tabindex="0" aria-label="Region, currency and language"><span class="globe"></span> <span id="regionLabel">United States</span> <span class="car">&#9662;</span></div>
       <div class="region-menu" id="regionMenu"><!-- populated by JS --></div>
     </div>
-    <div class="signin" id="signinBtn">Sign in</div>
+    <div class="signin kbtn" id="signinBtn" role="button" tabindex="0">Sign in</div>
     <div class="usermenu" id="userMenu">
-      <div class="userchip" id="userChip"><span class="av"></span><span id="userName">User</span><span class="car">&#9662;</span></div>
+      <div class="userchip kbtn" id="userChip" role="button" tabindex="0" aria-label="Account menu"><span class="av"></span><span id="userName">User</span><span class="car">&#9662;</span></div>
       <div class="um-dd" id="umDD">
         <div class="um-item" id="umOrders">My orders</div>
         <div class="um-item" id="umLogout">Logout</div>
@@ -1936,6 +1936,12 @@
     window.scrollTo({top:0, behavior:'smooth'});
   }
   // navigation like a real site
+  // keyboard activation for clickable header controls (role=button divs)
+  document.addEventListener('keydown', function(e){
+    if((e.key==='Enter' || e.key===' ') && e.target.classList && e.target.classList.contains('kbtn')){
+      e.preventDefault(); e.target.click();
+    }
+  });
   document.getElementById('navLogo').addEventListener('click', function(){ goScreen('home'); });
   document.getElementById('pdpBack').addEventListener('click', function(){ goScreen('home'); });
   document.getElementById('pdpBack2').addEventListener('click', function(){ goScreen('home'); });
