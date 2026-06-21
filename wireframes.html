@@ -63,6 +63,26 @@
   /* persistent global site header */
   .site-nav{position:sticky; top:0; z-index:90; background:rgba(14,15,18,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
   .site-nav-in{max-width:var(--maxw); margin:0 auto; padding:12px 16px; display:flex; align-items:center; gap:18px;}
+  /* utility / trust bar */
+  .util-bar{background:#0a0b0e; border-bottom:1px solid var(--line); font-size:12px; color:var(--mut);}
+  .util-in{max-width:var(--maxw); margin:0 auto; padding:7px 16px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;}
+  .util-in span{display:inline-flex; align-items:center; gap:6px;}
+  .util-right{margin-left:auto; color:#c3c9d2;}
+  @media(max-width:720px){ .util-in span:not(.util-right){display:none;} .util-right{margin-left:0;} }
+  /* category pill nav (sticks with header) */
+  .cat-nav{border-top:1px solid var(--line);}
+  .cat-in{max-width:var(--maxw); margin:0 auto; padding:0 16px; display:flex; gap:4px; overflow-x:auto; scrollbar-width:none;}
+  .cat-in::-webkit-scrollbar{display:none;}
+  .cat{font-size:13px; font-weight:500; color:var(--mut); padding:11px 14px; cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; text-decoration:none; transition:color .15s var(--ease-out), border-color .15s var(--ease-out);}
+  .cat:hover{color:#fff;}
+  .cat.on{color:#fff; border-bottom-color:var(--brand);}
+  .cat-deals{color:var(--warn);}
+  .cat-deals.on,.cat-deals:hover{color:#ffce5c;}
+  /* cart */
+  .cart{position:relative; width:34px; height:34px; border-radius:9px; border:1px solid var(--line); background:var(--surface2); display:flex; align-items:center; justify-content:center; color:#c3c9d2; cursor:pointer; flex:0 0 auto; transition:border-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .cart:hover{border-color:#34404f; color:#fff;}
+  .cart svg{width:18px; height:18px;}
+  .cart-badge{position:absolute; top:-6px; right:-6px; min-width:17px; height:17px; padding:0 4px; border-radius:9px; background:var(--brand); color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; border:2px solid var(--bg);}
 
   /* one screen visible at a time (real-site navigation) */
   .screen{max-width:var(--maxw); margin:0 auto; padding:24px 16px 10px; display:none;}
@@ -487,6 +507,16 @@
 </head>
 <body>
 
+<!-- utility / trust bar -->
+<div class="util-bar">
+  <div class="util-in">
+    <span>&#9889; Instant delivery</span>
+    <span>&#128274; Buyer protection</span>
+    <span><span class="dot-live"></span> 24/7 support</span>
+    <span class="util-right">&#9733; 4.9/5 · 120,000+ gamers served</span>
+  </div>
+</div>
+
 <!-- persistent global site header -->
 <header class="site-nav">
   <div class="site-nav-in">
@@ -510,8 +540,21 @@
         <div class="um-item" id="umLogout">Logout</div>
       </div>
     </div>
-    <div class="box" style="width:40px;height:28px" title="cart"></div>
+    <div class="cart" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L22 7H6"/></svg>
+      <span class="cart-badge">0</span>
+    </div>
   </div>
+  <nav class="cat-nav">
+    <div class="cat-in">
+      <a class="cat on">Gift cards</a>
+      <a class="cat">Games</a>
+      <a class="cat">Top-ups</a>
+      <a class="cat">Subscriptions</a>
+      <a class="cat">Software</a>
+      <a class="cat cat-deals">Deals</a>
+    </div>
+  </nav>
 </header>
 
 <!-- sticky best-offer countdown -->
