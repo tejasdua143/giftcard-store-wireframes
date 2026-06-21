@@ -242,8 +242,8 @@
   .vp-qty .q-val{flex:1; text-align:center; font-size:13px; font-weight:600;}
   @media(max-width:720px){ .vp-grid{grid-template-columns:repeat(2,1fr);} }
   .pc-art{position:relative; min-height:176px; padding:14px; overflow:hidden; display:flex; align-items:center; justify-content:center;}
-  .pc-hero{width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1) drop-shadow(0 8px 22px rgba(0,0,0,.45)); opacity:.97; transition:transform .4s var(--ease-out);}
-  @media(hover:hover){ .pcard:hover .pc-hero{transform:scale(1.07);} }
+  .pc-hero{width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1) drop-shadow(0 8px 22px rgba(0,0,0,.45)); opacity:.97; transform:scale(var(--gs,1)); transition:transform .4s var(--ease-out);}
+  @media(hover:hover){ .pcard:hover .pc-hero{transform:scale(calc(var(--gs,1)*1.07));} }
   /* center logo halo + top sheen */
   .pc-art::before{content:""; position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(46% 56% at 50% 47%, rgba(255,255,255,.18), transparent 62%),
@@ -1413,6 +1413,8 @@
   function chips(arr){
     return arr.map(function(d,i){ return '<div class="chip'+(i===0?' on':'')+'">'+d+'</div>'; }).join('');
   }
+  // optical-size correction per brand mark (different source aspect ratios)
+  var GSCALE = {"Steam Wallet":1.0, "PlayStation":1.06, "Xbox Gift Card":0.96, "Netflix":0.78, "Amazon":1.12, "Spotify":0.9};
   function offerRibbon(p){
     if(!p.offer) return '';
     return '<div class="pc-offer pc-offer-'+p.offer.type+'">'+(p.offer.type==='sku'?'OFFER':'🎁 BONUS')+'</div>';
@@ -1442,7 +1444,7 @@
     return ''+
     '<div class="pcard'+(off?' disabled':'')+'"'+(off?'':' data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'"')+'>'+
       '<div class="pc-art" style="background:linear-gradient(150deg,'+p.c1+','+p.c2+')">'+
-        '<img class="pc-hero" src="'+p.glyph+'" alt="'+p.title+'" loading="lazy">'+
+        '<img class="pc-hero" src="'+p.glyph+'" alt="'+p.title+'" loading="lazy" style="--gs:'+(GSCALE[p.title]||1)+'">'+
         '<span class="pc-sheen"></span>'+
         (off ? '<div class="pc-lock"><span class="pc-lock-pill">&#128274; Not in '+region+'</span></div>' :
           (p.tag ? '<span class="pc-tag pc-tag-'+p.tag.kind+'">'+p.tag.label+'</span>' : '')+
