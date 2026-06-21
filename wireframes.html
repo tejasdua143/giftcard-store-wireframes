@@ -212,6 +212,12 @@
   .pc-body{padding:14px; display:flex; flex-direction:column; gap:6px;}
   .pc-title{font-size:15px; font-weight:600; color:var(--ink);}
   .pc-sub{font-size:12px; color:var(--mut);}
+  .pc-meta{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:11.5px; color:var(--mut); margin-top:2px;}
+  .pc-rate{color:#f5c451; font-weight:600;}
+  .pc-dot{opacity:.5;}
+  .pc-from{font-size:11px; font-weight:500; color:var(--mut); text-transform:uppercase; letter-spacing:.04em;}
+  .pc-arrow{display:inline-block; transition:transform .18s var(--ease-out);}
+  .pcard:hover .pc-view .pc-arrow{transform:translateX(3px);}
   .pc-denoms{display:flex; flex-wrap:wrap; gap:7px; margin:4px 0 8px;}
   .pc-denoms .chip{padding:7px 12px; min-width:44px;}
   .pc-foot{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-top:auto;}
@@ -1229,12 +1235,12 @@
 
   /* ---- storefront product cards ---- */
   var PRODUCTS = [
-    {mono:"S", c1:"#2a5f8f", c2:"#0e1b2e", cat:"Wallet",       title:"Steam Wallet",   sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%", blocked:[], offer:null},
-    {mono:"P", c1:"#0070d1", c2:"#012b6d", cat:"Gaming",       title:"PlayStation",    sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", blocked:["India","Turkey","Brazil"], offer:{type:"sku",   label:"10% off all denominations"}},
-    {mono:"X", c1:"#107c10", c2:"#0a4d0a", cat:"Gaming",       title:"Xbox Gift Card", sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€50.00", now:"€47.00", save:"6%", blocked:["China","UAE","Saudi Arabia"], offer:{type:"denom", label:"€5 bonus on the €50 card"}},
-    {mono:"N", c1:"#e50914", c2:"#5e0207", cat:"Entertainment",title:"Netflix",        sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€25.00", now:"€24.00", save:"4%", blocked:["China"], offer:null},
-    {mono:"a", c1:"#ff9900", c2:"#7a3e00", cat:"Shopping",     title:"Amazon",         sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€100.00",now:"€93.00", save:"7%", blocked:["China","Egypt"], offer:{type:"sku", label:"Extra 3% off this week"}},
-    {mono:"♪", c1:"#1db954", c2:"#0a5c2a", cat:"Music",        title:"Spotify",        sub:"Instant email delivery", denoms:["€10","€30","€60"],        strike:"€30.00", now:"€28.50", save:"5%", blocked:["China","India","Turkey"], offer:{type:"denom", label:"1 month free on the €60 card"}}
+    {mono:"S", c1:"#2a5f8f", c2:"#0e1b2e", cat:"Wallet",       title:"Steam Wallet",   sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%", rating:"4.9", sold:"42k", blocked:[], offer:null},
+    {mono:"P", c1:"#0070d1", c2:"#012b6d", cat:"Gaming",       title:"PlayStation",    sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", rating:"4.8", sold:"31k", blocked:["India","Turkey","Brazil"], offer:{type:"sku",   label:"10% off all denominations"}},
+    {mono:"X", c1:"#107c10", c2:"#0a4d0a", cat:"Gaming",       title:"Xbox Gift Card", sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€50.00", now:"€47.00", save:"6%", rating:"4.9", sold:"18k", blocked:["China","UAE","Saudi Arabia"], offer:{type:"denom", label:"€5 bonus on the €50 card"}},
+    {mono:"N", c1:"#e50914", c2:"#5e0207", cat:"Entertainment",title:"Netflix",        sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€25.00", now:"€24.00", save:"4%", rating:"4.7", sold:"54k", blocked:["China"], offer:null},
+    {mono:"a", c1:"#ff9900", c2:"#7a3e00", cat:"Shopping",     title:"Amazon",         sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€100.00",now:"€93.00", save:"7%", rating:"4.8", sold:"67k", blocked:["China","Egypt"], offer:{type:"sku", label:"Extra 3% off this week"}},
+    {mono:"♪", c1:"#1db954", c2:"#0a5c2a", cat:"Music",        title:"Spotify",        sub:"Instant email delivery", denoms:["€10","€30","€60"],        strike:"€30.00", now:"€28.50", save:"5%", rating:"4.9", sold:"23k", blocked:["China","India","Turkey"], offer:{type:"denom", label:"1 month free on the €60 card"}}
   ];
   function chips(arr){
     return arr.map(function(d,i){ return '<div class="chip'+(i===0?' on':'')+'">'+d+'</div>'; }).join('');
@@ -1274,16 +1280,17 @@
       '</div>'+
       '<div class="pc-body">'+
         '<div class="pc-title">'+p.title+'</div>'+
-        '<div class="pc-sub">'+(off ? "Not available in your country yet" : p.sub)+'</div>'+
+        '<div class="pc-meta">'+(off ? '<span class="pc-sub">Not available in your country yet</span>' :
+          '<span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span><span class="pc-dot">·</span><span>'+p.sub+'</span>')+'</div>'+
         (p.offer ? '<div class="pc-denomoffer">'+(p.offer.type==='denom'?'🎁 ':'★ ')+p.offer.label+'</div>' : '')+
         '<div class="pc-denoms">'+chips(p.denoms)+'</div>'+
         '<div class="pc-foot">'+
           '<div class="pc-price">'+
             '<div class="strike">'+p.strike+'</div>'+
-            '<div class="now">'+p.now+'</div>'+
+            '<div class="now"><span class="pc-from">from</span> '+p.now+'</div>'+
             '<div class="save">save '+p.save+'</div>'+
           '</div>'+
-          '<div class="pc-view" data-i="'+idx+'">'+(off ? 'Unavailable' : 'View &#8250;')+'</div>'+
+          '<div class="pc-view" data-i="'+idx+'">'+(off ? 'Unavailable' : 'View <span class="pc-arrow">&#8250;</span>')+'</div>'+
         '</div>'+
       '</div>'+
     '</div>';
