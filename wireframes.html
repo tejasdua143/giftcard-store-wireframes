@@ -227,6 +227,14 @@
   .pc-view{border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:10px 16px; font-size:13px; white-space:nowrap; display:flex; align-items:center; gap:6px;}
 
   /* ===== storefront content sections ===== */
+  /* trusted-brands strip */
+  .brands{display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:18px 0; border-bottom:1px solid var(--line);}
+  .brands-label{font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--mut); white-space:nowrap;}
+  .brands-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .brand-chip{display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:600; color:#c3c9d2; padding:7px 13px; border:1px solid var(--line); border-radius:20px; background:var(--surface); transition:border-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .brand-chip::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--bc); box-shadow:0 0 8px var(--bc);}
+  @media(hover:hover){ .brand-chip:hover{color:#fff; border-color:color-mix(in srgb, var(--bc) 60%, var(--line));} }
+
   /* PDP breadcrumb + trust row */
   .crumb{display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:13px;}
   .crumb-link{color:var(--mut); cursor:pointer; transition:color .15s var(--ease-out);}
@@ -797,6 +805,22 @@
             <p class="hero-p">Codes in your inbox in seconds. Always below face value.</p>
             <div class="btn hero-cta">Shop Steam</div>
           </div>
+        </div>
+      </div>
+
+      <!-- ===== TRUSTED BRANDS STRIP ===== -->
+      <div class="brands">
+        <span class="brands-label">Officially sourced from</span>
+        <div class="brands-row">
+          <span class="brand-chip" style="--bc:#2a5f8f;">Steam</span>
+          <span class="brand-chip" style="--bc:#0070d1;">PlayStation</span>
+          <span class="brand-chip" style="--bc:#107c10;">Xbox</span>
+          <span class="brand-chip" style="--bc:#e50914;">Netflix</span>
+          <span class="brand-chip" style="--bc:#ff9900;">Amazon</span>
+          <span class="brand-chip" style="--bc:#1db954;">Spotify</span>
+          <span class="brand-chip" style="--bc:#ff4655;">Riot</span>
+          <span class="brand-chip" style="--bc:#e60012;">Nintendo</span>
+          <span class="brand-chip" style="--bc:#a435f0;">Google&nbsp;Play</span>
         </div>
       </div>
 
