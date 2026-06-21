@@ -6,7 +6,7 @@
 <title>Gift Card Store — Lo-fi Wireframes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Avon design language: dark fintech, blue accent, Sora */
@@ -17,7 +17,10 @@
     --radius:8px; --gap:16px; --maxw:1100px;
     --ease-out:cubic-bezier(0.23,1,0.32,1);
     --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+    --font-display:"Bricolage Grotesque","Sora",sans-serif;
   }
+  /* distinctive display type pairing (headings) vs Sora body */
+  .hero-h, .sec-h, .why-new .wh, .ft-word, .stat .num, .nu-title, .nu-now, .nu-range, .pc-title{font-family:var(--font-display);}
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   /* invisible details: selection, scrollbar, focus */
