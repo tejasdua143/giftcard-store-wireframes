@@ -6,7 +6,7 @@
 <title>Gift Card Store — Lo-fi Wireframes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Avon design language: dark fintech, blue accent, Sora */
@@ -204,8 +204,19 @@
   .feat-sku-content{position:relative; z-index:1; height:100%; min-height:420px; padding:26px; display:flex; flex-direction:column; justify-content:space-between; gap:24px;}
   .feat-sku-head{max-width:60%;}
   .feat-sku-head .art-badge{display:inline-block; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:4px 11px; border-radius:20px;}
-  .feat-sku-head .art-title{font-size:clamp(26px,3.4vw,38px); font-weight:800; letter-spacing:-.02em; color:#fff; margin-top:12px; text-shadow:0 2px 18px rgba(0,0,0,.6);}
-  .feat-sku-head .art-sub{font-size:14px; color:rgba(255,255,255,.9); margin-top:6px; text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  .feat-sku-head .art-title{font-family:"Oswald",sans-serif; font-size:clamp(34px,4.4vw,54px); font-weight:700; text-transform:uppercase; letter-spacing:.005em; color:#ECE8E1; line-height:.95; text-shadow:0 2px 18px rgba(0,0,0,.6);}
+  .feat-sku-head .art-title::before{content:""; display:block; width:48px; height:4px; background:#FF4655; margin-bottom:14px; box-shadow:0 0 16px rgba(255,70,85,.6);}
+  .feat-sku-head .art-sub{font-size:14px; color:rgba(236,232,225,.85); margin-top:10px; letter-spacing:.01em; text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  /* tactical angular VP tiles (Valorant branding) */
+  .feat-sku .fs-denom{border-radius:0; clip-path:polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    background:rgba(15,25,35,.66); border:none; padding:15px 14px 16px; position:relative;}
+  .feat-sku .fs-denom::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:#FF4655; box-shadow:0 0 12px rgba(255,70,85,.55);}
+  .feat-sku .fs-denom .amt{font-family:"Oswald",sans-serif; font-weight:700; font-size:21px; letter-spacing:.02em; text-transform:uppercase; color:#fff;}
+  .feat-sku .fs-denom .pr{font-size:13px; color:rgba(236,232,225,.7); font-variant-numeric:tabular-nums;}
+  .feat-sku .fs-denom .btn{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.06em; font-weight:600; font-size:13px; color:#fff;
+    background:#FF4655; border:1px solid #FF4655; border-radius:0; padding:10px;
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));}
+  @media(hover:hover){ .feat-sku .fs-denom:hover{background:rgba(20,33,46,.78);} .feat-sku .fs-denom .btn:hover{background:#ff5e6b; filter:none;} }
   .feat-sku-denoms{display:grid; grid-template-columns:repeat(6,1fr); gap:10px;}
   .fs-denom{display:flex; flex-direction:column; gap:9px; padding:14px; border-radius:12px;
     background:rgba(18,20,28,.5); border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(10px); transition:transform .18s var(--ease-out), border-color .18s var(--ease-out), background-color .18s var(--ease-out);}
