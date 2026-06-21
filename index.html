@@ -470,14 +470,15 @@
   .avstack span:first-child{margin-left:0;}
 
   /* how to buy — 3 steps */
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  .step{position:relative; border:1px solid var(--line); border-radius:14px; padding:24px; background:var(--surface);}
-  .step:not(:last-child)::after{content:""; position:absolute; top:42px; right:-9px; width:18px; height:2px; background:var(--line); z-index:1;}
-  @media(max-width:720px){ .step::after{display:none;} }
-  .step .n{width:40px; height:40px; border-radius:12px; background:rgba(19,106,236,.14); border:1px solid rgba(19,106,236,.4); color:#7fb0ff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px; margin-bottom:14px;}
-  .step .st-h{font-weight:600; font-size:14px; margin-bottom:6px;}
-  .step .st-p{font-size:12px; color:var(--mut);}
-  @media(max-width:720px){ .steps{grid-template-columns:1fr;} }
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
+  .step{position:relative; padding:6px 30px 6px 30px; border-left:1px solid var(--line);}
+  .step:first-child{border-left:none; padding-left:2px;}
+  .step .n{display:block; width:auto; height:auto; background:none; border:none; margin-bottom:16px;
+    font-size:46px; font-weight:800; letter-spacing:-.05em; line-height:1;
+    color:transparent; -webkit-text-stroke:1.5px var(--brand-2);}
+  .step .st-h{font-weight:700; font-size:16px; letter-spacing:-.01em; margin-bottom:7px;}
+  .step .st-p{font-size:13px; color:var(--mut); line-height:1.5; max-width:28ch;}
+  @media(max-width:720px){ .steps{grid-template-columns:1fr;} .step{border-left:none; border-top:1px solid var(--line); padding:20px 2px 6px;} .step:first-child{border-top:none;} }
 
   /* why buy banner + features */
   .why-new{display:grid; grid-template-columns:1.3fr 1fr; gap:32px; align-items:end; padding:8px 0 4px; border-top:2px solid var(--ink); margin-bottom:16px;}
