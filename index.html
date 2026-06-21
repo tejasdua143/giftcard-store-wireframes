@@ -247,10 +247,12 @@
   .sec-link:hover .pc-arrow{transform:translateX(3px);}
 
   /* stats band (fans served / discount / value sold / rating) */
-  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
-  .stat{background:var(--surface); padding:22px 14px; text-align:center;}
-  .stat .num{font-size:26px; font-weight:700; color:var(--ink); line-height:1.1;}
-  .stat .cap{font-size:12px; color:var(--mut); margin-top:4px;}
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    background:linear-gradient(180deg, rgba(19,106,236,.10), transparent), var(--line);}
+  .stat{background:radial-gradient(120% 140% at 50% 0%, rgba(19,106,236,.08), transparent 60%), var(--surface); padding:28px 14px; text-align:center; position:relative;}
+  .stat .num{font-size:clamp(28px,4vw,40px); font-weight:800; letter-spacing:-.03em; line-height:1; color:#fff;}
+  .stat .num-sm{font-size:.5em; font-weight:600; color:var(--mut);}
+  .stat .cap{font-size:12px; color:var(--mut); margin-top:8px; text-transform:uppercase; letter-spacing:.06em;}
   @media(max-width:720px){ .stats{grid-template-columns:repeat(2,1fr);} }
 
   /* creator block */
@@ -819,10 +821,10 @@
 
       <!-- ===== STATS BAND: fans served · avg discount · value sold · rating ===== -->
       <div class="sec stats">
-        <div class="stat"><div class="num">120,000+</div><div class="cap">fans helped</div></div>
-        <div class="stat"><div class="num">up to 12%</div><div class="cap">average discount</div></div>
-        <div class="stat"><div class="num">€4.2M</div><div class="cap">gift card value sold</div></div>
-        <div class="stat"><div class="num">4.9 / 5</div><div class="cap">from 8,400 reviews</div></div>
+        <div class="stat"><div class="num">120K+</div><div class="cap">gamers helped</div></div>
+        <div class="stat"><div class="num">12%</div><div class="cap">average discount</div></div>
+        <div class="stat"><div class="num">€4.2M</div><div class="cap">in cards sold</div></div>
+        <div class="stat"><div class="num">4.9<span class="num-sm">/5</span></div><div class="cap">8,400+ reviews</div></div>
       </div>
 
       <!-- ===== CREATOR SHOWCASE ===== -->
