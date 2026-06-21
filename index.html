@@ -463,7 +463,7 @@
   }
   .panel::after{content:""; position:absolute; inset:0; background:
     repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 2px, transparent 2px 9px); pointer-events:none;}
-  .panel.active{flex:7;}
+  .panel.active{flex:8;}
   .panel .tag{position:absolute; top:14px; left:14px; z-index:2; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.32); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.16); padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .panel .mini{font-size:13px; font-weight:600; color:rgba(255,255,255,.92); writing-mode:vertical-rl; transform:rotate(180deg); position:absolute; bottom:18px; left:16px; white-space:nowrap; transition:opacity .3s var(--ease-out);}
   .panel .full{position:relative; z-index:2; opacity:0; transition:opacity .3s var(--ease-out); max-width:70%;}
@@ -693,7 +693,7 @@
     <div class="frame-label">Screen 1 — Home / Storefront <span>scrollable page</span></div>
     <div class="pad">
 
-      <!-- interactive hero: 4 expanding offer panels, one active at a time -->
+      <!-- interactive hero: 3 expanding offer panels, one active at a time -->
       <div class="hero-acc">
         <div class="panel" style="background:linear-gradient(to top right, rgba(0,0,0,.62), rgba(0,0,0,.12) 58%), url('assets/valorant-hero.jpg') center 28%/cover;">
           <span class="tag">Valorant · 12% off</span>
@@ -705,6 +705,16 @@
             <div class="btn hero-cta">Shop Valorant</div>
           </div>
         </div>
+        <div class="panel hero-default" style="background:linear-gradient(to top right, rgba(0,0,0,.7), rgba(0,0,0,.15) 60%), url('assets/hero-creator.jpg') center 30%/cover;">
+          <span class="tag">Featured creator</span>
+          <span class="mini">Sevkaan</span>
+          <div class="full">
+            <div class="hero-kicker">Creator store</div>
+            <h2 class="hero-h">Sevkaan's picks</h2>
+            <p class="hero-p">The cards Sevkaan actually buys, plus creator-only drops and codes.</p>
+            <div class="btn hero-cta">Explore the store</div>
+          </div>
+        </div>
         <div class="panel" style="--g1:#7c4dff; --g2:#3b1f9e;">
           <span class="tag">Steam · 8% off</span>
           <span class="mini">Steam</span>
@@ -713,26 +723,6 @@
             <h2 class="hero-h">Steam Wallet, instant</h2>
             <p class="hero-p">Codes in your inbox in seconds. Always below face value.</p>
             <div class="btn hero-cta">Shop Steam</div>
-          </div>
-        </div>
-        <div class="panel" style="--g1:#ff5a5f; --g2:#a01437;">
-          <span class="tag">PlayStation · 10% off</span>
-          <span class="mini">PlayStation</span>
-          <div class="full">
-            <div class="hero-kicker">Weekend deal</div>
-            <h2 class="hero-h">Level up your library</h2>
-            <p class="hero-p">10% off all PlayStation Store denominations.</p>
-            <div class="btn hero-cta">Shop PlayStation</div>
-          </div>
-        </div>
-        <div class="panel" style="--g1:#1db954; --g2:#0a6e31;">
-          <span class="tag">Spotify · 1 month free</span>
-          <span class="mini">Spotify</span>
-          <div class="full">
-            <div class="hero-kicker">Bonus</div>
-            <h2 class="hero-h">A month on the house</h2>
-            <p class="hero-p">1 month free on the €60 Spotify gift card.</p>
-            <div class="btn hero-cta">Shop Spotify</div>
           </div>
         </div>
       </div>
@@ -1524,7 +1514,7 @@
   /* ---- hero offers: activate on tap (not hover) ---- */
   var heroPanels = document.querySelectorAll('.hero-acc .panel');
   if(heroPanels.length){
-    heroPanels[0].classList.add('active');
+    (document.querySelector('.hero-acc .panel.hero-default') || heroPanels[0]).classList.add('active');
     heroPanels.forEach(function(p){
       p.addEventListener('click', function(){
         heroPanels.forEach(function(x){ x.classList.remove('active'); });
