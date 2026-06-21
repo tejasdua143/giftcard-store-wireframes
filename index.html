@@ -217,11 +217,16 @@
   .feat-sku-head .art-title{font-family:"Oswald",sans-serif; font-size:clamp(34px,4.4vw,54px); font-weight:700; text-transform:uppercase; letter-spacing:.005em; color:#ECE8E1; line-height:.95; text-shadow:0 2px 18px rgba(0,0,0,.6);}
   .feat-sku-head .art-sub{font-size:14px; color:rgba(236,232,225,.85); margin-top:10px; letter-spacing:.01em; text-shadow:0 1px 10px rgba(0,0,0,.5);}
   /* tactical angular VP tiles (Valorant branding) */
-  .feat-sku .fs-denom{border-radius:0; clip-path:polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-    background:rgba(15,25,35,.66); border:none; padding:15px 14px 16px; position:relative;}
-  .feat-sku .fs-denom::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:#FF4655; box-shadow:0 0 12px rgba(255,70,85,.55);}
-  .feat-sku .fs-denom .amt{font-family:"Oswald",sans-serif; font-weight:700; font-size:21px; letter-spacing:.02em; text-transform:uppercase; color:#fff;}
-  .feat-sku .fs-denom .pr{font-size:13px; color:rgba(236,232,225,.7); font-variant-numeric:tabular-nums;}
+  .feat-sku .fs-denom{border-radius:0; clip-path:polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+    background:rgba(15,25,35,.72); border:none; padding:15px 14px 16px; position:relative; overflow:hidden;}
+  .feat-sku .fs-denom::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 1px, transparent 1px 8px);}
+  .feat-sku .fs-denom::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:#FF4655; box-shadow:0 0 12px rgba(255,70,85,.55); z-index:1;}
+  .feat-sku .fs-denom .amt{position:relative; z-index:1; display:flex; align-items:baseline; gap:5px;}
+  .feat-sku .fs-denom .amt-n{font-family:"Oswald",sans-serif; font-weight:700; font-size:28px; letter-spacing:.01em; color:#fff; line-height:1;}
+  .feat-sku .fs-denom .amt-u{font-family:"Oswald",sans-serif; font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#FF4655;}
+  .feat-sku .fs-denom .pr{position:relative; z-index:1; font-size:13px; color:rgba(236,232,225,.7); font-variant-numeric:tabular-nums;}
+  .feat-sku .fs-denom .btn{position:relative; z-index:1;}
   .feat-sku .fs-denom .btn{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.06em; font-weight:600; font-size:13px; color:#fff;
     background:#FF4655; border:1px solid #FF4655; border-radius:0; padding:10px;
     clip-path:polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));}
@@ -1744,8 +1749,9 @@
   /* ---- featured single SKU: buy any denomination directly ---- */
   function renderFeatured(){
     document.getElementById('featSkuDenoms').innerHTML = DENOMS.map(function(d,i){
+      var num = d.vp.replace(/\s*VP/i,'');
       return '<div class="fs-denom">'+
-        '<div class="amt">'+d.vp+'</div>'+
+        '<div class="amt"><span class="amt-n">'+num+'</span><span class="amt-u">VP</span></div>'+
         '<div class="pr">€'+d.price.toFixed(2)+'</div>'+
         '<div class="btn fs-buy" data-d="'+i+'">Buy now</div>'+
       '</div>';
