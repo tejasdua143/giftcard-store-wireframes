@@ -711,9 +711,12 @@
   .sdd-price .n{font-size:13px; font-weight:700; color:var(--ink);}
   .sdd-price .s{font-size:11px; color:var(--mut);}
   .sdd-empty{padding:16px 12px; font-size:13px; color:var(--mut); text-align:center;}
-  .lang{display:flex; align-items:center; gap:6px; border:1px solid var(--line); background:var(--surface2); padding:7px 10px; font-size:12px; color:var(--ink); flex:0 0 auto; cursor:pointer; user-select:none;}
-  .lang .globe{width:14px; height:14px; border:1px solid var(--mut); border-radius:50%; flex:0 0 auto;}
-  .lang .car{font-size:9px; color:var(--mut);}
+  .lang{display:flex; align-items:center; gap:8px; border:1px solid transparent; background:transparent; padding:7px 10px; border-radius:9px; font-size:12.5px; font-weight:500; color:#c3c9d2; flex:0 0 auto; cursor:pointer; user-select:none; transition:background-color .15s var(--ease-out), border-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .lang:hover{color:#fff; background:var(--surface2);}
+  .region.open .lang{border-color:var(--line); background:var(--surface2); color:#fff;}
+  .lang .globe{width:15px; height:15px; border:1.5px solid currentColor; border-radius:50%; flex:0 0 auto; position:relative; opacity:.7;}
+  .lang .globe::before{content:""; position:absolute; inset:1px 4px; border:1px solid currentColor; border-radius:50%;}
+  .lang .car{font-size:9px; color:var(--mut); transition:transform .15s var(--ease-out);}
 
   /* region dropdown */
   .region{position:relative; flex:0 0 auto;}
