@@ -632,6 +632,7 @@
   .search .ph{color:var(--mut); font-size:13px;}
   .search{position:relative;} .search:focus-within{border-color:var(--brand); box-shadow:0 0 0 3px rgba(19,106,236,.16);}
   #searchWrap{display:none;}   /* search hidden for now */
+  .site-nav-in .region{margin-left:auto;}   /* fill gap left by hidden search */
   .search input{flex:1; border:none; outline:none; background:transparent; font-size:13px; color:var(--ink); min-width:0;}
   .search .clr{display:none; cursor:pointer; color:var(--mut); font-size:15px; flex:0 0 auto;}
   .search.has .clr{display:block;}
@@ -699,8 +700,8 @@
   /* image panel: dedicated collapsed/expanded crops, no text overlay */
   .panel-img{box-shadow:none; border:none; background:#0b2a52;}
   .panel-img::after{display:none;}
-  .panel-steam::before{content:""; position:absolute; inset:-6px; z-index:0; background:url('assets/steam-collapsed.png') center/cover; pointer-events:none;}
-  .panel-steam.active::before{background-image:url('assets/steam-expanded.png');}
+  .panel-steam::before{content:""; position:absolute; inset:-2px; z-index:0; background:url('assets/steam-collapsed.png') center top/cover; pointer-events:none;}
+  .panel-steam.active::before{background-image:url('assets/steam-expanded.png'); background-position:center; background-size:cover;}
   .panel .tag{position:absolute; top:14px; left:14px; z-index:2; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.32); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.16); padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .panel .mini{font-size:13px; font-weight:600; color:rgba(255,255,255,.92); writing-mode:vertical-rl; transform:rotate(180deg); position:absolute; bottom:18px; left:16px; white-space:nowrap; transition:opacity .3s var(--ease-out);}
   .panel .full{position:relative; z-index:2; opacity:0; transition:opacity .3s var(--ease-out); max-width:70%;}
@@ -962,22 +963,6 @@
           </div>
         </div>
         <div class="panel panel-img panel-steam"></div>
-      </div>
-
-      <!-- ===== TRUSTED BRANDS STRIP ===== -->
-      <div class="brands">
-        <span class="brands-label">Officially sourced from</span>
-        <div class="brands-row">
-          <span class="brand-chip" style="--bc:#2a5f8f;">Steam</span>
-          <span class="brand-chip" style="--bc:#0070d1;">PlayStation</span>
-          <span class="brand-chip" style="--bc:#107c10;">Xbox</span>
-          <span class="brand-chip" style="--bc:#e50914;">Netflix</span>
-          <span class="brand-chip" style="--bc:#ff9900;">Amazon</span>
-          <span class="brand-chip" style="--bc:#1db954;">Spotify</span>
-          <span class="brand-chip" style="--bc:#ff4655;">Riot</span>
-          <span class="brand-chip" style="--bc:#e60012;">Nintendo</span>
-          <span class="brand-chip" style="--bc:#a435f0;">Google&nbsp;Play</span>
-        </div>
       </div>
 
       <!-- ===== FEATURED SINGLE SKU (buy any denomination directly) ===== -->
