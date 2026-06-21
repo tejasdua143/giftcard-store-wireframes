@@ -138,9 +138,11 @@
   .grid-span{grid-column:1/-1; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.5px; border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;}
   /* featured single-SKU band */
   .feat-sku{display:grid; grid-template-columns:300px 1fr; gap:18px; border:1px solid var(--line);}
-  .feat-sku-art{position:relative; background:linear-gradient(150deg,#ff4655,#7a1020); padding:18px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:230px;}
-  .feat-sku-art .pc-logo{position:absolute; top:14px; left:14px;}
-  .feat-sku-art .pc-cat{position:absolute; top:18px; right:16px;}
+  .feat-sku-art{position:relative; overflow:hidden; padding:18px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:230px;
+    background:linear-gradient(180deg, rgba(11,13,18,.15), rgba(11,13,18,.85)), url('assets/valorant.jpg') center 22%/cover;}
+  .feat-sku-art .art-badge{position:absolute; top:14px; left:14px; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:4px 10px; border-radius:20px;}
+  .feat-sku-art .art-title{position:absolute; left:18px; bottom:34px; font-size:30px; font-weight:800; letter-spacing:-.02em; color:#fff; text-shadow:0 2px 16px rgba(0,0,0,.6);}
+  .feat-sku-art .art-sub{position:absolute; left:18px; bottom:16px; font-size:13px; color:rgba(255,255,255,.85);}
   .feat-sku-denoms{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:18px;}
   .fs-denom{border:1px solid var(--line); padding:12px; display:flex; flex-direction:column; gap:8px;}
   .fs-denom .amt{font-weight:700; font-size:14px;}
@@ -693,7 +695,7 @@
 
       <!-- interactive hero: 4 expanding offer panels, one active at a time -->
       <div class="hero-acc">
-        <div class="panel" style="--g1:#1f7cff; --g2:#0a3aa0;">
+        <div class="panel" style="background:linear-gradient(to top right, rgba(0,0,0,.62), rgba(0,0,0,.12) 58%), url('assets/valorant-hero.jpg') center 28%/cover;">
           <span class="tag">Valorant · 12% off</span>
           <span class="mini">Valorant</span>
           <div class="full">
@@ -741,10 +743,9 @@
         <div class="sec-sub">Top up instantly. Pick an amount and buy in one tap.</div>
         <div class="feat-sku">
           <div class="feat-sku-art">
-            <div class="pc-logo">LOGO</div>
-            <div class="pc-cat">Gaming</div>
-            <div class="pc-plain-title">VALORANT</div>
-            <div class="muted" style="color:#aab; position:absolute; bottom:14px; left:18px;">Official · region-tagged</div>
+            <span class="art-badge">Official · region-tagged</span>
+            <div class="art-title">VALORANT</div>
+            <div class="art-sub">Valorant Points</div>
           </div>
           <div class="feat-sku-denoms" id="featSkuDenoms"><!-- filled by JS --></div>
         </div>
@@ -900,8 +901,8 @@
 
       <div class="twocol">
         <!-- left: big card visual -->
-        <div class="pdp-art" id="pdpArt" style="min-height:360px; background:linear-gradient(150deg,#ff4655,#7a1020);">
-          <div class="pc-mono" id="pdpMono" style="font-size:170px;">V</div>
+        <div class="pdp-art" id="pdpArt" style="min-height:380px; background:linear-gradient(180deg, rgba(11,13,18,.1), rgba(11,13,18,.8)), url('assets/valorant.jpg') center 18%/cover;">
+          <div class="pc-mono" id="pdpMono" style="font-size:170px;"></div>
           <div class="pc-logo" id="pdpLogo">V</div>
           <div class="pc-badge" id="pdpBadge">&minus;6%</div>
           <div class="pc-cat" id="pdpCat" style="top:18px; right:16px; bottom:auto; left:auto;">Gaming</div>
