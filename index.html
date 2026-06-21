@@ -361,6 +361,9 @@
     transition:transform .35s var(--ease-out);}
   .nu-art::before{content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(255,255,255,.28), transparent 42%), radial-gradient(80% 60% at 30% 20%, rgba(255,255,255,.18), transparent 60%); pointer-events:none;}
   .nu-art img{position:relative; z-index:1; width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0,0,0,.4)); opacity:.97;}
+  .nu-art-photo{padding:0;}
+  .nu-art-photo::before{display:none;}
+  .nu-art-photo .nu-photo{width:100%; height:100%; object-fit:cover; filter:none; opacity:1; border-radius:inherit;}
   @media(hover:hover){ .pcard.nu:hover .nu-art{transform:rotate(5deg) translateY(-4px) scale(1.04);} }
   .nu-foot{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding:22px 24px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.16);}
   .nu-vtitle{color:#6f9dff; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;}
@@ -1496,7 +1499,7 @@
   /* ---- storefront product cards ---- */
   var PRODUCTS = [
     {mono:"S", glyph:"assets/brands/steam.svg", c1:"#2a5f8f", c2:"#0e1b2e", cat:"Wallet",       title:"Steam Wallet",   sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%", rating:"4.9", sold:"42k", blocked:[], offer:null},
-    {mono:"P", glyph:"assets/brands/playstation.svg", c1:"#0070d1", c2:"#012b6d", cat:"Gaming",       title:"PlayStation",    sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", rating:"4.8", sold:"31k", blocked:["India","Turkey","Brazil"], offer:{type:"sku",   label:"10% off all denominations"}},
+    {mono:"P", glyph:"assets/brands/playstation.svg", art:"assets/ps-card.png", c1:"#0070d1", c2:"#012b6d", cat:"Gaming",       title:"PlayStation",    sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", rating:"4.8", sold:"31k", blocked:["India","Turkey","Brazil"], offer:{type:"sku",   label:"10% off all denominations"}},
     {mono:"X", glyph:"assets/brands/xbox.svg", c1:"#107c10", c2:"#0a4d0a", cat:"Gaming",       title:"Xbox Gift Card", sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€50.00", now:"€47.00", save:"6%", rating:"4.9", sold:"18k", blocked:["China","UAE","Saudi Arabia"], offer:{type:"denom", label:"€5 bonus on the €50 card"}},
     {mono:"N", glyph:"assets/brands/netflix.svg", c1:"#e50914", c2:"#5e0207", cat:"Entertainment",title:"Netflix",        sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€25.00", now:"€24.00", save:"4%", rating:"4.7", sold:"54k", blocked:["China"], offer:null},
     {mono:"a", glyph:"assets/brands/amazon.png", c1:"#ff9900", c2:"#7a3e00", cat:"Shopping",     title:"Amazon",         sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€100.00",now:"€93.00", save:"7%", rating:"4.8", sold:"67k", blocked:["China","Egypt"], offer:{type:"sku", label:"Extra 3% off this week"}},
@@ -1557,7 +1560,9 @@
           '<div class="nu-now">'+p.now+'</div>'+
           '<div class="nu-old">'+p.strike+'</div>'+
         '</div>'+
-        '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>'+
+        (p.art
+          ? '<div class="nu-art nu-art-photo"><img class="nu-photo" src="'+p.art+'" alt=""></div>'
+          : '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>')+
         (off ? '<div class="nu-lock"><span>&#128274; Not in '+region+'</span></div>' : '')+
       '</div>'+
       '<div class="nu-foot">'+
