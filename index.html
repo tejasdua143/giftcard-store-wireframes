@@ -316,8 +316,11 @@
   .cshow-meta{flex:1; padding-top:40px;}
   .cshow-name{font-size:16px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:6px;}
   .cshow-verif{width:16px; height:16px; border-radius:50%; background:var(--brand); color:#fff; font-size:9px; display:inline-flex; align-items:center; justify-content:center;}
-  .cshow-socials{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
-  .soc{font-size:11px; border:1px solid var(--line); padding:4px 10px; border-radius:14px; color:var(--mut);}
+  .cshow-socials{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  .soc{display:inline-flex; align-items:center; gap:7px; font-size:12px; border:1px solid var(--line); background:var(--surface2); padding:6px 12px; border-radius:20px; color:var(--mut); cursor:pointer;}
+  .soc .soc-dot{width:8px; height:8px; border-radius:50%; background:var(--sc); box-shadow:0 0 7px var(--sc);}
+  .soc b{color:#c3c9d2; font-weight:600;}
+  @media(hover:hover){ .soc:hover{border-color:color-mix(in srgb, var(--sc) 55%, var(--line)); color:#fff;} }
   .cshow-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:0 18px 18px;}
   .cshow-tile{cursor:pointer;}
   .tile-t{font-size:13px; font-weight:600; color:var(--ink); margin-top:8px; line-height:1.3;}
@@ -903,8 +906,10 @@
               <div class="cshow-name">PhantomAce <span class="cshow-verif">&#10003;</span></div>
               <div class="muted">Pro Valorant content · 120,000+ fans</div>
               <div class="cshow-socials">
-                <span class="soc">YouTube</span><span class="soc">Twitch</span>
-                <span class="soc">Instagram</span><span class="soc">X</span>
+                <span class="soc" style="--sc:#ff0000;"><span class="soc-dot"></span>YouTube <b>1.2M</b></span>
+                <span class="soc" style="--sc:#9146ff;"><span class="soc-dot"></span>Twitch <b>480K</b></span>
+                <span class="soc" style="--sc:#e1306c;"><span class="soc-dot"></span>Instagram <b>720K</b></span>
+                <span class="soc" style="--sc:#1d9bf0;"><span class="soc-dot"></span>X <b>310K</b></span>
               </div>
             </div>
             <div class="btn" style="flex:0 0 auto; align-self:center;">Follow</div>
