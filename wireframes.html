@@ -196,7 +196,8 @@
   .grid-span{grid-column:1/-1; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.5px; border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;}
   /* featured single-SKU band */
   /* full-bleed image card; denominations surfaced on top */
-  .feat-sku{position:relative; overflow:hidden; border:1px solid rgba(255,70,85,.18); border-radius:16px; min-height:440px;
+  .feat-sku{position:relative; overflow:hidden; border-radius:0; min-height:440px;
+    clip-path:polygon(0 22px, 22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);
     background:#0F1923 url('assets/valorant-featured.jpg') right center/cover;}
   .feat-sku::before{content:""; position:absolute; inset:0; z-index:0;
     background:linear-gradient(90deg, rgba(15,25,35,.92) 0%, rgba(15,25,35,.45) 44%, transparent 74%),
