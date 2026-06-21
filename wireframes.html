@@ -622,7 +622,8 @@
   /* checkout popup */
   .co-box{background:var(--surface); width:460px; max-width:100%; max-height:88vh; overflow:auto; border:1px solid var(--line); border-radius:16px; box-shadow:0 24px 70px rgba(0,0,0,.6);}
   .co-head{display:flex; justify-content:space-between; align-items:center; padding:18px 18px 16px; border-bottom:1px solid var(--line); font-family:var(--font-display); font-weight:700; font-size:18px; letter-spacing:-.02em;}
-  .co-head .co-x{cursor:pointer; color:var(--mut); font-size:18px;}
+  .co-head .co-x{cursor:pointer; color:var(--mut); font-size:18px; line-height:1; padding:2px 4px; transition:color .15s var(--ease-out);}
+  .co-head .co-x:hover{color:#fff;}
   .co-body{padding:18px; display:flex; flex-direction:column; gap:12px;}
   .co-summary{border:1px solid var(--line); border-radius:12px; background:var(--surface2); padding:14px; display:flex; gap:12px; align-items:center;}
   .co-summary .art{width:48px; height:48px; background:linear-gradient(135deg,#ff4655,#7a1020); color:#aab; font-size:8px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
