@@ -245,6 +245,7 @@
     color:transparent; -webkit-text-stroke:2px rgba(255,255,255,.22); text-shadow:0 0 40px rgba(255,255,255,.12);}
   .pc-logo{position:relative; z-index:2; width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.32); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; color:#fff; box-shadow:0 6px 18px rgba(0,0,0,.25);}
   .pc-logo img{width:21px; height:21px; object-fit:contain; filter:brightness(0) invert(1);}
+  .pc-delivery{position:absolute; top:14px; left:60px; z-index:2; display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.34); border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:4px 9px; border-radius:20px;}
   .pc-glyph{position:absolute; right:-12px; bottom:-14px; z-index:0; width:130px; height:130px; object-fit:contain; pointer-events:none; user-select:none;
     opacity:.2; filter:brightness(0) invert(1) drop-shadow(0 0 26px rgba(255,255,255,.25)); transition:transform .4s var(--ease-out), opacity .3s var(--ease-out);}
   @media(hover:hover){ .pcard:hover .pc-glyph{transform:scale(1.08) rotate(-3deg); opacity:.26;} }
@@ -1399,14 +1400,14 @@
       '<div class="pc-art" style="background:linear-gradient(150deg,'+p.c1+','+p.c2+')">'+
         offerRibbon(p)+
         '<img class="pc-glyph" src="'+p.glyph+'" alt="" loading="lazy">'+
+        '<span class="pc-delivery">&#9889; Instant</span>'+
         '<span class="pc-logo"><img src="'+p.glyph+'" alt=""></span>'+
         '<div class="pc-badge">&minus;'+p.save+'</div>'+
-        '<div class="pc-cat">'+p.title+'</div>'+
       '</div>'+
       '<div class="pc-body">'+
         '<div class="pc-title">'+p.title+'</div>'+
-        '<div class="pc-meta">'+(off ? '<span class="pc-sub">Not available in your country yet</span>' :
-          '<span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span><span class="pc-dot">·</span><span>'+p.sub+'</span>')+'</div>'+
+        '<div class="pc-meta">'+(off ? '<span class="pc-sub">Not available in your region yet</span>' :
+          '<span>'+p.cat+'</span><span class="pc-dot">·</span><span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span>')+'</div>'+
         (p.offer ? '<div class="pc-denomoffer">'+(p.offer.type==='denom'?'🎁 ':'★ ')+p.offer.label+'</div>' : '')+
         '<div class="pc-denoms">'+chips(p.denoms)+'</div>'+
         '<div class="pc-foot">'+
