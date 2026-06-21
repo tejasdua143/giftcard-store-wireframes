@@ -67,6 +67,26 @@
   .pcard.disabled .pc-denoms, .pcard.disabled .pc-view{pointer-events:none;}
   .pcard.disabled .pc-view{border-color:var(--line); color:var(--mut);}
   .pc-warn{background:#3a3a3a; color:#fff; font-size:11px; letter-spacing:.3px; padding:6px 12px; display:flex; align-items:center; gap:6px;}
+  /* offers on catalogue cards */
+  .pc-offer{position:absolute; top:10px; left:10px; z-index:2; font-size:9px; font-weight:700; letter-spacing:.5px; padding:3px 8px; border-radius:4px; color:#fff;}
+  .pc-offer-sku{background:#b26a00;}
+  .pc-offer-denom{background:#2e7d32;}
+  .pc-denomoffer{font-size:11px; color:#2e7d32; font-weight:600; background:#eef6ee; border:1px solid #cfe6cf; padding:5px 8px; border-radius:5px;}
+  /* plain card variant */
+  .pcard.plain .pc-art{display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
+  .pc-plain-title{color:#cfd6dd; font-size:20px; font-weight:800; letter-spacing:1px; margin-top:6px;}
+  .grid-span{grid-column:1/-1; font-size:11px; color:var(--mut); text-transform:uppercase; letter-spacing:.5px; border-top:1px dashed var(--line); padding-top:14px; margin-top:6px;}
+  /* featured single-SKU band */
+  .feat-sku{display:grid; grid-template-columns:300px 1fr; gap:18px; border:1px solid var(--line);}
+  .feat-sku-art{position:relative; background:#2b2f33; padding:18px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:230px;}
+  .feat-sku-art .pc-logo{position:absolute; top:14px; left:14px;}
+  .feat-sku-art .pc-cat{position:absolute; top:18px; right:16px;}
+  .feat-sku-denoms{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:18px;}
+  .fs-denom{border:1px solid var(--line); padding:12px; display:flex; flex-direction:column; gap:8px;}
+  .fs-denom .amt{font-weight:700; font-size:14px;}
+  .fs-denom .pr{font-size:12px; color:var(--mut);}
+  .fs-denom .btn{padding:8px; font-size:11px;}
+  @media(max-width:720px){ .feat-sku{grid-template-columns:1fr;} .feat-sku-denoms{grid-template-columns:repeat(2,1fr);} }
   .pdp-art{position:relative; min-height:300px; background:#2b2f33; padding:18px; border:1px solid var(--line);}
   .pdp-art .pc-logo{width:40px; height:40px;}
   .pdp-art .pc-cat{font-size:11px;}
@@ -81,6 +101,10 @@
   .sku-row.cross .act{border-color:#b26a00; color:#b26a00;}   /* available, won't activate */
   .pdp-disc{display:none; background:#3a3a3a; color:#fff; font-size:12px; padding:10px 12px; margin-top:8px; line-height:1.4;}
   .pdp-disc.on{display:block;}
+  .pdp-elig{margin-top:8px;}
+  .elig-h{font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--mut); margin-bottom:6px;}
+  .elig-tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .elig-tag{font-size:11px; border:1px solid var(--line); background:var(--fill); padding:3px 9px; border-radius:12px; color:var(--ink);}
   .sku-opt .act{font-size:10px; padding:2px 8px; border-radius:10px; border:1px solid var(--line); color:var(--mut); white-space:nowrap;}
   .sku-opt.ok .act{border-color:#2e7d32; color:#2e7d32;}
   .sku-opt.cross .act{border-color:#b26a00; color:#b26a00;}
@@ -231,6 +255,12 @@
   .gbtn:hover{background:var(--fill);}
   .gbtn .g{width:18px; height:18px; border-radius:50%; border:1px solid var(--mut); flex:0 0 auto; font-size:11px; display:flex; align-items:center; justify-content:center;}
   .gnote{font-size:11px; color:var(--mut); margin-top:14px;}
+  .gor{display:flex; align-items:center; gap:10px; margin:14px 0; color:var(--mut); font-size:11px; text-transform:uppercase;}
+  .gor::before, .gor::after{content:""; flex:1; height:1px; background:var(--line);}
+  .field-in{border:1px solid var(--line); height:38px; display:flex; align-items:center; padding:0 10px;}
+  .field-in input{border:none; outline:none; width:100%; font-size:13px; background:transparent; color:var(--ink);}
+  .nsel{width:100%; height:42px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:14px; padding:0 12px; border-radius:6px; cursor:pointer; appearance:auto;}
+  .nsel:focus{outline:none; border-color:var(--ink);}
 
   /* checkout popup */
   .co-box{background:var(--bg); width:460px; max-width:92vw; max-height:88vh; overflow:auto; border-radius:10px;}
@@ -328,6 +358,13 @@
   .rm-item.sel{font-weight:600;}
   .rm-item.sel .dot{background:var(--ink); border-color:var(--ink); position:relative;}
   .rm-item.sel .dot::after{content:"\2713"; color:#fff; font-size:9px; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+  .rm-cur{font-size:11px; color:var(--mut); border:1px solid var(--line); border-radius:4px; padding:1px 6px;}
+  .rm-current{padding:8px 12px; font-size:13px; font-weight:600; color:var(--ink); border-bottom:1px solid var(--line);}
+  .rm-tabs{display:flex; position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:1;}
+  .rm-tab{flex:1; text-align:center; padding:9px 4px; font-size:12px; cursor:pointer; color:var(--mut); border-bottom:2px solid transparent;}
+  .rm-tab:hover{background:var(--fill);}
+  .rm-tab.on{color:var(--ink); font-weight:600; border-bottom-color:var(--ink);}
+  #regionMenu .rm-head{position:static;}
 
   /* ---- interactive hero accordion ---- */
   .hero-acc{display:flex; gap:8px; height:210px; margin-bottom:22px;}
@@ -338,9 +375,7 @@
     transition:flex .4s ease;
     display:flex; flex-direction:column; justify-content:flex-end; padding:14px;
   }
-  .panel:first-child{flex:7;}                       /* default active */
-  .hero-acc:hover .panel{flex:1;}                   /* hovering resets all */
-  .hero-acc .panel:hover{flex:7;}                   /* hovered becomes active */
+  .panel.active{flex:7;}                            /* tap to activate */
   /* tag in corner */
   .panel .tag{position:absolute; top:10px; left:10px; font-size:10px; letter-spacing:.5px; color:var(--mut); background:var(--bg); border:1px solid var(--line); padding:2px 6px; white-space:nowrap;}
   /* mini label, always visible (vertical-ish teaser) */
@@ -348,12 +383,8 @@
   /* full content, only when active */
   .panel .full{opacity:0; transition:opacity .35s ease; max-width:60%;}
   .panel .full > * + *{margin-top:8px;}
-  .panel:first-child .full{opacity:1;}
-  .panel:first-child .mini{opacity:0;}
-  .hero-acc:hover .panel:first-child .full{opacity:0;}
-  .hero-acc:hover .panel:first-child .mini{opacity:1;}
-  .hero-acc .panel:hover .full{opacity:1;}
-  .hero-acc .panel:hover .mini{opacity:0;}
+  .panel.active .full{opacity:1;}
+  .panel.active .mini{opacity:0;}
 </style>
 </head>
 <body>
@@ -391,6 +422,23 @@
   <div class="ot-tag">Best offer ends in</div>
   <div class="ot-title">Extra 12% off Steam</div>
   <div class="ot-clock" id="otClock">02:59:59</div>
+</div>
+
+<!-- update settings: region / language / currency -->
+<div class="gmodal" id="settingsModal">
+  <div class="co-box" style="width:440px;">
+    <div class="co-head"><span>Update your settings</span><span class="co-x" id="setClose">&times;</span></div>
+    <div class="co-body">
+      <div class="muted" style="margin-top:-2px;">Set your preferred region, language and currency.</div>
+      <div><div class="lbl">Region</div><select class="nsel" id="setRegion"></select></div>
+      <div><div class="lbl">Language</div><select class="nsel" id="setLang"></select></div>
+      <div><div class="lbl">Currency</div><select class="nsel" id="setCur"></select></div>
+    </div>
+    <div class="co-foot" style="display:flex; gap:10px;">
+      <div class="btn ghost" id="setCancel" style="flex:1;">Cancel</div>
+      <div class="btn" id="setSave" style="flex:1;">Save</div>
+    </div>
+  </div>
 </div>
 
 <!-- 24/7 refunds popup -->
@@ -506,18 +554,38 @@
       You're shopping from <b>United States</b> but picked <b>Valorant India</b>. This card may not activate on your account. Global and your-region cards activate normally.
     </div>
     <div class="row" style="margin-top:18px;">
-      <div class="btn ghost" id="rwCancel" style="flex:1;">Pick another</div>
-      <div class="btn" id="rwOk" style="flex:1;">Continue anyway</div>
+      <div class="btn ghost" id="rwCancel" style="flex:1;">Choose another version</div>
+      <div class="btn" id="rwOk" style="flex:1;">Buy it anyway</div>
     </div>
   </div>
 </div>
 
-<!-- google sign-in mock modal -->
+<!-- sign-in modal: Google or email (mock) -->
 <div class="gmodal" id="gModal">
-  <div class="gbox">
-    <div class="gh">Sign in to continue</div>
-    <div class="gbtn" id="gContinue"><span class="g">G</span> Continue with Google</div>
-    <div class="gnote">Mocked for wireframe. Real Google OAuth needs a hosted origin + client ID.</div>
+  <div class="gbox" style="text-align:left;">
+    <!-- choose method -->
+    <div id="gvChoose">
+      <div class="gh">Sign in to buy</div>
+      <div class="gbtn" id="gContinue"><span class="g">G</span> Continue with Google</div>
+      <div class="gor"><span>or</span></div>
+      <div class="lbl">Email address</div>
+      <div class="field-in"><input id="gEmail" type="email" placeholder="you@email.com" autocomplete="off"></div>
+      <div class="btn" id="gEmailContinue" style="margin-top:12px;">Continue with email</div>
+      <div class="gnote">Mocked for wireframe. Real auth needs a backend.</div>
+    </div>
+    <!-- verify code (+ name for new users) -->
+    <div id="gvVerify" style="display:none;">
+      <div class="gh" id="gvTitle">Check your email</div>
+      <div class="muted" id="gvSub" style="margin-bottom:14px;">We sent a 6-digit code to your email.</div>
+      <div id="gNameWrap" style="margin-bottom:12px;">
+        <div class="lbl">Your name</div>
+        <div class="field-in"><input id="gName" type="text" placeholder="First and last name"></div>
+      </div>
+      <div class="lbl">6-digit code</div>
+      <div class="field-in"><input id="gCode" type="text" placeholder="123456" maxlength="6"></div>
+      <div class="btn" id="gVerify" style="margin-top:12px;">Verify and continue</div>
+      <div class="gnote" id="gvBack" style="cursor:pointer;">&larr; Use a different method</div>
+    </div>
   </div>
 </div>
 
@@ -567,8 +635,23 @@
         </div>
       </div>
 
+      <!-- ===== FEATURED SINGLE SKU (buy any denomination directly) ===== -->
+      <div class="sec" style="margin-top:24px;">
+        <div class="sec-h">Featured: Valorant Points</div>
+        <div class="sec-sub">Top up instantly. Pick an amount and buy in one tap.</div>
+        <div class="feat-sku">
+          <div class="feat-sku-art">
+            <div class="pc-logo">LOGO</div>
+            <div class="pc-cat">Gaming</div>
+            <div class="pc-plain-title">VALORANT</div>
+            <div class="muted" style="color:#aab; position:absolute; bottom:14px; left:18px;">Official · region-tagged</div>
+          </div>
+          <div class="feat-sku-denoms" id="featSkuDenoms"><!-- filled by JS --></div>
+        </div>
+      </div>
+
       <!-- section title -->
-      <div class="lbl">Gift Cards</div>
+      <div class="lbl">Gift Cards · full catalogue</div>
       <div class="bar m" style="margin-bottom:14px;"></div>
 
       <!-- product grid: each card carries logo · discount · category · title · delivery · denominations · strike+now price · save% · View -->
@@ -730,6 +813,9 @@
             <div class="region-menu" id="pdpSkuMenu" style="width:100%;"><!-- SKUs --></div>
           </div>
 
+          <!-- country eligibility: where this card works -->
+          <div class="pdp-elig" id="pdpEligible"></div>
+
           <!-- cross-region disclaimer -->
           <div class="pdp-disc" id="pdpDisc">&#9888; Heads up: this version may not activate in your region.</div>
 
@@ -740,8 +826,8 @@
 
           <!-- buy -->
           <div style="height:12px"></div>
-          <div class="btn" id="pdpBuy">Buy Now · €9.49</div>
-          <div class="muted" style="margin-top:6px;">Delivered instantly by email · secure checkout</div>
+          <div class="btn" id="pdpBuy">Buy now · €9.49</div>
+          <div class="muted" style="margin-top:6px;">Code emailed in seconds · secure checkout · max 5 per person</div>
         </div>
       </div>
 
@@ -906,65 +992,131 @@
   var label  = document.getElementById('regionLabel');
   var selected = "United States";
 
-  function item(name){
-    return '<div class="rm-item'+(name===selected?' sel':'')+'" data-c="'+name+'"><span class="dot"></span>'+name+'</div>';
-  }
-  function render(){
-    var h = '';
-    // selected pinned up top
-    h += '<div class="rm-head">Selected region</div>' + item(selected);
-    // top 7 (exclude selected if already shown)
-    h += '<div class="rm-head">Top countries</div>';
-    TOP7.forEach(function(c){ if(c!==selected) h += item(c); });
-    // rest alphabetical
-    h += '<div class="rm-head">All countries (A–Z)</div>';
-    REST.filter(function(c){return c!==selected;}).sort().forEach(function(c){ h += item(c); });
-    menu.innerHTML = h;
-  }
-  render();
+  // region, currency, language are each changed INDEPENDENTLY
+  var CURRENCY_OF = {
+    "United States":"USD","Canada":"CAD","United Kingdom":"GBP","India":"INR","Australia":"AUD",
+    "Germany":"EUR","France":"EUR","Italy":"EUR","Spain":"EUR","Netherlands":"EUR","Ireland":"EUR",
+    "Belgium":"EUR","Austria":"EUR","Portugal":"EUR","Turkey":"TRY","Brazil":"BRL","Japan":"JPY",
+    "China":"CNY","South Korea":"KRW","Mexico":"MXN","Argentina":"ARS","Sweden":"SEK","Denmark":"DKK",
+    "Norway":"NOK","Switzerland":"CHF","Poland":"PLN","Singapore":"SGD","UAE":"AED","Saudi Arabia":"SAR",
+    "South Africa":"ZAR","New Zealand":"NZD","Philippines":"PHP","Indonesia":"IDR","Egypt":"EGP","Finland":"EUR"
+  };
+  // currency + language option lists
+  var CUR_LIST = [
+    {code:"USD",name:"US Dollar ($)"},{code:"EUR",name:"Euro (€)"},{code:"GBP",name:"British Pound (£)"},
+    {code:"INR",name:"Indian Rupee (₹)"},{code:"AUD",name:"Australian Dollar (A$)"},{code:"CAD",name:"Canadian Dollar (C$)"},
+    {code:"TRY",name:"Turkish Lira (₺)"},{code:"BRL",name:"Brazilian Real (R$)"},{code:"JPY",name:"Japanese Yen (¥)"},
+    {code:"SGD",name:"Singapore Dollar (S$)"},{code:"AED",name:"UAE Dirham (د.إ)"},{code:"CHF",name:"Swiss Franc (Fr)"},
+    {code:"SEK",name:"Swedish Krona (kr)"},{code:"PLN",name:"Polish Złoty (zł)"},{code:"CNY",name:"Chinese Yuan (¥)"},
+    {code:"KRW",name:"Korean Won (₩)"},{code:"MXN",name:"Mexican Peso ($)"}
+  ];
+  var LANG_LIST = [
+    {val:"English (US)",short:"EN"},{val:"English (EU)",short:"EN"},{val:"English (IN)",short:"EN"},
+    {val:"Hindi",short:"HI"},{val:"Turkish",short:"TR"},{val:"German",short:"DE"},{val:"French",short:"FR"},
+    {val:"Portuguese (BR)",short:"PT"},{val:"Spanish",short:"ES"},{val:"Italian",short:"IT"},
+    {val:"Japanese",short:"JA"},{val:"Chinese",short:"ZH"},{val:"Korean",short:"KO"},{val:"Dutch",short:"NL"},{val:"Polish",short:"PL"}
+  ];
+  var LANG_SHORT = {}; LANG_LIST.forEach(function(l){ LANG_SHORT[l.val]=l.short; });
+  // region -> suggested language (editable)
+  var SUGGEST_LANG = {
+    "United States":"English (US)","Canada":"English (US)","United Kingdom":"English (EU)","Ireland":"English (EU)",
+    "Australia":"English (EU)","New Zealand":"English (EU)","India":"English (IN)",
+    "Germany":"German","France":"French","Turkey":"Turkish","Brazil":"Portuguese (BR)","Portugal":"Portuguese (BR)",
+    "Spain":"Spanish","Mexico":"Spanish","Argentina":"Spanish","Italy":"Italian","Japan":"Japanese","China":"Chinese",
+    "South Korea":"Korean","Netherlands":"Dutch","Poland":"Polish"
+  };
+  function curOf(c){ return CURRENCY_OF[c] || "USD"; }
+  function suggestLang(c){ return SUGGEST_LANG[c] || "English (US)"; }
 
-  toggle.addEventListener('click', function(e){
-    e.stopPropagation();
-    region.classList.toggle('open');
+  var ALL_COUNTRIES = TOP7.concat(REST).filter(function(v,i,a){return a.indexOf(v)===i;});
+  var selCur  = curOf("United States");
+  var selLang = "English (US)";
+
+  function setRegionLabel(){ label.textContent = selected+' · '+selCur+' · '+(LANG_SHORT[selLang]||'EN'); }
+  setRegionLabel();
+
+  /* ---- settings modal: region / language / currency (apply on Save) ---- */
+  var setModal = document.getElementById('settingsModal');
+  var selRegion = document.getElementById('setRegion');
+  var selLangEl = document.getElementById('setLang');
+  var selCurEl  = document.getElementById('setCur');
+  // populate selects once
+  selRegion.innerHTML = ALL_COUNTRIES.slice().sort().map(function(c){ return '<option value="'+c+'">'+c+'</option>'; }).join('');
+  selLangEl.innerHTML = LANG_LIST.map(function(l){ return '<option value="'+l.val+'">'+l.val+'</option>'; }).join('');
+  selCurEl.innerHTML  = CUR_LIST.map(function(c){ return '<option value="'+c.code+'">'+c.name+'</option>'; }).join('');
+
+  function openSettings(){
+    selRegion.value = selected; selLangEl.value = selLang; selCurEl.value = selCur;
+    setModal.classList.add('open');
+  }
+  // region change inside modal pre-fills language + currency (still editable)
+  selRegion.addEventListener('change', function(){
+    selLangEl.value = suggestLang(this.value);
+    selCurEl.value  = curOf(this.value);
   });
-  menu.addEventListener('click', function(e){
-    var it = e.target.closest('.rm-item');
-    if(!it) return;
-    selected = it.getAttribute('data-c');
-    label.textContent = selected;
-    render();
+  document.getElementById('setSave').addEventListener('click', function(){
+    selected = selRegion.value; selLang = selLangEl.value; selCur = selCurEl.value;
+    currentLang = selLang;
+    setRegionLabel();
     renderGrid(selected);
     if(typeof refreshPdpForRegion === 'function') refreshPdpForRegion();
-    region.classList.remove('open');
-    maybeOfferLanguage(selected);   // offer matching language
+    setModal.classList.remove('open');
+    toast('Settings saved');
   });
-  document.addEventListener('click', function(){ region.classList.remove('open'); });
+  document.getElementById('setCancel').addEventListener('click', function(){ setModal.classList.remove('open'); });
+  document.getElementById('setClose').addEventListener('click', function(){ setModal.classList.remove('open'); });
+  setModal.addEventListener('click', function(e){ if(e.target===setModal) setModal.classList.remove('open'); });
+
+  toggle.addEventListener('click', function(e){ e.stopPropagation(); openSettings(); });
 
   /* ---- storefront product cards ---- */
   var PRODUCTS = [
-    {brand:"LOGO", cat:"Wallet",       title:"Steam Wallet",   sub:"instant delivery", denoms:["€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%", blocked:[]},
-    {brand:"LOGO", cat:"Gaming",       title:"PlayStation",    sub:"instant delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", blocked:["India","Turkey","Brazil"]},
-    {brand:"LOGO", cat:"Gaming",       title:"Xbox Gift Card", sub:"instant delivery", denoms:["€15","€25","€50"],        strike:"€50.00", now:"€47.00", save:"6%", blocked:["China","UAE","Saudi Arabia"]},
-    {brand:"LOGO", cat:"Entertainment",title:"Netflix",        sub:"instant delivery", denoms:["€15","€25","€50"],        strike:"€25.00", now:"€24.00", save:"4%", blocked:["China"]},
-    {brand:"LOGO", cat:"Shopping",     title:"Amazon",         sub:"instant delivery", denoms:["€10","€25","€50","€100"], strike:"€100.00",now:"€93.00", save:"7%", blocked:["China","Egypt"]},
-    {brand:"LOGO", cat:"Music",        title:"Spotify",        sub:"instant delivery", denoms:["€10","€30","€60"],        strike:"€30.00", now:"€28.50", save:"5%", blocked:["China","India","Turkey"]}
+    {brand:"LOGO", cat:"Wallet",       title:"Steam Wallet",   sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%", blocked:[], offer:null},
+    {brand:"LOGO", cat:"Gaming",       title:"PlayStation",    sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€25.00", now:"€23.75", save:"5%", blocked:["India","Turkey","Brazil"], offer:{type:"sku",   label:"10% off all denominations"}},
+    {brand:"LOGO", cat:"Gaming",       title:"Xbox Gift Card", sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€50.00", now:"€47.00", save:"6%", blocked:["China","UAE","Saudi Arabia"], offer:{type:"denom", label:"€5 bonus on the €50 card"}},
+    {brand:"LOGO", cat:"Entertainment",title:"Netflix",        sub:"Instant email delivery", denoms:["€15","€25","€50"],        strike:"€25.00", now:"€24.00", save:"4%", blocked:["China"], offer:null},
+    {brand:"LOGO", cat:"Shopping",     title:"Amazon",         sub:"Instant email delivery", denoms:["€10","€25","€50","€100"], strike:"€100.00",now:"€93.00", save:"7%", blocked:["China","Egypt"], offer:{type:"sku", label:"Extra 3% off this week"}},
+    {brand:"LOGO", cat:"Music",        title:"Spotify",        sub:"Instant email delivery", denoms:["€10","€30","€60"],        strike:"€30.00", now:"€28.50", save:"5%", blocked:["China","India","Turkey"], offer:{type:"denom", label:"1 month free on the €60 card"}}
   ];
   function chips(arr){
     return arr.map(function(d,i){ return '<div class="chip'+(i===0?' on':'')+'">'+d+'</div>'; }).join('');
   }
-  function card(p, region, idx){
+  function offerRibbon(p){
+    if(!p.offer) return '';
+    return '<div class="pc-offer pc-offer-'+p.offer.type+'">'+(p.offer.type==='sku'?'OFFER':'🎁 BONUS')+'</div>';
+  }
+  // style: 'full' (art + denoms + price) or 'plain' (art + game name only)
+  function card(p, region, idx, style){
     var off = p.blocked.indexOf(region) !== -1;
+    if(style==='plain'){
+      return ''+
+      '<div class="pcard plain'+(off?' disabled':'')+'">'+
+        (off ? '<div class="pc-warn">&#9888; Not sold in '+region+'</div>' : '')+
+        '<div class="pc-art" style="min-height:170px;">'+
+          offerRibbon(p)+
+          '<div class="pc-logo">'+p.brand+'</div>'+
+          '<div class="pc-cat">'+p.cat+'</div>'+
+          '<div class="pc-plain-title">'+p.title.toUpperCase()+'</div>'+
+        '</div>'+
+        '<div class="pc-body" style="flex-direction:row; align-items:center; justify-content:space-between;">'+
+          '<span class="pc-title" style="font-size:14px;">'+p.title+'</span>'+
+          '<div class="pc-view" data-i="'+idx+'">'+(off?'Unavailable':'View &#8250;')+'</div>'+
+        '</div>'+
+      '</div>';
+    }
     return ''+
     '<div class="pcard'+(off?' disabled':'')+'">'+
-      (off ? '<div class="pc-warn">&#9888; Not available in '+region+'</div>' : '')+
+      (off ? '<div class="pc-warn">&#9888; Not sold in '+region+'</div>' : '')+
       '<div class="pc-art">'+
+        offerRibbon(p)+
         '<div class="pc-logo">'+p.brand+'</div>'+
         '<div class="pc-badge">&minus;'+p.save+'</div>'+
         '<div class="pc-cat">'+p.cat+'</div>'+
       '</div>'+
       '<div class="pc-body">'+
         '<div class="pc-title">'+p.title+'</div>'+
-        '<div class="pc-sub">'+(off ? "This gift card isn't available in your country" : p.sub)+'</div>'+
+        '<div class="pc-sub">'+(off ? "Not available in your country yet" : p.sub)+'</div>'+
+        (p.offer ? '<div class="pc-denomoffer">'+(p.offer.type==='denom'?'🎁 ':'★ ')+p.offer.label+'</div>' : '')+
         '<div class="pc-denoms">'+chips(p.denoms)+'</div>'+
         '<div class="pc-foot">'+
           '<div class="pc-price">'+
@@ -982,10 +1134,10 @@
     gridList = PRODUCTS.slice().sort(function(a,b){
       var ao = a.blocked.indexOf(region) !== -1 ? 1 : 0;
       var bo = b.blocked.indexOf(region) !== -1 ? 1 : 0;
-      return ao - bo; // available (0) first, blocked (1) last
+      return ao - bo; // available first, blocked last
     });
     document.getElementById('productGrid').innerHTML =
-      gridList.map(function(p, i){ return card(p, region, i); }).join('');
+      gridList.map(function(p,i){ return card(p, region, i, 'full'); }).join('');
   }
   renderGrid(selected);
 
@@ -1121,7 +1273,21 @@
     } else {
       disc.classList.remove('on');
     }
+    // country eligibility: where the selected card works
+    var elig = document.getElementById('pdpEligible');
+    var reg = SKUS[pdpSkuIdx].region;
+    var list = ELIGIBILITY[reg] || ["Worldwide"];
+    elig.innerHTML = '<div class="elig-h">&#127758; Works in</div>' +
+      '<div class="elig-tags">' + list.map(function(c){ return '<span class="elig-tag">'+c+'</span>'; }).join('') + '</div>';
   }
+  // which countries each region version activates in
+  var ELIGIBILITY = {
+    "Global":        ["Worldwide — any account"],
+    "United States": ["United States","Canada"],
+    "Europe":        ["UK","Germany","France","Italy","Spain","Netherlands","+ EU"],
+    "India":         ["India"],
+    "Turkey":        ["Turkey"]
+  };
   function selectSku(i, fromUser){
     var zone = zoneOf(selected);
     var sku = SKUS[i];
@@ -1172,21 +1338,72 @@
   }
   function updateBuy(){
     var total = DENOMS[pdpDenomIdx].price * pdpQty;
-    buyBtn.textContent = 'Buy Now · €'+total.toFixed(2)+' ('+pdpQty+'×)';
+    buyBtn.textContent = 'Buy now · €'+total.toFixed(2)+(pdpQty>1?' ('+pdpQty+' cards)':'');
   }
+  var MAX_QTY = 5;   // per-person purchase limit
   vpGrid.addEventListener('click', function(e){
     if(e.target.closest('.q-minus')){ if(pdpQty>1){pdpQty--; renderDenoms(); updateBuy();} return; }
-    if(e.target.closest('.q-plus')){ if(pdpQty<99){pdpQty++; renderDenoms(); updateBuy();} return; }
+    if(e.target.closest('.q-plus')){
+      if(pdpQty < MAX_QTY){ pdpQty++; renderDenoms(); updateBuy(); }
+      else { toast('Limit reached: 5 cards per person'); }
+      return;
+    }
     var t = e.target.closest('.vp'); if(!t) return;
     var i = parseInt(t.getAttribute('data-d'),10);
     if(i!==pdpDenomIdx){ pdpDenomIdx = i; pdpQty = 1; renderDenoms(); updateBuy(); }
   });
 
-  // re-evaluate activation when global region changes
-  var _origSelectClose = null;
-  function refreshPdpForRegion(){ renderSkus(); }
+  // when global region changes: auto-switch the SKU to a card valid for that region
+  function refreshPdpForRegion(){
+    var zone = zoneOf(selected);
+    if(!activates(SKUS[pdpSkuIdx], zone)){
+      var exact = -1, global = -1;
+      SKUS.forEach(function(s,i){
+        if(s.region === zone) exact = i;
+        if(s.region === "Global") global = i;
+      });
+      var next = exact !== -1 ? exact : global;
+      if(next !== -1 && next !== pdpSkuIdx){
+        pdpSkuIdx = next;
+        toast('Switched to '+SKUS[pdpSkuIdx].name+' for your region');
+      }
+    }
+    renderSkus();
+  }
 
   renderSkus(); renderDenoms(); updateBuy();
+
+  /* ---- featured single SKU: buy any denomination directly ---- */
+  function renderFeatured(){
+    document.getElementById('featSkuDenoms').innerHTML = DENOMS.map(function(d,i){
+      return '<div class="fs-denom">'+
+        '<div class="amt">'+d.vp+'</div>'+
+        '<div class="pr">€'+d.price.toFixed(2)+'</div>'+
+        '<div class="btn fs-buy" data-d="'+i+'">Buy now</div>'+
+      '</div>';
+    }).join('');
+  }
+  renderFeatured();
+  document.getElementById('featSkuDenoms').addEventListener('click', function(e){
+    var b = e.target.closest('.fs-buy'); if(!b) return;
+    pdpDenomIdx = parseInt(b.getAttribute('data-d'),10);
+    pdpQty = 1;
+    document.getElementById('pdpTitle').textContent = 'Valorant';
+    renderDenoms(); updateBuy();
+    startBuy();   // sign-in gate -> checkout popup
+  });
+
+  /* ---- hero offers: activate on tap (not hover) ---- */
+  var heroPanels = document.querySelectorAll('.hero-acc .panel');
+  if(heroPanels.length){
+    heroPanels[0].classList.add('active');
+    heroPanels.forEach(function(p){
+      p.addEventListener('click', function(){
+        heroPanels.forEach(function(x){ x.classList.remove('active'); });
+        p.classList.add('active');
+      });
+    });
+  }
 
   // cross-sell: reuse storefront cards (first 3)
   var crossList = PRODUCTS.slice(0,3);
@@ -1230,7 +1447,7 @@
   function startBuy(){
     if(!isLoggedIn){            // purchase requires sign in
       pendingBuy = true;
-      document.getElementById('gModal').classList.add('open');
+      openAuth();
       return;
     }
     openCheckoutPopup();
@@ -1338,7 +1555,7 @@
     langModal.classList.add('open');
   }
   document.getElementById('langSwitch').addEventListener('click', function(){
-    if(pendingLang){ currentLang = pendingLang; toast('Language: '+currentLang); }
+    if(pendingLang){ currentLang = pendingLang; toast('Language set to '+currentLang); setRegionLabel(); }
     langModal.classList.remove('open');
   });
   document.getElementById('langKeep').addEventListener('click', function(){ langModal.classList.remove('open'); });
@@ -1369,22 +1586,57 @@
     document.getElementById('offerTimer').style.display = 'none';
   });
 
-  /* ---- Google sign-in (mock) ---- */
+  /* ---- sign-in: Google or email (mock) ---- */
   var gModal = document.getElementById('gModal');
+  var knownEmails = { "alex@gmail.com":"Alex Gamer" };   // pre-existing accounts (code only)
+  var pendingEmail = null;
+  function showAuthView(which){
+    document.getElementById('gvChoose').style.display = which==='choose' ? 'block' : 'none';
+    document.getElementById('gvVerify').style.display = which==='verify' ? 'block' : 'none';
+  }
+  function openAuth(){ showAuthView('choose'); var e=document.getElementById('gEmail'); if(e) e.value=''; gModal.classList.add('open'); }
+  function completeLogin(name, email){
+    if(email && !knownEmails[email]) knownEmails[email] = name;   // remember new account
+    gModal.classList.remove('open');
+    isLoggedIn = true;
+    document.getElementById('signinBtn').style.display = 'none';
+    document.getElementById('userMenu').classList.add('on');
+    document.getElementById('userName').textContent = name;
+    if(pendingBuy){ pendingBuy = false; openCheckoutPopup(); }    // resume purchase
+  }
   document.getElementById('signinBtn').addEventListener('click', function(){
     pendingBuy = false;               // plain sign-in, not a buy
-    gModal.classList.add('open');
+    openAuth();
   });
   gModal.addEventListener('click', function(e){
     if(e.target === gModal) gModal.classList.remove('open');
   });
   document.getElementById('gContinue').addEventListener('click', function(){
-    gModal.classList.remove('open');
-    isLoggedIn = true;
-    document.getElementById('signinBtn').style.display = 'none';
-    document.getElementById('userMenu').classList.add('on');
-    document.getElementById('userName').textContent = 'Alex Gamer';
-    if(pendingBuy){ pendingBuy = false; openCheckoutPopup(); }  // resume purchase
+    completeLogin('Alex Gamer');
+  });
+  // email -> code (ask name only for new emails)
+  document.getElementById('gEmailContinue').addEventListener('click', function(){
+    var email = document.getElementById('gEmail').value.trim().toLowerCase();
+    if(email.indexOf('@') === -1 || email.indexOf('.') === -1){
+      toast('Enter a valid email, like you@email.com'); return;
+    }
+    pendingEmail = email;
+    var existing = !!knownEmails[email];
+    document.getElementById('gNameWrap').style.display = existing ? 'none' : 'block';
+    document.getElementById('gvTitle').textContent = existing ? 'Welcome back' : 'Create your account';
+    document.getElementById('gvSub').innerHTML = 'We sent a 6-digit code to <b>'+email+'</b>.';
+    document.getElementById('gCode').value = '';
+    document.getElementById('gName').value = '';
+    showAuthView('verify');
+  });
+  document.getElementById('gvBack').addEventListener('click', function(){ showAuthView('choose'); });
+  document.getElementById('gVerify').addEventListener('click', function(){
+    var code = document.getElementById('gCode').value.trim();
+    if(code.length < 6){ toast('Enter the 6-digit code from your email'); return; }
+    var existing = !!knownEmails[pendingEmail];
+    var name = existing ? knownEmails[pendingEmail] : document.getElementById('gName').value.trim();
+    if(!existing && !name){ toast('Add your name to finish setting up'); return; }
+    completeLogin(name, pendingEmail);
   });
 
   /* ---- logged-in user menu: My orders / Logout ---- */
