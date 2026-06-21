@@ -697,10 +697,10 @@
     repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 2px, transparent 2px 9px); pointer-events:none;}
   .panel.active{flex:8;}
   /* image panel: dedicated collapsed/expanded crops, no text overlay */
-  .panel-img{box-shadow:none;}
+  .panel-img{box-shadow:none; border:none; background:#0b2a52;}
   .panel-img::after{display:none;}
-  .panel-steam{background:#0b2a52 url('assets/steam-collapsed.png') center/cover;}
-  .panel-steam.active{background:#0b2a52 url('assets/steam-expanded.png') center/cover;}
+  .panel-steam::before{content:""; position:absolute; inset:-6px; z-index:0; background:url('assets/steam-collapsed.png') center/cover; pointer-events:none;}
+  .panel-steam.active::before{background-image:url('assets/steam-expanded.png');}
   .panel .tag{position:absolute; top:14px; left:14px; z-index:2; font-size:11px; font-weight:600; color:#fff; background:rgba(0,0,0,.32); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.16); padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .panel .mini{font-size:13px; font-weight:600; color:rgba(255,255,255,.92); writing-mode:vertical-rl; transform:rotate(180deg); position:absolute; bottom:18px; left:16px; white-space:nowrap; transition:opacity .3s var(--ease-out);}
   .panel .full{position:relative; z-index:2; opacity:0; transition:opacity .3s var(--ease-out); max-width:70%;}
