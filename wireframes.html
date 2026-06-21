@@ -177,8 +177,11 @@
   .pc-sheen{position:absolute; top:0; left:-80%; width:55%; height:100%; z-index:1; pointer-events:none;
     background:linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent); transform:skewX(-18deg); transition:left .6s var(--ease-out);}
   @media(hover:hover){ .pcard:hover .pc-sheen{left:135%;} }
-  .pcard.disabled .pc-art{filter:grayscale(1) brightness(.8);}
-  .pcard.disabled .pc-title, .pcard.disabled .pc-price, .pcard.disabled .pc-denoms{opacity:.45;}
+  .pcard.disabled{cursor:default;}
+  .pcard.disabled .pc-art{filter:grayscale(.6) brightness(.7);}
+  .pcard.disabled .pc-title, .pcard.disabled .pc-price, .pcard.disabled .pc-amounts{opacity:.5;}
+  .pc-lock{position:absolute; inset:0; z-index:4; display:flex; align-items:center; justify-content:center; background:rgba(8,9,12,.5);}
+  .pc-lock-pill{font-size:12px; font-weight:600; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(4px); padding:7px 13px; border-radius:20px;}
   .pcard.disabled .pc-denoms, .pcard.disabled .pc-view{pointer-events:none;}
   .pcard.disabled .pc-view{border-color:var(--line); color:var(--mut);}
   .pc-warn{background:#3a3a3a; color:#fff; font-size:11px; letter-spacing:.3px; padding:6px 12px; display:flex; align-items:center; gap:6px;}
@@ -186,7 +189,7 @@
   .pc-offer{position:absolute; bottom:12px; left:12px; z-index:2; font-size:10px; font-weight:700; letter-spacing:.04em; padding:4px 9px; border-radius:6px; color:#fff; backdrop-filter:blur(4px);}
   .pc-offer-sku{background:var(--warn);}
   .pc-offer-denom{background:var(--success);}
-  .pc-denomoffer{font-size:11px; color:var(--success); font-weight:600; background:rgba(66,179,71,.12); border:1px solid rgba(66,179,71,.35); padding:5px 8px; border-radius:5px;}
+  .pc-denomoffer{align-self:flex-start; font-size:11px; color:var(--success); font-weight:600; background:rgba(66,179,71,.12); border:1px solid rgba(66,179,71,.35); padding:4px 10px; border-radius:20px;}
   /* plain card variant */
   .pcard.plain .pc-art{display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
   .pc-plain-title{color:#cfd6dd; font-size:20px; font-weight:800; letter-spacing:1px; margin-top:6px;}
@@ -1438,13 +1441,13 @@
     }
     return ''+
     '<div class="pcard'+(off?' disabled':'')+'"'+(off?'':' data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'"')+'>'+
-      (off ? '<div class="pc-warn">&#9888; Not sold in '+region+'</div>' : '')+
       '<div class="pc-art" style="background:linear-gradient(150deg,'+p.c1+','+p.c2+')">'+
         '<img class="pc-hero" src="'+p.glyph+'" alt="'+p.title+'" loading="lazy">'+
         '<span class="pc-sheen"></span>'+
-        (p.tag ? '<span class="pc-tag pc-tag-'+p.tag.kind+'">'+p.tag.label+'</span>' : '')+
-        '<div class="pc-badge">&minus;'+p.save+'</div>'+
-        offerRibbon(p)+
+        (off ? '<div class="pc-lock"><span class="pc-lock-pill">&#128274; Not in '+region+'</span></div>' :
+          (p.tag ? '<span class="pc-tag pc-tag-'+p.tag.kind+'">'+p.tag.label+'</span>' : '')+
+          '<div class="pc-badge">&minus;'+p.save+'</div>'+
+          offerRibbon(p))+
       '</div>'+
       '<div class="pc-body">'+
         '<div class="pc-title">'+p.title+'</div>'+
