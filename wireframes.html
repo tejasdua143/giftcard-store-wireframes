@@ -292,6 +292,13 @@
   .brand-chip::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--bc); box-shadow:0 0 8px var(--bc);}
   @media(hover:hover){ .brand-chip:hover{color:#fff; border-color:color-mix(in srgb, var(--bc) 60%, var(--line));} }
 
+  /* PDP buy-panel rhythm */
+  .pdp-buy{display:flex; flex-direction:column; gap:18px;}
+  .pdp-buy-head{display:flex; flex-direction:column; gap:5px;}
+  .pdp-field{display:flex; flex-direction:column; gap:9px;}
+  .pdp-field .lbl{margin-bottom:0;}
+  .pdp-cta{display:flex; flex-direction:column; gap:8px;}
+
   /* PDP breadcrumb + trust row */
   .crumb{display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:13px;}
   .crumb-link{color:var(--mut); cursor:pointer; transition:color .15s var(--ease-out);}
@@ -1075,18 +1082,21 @@
         </div>
 
         <!-- right: buy panel -->
-        <div class="stack">
-          <div class="pc-title" id="pdpTitle" style="font-size:22px;">Valorant</div>
-          <div class="pc-sub" id="pdpSub">instant delivery · official top-up</div>
+        <div class="pdp-buy">
+          <div class="pdp-buy-head">
+            <div class="pc-title" id="pdpTitle" style="font-size:24px;">Valorant</div>
+            <div class="pc-sub" id="pdpSub">instant delivery · official top-up</div>
+          </div>
 
           <!-- region / SKU selector -->
-          <div style="height:6px"></div>
-          <div class="lbl">Region / SKU</div>
-          <div class="region" id="pdpSku" style="width:100%;">
-            <div class="lang" id="pdpSkuToggle" style="width:100%; justify-content:space-between;">
-              <span id="pdpSkuLabel">Valorant Global</span> <span class="car">&#9662;</span>
+          <div class="pdp-field">
+            <div class="lbl">Region / SKU</div>
+            <div class="region" id="pdpSku" style="width:100%;">
+              <div class="lang" id="pdpSkuToggle" style="width:100%; justify-content:space-between;">
+                <span id="pdpSkuLabel">Valorant Global</span> <span class="car">&#9662;</span>
+              </div>
+              <div class="region-menu" id="pdpSkuMenu" style="width:100%;"><!-- SKUs --></div>
             </div>
-            <div class="region-menu" id="pdpSkuMenu" style="width:100%;"><!-- SKUs --></div>
           </div>
 
           <!-- country eligibility: where this card works -->
@@ -1096,19 +1106,21 @@
           <div class="pdp-disc" id="pdpDisc">&#9888; Heads up: this version may not activate in your region.</div>
 
           <!-- VP denominations (qty stepper lives inside the selected tile) -->
-          <div style="height:8px"></div>
-          <div class="lbl">Choose amount &amp; quantity</div>
-          <div class="vp-grid" id="vpGrid"><!-- VP tiles --></div>
+          <div class="pdp-field">
+            <div class="lbl">Choose amount &amp; quantity</div>
+            <div class="vp-grid" id="vpGrid"><!-- VP tiles --></div>
+          </div>
 
           <!-- buy -->
-          <div style="height:12px"></div>
-          <div class="btn" id="pdpBuy">Buy now · €9.49</div>
-          <div class="muted" style="margin-top:6px;">Code emailed in seconds · secure checkout · max 5 per person</div>
-          <div class="trust-row">
-            <div class="trust-item"><span class="trust-ic">&#9889;</span><span>Instant<br>delivery</span></div>
-            <div class="trust-item"><span class="trust-ic">&#10003;</span><span>Official<br>codes</span></div>
-            <div class="trust-item"><span class="trust-ic">&#128274;</span><span>Buyer<br>protection</span></div>
-            <div class="trust-item"><span class="trust-ic">&#8635;</span><span>24/7<br>refunds</span></div>
+          <div class="pdp-cta">
+            <div class="btn" id="pdpBuy">Buy now · €9.49</div>
+            <div class="muted">Code emailed in seconds · secure checkout · max 5 per person</div>
+            <div class="trust-row">
+              <div class="trust-item"><span class="trust-ic">&#9889;</span><span>Instant<br>delivery</span></div>
+              <div class="trust-item"><span class="trust-ic">&#10003;</span><span>Official<br>codes</span></div>
+              <div class="trust-item"><span class="trust-ic">&#128274;</span><span>Buyer<br>protection</span></div>
+              <div class="trust-item"><span class="trust-ic">&#8635;</span><span>24/7<br>refunds</span></div>
+            </div>
           </div>
         </div>
       </div>
