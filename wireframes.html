@@ -381,6 +381,20 @@
   .nu-lock span{font-size:13px; font-weight:600; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.22); padding:8px 14px; border-radius:20px;}
   @media(max-width:760px){ .grid.nu-grid{grid-template-columns:1fr;} .nu-art{width:160px; height:100px;} .nu-title{font-size:24px;} .nu-now{font-size:38px;} }
 
+  /* compact cross-sell card */
+  #crossSell{grid-template-columns:repeat(3,1fr); gap:12px;}
+  .xcard{display:flex; align-items:center; gap:13px; padding:13px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); cursor:pointer; transition:border-color .18s var(--ease-out), transform .18s var(--ease-out);}
+  @media(hover:hover){ .xcard:hover{border-color:#34404f; transform:translateY(-2px);} .xcard:hover .xcard-arrow{transform:translateX(3px); color:#fff;} }
+  .xcard-logo{width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .xcard-logo img{width:24px; height:24px; object-fit:contain; filter:brightness(0) invert(1);}
+  .xcard-main{flex:1; min-width:0;}
+  .xcard-t{font-size:14px; font-weight:700; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .xcard-from{font-size:12px; color:var(--mut); margin-top:2px;}
+  .xcard-from b{color:#fff; font-weight:700;}
+  .xcard-off{color:#7fe0a6; font-weight:600; margin-left:4px;}
+  .xcard-arrow{color:var(--mut); font-size:18px; flex:0 0 auto; transition:transform .18s var(--ease-out), color .18s var(--ease-out);}
+  @media(max-width:720px){ #crossSell{grid-template-columns:1fr;} }
+
   /* ===== storefront content sections ===== */
   /* trusted-brands strip */
   .brands{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:32px; padding:20px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -1883,13 +1897,19 @@
 
   // cross-sell: reuse storefront cards (first 3)
   var crossList = PRODUCTS.slice(0,3);
-  document.getElementById('crossSell').innerHTML =
-    crossList.map(function(p,i){ return card(p, selected, i); }).join('');
-  document.getElementById('crossSell').addEventListener('click', function(e){
-    var v = e.target.closest('.pc-view'); if(!v || !v.getAttribute('data-i')) return;
-    var p = crossList[parseInt(v.getAttribute('data-i'),10)];
-    if(p) openPDP(p);
-  });
+  function miniCard(p,i){
+    return '<article class="xcard" data-i="'+i+'" role="button" tabindex="0" aria-label="View '+p.title+'">'+
+      '<div class="xcard-logo" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>'+
+      '<div class="xcard-main"><div class="xcard-t">'+p.title+'</div>'+
+        '<div class="xcard-from">from <b>'+p.now+'</b> <span class="xcard-off">&minus;'+p.save+'</span></div></div>'+
+      '<span class="xcard-arrow">&#8250;</span>'+
+    '</article>';
+  }
+  var crossEl = document.getElementById('crossSell');
+  crossEl.innerHTML = crossList.map(miniCard).join('');
+  function openCross(el){ if(!el) return; var p=crossList[parseInt(el.getAttribute('data-i'),10)]; if(p) openPDP(p); }
+  crossEl.addEventListener('click', function(e){ openCross(e.target.closest('.xcard')); });
+  crossEl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ var c=e.target.closest('.xcard'); if(c){ e.preventDefault(); openCross(c); } } });
 
   /* ===== screen router (stitched flow) ===== */
   function goScreen(id){
