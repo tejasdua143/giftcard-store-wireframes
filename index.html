@@ -640,6 +640,7 @@
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
   /* confirmation: multi-card codes */
+  .cf-order{display:inline-block; margin-top:4px; font-size:12px; color:var(--mut); letter-spacing:.06em; font-variant-numeric:tabular-nums; border:1px solid var(--line); border-radius:6px; padding:4px 10px; background:var(--surface2);}
   .success-check{width:66px; height:66px; margin:0 auto 6px;}
   .success-check svg{width:66px; height:66px;}
   .sc-ring{fill:none; stroke:var(--success); stroke-width:2; stroke-dasharray:151; stroke-dashoffset:151;}
@@ -1394,9 +1395,9 @@
           <div class="success-check" id="successCheck">
             <svg viewBox="0 0 52 52"><circle class="sc-ring" cx="26" cy="26" r="24"/><path class="sc-tick" d="M14 27l8 8 16-16"/></svg>
           </div>
-          <div class="cf-h" id="confirmTitle" style="font-size:22px; font-weight:800; letter-spacing:-.02em;">Order confirmed</div>
+          <div class="cf-h" id="confirmTitle" style="font-family:var(--font-display); font-size:28px; font-weight:700; letter-spacing:-.025em;">Order confirmed</div>
           <div class="muted" id="confirmSub">1 gift card delivered · receipt sent to your email</div>
-          <div class="muted" id="confirmOrderNo">Order #VG-00427</div>
+          <div class="cf-order" id="confirmOrderNo">Order #VG-00427</div>
         </div>
 
         <!-- "redeem all" appears only for multi-card orders -->
