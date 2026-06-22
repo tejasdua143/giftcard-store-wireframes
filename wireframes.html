@@ -1664,8 +1664,7 @@
           '<div class="nu-title">'+p.title+'</div>'+
           (off ? '' : '<div class="nu-badge"><div class="v">'+parseInt(p.save,10)+'<span class="pct">%</span><span class="off">OFF</span></div>'+(p.offer&&p.offer.type==='sku'?'<div class="nu-badge-sub">ALL DENOMINATIONS</div>':'')+'</div>')+
         '</div>'+
-        '<div class="nu-meta">'+(off ? 'Not available in your region yet' :
-          '<span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span><span class="pc-dot">·</span><span class="pc-inst">&#9889; Instant</span>')+'</div>'+
+        (off ? '<div class="nu-meta">Not available in your region yet</div>' : '')+
         '<div class="nu-price">'+
           '<div class="nu-from">FROM</div>'+
           '<div class="nu-now">'+p.now+'</div>'+
@@ -1678,8 +1677,6 @@
       '</div>'+
       '<div class="nu-foot">'+
         '<div>'+
-          '<div class="nu-vtitle">Amounts</div>'+
-          '<div class="nu-range">'+p.denoms[0]+' &ndash; '+p.denoms[p.denoms.length-1]+'</div>'+
           '<div class="nu-vsub">'+p.denoms.length+' denominations'+(p.offer?' · '+p.offer.label:'')+'</div>'+
           '<div class="nu-denoms">'+denomPills+'</div>'+
         '</div>'+
