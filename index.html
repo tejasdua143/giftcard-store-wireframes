@@ -1679,8 +1679,7 @@
       '<div class="lrow-logo" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>'+
       '<div class="lrow-main">'+
         '<div class="lrow-t">'+p.title+(p.tag?' <span class="lrow-tag pc-tag-'+p.tag.kind+'">'+p.tag.label+'</span>':'')+'</div>'+
-        '<div class="lrow-meta">'+(off ? 'Not available in your region yet' :
-          '<span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span><span class="pc-dot">·</span><span class="pc-inst">&#9889; Instant</span><span class="pc-dot">·</span><span>'+p.denoms[0]+'&ndash;'+p.denoms[p.denoms.length-1]+'</span>')+'</div>'+
+        (off ? '<div class="lrow-meta">Not available in your region yet</div>' : '')+
       '</div>'+
       (off ? '' : '<div class="lrow-deal"><span class="lrow-badge">&minus;'+p.save+'</span><span class="save">save '+cur+saved+'</span></div>'+
         '<div class="lrow-price"><span class="pc-from">from</span><span class="lrow-now">'+p.now+'</span><span class="lrow-strike">'+p.strike+'</span></div>')+
