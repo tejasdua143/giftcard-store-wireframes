@@ -400,12 +400,12 @@
 
   /* list view — Valorant tactical */
   .grid.list-grid{display:flex; flex-direction:column;}
-  .lrow{position:relative; display:flex; align-items:center; gap:22px; padding:22px 10px; cursor:pointer; background:transparent;
-    border-bottom:1px solid #17222C; transition:background-color .16s var(--ease-out);}
+  .lrow{position:relative; display:flex; align-items:center; gap:26px; padding:25px 12px; cursor:pointer; background:transparent;
+    border-bottom:1px solid #1A2731; transition:background-color .16s var(--ease-out);}
   .lrow:last-child{border-bottom:none;}
   /* red accent slides in on hover */
   .lrow::before{content:""; position:absolute; left:-10px; top:50%; transform:translateY(-50%); width:3px; height:0; background:#FF4655; transition:height .18s var(--ease-out);}
-  @media(hover:hover){ .lrow:hover{background-color:rgba(255,255,255,.022);} .lrow:hover::before{height:62%;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
+  @media(hover:hover){ .lrow:hover{background-color:rgba(255,255,255,.025);} .lrow:hover::before{height:68%;} .lrow:hover .lrow-now{color:#fff;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
   .lrow.disabled{opacity:.4; cursor:default;}
   .lrow.disabled .lrow-t::before{background:#3A4A58;}
   @media(hover:hover){ .lrow:hover .lrow-cta{background:#FF4655; color:#fff;} }
@@ -418,7 +418,7 @@
   /* hairline before the price cluster */
   /* aligned right-side columns */
   .lrow-deal{width:118px;} .lrow-price{width:116px;} .lrow-cta{width:112px; justify-content:center;}
-  .lrow-logo{width:50px; height:50px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  .lrow-logo{width:52px; height:52px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);
     clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);}
   .lrow-logo img{width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1);}
   .lrow-main{flex:1 1 auto; min-width:0;}
