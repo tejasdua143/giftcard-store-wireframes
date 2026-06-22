@@ -391,6 +391,37 @@
   @media(max-width:760px){ .grid.nu-grid{grid-template-columns:1fr;} .nu-art{width:160px; height:100px;} .nu-title{font-size:24px;} .nu-now{font-size:38px;} }
   @media(max-width:520px){ .nu-foot{flex-direction:column; align-items:stretch; gap:16px;} .nu-cta{justify-content:center;} }
 
+  /* grid/list view toggle */
+  .view-toggle{display:inline-flex; gap:2px; border:1px solid var(--line); border-radius:9px; padding:2px; background:var(--surface);}
+  .vt-btn{display:flex; align-items:center; justify-content:center; width:32px; height:30px; border:none; border-radius:7px; background:transparent; color:var(--mut); cursor:pointer; transition:background-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .vt-btn svg{width:16px; height:16px;}
+  .vt-btn:hover{color:#fff;}
+  .vt-btn.on{background:var(--surface2); color:#fff;}
+
+  /* list view */
+  .grid.list-grid{display:flex; flex-direction:column; gap:10px;}
+  .lrow{display:flex; align-items:center; gap:16px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; background:var(--surface); cursor:pointer; transition:border-color .18s var(--ease-out), transform .18s var(--ease-out);}
+  @media(hover:hover){ .lrow:hover{border-color:var(--line-2); transform:translateX(2px);} .lrow:hover .pc-arrow{transform:translateX(3px);} }
+  .lrow.disabled{opacity:.55; cursor:default;}
+  .lrow-logo{width:52px; height:52px; border-radius:12px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;}
+  .lrow-logo img{width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1);}
+  .lrow-main{flex:1 1 auto; min-width:0;}
+  .lrow-t{font-family:var(--font-display); font-size:17px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:8px;}
+  .lrow-tag{font-size:9px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 7px; border-radius:6px;}
+  .lrow-meta{display:flex; align-items:center; gap:7px; flex-wrap:wrap; font-size:12px; color:var(--mut); margin-top:4px;}
+  .lrow-meta .pc-rate{color:#f5c451;} .lrow-meta .pc-inst{color:var(--ink-2); font-weight:600;}
+  .lrow-deal{display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex:0 0 auto;}
+  .lrow-badge{font-size:12px; font-weight:800; color:#0b0d12; background:#c4ff3d; padding:3px 9px; border-radius:20px;}
+  .lrow-deal .save{font-size:11px; font-weight:700; color:#7fe0a6;}
+  .lrow-price{display:flex; flex-direction:column; align-items:flex-end; min-width:96px; flex:0 0 auto;}
+  .lrow-price .pc-from{font-size:10px;}
+  .lrow-now{font-family:var(--font-display); font-size:22px; font-weight:800; letter-spacing:-.02em; color:#fff; line-height:1; font-variant-numeric:tabular-nums;}
+  .lrow-strike{font-size:12px; color:var(--mut); text-decoration:line-through; font-variant-numeric:tabular-nums;}
+  .lrow-cta{flex:0 0 auto; padding:11px 18px; border:1px solid var(--brand); background:rgba(124,58,237,.16); color:var(--brand-50); font-weight:700; font-size:13px; border-radius:11px; display:flex; align-items:center; gap:6px; white-space:nowrap;}
+  @media(hover:hover){ .lrow:hover .lrow-cta{background:var(--brand); color:#fff;} }
+  .lrow .pc-arrow{display:inline-block; transition:transform .18s var(--ease-out);}
+  @media(max-width:760px){ .lrow{flex-wrap:wrap; gap:12px;} .lrow-main{flex-basis:60%;} .lrow-price{min-width:0;} .lrow-cta{flex-basis:100%; justify-content:center;} }
+
   /* compact cross-sell card */
   #crossSell{grid-template-columns:repeat(3,1fr); gap:12px;}
   .xcard{display:flex; align-items:center; gap:13px; padding:13px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); cursor:pointer; transition:border-color .18s var(--ease-out), transform .18s var(--ease-out);}
@@ -1064,7 +1095,10 @@
           <div class="sec-over">Catalogue</div>
           <div class="sec-h">All gift cards</div>
         </div>
-        <a class="sec-link">View all <span class="pc-arrow">&#8250;</span></a>
+        <div class="view-toggle" id="viewToggle">
+          <button type="button" class="vt-btn on" data-view="grid" aria-label="Grid view"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></button>
+          <button type="button" class="vt-btn" data-view="list" aria-label="List view"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="3.5" rx="1.5"/><rect x="3" y="10.25" width="18" height="3.5" rx="1.5"/><rect x="3" y="16.5" width="18" height="3.5" rx="1.5"/></svg></button>
+        </div>
       </div>
 
       <!-- product grid: each card carries logo · discount · category · title · delivery · denominations · strike+now price · save% · View -->
@@ -1636,16 +1670,42 @@
     '</article>';
   }
   var gridList = [];
+  var viewMode = 'grid';
+  function listRow(p, region, idx){
+    var off = p.blocked.indexOf(region) !== -1;
+    var saved = (parseFloat(p.strike.replace(/[^\d.]/g,'')) - parseFloat(p.now.replace(/[^\d.]/g,''))).toFixed(2);
+    var cur = (p.strike.match(/[^\d.,\s]+/)||['€'])[0];
+    return '<article class="lrow'+(off?' disabled':'')+'"'+(off?'':' data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'"')+'>'+
+      '<div class="lrow-logo" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>'+
+      '<div class="lrow-main">'+
+        '<div class="lrow-t">'+p.title+(p.tag?' <span class="lrow-tag pc-tag-'+p.tag.kind+'">'+p.tag.label+'</span>':'')+'</div>'+
+        '<div class="lrow-meta">'+(off ? 'Not available in your region yet' :
+          '<span class="pc-rate">&#9733; '+p.rating+'</span><span class="pc-dot">·</span><span>'+p.sold+' sold</span><span class="pc-dot">·</span><span class="pc-inst">&#9889; Instant</span><span class="pc-dot">·</span><span>'+p.denoms[0]+'&ndash;'+p.denoms[p.denoms.length-1]+'</span>')+'</div>'+
+      '</div>'+
+      (off ? '' : '<div class="lrow-deal"><span class="lrow-badge">&minus;'+p.save+'</span><span class="save">save '+cur+saved+'</span></div>'+
+        '<div class="lrow-price"><span class="pc-from">from</span><span class="lrow-now">'+p.now+'</span><span class="lrow-strike">'+p.strike+'</span></div>')+
+      '<div class="lrow-cta">'+(off?'Unavailable':'View <span class="pc-arrow">&#8250;</span>')+'</div>'+
+    '</article>';
+  }
   function renderGrid(region){
     gridList = PRODUCTS.slice().sort(function(a,b){
       var ao = a.blocked.indexOf(region) !== -1 ? 1 : 0;
       var bo = b.blocked.indexOf(region) !== -1 ? 1 : 0;
       return ao - bo; // available first, blocked last
     });
-    document.getElementById('productGrid').innerHTML =
-      gridList.map(function(p,i){ return card(p, region, i, 'full'); }).join('');
+    var el = document.getElementById('productGrid');
+    el.className = 'grid' + (viewMode==='grid' ? ' nu-grid' : ' list-grid');
+    el.innerHTML = viewMode==='grid'
+      ? gridList.map(function(p,i){ return card(p, region, i, 'full'); }).join('')
+      : gridList.map(function(p,i){ return listRow(p, region, i); }).join('');
   }
   renderGrid(selected);
+  document.getElementById('viewToggle').addEventListener('click', function(e){
+    var b = e.target.closest('.vt-btn'); if(!b) return;
+    viewMode = b.getAttribute('data-view');
+    this.querySelectorAll('.vt-btn').forEach(function(x){ x.classList.toggle('on', x===b); });
+    renderGrid(selected);
+  });
 
   /* ---- View -> Product Detail Page ---- */
   function openPDP(p){
@@ -1665,10 +1725,10 @@
     var p = gridList[parseInt(i,10)]; if(p) openPDP(p);
   }
   document.getElementById('productGrid').addEventListener('click', function(e){
-    openFromCard(e.target.closest('.pcard'));
+    openFromCard(e.target.closest('.pcard, .lrow'));
   });
   document.getElementById('productGrid').addEventListener('keydown', function(e){
-    if(e.key==='Enter' || e.key===' '){ var c=e.target.closest('.pcard'); if(c){ e.preventDefault(); openFromCard(c); } }
+    if(e.key==='Enter' || e.key===' '){ var c=e.target.closest('.pcard, .lrow'); if(c){ e.preventDefault(); openFromCard(c); } }
   });
 
   /* ---- search: game -> base card + per-country SKUs ---- */
