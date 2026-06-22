@@ -347,7 +347,7 @@
   .grid.nu-grid{grid-template-columns:repeat(2,1fr); gap:20px;}
   .pcard.nu{padding:0; border-radius:14px;}
   .pcard.nu.disabled{cursor:default;}
-  .nu-hero{position:relative; overflow:hidden; min-height:196px; padding:20px;}
+  .nu-hero{position:relative; overflow:hidden; min-height:150px; padding:20px;}
   .nu-hero::after{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(80% 70% at 80% 8%, rgba(255,255,255,.16), transparent 55%);}
   .nu-top{position:relative; z-index:2; display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
   .nu-title{font-size:23px; font-weight:800; letter-spacing:-.025em; color:#fff; line-height:1.02; max-width:62%;}
@@ -1665,10 +1665,6 @@
           (off ? '' : '<div class="nu-badge"><div class="v">'+parseInt(p.save,10)+'<span class="pct">%</span><span class="off">OFF</span></div>'+(p.offer&&p.offer.type==='sku'?'<div class="nu-badge-sub">ALL DENOMINATIONS</div>':'')+'</div>')+
         '</div>'+
         (off ? '<div class="nu-meta">Not available in your region yet</div>' : '')+
-        '<div class="nu-price">'+
-          '<div class="nu-now">'+p.now+'</div>'+
-          '<div class="nu-old">'+p.strike+'</div>'+
-        '</div>'+
         (p.art
           ? '<div class="nu-art nu-art-photo"><img class="nu-photo" src="'+p.art+'" alt=""></div>'
           : '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>')+
