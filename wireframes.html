@@ -399,21 +399,15 @@
   .vt-btn.on{background:var(--surface2); color:#fff;}
 
   /* list view — Valorant tactical */
-  .grid.list-grid{display:flex; flex-direction:column; gap:8px;}
-  .lrow{position:relative; display:flex; align-items:center; gap:18px; padding:15px 22px; cursor:pointer;
-    background:#0F1923 repeating-linear-gradient(115deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px);
-    border:1px solid #1E2D3A;
-    clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
-    transition:background-color .16s var(--ease-out), transform .12s var(--ease-out);}
-  .lrow::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#FF4655; transition:width .14s var(--ease-out);}
-  /* hover corner bracket, top-right */
-  .lrow::after{content:""; position:absolute; top:7px; right:9px; width:13px; height:13px; border-top:2px solid #FF4655; border-right:2px solid #FF4655; opacity:0; transition:opacity .16s var(--ease-out);}
-  @media(hover:hover){ .lrow:hover{background-color:#132231; transform:translateX(3px);} .lrow:hover::before{width:5px;} .lrow:hover::after{opacity:1;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
-  .lrow.disabled{opacity:.42; cursor:default;}
-  .lrow.disabled::before{background:#3A4A58;}
+  .grid.list-grid{display:flex; flex-direction:column;}
+  .lrow{position:relative; display:flex; align-items:center; gap:22px; padding:22px 10px; cursor:pointer; background:transparent;
+    border-bottom:1px solid #17222C; transition:background-color .16s var(--ease-out);}
+  .lrow:last-child{border-bottom:none;}
+  /* red accent slides in on hover */
+  .lrow::before{content:""; position:absolute; left:-10px; top:50%; transform:translateY(-50%); width:3px; height:0; background:#FF4655; transition:height .18s var(--ease-out);}
+  @media(hover:hover){ .lrow:hover{background-color:rgba(255,255,255,.022);} .lrow:hover::before{height:62%;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
+  .lrow.disabled{opacity:.4; cursor:default;}
   .lrow.disabled .lrow-t::before{background:#3A4A58;}
-  .lrow:active{transform:translateX(3px) scale(.993);}
-  .lrow.disabled:active{transform:none;}
   @media(hover:hover){ .lrow:hover .lrow-cta{background:#FF4655; color:#fff;} }
   .lrow-cta:active{transform:scale(.96);}
   /* tactical cascade-in when list mounts */
