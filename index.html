@@ -398,29 +398,36 @@
   .vt-btn:hover{color:#fff;}
   .vt-btn.on{background:var(--surface2); color:#fff;}
 
-  /* list view */
-  .grid.list-grid{display:flex; flex-direction:column; gap:10px;}
-  .lrow{display:flex; align-items:center; gap:16px; padding:14px 18px; border:1px solid var(--line); border-radius:14px; background:var(--surface); cursor:pointer; transition:border-color .18s var(--ease-out), transform .18s var(--ease-out);}
-  @media(hover:hover){ .lrow:hover{border-color:var(--line-2); transform:translateX(2px);} .lrow:hover .pc-arrow{transform:translateX(3px);} }
-  .lrow.disabled{opacity:.55; cursor:default;}
-  .lrow-logo{width:52px; height:52px; border-radius:12px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;}
+  /* list view — Valorant tactical */
+  .grid.list-grid{display:flex; flex-direction:column; gap:8px;}
+  .lrow{position:relative; display:flex; align-items:center; gap:18px; padding:15px 22px; background:#0F1923; border:1px solid #1E2D3A; cursor:pointer;
+    clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    transition:background-color .16s var(--ease-out), transform .12s var(--ease-out);}
+  .lrow::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#FF4655;}
+  @media(hover:hover){ .lrow:hover{background:#132231; transform:translateX(3px);} .lrow:hover .pc-arrow{transform:translateX(3px);} }
+  .lrow.disabled{opacity:.42; cursor:default;}
+  .lrow-logo{width:50px; height:50px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);}
   .lrow-logo img{width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1);}
   .lrow-main{flex:1 1 auto; min-width:0;}
-  .lrow-t{font-family:var(--font-display); font-size:17px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:8px;}
-  .lrow-tag{font-size:9px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 7px; border-radius:6px;}
-  .lrow-meta{display:flex; align-items:center; gap:7px; flex-wrap:wrap; font-size:12px; color:var(--mut); margin-top:4px;}
-  .lrow-meta .pc-rate{color:#f5c451;} .lrow-meta .pc-inst{color:var(--ink-2); font-weight:600;}
+  .lrow-t{font-family:"Oswald",var(--font-display); font-size:22px; font-weight:600; text-transform:uppercase; letter-spacing:.012em; color:#ECE8E1; line-height:1; display:flex; align-items:center; gap:11px;}
+  .lrow-tag{font-family:"Oswald",sans-serif; font-size:10px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; padding:4px 9px 3px;
+    clip-path:polygon(6px 0,100% 0,100% 100%,0 100%,0 6px);}
+  .lrow-meta{display:flex; align-items:center; gap:7px; flex-wrap:wrap; font-size:12px; color:#5C6E7E; margin-top:5px; text-transform:uppercase; letter-spacing:.04em;}
   .lrow-deal{display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex:0 0 auto;}
-  .lrow-badge{font-size:12px; font-weight:800; color:#0b0d12; background:#c4ff3d; padding:3px 9px; border-radius:20px;}
-  .lrow-deal .save{font-size:11px; font-weight:700; color:#7fe0a6;}
+  .lrow-badge{font-family:"Oswald",sans-serif; font-size:13px; font-weight:600; letter-spacing:.02em; color:#ECE8E1; background:#FF4655; padding:3px 10px 2px;
+    clip-path:polygon(5px 0,100% 0,100% 100%,0 100%,0 5px);}
+  .lrow-deal .save{font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#7E8E9C;}
   .lrow-price{display:flex; flex-direction:column; align-items:flex-end; min-width:96px; flex:0 0 auto;}
-  .lrow-price .pc-from{font-size:10px;}
-  .lrow-now{font-family:var(--font-display); font-size:22px; font-weight:800; letter-spacing:-.02em; color:#fff; line-height:1; font-variant-numeric:tabular-nums;}
-  .lrow-strike{font-size:12px; color:var(--mut); text-decoration:line-through; font-variant-numeric:tabular-nums;}
-  .lrow-cta{flex:0 0 auto; padding:11px 18px; border:1px solid var(--brand); background:rgba(124,58,237,.16); color:var(--brand-50); font-weight:700; font-size:13px; border-radius:11px; display:flex; align-items:center; gap:6px; white-space:nowrap;}
-  @media(hover:hover){ .lrow:hover .lrow-cta{background:var(--brand); color:#fff;} }
+  .lrow-price .pc-from{font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:#5C6E7E;}
+  .lrow-now{font-family:"Oswald",var(--font-display); font-size:27px; font-weight:600; letter-spacing:0; color:#ECE8E1; line-height:1; font-variant-numeric:tabular-nums;}
+  .lrow-strike{font-size:12px; color:#5C6E7E; text-decoration:line-through; font-variant-numeric:tabular-nums;}
+  .lrow-cta{flex:0 0 auto; padding:13px 22px 11px; border:1.5px solid #FF4655; background:transparent; color:#ECE8E1;
+    font-family:"Oswald",sans-serif; font-weight:600; font-size:14px; letter-spacing:.08em; text-transform:uppercase; display:flex; align-items:center; gap:7px; white-space:nowrap;
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%); transition:background-color .14s var(--ease-out), color .14s var(--ease-out);}
+  @media(hover:hover){ .lrow:hover .lrow-cta{background:#FF4655; color:#fff;} }
   .lrow .pc-arrow{display:inline-block; transition:transform .18s var(--ease-out);}
-  @media(max-width:760px){ .lrow{flex-wrap:wrap; gap:12px;} .lrow-main{flex-basis:60%;} .lrow-price{min-width:0;} .lrow-cta{flex-basis:100%; justify-content:center;} }
+  @media(max-width:760px){ .lrow{flex-wrap:wrap; gap:12px;} .lrow-main{flex-basis:55%;} .lrow-price{min-width:0;} .lrow-cta{flex-basis:100%; justify-content:center;} }
 
   /* compact cross-sell card */
   #crossSell{grid-template-columns:repeat(3,1fr); gap:12px;}
