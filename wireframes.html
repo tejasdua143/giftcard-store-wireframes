@@ -416,7 +416,8 @@
   .lrow:nth-child(2){animation-delay:.035s;} .lrow:nth-child(3){animation-delay:.07s;}
   .lrow:nth-child(4){animation-delay:.105s;} .lrow:nth-child(5){animation-delay:.14s;} .lrow:nth-child(6){animation-delay:.175s;}
   /* hairline before the price cluster */
-  .lrow-deal{border-left:1px solid #1E2D3A; padding-left:20px;}
+  /* aligned right-side columns */
+  .lrow-deal{width:118px;} .lrow-price{width:116px;} .lrow-cta{width:112px; justify-content:center;}
   .lrow-logo{width:50px; height:50px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
     clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);}
   .lrow-logo img{width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1);}
@@ -436,7 +437,7 @@
   .lrow-price .pc-from{font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:.16em; color:#FF4655; margin-bottom:3px;}
   .lrow-now{font-family:"Oswald",var(--font-display); font-size:29px; font-weight:700; letter-spacing:0; color:#ECE8E1; line-height:.92; font-variant-numeric:tabular-nums;}
   .lrow-strike{font-size:11px; letter-spacing:.02em; color:#5C6E7E; text-decoration:line-through; font-variant-numeric:tabular-nums; margin-top:3px;}
-  .lrow-cta{flex:0 0 auto; padding:13px 22px 11px; border:1.5px solid #FF4655; background:transparent; color:#ECE8E1;
+  .lrow-cta{flex:0 0 auto; padding:13px 0 11px; border:1.5px solid #FF4655; background:transparent; color:#ECE8E1;
     font-family:"Oswald",sans-serif; font-weight:600; font-size:14px; letter-spacing:.08em; text-transform:uppercase; display:flex; align-items:center; gap:7px; white-space:nowrap;
     clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%); transition:background-color .14s var(--ease-out), color .14s var(--ease-out);}
   @media(hover:hover){ .lrow:hover .lrow-cta{background:#FF4655; color:#fff;} }
