@@ -698,6 +698,8 @@
     background:var(--surface); border:1px solid var(--ink); border-radius:10px; box-shadow:0 16px 40px rgba(0,0,0,.55); padding:5px; transform-origin:top;}
   .cs.open .cs-menu{display:block; transition:opacity .16s var(--ease-out), transform .16s var(--ease-out);}
   @starting-style{ .cs.open .cs-menu{opacity:0; transform:scale(.98) translateY(-5px);} }
+  .cs-head{padding:9px 10px 5px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--mut);}
+  .cs-head:first-child{padding-top:4px;}
   .cs-opt{display:flex; align-items:center; gap:9px; padding:9px 10px; border-radius:8px; font-size:14px; color:var(--ink); cursor:pointer;}
   .cs-opt:hover{background:rgba(124,58,237,.1);}
   .cs-opt .cs-dot{width:14px; height:14px; border-radius:50%; border:1px solid var(--mut); flex:0 0 auto;}
@@ -1485,18 +1487,19 @@
   /* ---- settings modal: in-house dropdowns (apply on Save) ---- */
   var setModal = document.getElementById('settingsModal');
   // reusable custom-select component
-  function makeSelect(host, items, current, onPick){
+  function makeSelect(host, items, current, onPick, buildMenu){
     host.innerHTML =
       '<button type="button" class="cs-toggle"><span class="cs-val"></span><span class="cs-caret">&#9662;</span></button>'+
       '<div class="cs-menu"></div>';
     var valEl = host.querySelector('.cs-val'), menu = host.querySelector('.cs-menu');
     var val = current;
     function labelOf(v){ for(var i=0;i<items.length;i++){ if(items[i].value===v) return items[i].label; } return v; }
+    function optHTML(v){
+      return '<div class="cs-opt'+(v===val?' sel':'')+'" data-v="'+(''+v).replace(/"/g,'&quot;')+'">'+
+        '<span class="cs-dot"></span><span>'+labelOf(v)+'</span></div>';
+    }
     function renderMenu(){
-      menu.innerHTML = items.map(function(i){
-        return '<div class="cs-opt'+(i.value===val?' sel':'')+'" data-v="'+i.value.replace(/"/g,'&quot;')+'">'+
-          '<span class="cs-dot"></span><span>'+i.label+'</span></div>';
-      }).join('');
+      menu.innerHTML = buildMenu ? buildMenu(val, optHTML) : items.map(function(i){ return optHTML(i.value); }).join('');
     }
     function setVal(v, fire){ val=v; valEl.textContent=labelOf(v); renderMenu(); if(fire&&onPick) onPick(v); }
     host.querySelector('.cs-toggle').addEventListener('click', function(e){
@@ -1520,6 +1523,14 @@
   var csLang, csCur;
   var csRegion = makeSelect(document.getElementById('csRegion'), regionItems, selected, function(v){
     csLang.set(suggestLang(v)); csCur.set(curOf(v));   // region pre-fills language + currency
+  }, function(val, opt){
+    // selected pinned, then preferred countries, then all A–Z
+    var h = '<div class="cs-head">Selected</div>' + opt(val);
+    h += '<div class="cs-head">Top countries</div>';
+    TOP7.forEach(function(c){ if(c!==val) h += opt(c); });
+    h += '<div class="cs-head">All countries (A&ndash;Z)</div>';
+    REST.slice().sort().forEach(function(c){ if(c!==val) h += opt(c); });
+    return h;
   });
   csLang = makeSelect(document.getElementById('csLang'), langItems, selLang);
   csCur  = makeSelect(document.getElementById('csCur'),  curItems,  selCur);
