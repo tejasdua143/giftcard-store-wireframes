@@ -410,6 +410,17 @@
   .lrow::after{content:""; position:absolute; top:7px; right:9px; width:13px; height:13px; border-top:2px solid #FF4655; border-right:2px solid #FF4655; opacity:0; transition:opacity .16s var(--ease-out);}
   @media(hover:hover){ .lrow:hover{background-color:#132231; transform:translateX(3px);} .lrow:hover::before{width:5px;} .lrow:hover::after{opacity:1;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
   .lrow.disabled{opacity:.42; cursor:default;}
+  .lrow.disabled::before{background:#3A4A58;}
+  .lrow.disabled .lrow-t::before{background:#3A4A58;}
+  .lrow:active{transform:translateX(3px) scale(.993);}
+  .lrow.disabled:active{transform:none;}
+  @media(hover:hover){ .lrow:hover .lrow-cta{background:#FF4655; color:#fff;} }
+  .lrow-cta:active{transform:scale(.96);}
+  /* tactical cascade-in when list mounts */
+  @keyframes lrowIn{ from{opacity:0;} to{opacity:1;} }
+  .lrow{animation:lrowIn .26s var(--ease-out) both;}
+  .lrow:nth-child(2){animation-delay:.035s;} .lrow:nth-child(3){animation-delay:.07s;}
+  .lrow:nth-child(4){animation-delay:.105s;} .lrow:nth-child(5){animation-delay:.14s;} .lrow:nth-child(6){animation-delay:.175s;}
   /* hairline before the price cluster */
   .lrow-deal{border-left:1px solid #1E2D3A; padding-left:20px;}
   .lrow-logo{width:50px; height:50px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
