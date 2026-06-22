@@ -400,19 +400,27 @@
 
   /* list view — Valorant tactical */
   .grid.list-grid{display:flex; flex-direction:column; gap:8px;}
-  .lrow{position:relative; display:flex; align-items:center; gap:18px; padding:15px 22px; background:#0F1923; border:1px solid #1E2D3A; cursor:pointer;
+  .lrow{position:relative; display:flex; align-items:center; gap:18px; padding:15px 22px; cursor:pointer;
+    background:#0F1923 repeating-linear-gradient(115deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px);
+    border:1px solid #1E2D3A;
     clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
     transition:background-color .16s var(--ease-out), transform .12s var(--ease-out);}
-  .lrow::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#FF4655;}
-  @media(hover:hover){ .lrow:hover{background:#132231; transform:translateX(3px);} .lrow:hover .pc-arrow{transform:translateX(3px);} }
+  .lrow::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:#FF4655; transition:width .14s var(--ease-out);}
+  /* hover corner bracket, top-right */
+  .lrow::after{content:""; position:absolute; top:7px; right:9px; width:13px; height:13px; border-top:2px solid #FF4655; border-right:2px solid #FF4655; opacity:0; transition:opacity .16s var(--ease-out);}
+  @media(hover:hover){ .lrow:hover{background-color:#132231; transform:translateX(3px);} .lrow:hover::before{width:5px;} .lrow:hover::after{opacity:1;} .lrow:hover .pc-arrow{transform:translateX(3px);} }
   .lrow.disabled{opacity:.42; cursor:default;}
+  /* hairline before the price cluster */
+  .lrow-deal{border-left:1px solid #1E2D3A; padding-left:20px;}
   .lrow-logo{width:50px; height:50px; flex:0 0 auto; display:flex; align-items:center; justify-content:center;
     clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);}
   .lrow-logo img{width:26px; height:26px; object-fit:contain; filter:brightness(0) invert(1);}
   .lrow-main{flex:1 1 auto; min-width:0;}
   .lrow-t{font-family:"Oswald",var(--font-display); font-size:22px; font-weight:600; text-transform:uppercase; letter-spacing:.012em; color:#ECE8E1; line-height:1; display:flex; align-items:center; gap:11px;}
   .lrow-tag{font-family:"Oswald",sans-serif; font-size:10px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; padding:4px 9px 3px;
-    clip-path:polygon(6px 0,100% 0,100% 100%,0 100%,0 6px);}
+    clip-path:polygon(6px 0,100% 0,100% 100%,0 100%,0 6px); box-shadow:none !important;}
+  .lrow-tag.pc-tag-hot{background:#FF4655; color:#ECE8E1;}
+  .lrow-tag.pc-tag-best{background:#ECE8E1; color:#0F1923;}
   .lrow-meta{display:flex; align-items:center; gap:7px; flex-wrap:wrap; font-size:12px; color:#5C6E7E; margin-top:5px; text-transform:uppercase; letter-spacing:.04em;}
   .lrow-deal{display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex:0 0 auto;}
   .lrow-badge{font-family:"Oswald",sans-serif; font-size:13px; font-weight:600; letter-spacing:.02em; color:#ECE8E1; background:#FF4655; padding:3px 10px 2px;
