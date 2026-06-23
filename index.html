@@ -185,6 +185,33 @@
   .logo .mark svg{width:15px;height:15px;}
   .navlinks{display:flex; gap:14px;}
   .navlinks .bar{width:48px;}
+  /* creator content */
+  .creator-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px;}
+  .cr-card{display:flex; flex-direction:column; border-radius:10px; overflow:hidden; background:#111; border:1px solid rgba(255,255,255,.07); text-decoration:none; transition:border-color .18s, transform .14s var(--ease-out);}
+  .cr-card:hover{border-color:rgba(255,255,255,.18); transform:translateY(-2px);}
+  .cr-thumb{position:relative; aspect-ratio:16/9; background:linear-gradient(135deg,#1a0a2e,#0e1230); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .cr-thumb-twitch1{background:linear-gradient(135deg,#1a0a2e,#2d1060);}
+  .cr-thumb-twitch2{background:linear-gradient(135deg,#0e0628,#1e0a50);}
+  .cr-play{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; color:#fff; transition:background .15s;}
+  .cr-card:hover .cr-play{background:rgba(255,255,255,.22);}
+  .cr-badge{position:absolute; top:10px; left:10px; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; letter-spacing:.04em;}
+  .cr-live{background:#e92828; color:#fff;}
+  .cr-vod{background:#222; color:#aaa; border:1px solid rgba(255,255,255,.12);}
+  .cr-dur{position:absolute; bottom:8px; right:8px; font-size:11px; font-weight:700; color:#fff; background:rgba(0,0,0,.75); padding:2px 6px; border-radius:3px;}
+  .cr-info{padding:12px 14px 14px;}
+  .cr-platform{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; letter-spacing:.03em; margin-bottom:6px; padding:3px 8px; border-radius:4px;}
+  .cr-twitch{color:#9147ff; background:rgba(145,71,255,.1);}
+  .cr-yt{color:#ff0000; background:rgba(255,0,0,.08);}
+  .cr-title{font-size:13px; font-weight:600; color:#e8eaf0; line-height:1.4; margin-bottom:5px;}
+  .cr-meta{font-size:11px; color:#8b93ab;}
+  .cr-follow{display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; transition:filter .15s, transform .1s;}
+  .cr-follow:active{transform:scale(.97);}
+  .cr-follow-twitch{background:#9147ff; color:#fff;}
+  .cr-follow-twitch:hover{filter:brightness(1.1);}
+  .cr-follow-yt{background:#ff0000; color:#fff;}
+  .cr-follow-yt:hover{filter:brightness(1.1);}
+  @media(max-width:900px){.creator-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.creator-grid{grid-template-columns:1fr;}}
   .site-footer{border-top:1px solid var(--line); margin-top:48px; padding-top:32px; padding-bottom:8px;}
   .ft-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px;}
   .ft-brand .logo{margin-bottom:12px;}
@@ -195,6 +222,8 @@
   .ft-word{font-size:clamp(64px,15vw,190px); font-weight:800; letter-spacing:-.05em; line-height:.78; margin:44px 0 0; user-select:none; pointer-events:none;
     color:transparent; -webkit-text-stroke:1px #232a33; text-stroke:1px #232a33;}
   .ft-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--line); margin-top:20px; padding-top:18px; font-size:12px; color:var(--mut);}
+  .ft-email{font-size:12px; color:var(--mut); text-decoration:none; transition:color .15s;}
+  .ft-email:hover{color:#fff;}
   .ft-pay{display:flex; gap:8px;}
   .ft-pay span{font-size:10px; font-weight:700; letter-spacing:.04em; color:var(--ink-2); border:1px solid var(--line); border-radius:3px; padding:4px 8px; background:var(--surface);}
   @media(max-width:720px){ .ft-top{grid-template-columns:1fr 1fr;} }
@@ -410,16 +439,17 @@
   .nu-art-photo{padding:4px;}
   .nu-art-photo .nu-photo{width:100%; height:100%; object-fit:contain; filter:none; opacity:1; border-radius:2px;}
   @media(hover:hover){ .pcard.nu:hover .nu-art{transform:rotate(5deg) translateY(-4px) scale(1.04);} }
-  .nu-foot{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:18px 20px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.16); margin-top:auto;}
-  .nu-foot-left{flex:1; min-width:0;}
-  .nu-denoms{min-height:27px;}
-  .nu-denom-more{background:transparent; border-style:dashed; border-color:rgba(255,255,255,.18); color:var(--mut);}
+  .nu-foot{display:flex; flex-direction:column; gap:8px; padding:16px 20px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.16); margin-top:auto;}
+  .nu-foot-header{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .nu-foot-title{font-size:15px; font-weight:700; letter-spacing:-.01em; color:#fff;}
+  .nu-foot-save{flex:0 0 auto; font-size:12px; font-weight:800; color:#0a1a06; background:linear-gradient(135deg,#c4ff3d,#9bdb2a); padding:5px 12px; border-radius:6px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap;}
+  .nu-foot-sub{font-size:12px; color:#8b93ab; line-height:1.4;}
   .nu-vtitle{color:#a78bfa; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;}
   .nu-range{color:#fff; font-size:22px; font-weight:800; letter-spacing:-.025em; margin-top:4px; font-variant-numeric:tabular-nums;}
-  .nu-foot-title{font-size:15px; font-weight:700; letter-spacing:-.01em; color:#fff; display:flex; align-items:center; gap:8px; margin-bottom:4px;}
-  .nu-foot-save{font-size:11px; font-weight:700; color:#0a1a06; background:linear-gradient(135deg,#c4ff3d,#9bdb2a); padding:2px 7px; border-radius:3px; letter-spacing:.02em;}
-  .nu-vsub{color:#8b93ab; font-size:12px; margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .nu-denoms{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;}
+  .nu-vsub{color:#8b93ab; font-size:12px; display:flex; align-items:center; gap:5px;}
+  .nu-tag-ico{width:13px; height:13px; color:#8b93ab; flex:0 0 auto;}
+  .nu-foot-bottom{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .nu-denoms{display:flex; gap:6px; flex-wrap:wrap; flex:1; min-width:0;}
   .nu-denom{height:27px; min-width:42px; padding:0 10px; display:flex; align-items:center; justify-content:center; border-radius:4px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:#cfd6e2; font-size:12px; font-weight:600; letter-spacing:.01em; font-variant-numeric:tabular-nums;}
   .nu-denom-more{color:#8b93ab; border-color:transparent; background:transparent; font-weight:500;}
   .nu-cta{flex:0 0 auto; padding:13px 26px; border-radius:8px; background:#282828; color:#fff; font-size:14px; font-weight:500; letter-spacing:.01em; cursor:pointer; white-space:nowrap; display:flex; align-items:center; gap:8px; transition:filter .15s var(--ease-out), transform .1s var(--ease-out);}
@@ -429,8 +459,7 @@
   @media(hover:hover){ .pcard.nu:hover .nu-cta{filter:brightness(1.08);} }
   .pcard.nu .nu-cta-arrow{transition:transform .18s var(--ease-out);}
   @media(hover:hover){ .pcard.nu:hover .nu-cta-arrow{transform:translateX(4px);} }
-  .pcard.nu.disabled .nu-hero{filter:grayscale(.6) brightness(.7);}
-  .pcard.nu.disabled .nu-cta{background:var(--surface2); color:var(--mut); box-shadow:none;}
+  .pcard.nu.disabled .nu-hero{filter:grayscale(1) brightness(.45);}
   .nu-lock{position:absolute; inset:0; z-index:5; display:flex; align-items:center; justify-content:center; background:rgba(8,9,12,.5);}
   .nu-lock span{font-size:13px; font-weight:600; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.22); padding:8px 14px; border-radius:4px;}
   @media(max-width:1024px){ .grid.nu-grid{grid-template-columns:repeat(2,1fr);} }
@@ -921,24 +950,24 @@
     <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" style="cursor:pointer;">
       <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar2.png" alt="Sevkaan"></span>
       <span class="sk-nav-name">Sevkaan's Store</span>
-      <span class="sk-nav-check"><img src="assets/verified-badge.png" alt="verified"></span>
+      <span class="sk-nav-check"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 1.5 13.18 3.6l3-.52 1.04 2.88 2.88 1.04-.52 3L21.5 11l-1.92 2.08.52 3-2.88 1.04-1.04 2.88-3-.52L11 21.5l-2.18-2.02-3 .52-1.04-2.88-2.88-1.04.52-3L.5 11l1.92-2.08-.52-3 2.88-1.04L5.82 2l3 .52Z" fill="#5B21B6"/><path d="M7.5 11.5l2.5 2.5 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span class="sk-nav-divider">|</span>
       <span class="sk-nav-powered">Powered by <strong>Athena Gaming</strong></span>
     </div>
     <!-- center: support pill -->
     <div class="sk-nav-support">
-      <img class="sk-nav-headset" src="assets/support-icon.png" alt=""> 24/7 Support Available
+      <svg class="sk-nav-headset" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M3 12a9 9 0 0 1 18 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="2" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="18" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M20 17v1.5A3.5 3.5 0 0 1 16.5 22H13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="22" r="1.2" fill="currentColor"/></svg> 24/7 Support Available
     </div>
     <!-- right: region + signin -->
     <div class="sk-nav-right">
       <div class="region" id="region">
         <div class="sk-nav-region kbtn" id="regionToggle" role="button" tabindex="0">
-          <img class="sk-flag" src="assets/usa-flag.png" alt="US">
+          <span id="navFlagEmoji" style="font-size:18px; line-height:1;">🇺🇸</span>
           <span id="regionLabel">USA</span>
           <span class="sk-nav-sep">|</span>
-          <span>USD</span>
+          <span id="navCur">USD</span>
           <span class="sk-nav-sep">|</span>
-          <span>EN</span>
+          <span id="navLang">EN</span>
           <span class="sk-caret">&#8964;</span>
         </div>
         <div class="region-menu" id="regionMenu"><!-- populated by JS --></div>
@@ -1228,6 +1257,65 @@
         </div>
       </div>
 
+      <!-- ===== CREATOR CONTENT ===== -->
+      <div class="sec">
+        <div class="sec-over">Sevkaan</div>
+        <div class="sec-h">Streams &amp; Videos</div>
+        <div class="sec-sub">Watch before you buy — or just hang out.</div>
+        <div class="creator-grid">
+          <a class="cr-card" href="https://www.twitch.tv/videos/2796804310" target="_blank">
+            <div class="cr-thumb" style="background:#000; padding:0;">
+              <img src="https://img.youtube.com/vi/XmeUuxKKshw/maxresdefault.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div class="cr-play" style="position:absolute;"><svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="cr-badge cr-vod">Highlight</span>
+            </div>
+            <div class="cr-info">
+              <span class="cr-platform cr-twitch"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> Twitch</span>
+              <div class="cr-title">Sevkaan Smurfing in RADIANT...</div>
+              <div class="cr-meta">twitch.tv/sevkaan</div>
+            </div>
+          </a>
+          <a class="cr-card" href="https://www.twitch.tv/videos/2703472370" target="_blank">
+            <div class="cr-thumb" style="background:#000; padding:0;">
+              <img src="https://img.youtube.com/vi/Z7gW17Rt90E/maxresdefault.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div class="cr-play" style="position:absolute;"><svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="cr-badge cr-vod">Highlight</span>
+            </div>
+            <div class="cr-info">
+              <span class="cr-platform cr-twitch"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> Twitch</span>
+              <div class="cr-title">Iron kid gets bullied, Radiant big brother steps in</div>
+              <div class="cr-meta">twitch.tv/sevkaan</div>
+            </div>
+          </a>
+          <a class="cr-card" href="https://www.youtube.com/watch?v=ZZw1-Mn_eSE" target="_blank">
+            <div class="cr-thumb" style="background:#000; padding:0;">
+              <img src="https://img.youtube.com/vi/ZZw1-Mn_eSE/maxresdefault.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div class="cr-play" style="position:absolute;"><svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="cr-info">
+              <span class="cr-platform cr-yt"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
+              <div class="cr-title">I Made RADIANTS Surrender TWICE In A Row…</div>
+              <div class="cr-meta">youtube.com/@Sevkaan</div>
+            </div>
+          </a>
+          <a class="cr-card" href="https://www.youtube.com/watch?v=wWwpsK9LXyw" target="_blank">
+            <div class="cr-thumb" style="background:#000; padding:0;">
+              <img src="https://img.youtube.com/vi/wWwpsK9LXyw/maxresdefault.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div class="cr-play" style="position:absolute;"><svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="cr-info">
+              <span class="cr-platform cr-yt"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
+              <div class="cr-title">Making RADIANTS Look Like SILVERS...</div>
+              <div class="cr-meta">youtube.com/@Sevkaan</div>
+            </div>
+          </a>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+          <a class="cr-follow cr-follow-twitch" href="https://www.twitch.tv/sevkaan" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg> Follow on Twitch</a>
+          <a class="cr-follow cr-follow-yt" href="https://www.youtube.com/channel/UCPSZ5Sj97-jN4H4Q9_DATtA" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> Subscribe on YouTube</a>
+        </div>
+      </div>
+
       <!-- ===== WHY BUY + FEATURES ===== -->
       <div class="sec">
         <div class="why-new">
@@ -1302,6 +1390,7 @@
         <div class="ft-word">SEVKAAN</div>
         <div class="ft-bottom">
           <span>© 2026 Sevkaan. All rights reserved.</span>
+          <a class="ft-email" href="mailto:hi@athenagaming.gg">hi@athenagaming.gg</a>
           <div class="ft-pay"><span>VISA</span><span>MASTERCARD</span><span>PAYPAL</span><span>APPLE PAY</span></div>
         </div>
       </div>
@@ -1424,6 +1513,7 @@
         <div class="ft-word">SEVKAAN</div>
         <div class="ft-bottom">
           <span>© 2026 Sevkaan. All rights reserved.</span>
+          <a class="ft-email" href="mailto:hi@athenagaming.gg">hi@athenagaming.gg</a>
           <div class="ft-pay"><span>VISA</span><span>MASTERCARD</span><span>PAYPAL</span><span>APPLE PAY</span></div>
         </div>
       </div>
@@ -1539,8 +1629,8 @@
 
 <script>
 (function(){
-  var TOP7 = ["United States","United Kingdom","India","Canada","Australia","Germany","France"];
-  var REST = ["Argentina","Austria","Belgium","Brazil","China","Denmark","Egypt","Finland","Indonesia","Ireland","Italy","Japan","Mexico","Netherlands","New Zealand","Norway","Philippines","Poland","Portugal","Saudi Arabia","Singapore","South Africa","South Korea","Spain","Sweden","Switzerland","Turkey","UAE"];
+  var TOP7 = ["United States","United Kingdom","India","Europe","Turkey","Brazil","Mexico","Global"];
+  var REST = [];
 
   var region = document.getElementById('region');
   var toggle = document.getElementById('regionToggle');
@@ -1550,45 +1640,48 @@
 
   // region, currency, language are each changed INDEPENDENTLY
   var CURRENCY_OF = {
-    "United States":"USD","Canada":"CAD","United Kingdom":"GBP","India":"INR","Australia":"AUD",
-    "Germany":"EUR","France":"EUR","Italy":"EUR","Spain":"EUR","Netherlands":"EUR","Ireland":"EUR",
-    "Belgium":"EUR","Austria":"EUR","Portugal":"EUR","Turkey":"TRY","Brazil":"BRL","Japan":"JPY",
-    "China":"CNY","South Korea":"KRW","Mexico":"MXN","Argentina":"ARS","Sweden":"SEK","Denmark":"DKK",
-    "Norway":"NOK","Switzerland":"CHF","Poland":"PLN","Singapore":"SGD","UAE":"AED","Saudi Arabia":"SAR",
-    "South Africa":"ZAR","New Zealand":"NZD","Philippines":"PHP","Indonesia":"IDR","Egypt":"EGP","Finland":"EUR"
+    "United States":"USD","United Kingdom":"USD","India":"INR","Europe":"EUR",
+    "Turkey":"TRY","Brazil":"BRL","Mexico":"MXN","Global":"USD"
   };
   // currency + language option lists
   var CUR_LIST = [
-    {code:"USD",name:"US Dollar ($)"},{code:"EUR",name:"Euro (€)"},{code:"GBP",name:"British Pound (£)"},
-    {code:"INR",name:"Indian Rupee (₹)"},{code:"AUD",name:"Australian Dollar (A$)"},{code:"CAD",name:"Canadian Dollar (C$)"},
-    {code:"TRY",name:"Turkish Lira (₺)"},{code:"BRL",name:"Brazilian Real (R$)"},{code:"JPY",name:"Japanese Yen (¥)"},
-    {code:"SGD",name:"Singapore Dollar (S$)"},{code:"AED",name:"UAE Dirham (د.إ)"},{code:"CHF",name:"Swiss Franc (Fr)"},
-    {code:"SEK",name:"Swedish Krona (kr)"},{code:"PLN",name:"Polish Złoty (zł)"},{code:"CNY",name:"Chinese Yuan (¥)"},
-    {code:"KRW",name:"Korean Won (₩)"},{code:"MXN",name:"Mexican Peso ($)"}
+    {code:"USD",name:"US Dollar (USD)"},{code:"EUR",name:"Euro (EUR)"},
+    {code:"INR",name:"Indian Rupee (INR)"},{code:"TRY",name:"Turkish Lira (TRY)"},
+    {code:"ARS",name:"Argentine Peso (ARS)"},{code:"PEN",name:"Peruvian Sol (PEN)"},
+    {code:"BRL",name:"Brazilian Real (BRL)"},{code:"CLP",name:"Chilean Peso (CLP)"},
+    {code:"COP",name:"Colombian Peso (COP)"},{code:"MXN",name:"Mexican Peso (MXN)"}
   ];
   var LANG_LIST = [
-    {val:"English (US)",short:"EN"},{val:"English (EU)",short:"EN"},{val:"English (IN)",short:"EN"},
-    {val:"Hindi",short:"HI"},{val:"Turkish",short:"TR"},{val:"German",short:"DE"},{val:"French",short:"FR"},
-    {val:"Portuguese (BR)",short:"PT"},{val:"Spanish",short:"ES"},{val:"Italian",short:"IT"},
-    {val:"Japanese",short:"JA"},{val:"Chinese",short:"ZH"},{val:"Korean",short:"KO"},{val:"Dutch",short:"NL"},{val:"Polish",short:"PL"}
+    {val:"English",short:"EN"},
+    {val:"Spanish",short:"ES"},
+    {val:"Portuguese",short:"PT"}
   ];
   var LANG_SHORT = {}; LANG_LIST.forEach(function(l){ LANG_SHORT[l.val]=l.short; });
-  // region -> suggested language (editable)
   var SUGGEST_LANG = {
-    "United States":"English (US)","Canada":"English (US)","United Kingdom":"English (EU)","Ireland":"English (EU)",
-    "Australia":"English (EU)","New Zealand":"English (EU)","India":"English (IN)",
-    "Germany":"German","France":"French","Turkey":"Turkish","Brazil":"Portuguese (BR)","Portugal":"Portuguese (BR)",
-    "Spain":"Spanish","Mexico":"Spanish","Argentina":"Spanish","Italy":"Italian","Japan":"Japanese","China":"Chinese",
-    "South Korea":"Korean","Netherlands":"Dutch","Poland":"Polish"
+    "United States":"English","United Kingdom":"English","India":"English","Europe":"English",
+    "Global":"English","Turkey":"English","Brazil":"Portuguese","Mexico":"Spanish"
   };
   function curOf(c){ return CURRENCY_OF[c] || "USD"; }
-  function suggestLang(c){ return SUGGEST_LANG[c] || "English (US)"; }
+  function suggestLang(c){ return SUGGEST_LANG[c] || "English"; }
 
   var ALL_COUNTRIES = TOP7.concat(REST).filter(function(v,i,a){return a.indexOf(v)===i;});
   var selCur  = curOf("United States");
-  var selLang = "English (US)";
+  var selLang = "English";
 
-  function setRegionLabel(){ label.textContent = selected+' · '+selCur+' · '+(LANG_SHORT[selLang]||'EN'); }
+  var REGION_SHORT = {
+    "United States":"USA","United Kingdom":"UK","India":"India",
+    "Europe":"Europe","Turkey":"Turkey","Brazil":"Brazil","Mexico":"Mexico","Global":"Global"
+  };
+  var REGION_FLAG = {
+    "United States":"🇺🇸","United Kingdom":"🇬🇧","India":"🇮🇳","Europe":"🇪🇺",
+    "Turkey":"🇹🇷","Brazil":"🇧🇷","Mexico":"🇲🇽","Global":"🌐"
+  };
+  function setRegionLabel(){
+    label.textContent = REGION_SHORT[selected] || selected;
+    var nf = document.getElementById('navFlagEmoji'); if(nf) nf.textContent = REGION_FLAG[selected]||'🌐';
+    var nc = document.getElementById('navCur'); if(nc) nc.textContent = selCur;
+    var nl = document.getElementById('navLang'); if(nl) nl.textContent = LANG_SHORT[selLang]||'EN';
+  }
   setRegionLabel();
 
   /* ---- settings modal: in-house dropdowns (apply on Save) ---- */
@@ -1663,12 +1756,12 @@
 
   /* ---- storefront product cards ---- */
   var PRODUCTS = [
-    {mono:"S", art:"assets/cards/steam-card.png",    c1:"#1b3a5c", c2:"#0e1b2e", cat:"Wallet",  title:"Steam Wallet",   sub:"Instant email delivery", denoms:["€5","€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%",  rating:"4.9", sold:"42k", blocked:[], offer:null},
-    {mono:"V", art:"assets/cards/valorant-card.png", c1:"#c03030", c2:"#500a0a", cat:"Gaming",  title:"Valorant",       sub:"Instant email delivery", denoms:["€5","€10","€20","€50"],        strike:"€10.00", now:"€8.80",  save:"12%", rating:"4.9", sold:"38k", blocked:[], offer:{type:"sku", label:"12% off all denominations"}},
-    {mono:"X", art:"assets/cards/xbox-card.png",     c1:"#1a6e1a", c2:"#0a3d0a", cat:"Gaming",  title:"Xbox", sub:"Instant email delivery", denoms:["€15","€25","€50","€100"],      strike:"€50.00", now:"€47.00", save:"6%",  rating:"4.9", sold:"18k", blocked:["China","UAE"], offer:null},
-    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Instant email delivery", denoms:["€5","€10","€25","€50"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:[], offer:{type:"sku", label:"7% off all denominations"}},
-    {mono:"M", art:"assets/cards/minecraft-card.png",c1:"#3a6e2a", c2:"#1a3a10", cat:"Gaming",  title:"Minecraft",      sub:"Instant email delivery", denoms:["€10","€20","€50"],             strike:"€20.00", now:"€19.00", save:"5%",  rating:"4.8", sold:"21k", blocked:[], offer:null},
-    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Instant email delivery", denoms:["€5","€10","€25","€50"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:[], offer:{type:"sku", label:"8% off all denominations"}}
+    {mono:"S", art:"assets/cards/steam-card.png",    c1:"#1b3a5c", c2:"#0e1b2e", cat:"Wallet",  title:"Steam Wallet",   sub:"The world's biggest PC gaming store.", denoms:["€5","€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%",  rating:"4.9", sold:"42k", blocked:[], offer:null},
+    {mono:"V", art:"assets/cards/valorant-card.png", c1:"#c03030", c2:"#500a0a", cat:"Gaming",  title:"Valorant",       sub:"Top up your VP and get new skins.", denoms:["€5","€10","€20","€50"],        strike:"€10.00", now:"€8.80",  save:"12%", rating:"4.9", sold:"38k", blocked:[], offer:{type:"sku", label:"12% off all denominations"}},
+    {mono:"X", art:"assets/cards/xbox-card.png",     c1:"#1a6e1a", c2:"#0a3d0a", cat:"Gaming",  title:"Xbox",           sub:"Games, DLC, and Game Pass credits.", denoms:["€15","€25","€50","€100"],      strike:"€50.00", now:"€47.00", save:"6%",  rating:"4.9", sold:"18k", blocked:["China","UAE","United States"], offer:null},
+    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Buy Robux and unlock avatar items.", denoms:["€5","€10","€25","€50"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:[], offer:{type:"sku", label:"7% off all denominations"}},
+    {mono:"M", art:"assets/cards/minecraft-card.png",c1:"#3a6e2a", c2:"#1a3a10", cat:"Gaming",  title:"Minecraft",      sub:"Sandbox adventure. Endless possibilities.", denoms:["€10","€20","€50"],             strike:"€20.00", now:"€19.00", save:"5%",  rating:"4.8", sold:"21k", blocked:[], offer:null},
+    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Premium Robux packs for every player.", denoms:["€5","€10","€25","€50"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:[], offer:{type:"sku", label:"8% off all denominations"}}
   ];
   // contextual tags computed from data (one badge per category leader)
   (function tagProducts(){
@@ -1714,7 +1807,7 @@
     var extra = p.denoms.length - DENOM_CAP;
     var denomPills = p.denoms.slice(0,DENOM_CAP).map(function(d){ return '<span class="nu-denom">'+d+'</span>'; }).join('')+(extra>0?'<span class="nu-denom nu-denom-more">+'+extra+' more</span>':'');
     return ''+
-    '<article class="pcard nu'+(off?' disabled':'')+'"'+(off?'':' data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'"')+'>'+
+    '<article class="pcard nu'+(off?' disabled':'')+'" data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'">'+
       '<div class="nu-hero'+(p.art?' nu-hero-img':'')+'" style="'+(p.art?'background-image:url('+p.art+');':'background:radial-gradient(circle at top right,'+p.c1+' 0%,'+p.c2+' 52%,#04112d 100%)')+'">' +
         (p.art ? '' :
           '<div class="nu-top">'+
@@ -1724,15 +1817,14 @@
           (off ? '<div class="nu-meta">Not available in your region yet</div>' : '')
         )+
         (!p.art ? '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>' : '')+
-        (off ? '<div class="nu-lock"><span>&#128274; Not in '+region+'</span></div>' : '')+
       '</div>'+
       '<div class="nu-foot">'+
-        '<div class="nu-foot-left">'+
-          (p.art ? '<div class="nu-foot-title">'+p.title+(off?'':' <span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span>')+'</div>' : '')+
-          '<div class="nu-vsub">'+p.denoms.length+' denominations</div>'+
+        (p.art ? '<div class="nu-foot-header"><div class="nu-foot-title">'+p.title+'</div><span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span></div>' : '')+
+        '<div class="nu-vsub"><svg class="nu-tag-ico" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h5.172a1 1 0 0 1 .707.293l5.657 5.657a1 1 0 0 1 0 1.414l-3.586 3.586a1 1 0 0 1-1.414 0L2.293 7.293A1 1 0 0 1 2 6.586V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="5" cy="5" r="1" fill="currentColor"/></svg>'+p.denoms.length+' denominations</div>'+
+        '<div class="nu-foot-bottom">'+
           '<div class="nu-denoms">'+denomPills+'</div>'+
+          '<div class="nu-cta">View</div>'+
         '</div>'+
-        '<div class="nu-cta">'+(off ? 'Unavailable' : 'View')+'</div>'+
       '</div>'+
     '</article>';
   }
@@ -1786,7 +1878,7 @@
     goScreen('pdp');
   }
   function openFromCard(el){
-    if(!el || el.classList.contains('disabled')) return;
+    if(!el) return;
     var i = el.getAttribute('data-i'); if(i===null) return;
     var p = gridList[parseInt(i,10)]; if(p) openPDP(p);
   }
