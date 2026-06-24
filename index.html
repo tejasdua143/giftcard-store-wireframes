@@ -10,11 +10,11 @@
 <style>
   :root{
     /* Avon design language: dark fintech, blue accent, Sora */
-    --bg:#0E0F12; --surface:#17191C; --surface2:#1F2228;
+    --bg:#0A0A0A; --surface:#17191C; --surface2:#1F2228;
     --ink:#FFFFFF; --mut:#8F97A3; --line:#272A30; --fill:#1F2228;
     --brand:#7C3AED; --brand-2:#A78BFA; --brand-50:#F3EEFF;
     --success:#42B347; --warn:#EEA82F; --danger:#E5484D;
-    --radius:8px; --gap:16px; --maxw:1100px;
+    --radius:4px; --gap:16px; --maxw:1100px;
     --ease-out:cubic-bezier(0.23,1,0.32,1);
     --ease-in-out:cubic-bezier(0.77,0,0.175,1);
     --font-display:"Bricolage Grotesque","Sora",sans-serif;
@@ -459,7 +459,10 @@
   @media(hover:hover){ .pcard.nu:hover .nu-cta{filter:brightness(1.08);} }
   .pcard.nu .nu-cta-arrow{transition:transform .18s var(--ease-out);}
   @media(hover:hover){ .pcard.nu:hover .nu-cta-arrow{transform:translateX(4px);} }
-  .pcard.nu.disabled .nu-hero{filter:grayscale(1) brightness(.45);}
+  .pcard.nu.disabled .nu-hero{filter:grayscale(0.8) brightness(.55);}
+  .pcard.nu.disabled .nu-not-avail{display:flex;}
+  .nu-not-avail{display:none; position:absolute; bottom:8px; left:0; right:0; justify-content:center; z-index:10;}
+  .nu-not-avail span{background:rgba(0,0,0,.72); color:#fff; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .nu-lock{position:absolute; inset:0; z-index:5; display:flex; align-items:center; justify-content:center; background:rgba(8,9,12,.5);}
   .nu-lock span{font-size:13px; font-weight:600; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.22); padding:8px 14px; border-radius:4px;}
   @media(max-width:1024px){ .grid.nu-grid{grid-template-columns:repeat(2,1fr);} }
@@ -928,25 +931,10 @@
   .panel.active .hero-cta{animation-delay:.15s;}
   @keyframes heroRise{from{opacity:0; transform:translateY(10px); filter:blur(4px);} to{opacity:1; transform:none; filter:blur(0);}}
   @media(max-width:720px){ .hero-acc{flex-direction:column; height:auto;} .panel{min-height:84px;} .panel.active{min-height:240px;} .panel .mini{writing-mode:horizontal-tb; transform:none; top:16px; bottom:auto;} }
-  .sk-nav-in{max-width:var(--maxw); margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:20px; box-sizing:border-box;}
-  .sk-nav-brand{display:flex; align-items:center; gap:8px; flex:0 0 auto; user-select:none; cursor:pointer;}
-  .sk-nav-avatar{width:34px; height:34px; border-radius:50%; overflow:hidden; flex:0 0 auto; border:2px solid rgba(255,255,255,.15);}
-  .sk-nav-avatar img{width:100%; height:100%; object-fit:cover;}
-  .sk-nav-powered{font-size:12px; color:rgba(255,255,255,.45);}
-  .sk-nav-powered strong{color:rgba(255,255,255,.8); font-weight:600;}
-  .sk-nav-support{margin:0 auto; padding:9px 18px; border:1px solid rgba(255,255,255,.14); border-radius:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.8); display:flex; align-items:center; gap:9px; white-space:nowrap; cursor:pointer; transition:border-color .15s var(--ease-out), color .15s var(--ease-out);}
-  .sk-nav-support:hover{border-color:rgba(255,255,255,.3); color:#fff;}
-  .sk-nav-right{display:flex; align-items:center; gap:10px; flex:0 0 auto;}
-  .sk-nav-region{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.85); cursor:pointer; padding:9px 16px; border-radius:8px; background:#1a1a1a; border:1px solid rgba(255,255,255,.1); transition:background-color .15s var(--ease-out);}
-  .sk-nav-region:hover{background:#222;}
-  .sk-nav-sep{color:rgba(255,255,255,.2); margin:0 2px;}
-  .sk-caret{font-size:14px; color:rgba(255,255,255,.5); margin-left:2px;}
-    .signin{padding:8px 12px;}
-  .pdp-art{position:relative; aspect-ratio:4/5; min-height:0; background:#14161b; padding:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .pdp-art{position:relative; aspect-ratio:3/4; max-height:420px; min-height:0; background:#14161b; padding:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
   .pdp-art .pc-logo{width:40px; height:40px;}
   .pdp-art .pc-cat{font-size:11px;}
   .pdp-elig{margin-top:0;}
-  .elig-h{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--mut); margin-bottom:8px;}
   .elig-flags{display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
   .elig-flag{display:inline-flex; align-items:center; gap:6px; font-size:12px; border:1px solid var(--line); background:var(--surface2); padding:5px 10px; border-radius:8px; color:var(--ink-2);}
   .elig-flag .fl{font-size:14px; line-height:1;}
@@ -1002,7 +990,6 @@
   .pdp-buy-head{display:flex; flex-direction:column; gap:5px;}
   .pdp-field{display:flex; flex-direction:column; gap:9px;}
   .pdp-field .lbl{margin-bottom:0;}
-  .pdp-cta{display:flex; flex-direction:column; gap:8px; margin-top:8px;}
   .pdp-head-title{font-family:var(--font-display); font-size:30px; font-weight:800; letter-spacing:-.025em; line-height:1.1; color:#fff;}
   .pdp-head-sub{font-size:13px; color:var(--ink-2); line-height:1.5;}
   .pdp-head-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
@@ -1019,7 +1006,6 @@
   #pdp .step .st-h{font-size:17px; font-weight:700; margin-bottom:8px; letter-spacing:-.01em; color:#fff;}
   #pdp .step .st-p{color:var(--mut); font-size:13px; line-height:1.55; max-width:100%;}
   @media(max-width:720px){#pdp .steps{gap:10px;} #pdp .step,#pdp .step:first-child{border:1px solid var(--line); border-top:1px solid var(--line); padding:20px;}}
-  .signin{border:1px solid #7C3AED; background:#7C3AED; color:#fff; padding:10px 22px; font-size:13px; cursor:pointer; flex:0 0 auto; border-radius:8px; font-weight:600;}
   .rzp-box{width:1000px; max-width:100%; height:670px; max-height:94vh; display:grid; grid-template-columns:360px 1fr; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 34px 90px rgba(0,0,0,.55); color:#1b1f2a; font-family:var(--font);}
   .rzp-left{background:#3c3c9e; color:#fff; padding:26px 22px; display:flex; flex-direction:column; gap:18px; overflow:auto;}
   .rzp-brand{display:flex; align-items:center; gap:13px;}
@@ -1108,8 +1094,11 @@
   <div class="sk-nav-in">
 
     <!-- LEFT: brand -->
-    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" aria-label="Sevkaan's store home">
-      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar.jpg" alt="Sevkaan"></span>
+    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" style="cursor:pointer;">
+      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar2.png" alt="Sevkaan"></span>
+      <span class="sk-nav-name">Sevkaan's Store</span>
+      <span class="sk-nav-check"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 1.5 13.18 3.6l3-.52 1.04 2.88 2.88 1.04-.52 3L21.5 11l-1.92 2.08.52 3-2.88 1.04-1.04 2.88-3-.52L11 21.5l-2.18-2.02-3 .52-1.04-2.88-2.88-1.04.52-3L.5 11l1.92-2.08-.52-3 2.88-1.04L5.82 2l3 .52Z" fill="#5B21B6"/><path d="M7.5 11.5l2.5 2.5 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="sk-nav-divider">|</span>
       <span class="sk-nav-powered">Powered by <strong>Athena Gaming</strong></span>
     </div>
 
@@ -1169,6 +1158,100 @@
 </div>
 
 <!-- update settings: region / language / currency -->
+<div class="gmodal" id="eligModal">
+  <div class="co-box">
+    <div class="co-head"><span id="eligModalTitle">Where this card works</span><span class="co-x" id="eligClose">&times;</span></div>
+    <div class="em-search-wrap"><input type="text" id="eligSearch" class="em-search" placeholder="Search countries…" autocomplete="off"></div>
+    <div class="co-body">
+      <div class="elig-all" id="eligAll"></div>
+      <div class="elig-note" id="eligNote"></div>
+    </div>
+  </div>
+</div>
+
+<!-- signed-in checkout: Razorpay-style overlay -->
+<div class="rzp" id="rzpModal" style="display:none;"
+  <div class="rzp-box">
+    <!-- brand / summary panel -->
+    <div class="rzp-left">
+      <div class="rzp-brand">
+        <span class="lg"><img src="assets/sevkaan-avatar.jpg" alt=""></span>
+        <div>
+          <div class="rzp-bn">Sevkaan</div>
+          <div class="rzp-trust"><svg viewBox="0 0 24 24" fill="#22c55e" width="14" height="14"><path d="M12 2 4 5v6c0 5 3.4 7.7 8 9 4.6-1.3 8-4 8-9V5l-8-3z"/></svg> Razorpay Trusted Business</div>
+        </div>
+      </div>
+      <div class="rzp-card">
+        <div class="rzp-card-h">Order summary <span>&rsaquo;</span></div>
+        <div class="rzp-os">
+          <div class="rzp-os-thumb" id="rzpThumb">V</div>
+          <div class="rzp-os-main">
+            <div class="rzp-os-t" id="rzpItem">Valorant · 1000 VP</div>
+            <div class="rzp-os-q" id="rzpQty">Qty. 1</div>
+          </div>
+          <div class="rzp-os-p" id="rzpPrice">€9.49</div>
+        </div>
+      </div>
+      <div class="rzp-card rzp-coupons">
+        <span class="rzp-coup-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M20 12a2 2 0 0 1 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3a2 2 0 0 1 0 4v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 1-2-2z"/></svg></span>
+        <div><div class="rzp-coup-t">Coupons and offers</div><div class="rzp-coup-s">6 offers available</div></div>
+        <span class="rzp-coup-car">&rsaquo;</span>
+      </div>
+      <div class="rzp-foot">Secured by <b>Razorpay</b></div>
+    </div>
+
+    <!-- step panel -->
+    <div class="rzp-right">
+      <span class="rzp-x" id="rzpClose">&times;</span>
+      <div class="rzp-steps">
+        <span class="rzp-step on" data-step="contact">Contact</span><span class="rzp-sep">&rsaquo;</span>
+        <span class="rzp-step" data-step="address">Address</span><span class="rzp-sep">&rsaquo;</span>
+        <span class="rzp-step" data-step="payment">Payment</span>
+      </div>
+
+      <!-- step 1: contact -->
+      <div class="rzp-pane on" data-pane="contact">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <div class="rzp-h">Contact details</div>
+        <div class="rzp-sub">Confirm your details to continue</div>
+        <div class="rzp-row">
+          <div class="rzp-input rzp-cc">🇮🇳 +91 &#9662;</div>
+          <input class="rzp-input" id="rzpPhone" placeholder="Mobile number" value="9664458289" inputmode="numeric">
+        </div>
+        <input class="rzp-input" id="rzpEmail" placeholder="Email address" value="alex@gmail.com">
+        <label class="rzp-chk"><input type="checkbox" checked> Send me offers and order updates</label>
+        <button class="rzp-cont" data-next="address">Continue</button>
+        <div class="rzp-mbp"><svg viewBox="0 0 24 24" width="16" height="16" fill="#3d3dab"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="12" fill="#fff" text-anchor="middle">₹</text></svg> Money Back Promise by <b>Razorpay</b></div>
+      </div>
+
+      <!-- step 2: address -->
+      <div class="rzp-pane" data-pane="address">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="rzp-h">Billing address</div>
+        <div class="rzp-sub">Gift cards are delivered by email, this is for your receipt</div>
+        <input class="rzp-input" placeholder="Full name" value="Alex Gamer">
+        <input class="rzp-input" placeholder="Address line">
+        <div class="rzp-row"><input class="rzp-input" placeholder="City"><input class="rzp-input" placeholder="Postal code"></div>
+        <button class="rzp-cont" data-next="payment">Continue</button>
+      </div>
+
+      <!-- step 3: payment -->
+      <div class="rzp-pane" data-pane="payment">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div class="rzp-h">Payment</div>
+        <div class="rzp-sub">Choose how you'd like to pay</div>
+        <div class="rzp-pay-opt sel"><span class="rzp-po-ic">💳</span> Card · Visa, Mastercard, Amex</div>
+        <div class="rzp-pay-opt"><span class="rzp-po-ic">📱</span> UPI · GPay, PhonePe, Paytm</div>
+        <div class="rzp-pay-opt"><span class="rzp-po-ic">🏦</span> Netbanking</div>
+        <button class="rzp-cont" id="rzpPay">Pay €9.49</button>
+        <div class="rzp-mbp"><svg viewBox="0 0 24 24" width="16" height="16" fill="#3d3dab"><circle cx="12" cy="12" r="10"/></svg> 256-bit encrypted · secured by Razorpay</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 24/7 refunds popup -->
+
 <div class="gmodal" id="settingsModal">
   <div class="co-box" style="width:440px;">
     <div class="co-head"><span>Update your settings</span><span class="co-x" id="setClose">&times;</span></div>
@@ -1639,53 +1722,6 @@
         </div>
       </div>
 
-      <!-- ===== TRUST BENTO (full width) ===== -->
-      <div class="tband">
-        <div class="tband-head">
-          <span class="tband-pill">Why Sevkaan</span>
-          <h2 class="tband-title">One promise:<br>instant, official, protected.</h2>
-        </div>
-
-        <div class="tband-grid">
-          <!-- tall rating card -->
-          <div class="tcard tcard-rating">
-            <div class="travatars">
-              <span style="background:linear-gradient(135deg,#ff4655,#7a1020);">J</span>
-              <span style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">P</span>
-              <span style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">D</span>
-              <span class="more">+8k</span>
-            </div>
-            <div class="trate-num">4.9<span>/ 5</span></div>
-            <div class="trate-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="tcard-sub">Rated by 8,400+ verified buyers worldwide</div>
-          </div>
-
-          <div class="tcard">
-            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
-            <div class="tcard-t">Instant delivery</div>
-            <div class="tcard-sub">Code in your inbox within 60 seconds.</div>
-          </div>
-
-          <div class="tcard">
-            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
-            <div class="tcard-t">100% official codes</div>
-            <div class="tcard-sub">Authorized distributors, every code verified.</div>
-          </div>
-
-          <div class="tcard">
-            <div class="tstat-num">100%</div>
-            <div class="tcard-t">Money-back guarantee</div>
-            <div class="tcard-sub">Encrypted checkout. Full refund on any issue, no questions asked.</div>
-          </div>
-
-          <div class="tcard">
-            <div class="tstat-num">24/7</div>
-            <div class="tcard-t">Always on</div>
-            <div class="tcard-sub">Live chat in every time zone.</div>
-          </div>
-        </div>
-      </div>
-
       <!-- ===== HOW TO REDEEM ===== -->
       <div class="sec">
         <div class="sec-h">How to redeem</div>
@@ -2038,6 +2074,7 @@
           (off ? '<div class="nu-meta">Not available in your region yet</div>' : '')
         )+
         (!p.art ? '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>' : '')+
+        (off ? '<div class="nu-not-avail"><span>Not available for your region</span></div>' : '')+
       '</div>'+
       '<div class="nu-foot">'+
         (p.art ? '<div class="nu-foot-header"><div class="nu-foot-title">'+p.title+'</div><span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span></div>' : '')+
@@ -2226,14 +2263,24 @@
     // country eligibility: where the selected card works
     renderEligible(SKUS[pdpSkuIdx].region);
   }
-  // flag + name lists per region version (top = most populous shown first)
-  var ELIGIBILITY = {
-    "Global":        ["Worldwide, any account"],
-    "United States": ["United States","Canada"],
-    "Europe":        ["UK","Germany","France","Italy","Spain","Netherlands","+ EU"],
-    "India":         ["India"],
-    "Turkey":        ["Turkey"]
+  var REGION_COUNTRIES = {
+    "Global": {
+      total: 190,
+      top: [["🇮🇳","India"],["🇺🇸","United States"],["🇮🇩","Indonesia"],["🇧🇷","Brazil"],["🇯🇵","Japan"]],
+      all: [["🇮🇳","India"],["🇺🇸","United States"],["🇮🇩","Indonesia"],["🇧🇷","Brazil"],["🇯🇵","Japan"],["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"],["🇨🇦","Canada"],["🇦🇺","Australia"],["🇲🇽","Mexico"],["🇰🇷","South Korea"],["🇹🇷","Turkiye"],["🇸🇦","Saudi Arabia"],["🇦🇪","UAE"],["🇿🇦","South Africa"],["🇸🇪","Sweden"],["🇳🇱","Netherlands"],["🇵🇱","Poland"],["🇦🇷","Argentina"],["🇵🇭","Philippines"],["🇻🇳","Vietnam"]],
+      note: "Activates worldwide on any account, plus 165+ more countries."
+    },
+    "United States": { total: 2, top: [["🇺🇸","United States"],["🇨🇦","Canada"]], all: [["🇺🇸","United States"],["🇨🇦","Canada"]] },
+    "Europe": {
+      total: 27,
+      top: [["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"]],
+      all: [["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"],["🇳🇱","Netherlands"],["🇧🇪","Belgium"],["🇦🇹","Austria"],["🇮🇪","Ireland"],["🇵🇹","Portugal"],["🇵🇱","Poland"],["🇸🇪","Sweden"],["🇩🇰","Denmark"],["🇫🇮","Finland"],["🇳🇴","Norway"],["🇨🇭","Switzerland"],["🇬🇷","Greece"],["🇨🇿","Czechia"],["🇭🇺","Hungary"],["🇷🇴","Romania"]],
+      note: "Activates across the EU and EEA."
+    },
+    "India":  { total: 1, top: [["🇮🇳","India"]], all: [["🇮🇳","India"]] },
+    "Turkey": { total: 1, top: [["🇹🇷","Turkiye"]], all: [["🇹🇷","Turkiye"]] }
   };
+  var elig = document.getElementById('pdpEligible');
   function flagChip(f){ return '<span class="elig-flag"><span class="fl">'+f[0]+'</span>'+f[1]+'</span>'; }
   function renderEligible(reg){
     var data = REGION_COUNTRIES[reg] || REGION_COUNTRIES["Global"];
@@ -2268,7 +2315,8 @@
     document.getElementById('eligSearch').value = '';
   });
   document.getElementById('eligModal').addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.getElementById('eligSearch').value=''; } });
-  function renderQty(){ qtyVal.textContent = pdpQty; }
+  var qtyVal = document.getElementById('pdpQtyVal');
+  function renderQty(){ if(qtyVal) qtyVal.textContent = pdpQty; }
   function setRzpStep(step){
     document.querySelectorAll('#rzpModal .rzp-step').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-step')===step); });
     document.querySelectorAll('#rzpModal .rzp-pane').forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-pane')===step); });
@@ -2276,16 +2324,17 @@
   function openRzp(){
     var d = DENOMS[pdpDenomIdx];
     var total = d.price * pdpQty;
-    document.getElementById('rzpThumb').textContent = document.getElementById('pdpLogo').textContent;
+    var titleEl = document.getElementById('pdpTitle');
+    document.getElementById('rzpThumb').textContent = titleEl ? titleEl.textContent.charAt(0) : 'V';
     document.getElementById('rzpItem').textContent  = document.getElementById('pdpTitle').textContent + ' · ' + d.vp;
     document.getElementById('rzpQty').textContent   = 'Qty. ' + pdpQty;
     document.getElementById('rzpPrice').textContent = '€' + total.toFixed(2);
     document.getElementById('rzpPay').textContent   = 'Pay €' + total.toFixed(2);
     document.getElementById('rzpEmail').value        = currentEmail || 'alex@gmail.com';
     setRzpStep('contact');
-    rzpModal.classList.add('open');
+    rzpModal.style.display = 'flex';
   }
-  function closeRzp(){ rzpModal.classList.remove('open'); }
+  function closeRzp(){ rzpModal.style.display = 'none'; }
   document.getElementById('rzpClose').addEventListener('click', closeRzp);
   rzpModal.addEventListener('click', function(e){ if(e.target===rzpModal) closeRzp(); });
   // step pills are clickable to go back
@@ -2349,6 +2398,9 @@
     document.getElementById('regionWarn').classList.remove('open');
   });
   document.getElementById('rwCancel').addEventListener('click', function(){
+    pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
+  });
+  document.getElementById('rwClose').addEventListener('click', function(){
     pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
   });
   document.getElementById('regionWarn').addEventListener('click', function(e){
@@ -2415,11 +2467,11 @@
       return '<div class="fs-denom">'+
         '<div class="fs-denom-top">'+
           '<div class="amt"><span class="amt-n">'+num+'</span><span class="amt-u">VP</span></div>'+
-          '<div class="fs-disc-badge">-'+d.disc+'%</div>'+
+          '<div class="fs-disc-badge">'+d.save+'</div>'+
         '</div>'+
         '<div class="fs-prices">'+
           '<span class="fs-now">€'+d.price.toFixed(2)+'</span>'+
-          '<span class="fs-orig">€'+d.orig.toFixed(2)+'</span>'+
+          '<span class="fs-orig">€'+d.face.toFixed(2)+'</span>'+
         '</div>'+
         '<div class="btn fs-buy" data-d="'+i+'">Buy now</div>'+
       '</div>';
@@ -2466,6 +2518,10 @@
   /* ===== screen router (stitched flow) ===== */
   function goScreen(id){
     document.querySelectorAll('.screen').forEach(function(s){ s.classList.toggle('active', s.id===id); });
+    var hero = document.getElementById('skHeroBanner');
+    if(hero) hero.style.display = (id === 'home') ? '' : 'none';
+    var timer = document.getElementById('offerTimer');
+    if(timer) timer.style.display = (id === 'home') ? '' : 'none';
     window.scrollTo({top:0, behavior:'smooth'});
   }
   // navigation like a real site
@@ -2505,7 +2561,7 @@
       openAuth();
       return;
     }
-    openCheckoutPopup();
+    openRzp();
   }
   document.getElementById('pdpBuy').addEventListener('click', startBuy);
   document.getElementById('coClose').addEventListener('click', function(){ coModal.classList.remove('open'); });
@@ -2652,14 +2708,16 @@
     document.getElementById('gvVerify').style.display = which==='verify' ? 'block' : 'none';
   }
   function openAuth(){ showAuthView('choose'); var e=document.getElementById('gEmail'); if(e) e.value=''; gModal.classList.add('open'); }
+  var currentEmail = null;
   function completeLogin(name, email){
     if(email && !knownEmails[email]) knownEmails[email] = name;   // remember new account
+    currentEmail = email || null;
     gModal.classList.remove('open');
     isLoggedIn = true;
     document.getElementById('signinBtn').style.display = 'none';
     document.getElementById('userMenu').classList.add('on');
     document.getElementById('userName').textContent = name;
-    if(pendingBuy){ pendingBuy = false; openCheckoutPopup(); }    // resume purchase
+    if(pendingBuy){ pendingBuy = false; openRzp(); }    // resume purchase
   }
   document.getElementById('signinBtn').addEventListener('click', function(){
     pendingBuy = false;               // plain sign-in, not a buy
@@ -2713,9 +2771,6 @@
     userMenu.classList.remove('open');
     userMenu.classList.remove('on');
     document.getElementById('signinBtn').style.display = '';
-  });
-  document.getElementById('rwClose').addEventListener('click', function(){
-    pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
   });
 })();
 </script>
