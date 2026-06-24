@@ -10,11 +10,11 @@
 <style>
   :root{
     /* Avon design language: dark fintech, blue accent, Sora */
-    --bg:#0E0F12; --surface:#17191C; --surface2:#1F2228;
+    --bg:#0A0A0A; --surface:#17191C; --surface2:#1F2228;
     --ink:#FFFFFF; --mut:#8F97A3; --line:#272A30; --fill:#1F2228;
     --brand:#7C3AED; --brand-2:#A78BFA; --brand-50:#F3EEFF;
     --success:#42B347; --warn:#EEA82F; --danger:#E5484D;
-    --radius:8px; --gap:16px; --maxw:1100px;
+    --radius:4px; --gap:16px; --maxw:1100px;
     --ease-out:cubic-bezier(0.23,1,0.32,1);
     --ease-in-out:cubic-bezier(0.77,0,0.175,1);
     --font-display:"Bricolage Grotesque","Sora",sans-serif;
@@ -213,7 +213,7 @@
   @media(max-width:900px){.creator-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.creator-grid{grid-template-columns:1fr;}}
   .site-footer{border-top:1px solid var(--line); margin-top:48px; padding-top:32px; padding-bottom:8px;}
-  .ft-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px;}
+  .ft-top{display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:32px;}
   .ft-brand .logo{margin-bottom:12px;}
   .ft-tag{font-size:13px; color:var(--mut); max-width:30ch; line-height:1.5;}
   .ft-col h4{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--mut); margin:0 0 14px;}
@@ -381,7 +381,6 @@
     animation:badgeShine 3.6s ease-in-out infinite;}
   @keyframes badgeShine{0%,72%{left:-60%;} 86%{left:130%;} 100%{left:130%;}}
   .pc-cat{position:absolute; bottom:12px; left:14px; z-index:2; font-size:17px; font-weight:800; letter-spacing:-.02em; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.55);}
-  .pdp-arttitle{position:absolute; left:18px; bottom:18px; color:#fff; font-size:26px; font-weight:800; letter-spacing:-.02em; text-shadow:0 2px 14px rgba(0,0,0,.5);}
   .pc-body{padding:16px; display:flex; flex-direction:column; gap:9px; border-top:1px solid rgba(255,255,255,.05);}
   .pc-title{font-size:16px; font-weight:700; letter-spacing:-.01em; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .pc-sub{font-size:12px; color:var(--mut);}
@@ -459,7 +458,10 @@
   @media(hover:hover){ .pcard.nu:hover .nu-cta{filter:brightness(1.08);} }
   .pcard.nu .nu-cta-arrow{transition:transform .18s var(--ease-out);}
   @media(hover:hover){ .pcard.nu:hover .nu-cta-arrow{transform:translateX(4px);} }
-  .pcard.nu.disabled .nu-hero{filter:grayscale(1) brightness(.45);}
+  .pcard.nu.disabled .nu-hero{filter:grayscale(0.8) brightness(.55);}
+  .pcard.nu.disabled .nu-not-avail{display:flex;}
+  .nu-not-avail{display:none; position:absolute; bottom:8px; left:0; right:0; justify-content:center; z-index:10;}
+  .nu-not-avail span{background:rgba(0,0,0,.72); color:#fff; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; white-space:nowrap;}
   .nu-lock{position:absolute; inset:0; z-index:5; display:flex; align-items:center; justify-content:center; background:rgba(8,9,12,.5);}
   .nu-lock span{font-size:13px; font-weight:600; color:#fff; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.22); padding:8px 14px; border-radius:4px;}
   @media(max-width:1024px){ .grid.nu-grid{grid-template-columns:repeat(2,1fr);} }
@@ -654,23 +656,16 @@
   .feat .ft-p{font-size:13px; color:var(--mut); line-height:1.5; max-width:30ch;}
   @media(max-width:720px){ .feats{grid-template-columns:1fr;} }
 
-  /* reviews */
-  .reviews{display:grid; grid-template-columns:1.35fr 1fr; gap:18px 28px; align-items:start;}
-  .review{display:flex; flex-direction:column;}
-  /* featured pull-quote (first) spans both rows of the left column */
-  .review:first-child{grid-row:1 / span 2; border-left:3px solid var(--brand); padding:4px 0 4px 28px;}
-  .review:first-child .stars{font-size:15px;}
-  .review:first-child .rtext{font-size:23px; line-height:1.42; font-weight:500; letter-spacing:-.01em; color:#fff;}
-  /* supporting reviews: quiet, divider-separated */
-  .review:not(:first-child){border-top:1px solid var(--line); padding-top:18px;}
-  .review:nth-child(2){padding-top:4px; border-top:none;}
-  .review .stars{color:#f5c451; letter-spacing:2px; font-size:13px; margin-bottom:12px;}
-  .rtext{font-size:14px; color:#d7dce3; line-height:1.55; margin:0 0 16px;}
+  /* reviews: equal 3-up cards, balanced */
+  .reviews{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .review{display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px;}
+  .review .stars{color:#f5c451; letter-spacing:2px; font-size:13px; margin-bottom:16px;}
+  .rtext{font-size:14.5px; color:#d7dce3; line-height:1.6; margin:0 0 20px;}
   .review .who{display:flex; align-items:center; gap:10px; margin-top:auto;}
-  .review .who .av{width:32px; height:32px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:13px; background:var(--mut);}
-  .who-n{font-size:12px; font-weight:600; color:var(--ink);}
+  .review .who .av{width:34px; height:34px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:13px; background:var(--mut);}
+  .who-n{font-size:12.5px; font-weight:600; color:var(--ink);}
   .who-m{font-size:11px; color:var(--mut);}
-  @media(max-width:720px){ .reviews{grid-template-columns:1fr;} .review:first-child{grid-row:auto;} .review:nth-child(2){border-top:1px solid var(--line); padding-top:18px;} }
+  @media(max-width:860px){ .reviews{grid-template-columns:1fr;} }
 
   /* FAQ accordion */
   .faq{border-top:1px solid var(--line);}
@@ -681,26 +676,27 @@
   .faq-q:hover{background:var(--fill);}
   .faq-q .pm{flex:0 0 auto; font-size:22px; font-weight:400; color:var(--brand-2); transition:transform .2s var(--ease-out);}
   .faq-item.open .faq-q .pm{transform:rotate(45deg);}
-  .faq-a{display:none; padding:0 60px 22px 4px; font-size:14px; color:var(--mut); line-height:1.6; max-width:70ch;}
-  .faq-item.open .faq-a{display:block;}
+  .faq-a{display:block; overflow:hidden; max-height:0; opacity:0; padding:0 60px 0 4px; font-size:14px; color:var(--mut); line-height:1.6; max-width:70ch; transition:max-height .34s var(--ease-out), opacity .26s var(--ease-out), padding .34s var(--ease-out);}
+  .faq-item.open .faq-a{max-height:260px; opacity:1; padding:0 60px 22px 4px;}
 
   /* sticky offer countdown timer */
   .offer-timer{
-    position:fixed; bottom:20px; right:20px; z-index:80; width:228px;
-    color:#fff; border-radius:5px; padding:15px 16px 15px 18px; overflow:hidden;
-    background:#13151c; border:1px solid var(--line); box-shadow:0 16px 44px rgba(0,0,0,.55);
+    position:fixed; bottom:20px; right:20px; z-index:80; width:264px;
+    color:#fff; border-radius:16px; padding:18px 18px 20px; overflow:hidden;
+    background:#16181f; border:1px solid rgba(124,58,237,.28); box-shadow:0 20px 54px rgba(0,0,0,.6);
     animation:timerIn .4s var(--ease-out) both;
   }
-  .offer-timer::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--warn);}
   @keyframes timerIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
-  .offer-timer .ot-tag{display:inline-flex; align-items:center; gap:6px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c4b5fd; margin-bottom:6px;}
+  .offer-timer .ot-tag{display:inline-flex; align-items:center; gap:7px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--brand-2); margin-bottom:8px;}
   .offer-timer .ot-tag::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--warn); box-shadow:0 0 8px var(--warn); animation:pulseDot 1.4s ease-in-out infinite;}
   @keyframes pulseDot{0%,100%{opacity:1;} 50%{opacity:.35;}}
-  .offer-timer .ot-title{font-size:14px; font-weight:700; margin-bottom:10px;}
-  .offer-timer .ot-clock{display:flex; gap:5px; font-size:20px; font-weight:800; font-variant-numeric:tabular-nums;}
-  .offer-timer .ot-clock .seg{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:3px; padding:6px 8px; min-width:38px; text-align:center;}
-  .offer-timer .ot-clock .colon{align-self:center; color:#6f7a8c; font-weight:700;}
-  .offer-timer .ot-x{position:absolute; top:10px; right:11px; cursor:pointer; color:#7a8395; font-size:14px;}
+  .offer-timer .ot-title{font-size:15px; font-weight:800; letter-spacing:-.01em; margin-bottom:16px; line-height:1.3;}
+  .offer-timer .ot-clock{display:flex; align-items:flex-start; gap:7px; font-variant-numeric:tabular-nums;}
+  .offer-timer .seg-wrap{display:flex; flex-direction:column; align-items:center; gap:6px; flex:1;}
+  .offer-timer .ot-clock .seg{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:11px 0; text-align:center; font-size:24px; font-weight:800; box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+  .offer-timer .seg-lbl{font-size:9px; letter-spacing:.14em; font-weight:700; color:var(--mut);}
+  .offer-timer .ot-clock .colon{color:var(--brand-2); font-weight:800; font-size:20px; margin-top:9px;}
+  .offer-timer .ot-x{position:absolute; top:14px; right:14px; cursor:pointer; color:var(--mut); font-size:16px; line-height:1; transition:color .15s;}
   .offer-timer .ot-x:hover{color:#fff;}
 
   /* sign in + google mock */
@@ -709,23 +705,115 @@
   .usermenu{position:relative; display:none; flex:0 0 auto;}
   .usermenu.on{display:block;}
   .userchip{display:flex; align-items:center; gap:8px; border:1px solid var(--line); padding:5px 10px 5px 6px; font-size:12px; cursor:pointer; user-select:none;}
-  .userchip .av{width:24px; height:24px; border-radius:50%; background:var(--mut);}
+  .userchip .av{width:24px; height:24px; border-radius:50%; background:var(--brand); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; flex:0 0 auto;}
   .um-dd{display:none; position:absolute; right:0; top:calc(100% + 6px); width:170px; z-index:95;
     background:var(--surface); border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,.14);}
   .usermenu.open .um-dd{display:block;}
   .um-item{padding:11px 13px; font-size:13px; cursor:pointer; border-bottom:1px solid var(--line); color:var(--ink);}
   .um-item:last-child{border-bottom:none;}
   .um-item:hover{background:var(--fill);}
-  /* orders list */
-  .ord-row{display:flex; gap:12px; align-items:center; border:1px solid var(--line); border-radius:4px; padding:12px; background:var(--surface2); transition:border-color .15s var(--ease-out);}
-  @media(hover:hover){ .ord-row:hover{border-color:var(--line-2);} }
-  .ord-row .art{width:46px; height:46px; background:linear-gradient(135deg,#9d5cff,#4c1d95); color:#aab; font-size:8px; border-radius:3px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
-  .ord-row .meta{flex:1; min-width:0;}
-  .ord-row .t{font-weight:600; font-size:13px;}
-  .ord-row .s{font-size:11px; color:var(--mut);}
-  .ord-row .amt{text-align:right; font-weight:700; font-size:14px; flex:0 0 auto;}
+  /* orders v2 */
+  /* orders full-page screen */
+  .ord-pg-wrap{max-width:860px; margin:0 auto; padding:32px 20px 56px;}
+  .ord-pg-hd{display:flex; align-items:flex-start; gap:14px; margin-bottom:28px;}
+  .ord-pg-back{width:34px; height:34px; border-radius:8px; border:1px solid var(--line); background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--mut); flex:0 0 auto; transition:color .15s, border-color .15s; margin-top:4px;}
+  .ord-pg-back:hover{color:#fff; border-color:var(--mut);}
+  .ord-pg-title{font-size:26px; font-weight:800; letter-spacing:-.025em;}
+  .ord-pg-sub{font-size:14px; color:var(--mut); margin-top:3px;}
+  .ord-v2-body{display:flex; flex-direction:column; gap:8px;}
+  .ord-v2-card{border:1px solid var(--line); border-radius:10px; background:var(--surface); overflow:hidden;}
+  .ord-v2-row{display:flex; align-items:center; gap:14px; padding:16px; cursor:pointer; transition:background .15s;}
+  .ord-v2-row:hover{background:var(--surface2);}
+  .ord-v2-ic{width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+  .ord-v2-ic.ok{background:rgba(66,179,71,.15); color:var(--success);}
+  .ord-v2-ic.fail{background:rgba(229,72,77,.12); color:var(--danger);}
+  .ord-v2-main{flex:1; min-width:0;}
+  .ord-v2-num{font-size:13px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .ord-v2-meta{font-size:12px; color:var(--mut); margin-top:2px;}
+  .ord-v2-right{display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex:0 0 auto;}
+  .ord-v2-amt{font-size:14px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .ord-v2-items-ct{font-size:11px; color:var(--mut);}
+  .ord-v2-gethelp{display:flex; align-items:center; gap:5px; font-size:12px; color:var(--mut); cursor:pointer; padding:3px 6px; border-radius:5px; transition:background .12s, color .12s; white-space:nowrap;}
+  .ord-v2-gethelp:hover{background:var(--surface2); color:var(--ink);}
+  .ord-v2-chevron{font-size:14px; color:var(--mut); margin-left:4px; transition:transform .2s; flex:0 0 auto;}
+  .ord-v2-card.expanded .ord-v2-chevron{transform:rotate(180deg);}
+  .ord-v2-detail{display:none; border-top:1px solid var(--line); padding:16px;}
+  .ord-v2-card.expanded .ord-v2-detail{display:block;}
+  .ord-v2-section-lbl{font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--mut); margin-bottom:10px;}
+  .ord-v2-item{display:flex; justify-content:space-between; align-items:center; font-size:13px; padding:6px 0;}
+  .ord-v2-item-info .name{font-weight:600;}
+  .ord-v2-item-info .desc{font-size:12px; color:var(--mut); margin-top:1px;}
+  .ord-v2-email-bar{display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-top:1px solid var(--line); margin-top:12px;}
+  .ord-v2-email-note{font-size:12px; color:var(--mut);}
+  .ord-v2-resend{font-size:12px; font-weight:600; color:var(--mut); display:flex; align-items:center; gap:6px; cursor:pointer; transition:color .12s;}
+  .ord-v2-resend:hover{color:var(--ink);}
+  .ord-v2-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; padding:14px 0 6px; border-top:1px solid var(--line); margin-top:8px;}
+  .ord-v2-gfield{}
+  .ord-v2-glbl{font-size:10px; text-transform:uppercase; letter-spacing:.07em; color:var(--mut); margin-bottom:3px;}
+  .ord-v2-gval{font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; word-break:break-all;}
+  .ord-v2-gval.pay-ok{color:var(--success);}
+  .ord-v2-foot-help{margin-top:12px;}
+  /* status badges */
+  .ord-badge{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; border-radius:20px; padding:3px 10px;}
+  .ord-badge.fulfilled{color:var(--success); border:1px solid rgba(66,179,71,.4); background:rgba(66,179,71,.08);}
+  .ord-badge.cancelled{color:#e08080; border:1px solid rgba(224,100,100,.3); background:rgba(224,100,100,.07);}
+  .ord-badge.fulfilled::before,.ord-badge.cancelled::before{content:""; width:5px; height:5px; border-radius:50%; background:currentColor; flex:0 0 auto;}
+  /* legacy (used in confirm screen) */
   .ord-status{display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:600; color:var(--success); border:1px solid rgba(66,179,71,.4); background:rgba(66,179,71,.1); border-radius:4px; padding:2px 8px; margin-top:4px;}
   .ord-status::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--success);}
+  /* support ticket modal */
+  .tick-box{background:var(--surface); width:560px; max-width:100%; max-height:90vh; overflow:auto; border:1px solid var(--line); border-radius:14px; padding:28px 28px 24px; box-shadow:0 24px 70px rgba(0,0,0,.6);}
+  .tick-hd{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:6px;}
+  .tick-hd-left{display:flex; align-items:center; gap:10px;}
+  .tick-hd-icon{width:32px; height:32px; display:flex; align-items:center; justify-content:center; color:var(--brand-2); flex:0 0 auto;}
+  .tick-title{font-size:18px; font-weight:800; letter-spacing:-.02em;}
+  .tick-sub{font-size:13px; color:var(--mut); margin-bottom:20px; line-height:1.5;}
+  .tick-close{color:var(--mut); cursor:pointer; font-size:20px; line-height:1; padding:2px 4px; flex:0 0 auto; transition:color .12s;}
+  .tick-close:hover{color:#fff;}
+  .tick-field{margin-bottom:18px;}
+  .tick-lbl{font-size:13px; font-weight:600; margin-bottom:7px; display:flex; align-items:center; gap:4px;}
+  .tick-req{color:var(--danger); font-size:12px;}
+  .tick-sel{width:100%; border:1px solid var(--line); background:var(--surface2); color:var(--ink); font-size:14px; padding:13px 16px; border-radius:10px; appearance:none; cursor:pointer; outline:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238F97A3' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center;}
+  .tick-sel:focus{border-color:var(--mut);}
+  .tick-order-pick{border:1px solid var(--line); border-radius:10px; background:var(--surface2); overflow:hidden; transition:opacity .15s;}
+  .tick-order-pick.disabled{opacity:.4; pointer-events:none;}
+  .tick-order-opt{display:flex; align-items:center; gap:12px; padding:12px 16px; cursor:pointer; border-bottom:1px solid var(--line); transition:background .12s;}
+  .tick-order-opt:last-child{border-bottom:none;}
+  .tick-order-opt:hover{background:var(--fill);}
+  .tick-order-opt.sel{background:rgba(124,58,237,.12);}
+  .tick-order-opt.sel .tick-order-num{color:var(--brand-2);}
+  .tick-order-ic{width:32px; height:32px; border-radius:7px; background:var(--surface); display:flex; align-items:center; justify-content:center; flex:0 0 auto; color:var(--mut);}
+  .tick-order-num{font-size:13px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .tick-order-meta{font-size:11px; color:var(--mut); margin-top:1px;}
+  .tick-order-check{margin-left:auto; flex:0 0 auto; color:var(--brand-2); display:none;}
+  .tick-order-opt.sel .tick-order-check{display:block;}
+  /* order dropdown (collapses when many orders) */
+  .tick-dd{position:relative;}
+  .tick-dd-trigger{width:100%; display:flex; align-items:center; gap:12px; border:1px solid var(--line); background:var(--surface2); color:var(--ink); font-size:14px; padding:12px 16px; border-radius:10px; cursor:pointer; text-align:left; transition:border-color .15s;}
+  .tick-dd-trigger:hover{border-color:var(--mut);}
+  .tick-dd.open .tick-dd-trigger{border-color:var(--brand);}
+  .tick-dd-trigger .tick-order-ic{width:30px; height:30px;}
+  .tick-dd-tx{flex:1; min-width:0;}
+  .tick-dd-tx .ph{color:var(--mut);}
+  #ticketOrderLabel{display:flex; align-items:center; gap:12px; min-width:0;}
+  .tick-dd-chev{flex:0 0 auto; color:var(--mut); transition:transform .2s;}
+  .tick-dd.open .tick-dd-chev{transform:rotate(180deg);}
+  .tick-dd-menu{position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:20; background:var(--surface2); border:1px solid var(--line); border-radius:10px; max-height:240px; overflow:auto; box-shadow:0 18px 50px rgba(0,0,0,.5); display:none;}
+  .tick-dd.open .tick-dd-menu{display:block;}
+  .tick-input{width:100%; border:1px solid var(--line); background:var(--surface2); color:var(--ink); font-size:14px; padding:13px 16px; border-radius:10px; outline:none; transition:border-color .15s; font-family:var(--font); box-sizing:border-box;}
+  .tick-input:focus{border-color:var(--mut);}
+  .tick-textarea{resize:vertical; min-height:110px; line-height:1.5;}
+  .tick-counter{font-size:11px; color:var(--mut); text-align:right; margin-top:4px;}
+  .tick-footer{display:flex; justify-content:flex-end; align-items:center; gap:12px; margin-top:4px; padding-top:16px; border-top:1px solid var(--line);}
+  .tick-cancel{background:transparent; border:none; color:var(--mut); font-size:14px; font-weight:600; cursor:pointer; padding:10px 16px; border-radius:8px; transition:color .12s;}
+  .tick-cancel:hover{color:var(--ink);}
+  .tick-submit{background:var(--brand); border:none; color:#fff; font-size:14px; font-weight:700; cursor:pointer; padding:12px 24px; border-radius:10px; transition:filter .15s;}
+  .tick-submit:hover{filter:brightness(1.1);}
+  .tick-submit:disabled{opacity:.5; cursor:not-allowed; filter:none;}
+  .tick-success{text-align:center; padding:20px 0 8px; display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .tick-success-ic{width:56px; height:56px; border-radius:50%; background:rgba(66,179,71,.12); display:flex; align-items:center; justify-content:center; color:var(--success);}
+  .tick-success h3{font-size:18px; font-weight:800; margin:0;}
+  .tick-success p{font-size:13px; color:var(--mut); margin:0; line-height:1.5;}
   .gmodal{display:none; position:fixed; inset:0; z-index:200; background:rgba(6,7,10,.6); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:16px;}
   .gmodal.open{display:flex;}
   .gbox{background:var(--surface); width:340px; max-width:100%; border:1px solid var(--line); border-radius:5px; padding:28px 24px; text-align:center; box-shadow:0 24px 70px rgba(0,0,0,.6);}
@@ -742,7 +830,7 @@
   .field-in{border:1px solid var(--line); height:38px; display:flex; align-items:center; padding:0 10px;}
   .field-in input{border:none; outline:none; width:100%; font-size:13px; background:transparent; color:var(--ink);}
   .nsel{width:100%; height:42px; border:1px solid var(--line); background:var(--surface2); color:var(--ink); font-size:14px; padding:0 12px; border-radius:3px; cursor:pointer; appearance:auto;}
-  .nsel:focus{outline:none; border-color:var(--brand);}
+  .nsel:focus{outline:none; border-color:var(--mut);}
 
   /* checkout popup */
   .co-box{background:var(--surface); width:460px; max-width:100%; max-height:88vh; overflow:auto; border:1px solid var(--line); border-radius:5px; box-shadow:0 24px 70px rgba(0,0,0,.6);}
@@ -759,7 +847,7 @@
   .co-line{display:flex; justify-content:space-between; font-size:13px; color:var(--mut);}
   .co-total{display:flex; justify-content:space-between; align-items:baseline; font-weight:800; font-size:18px; letter-spacing:-.02em; color:#fff; border-top:1px solid var(--line); padding-top:12px; margin-top:6px;}
   .co-signed{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--mut); background:var(--surface2); border:1px solid var(--line); border-radius:4px; padding:9px 11px;}
-  .co-signed .av{width:22px; height:22px; border-radius:50%; background:var(--mut); flex:0 0 auto;}
+  .co-signed .av{width:22px; height:22px; border-radius:50%; background:var(--brand); flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:700;}
   .co-foot{padding:16px 18px; border-top:1px solid var(--line);}
   .co-warn{background:#3a2a1a; color:#ffd9b0; border:1px solid #7a5a30; font-size:12px; line-height:1.45; padding:10px 12px; border-radius:3px;}
 
@@ -775,25 +863,49 @@
     pointer-events:none; transition:opacity .2s, transform .2s;}
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
-  /* confirmation: multi-card codes */
-  .cf-order{display:inline-block; margin-top:4px; font-size:12px; color:var(--mut); letter-spacing:.06em; font-variant-numeric:tabular-nums; border:1px solid var(--line); border-radius:3px; padding:4px 10px; background:var(--surface2);}
-  .success-check{width:66px; height:66px; margin:0 auto 6px;}
-  .success-check svg{width:66px; height:66px;}
+  /* confirm back bar */
+  .cf-back-bar{width:100vw; margin-left:calc(-50vw + 50%); padding:16px 16px 0 120px;}
+  .cf-back-btn{display:inline-flex; align-items:center; gap:7px; background:transparent; border:none; color:var(--mut); font-size:13px; font-weight:600; cursor:pointer; padding:6px 0; transition:color .12s;}
+  .cf-back-btn:hover{color:var(--ink);}
+  /* confirmation screen */
+  .success-check{width:72px; height:72px; margin:0 auto 8px; background:rgba(66,179,71,.12); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .success-check svg{width:44px; height:44px;}
   .sc-ring{fill:none; stroke:var(--success); stroke-width:2; stroke-dasharray:151; stroke-dashoffset:151;}
   .sc-tick{fill:none; stroke:var(--success); stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40; stroke-dashoffset:40;}
-  .success-check.go{animation:scPop .4s var(--ease-out);}
   .success-check.go .sc-ring{animation:scDraw .5s var(--ease-out) forwards;}
   .success-check.go .sc-tick{animation:scDraw .35s var(--ease-out) .42s forwards;}
   @keyframes scDraw{to{stroke-dashoffset:0;}}
-  @keyframes scPop{from{transform:scale(.8);} to{transform:scale(1);}}
-  .cf-bulk{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:4px; background:var(--surface); padding:12px 14px; font-size:13px; font-weight:600;}
-  .cf-code{border:1px solid var(--line); border-radius:5px; padding:16px; text-align:left; background:var(--surface);}
-  .cf-code .cf-cardname{font-weight:600; font-size:13px; margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; gap:8px;}
-  .cf-code .cf-cardname .ord-status{margin-top:0;}
-  .cf-code .cf-codebox{height:48px; border:1px dashed rgba(124,58,237,.45); border-radius:4px; background:rgba(124,58,237,.07); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; letter-spacing:4px; color:#ede9fe; font-variant-numeric:tabular-nums;}
-  .cf-code .row{margin-top:8px;}
-  .cf-idx{font-size:11px; color:var(--mut); margin-bottom:6px;}
-  .twocol{display:grid; grid-template-columns:1.2fr 1fr; gap:24px;}
+  .cf-wrap{max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:0;}
+  .cf-hero{text-align:center; padding:32px 0 28px; display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .cf-title{font-size:26px; font-weight:800; letter-spacing:-.025em;}
+  .cf-sub{font-size:14px; color:var(--mut);}
+  .cf-divider{border:none; border-top:1px solid var(--line); margin:0;}
+  .cf-meta{padding:24px 0; display:grid; grid-template-columns:1fr 1fr; gap:20px 32px;}
+  .cf-field{}
+  .cf-field-lbl{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); margin-bottom:6px;}
+  .cf-field-val{font-size:14px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .cf-field-val.mono{font-size:13px; color:var(--ink-2); word-break:break-all;}
+  .cf-fulfilled{display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:var(--success); border:1.5px solid rgba(66,179,71,.4); background:rgba(66,179,71,.08); border-radius:20px; padding:4px 12px;}
+  .cf-fulfilled::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--success); flex:0 0 auto;}
+  .cf-items-lbl{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); margin-bottom:10px;}
+  .cf-item{border:1px solid var(--line); border-radius:8px; background:var(--surface); padding:14px 16px; display:flex; align-items:center; gap:12px;}
+  .cf-item-ic{width:36px; height:36px; border-radius:8px; background:var(--surface2); display:flex; align-items:center; justify-content:center; flex:0 0 auto; color:var(--mut);}
+  .cf-item-name{font-size:14px; font-weight:700;}
+  .cf-item-desc{font-size:12px; color:var(--mut); margin-top:2px;}
+  .cf-email-note{border:1px solid rgba(66,179,71,.35); background:rgba(66,179,71,.06); border-radius:10px; padding:14px 16px; display:flex; align-items:center; gap:12px; font-size:13px; color:var(--success); margin-top:20px;}
+  .cf-email-note svg{flex:0 0 auto; width:20px; height:20px;}
+  .cf-support{text-align:center; font-size:13px; color:var(--mut); margin-top:16px;}
+  .cf-support a{color:var(--brand-2); text-decoration:none;}
+  .cf-support a:hover{text-decoration:underline;}
+  .cf-cta{margin-top:20px; background:transparent; border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:14px; font-size:15px; font-weight:700; cursor:pointer; width:100%; transition:border-color .15s, background .15s;}
+  .cf-cta:hover{border-color:var(--line-2); background:var(--surface);}
+  .cf-code{border:1px solid var(--line); border-radius:5px; padding:16px; text-align:left; background:var(--surface); margin-top:12px;}
+  .cf-codebox{height:48px; border:1px dashed rgba(124,58,237,.45); border-radius:4px; background:rgba(124,58,237,.07); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; letter-spacing:4px; color:#ede9fe; font-variant-numeric:tabular-nums; margin:10px 0;}
+  .cf-copy-row{display:flex; gap:8px; margin-top:6px;}
+  .cf-copy-btn{flex:1; border:1px solid var(--line); background:var(--surface2); color:var(--ink); border-radius:7px; padding:9px; font-size:12px; font-weight:600; cursor:pointer; transition:border-color .15s;}
+  .cf-copy-btn:hover{border-color:var(--line-2);}
+  .cf-bulk{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:4px; background:var(--surface); padding:12px 14px; font-size:13px; font-weight:600; margin-top:12px;}
+  .twocol{display:grid; grid-template-columns:1fr 2fr; gap:24px;}
   @media(max-width:720px){ .twocol{grid-template-columns:1fr;} .grid{grid-template-columns:repeat(2,1fr);} }
 
   .note{max-width:var(--maxw); margin:0 auto 8px; padding:0 16px;}
@@ -809,7 +921,7 @@
   .search .mag{width:16px; height:16px; border:2px solid var(--mut); border-radius:50%; position:relative; flex:0 0 auto;}
   .search .mag::after{content:""; position:absolute; right:-5px; bottom:-3px; width:7px; height:2px; background:var(--mut); transform:rotate(45deg);}
   .search .ph{color:var(--mut); font-size:13px;}
-  .search{position:relative;} .search:focus-within{border-color:var(--brand); box-shadow:0 0 0 3px rgba(124,58,237,.16);}
+  .search{position:relative;} .search:focus-within{border-color:var(--mut); box-shadow:0 0 0 3px rgba(143,151,163,.14);}
   #searchWrap{display:none;}   /* search hidden for now */
   /* in-house custom select (settings modal) */
   #settingsModal .co-box{overflow:visible;}
@@ -844,7 +956,7 @@
     padding:9px 14px; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); z-index:1;}
   .sdd-row{display:flex; align-items:center; gap:12px; padding:11px 14px; border-bottom:1px solid #1c2128; cursor:pointer; transition:background-color .12s var(--ease-out);}
   .sdd-row:hover{background:rgba(124,58,237,.08);}
-  .sdd-logo{width:34px; height:34px; border-radius:4px; background:linear-gradient(135deg,#9d5cff,#4c1d95); color:#fff; font-weight:800; font-size:14px;
+  .sdd-logo{width:34px; height:34px; border-radius:4px; background:#9d5cff; color:#fff; font-weight:800; font-size:14px;
     display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
   .sdd-main{flex:1; min-width:0;}
   .sdd-title{font-size:13px; font-weight:600; color:var(--ink);}
@@ -928,25 +1040,10 @@
   .panel.active .hero-cta{animation-delay:.15s;}
   @keyframes heroRise{from{opacity:0; transform:translateY(10px); filter:blur(4px);} to{opacity:1; transform:none; filter:blur(0);}}
   @media(max-width:720px){ .hero-acc{flex-direction:column; height:auto;} .panel{min-height:84px;} .panel.active{min-height:240px;} .panel .mini{writing-mode:horizontal-tb; transform:none; top:16px; bottom:auto;} }
-  .sk-nav-in{max-width:var(--maxw); margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:20px; box-sizing:border-box;}
-  .sk-nav-brand{display:flex; align-items:center; gap:8px; flex:0 0 auto; user-select:none; cursor:pointer;}
-  .sk-nav-avatar{width:34px; height:34px; border-radius:50%; overflow:hidden; flex:0 0 auto; border:2px solid rgba(255,255,255,.15);}
-  .sk-nav-avatar img{width:100%; height:100%; object-fit:cover;}
-  .sk-nav-powered{font-size:12px; color:rgba(255,255,255,.45);}
-  .sk-nav-powered strong{color:rgba(255,255,255,.8); font-weight:600;}
-  .sk-nav-support{margin:0 auto; padding:9px 18px; border:1px solid rgba(255,255,255,.14); border-radius:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.8); display:flex; align-items:center; gap:9px; white-space:nowrap; cursor:pointer; transition:border-color .15s var(--ease-out), color .15s var(--ease-out);}
-  .sk-nav-support:hover{border-color:rgba(255,255,255,.3); color:#fff;}
-  .sk-nav-right{display:flex; align-items:center; gap:10px; flex:0 0 auto;}
-  .sk-nav-region{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.85); cursor:pointer; padding:9px 16px; border-radius:8px; background:#1a1a1a; border:1px solid rgba(255,255,255,.1); transition:background-color .15s var(--ease-out);}
-  .sk-nav-region:hover{background:#222;}
-  .sk-nav-sep{color:rgba(255,255,255,.2); margin:0 2px;}
-  .sk-caret{font-size:14px; color:rgba(255,255,255,.5); margin-left:2px;}
-    .signin{padding:8px 12px;}
-  .pdp-art{position:relative; aspect-ratio:4/5; min-height:0; background:#14161b; padding:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .pdp-art{position:relative; aspect-ratio:3/4; max-height:420px; min-height:0; background:#14161b; padding:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
   .pdp-art .pc-logo{width:40px; height:40px;}
   .pdp-art .pc-cat{font-size:11px;}
   .pdp-elig{margin-top:0;}
-  .elig-h{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--mut); margin-bottom:8px;}
   .elig-flags{display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
   .elig-flag{display:inline-flex; align-items:center; gap:6px; font-size:12px; border:1px solid var(--line); background:var(--surface2); padding:5px 10px; border-radius:8px; color:var(--ink-2);}
   .elig-flag .fl{font-size:14px; line-height:1;}
@@ -957,7 +1054,7 @@
   #eligModal .elig-all{grid-template-columns:repeat(3,1fr); gap:0;}
   .em-search-wrap{padding:12px 18px 0; position:sticky; top:0; background:var(--surface); z-index:1;}
   .em-search{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:9px 14px 9px 36px; font-size:13px; color:#fff; font-family:"Sora",sans-serif; outline:none; transition:border-color .15s var(--ease-out); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238F97A3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:12px center;}
-  .em-search:focus{border-color:var(--brand);}
+  .em-search:focus{border-color:var(--mut);}
   .em-search::placeholder{color:var(--mut);}
   .em-item{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-2); padding:8px 10px; border-radius:8px; transition:background-color .12s var(--ease-out); cursor:default;}
   .em-item:hover{background:var(--surface2); color:#fff;}
@@ -996,13 +1093,11 @@
   .qstep .q-btn{width:38px; padding:9px 0; text-align:center; font-size:16px; font-weight:600; color:var(--ink-2); background:var(--surface2); cursor:pointer; user-select:none; transition:background-color .12s var(--ease-out);}
   .qstep .q-btn:hover{background:var(--fill); color:#fff;}
   .qstep .q-val{min-width:46px; text-align:center; font-size:14px; font-weight:700; font-variant-numeric:tabular-nums;}
-  .pdp-arttitle{position:absolute; left:18px; bottom:18px; color:#fff; font-size:26px; font-weight:800; letter-spacing:-.02em; text-shadow:0 2px 14px rgba(0,0,0,.5);}
   .lribbon{position:absolute; top:12px; left:-27px; width:90px; background:#c4ff3d; color:#0a1f06; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; text-align:center; line-height:1.35; padding:4px 0; transform:rotate(-45deg); z-index:4; pointer-events:none;}
   .pdp-buy{display:flex; flex-direction:column; gap:18px;}
   .pdp-buy-head{display:flex; flex-direction:column; gap:5px;}
   .pdp-field{display:flex; flex-direction:column; gap:9px;}
   .pdp-field .lbl{margin-bottom:0;}
-  .pdp-cta{display:flex; flex-direction:column; gap:8px; margin-top:8px;}
   .pdp-head-title{font-family:var(--font-display); font-size:30px; font-weight:800; letter-spacing:-.025em; line-height:1.1; color:#fff;}
   .pdp-head-sub{font-size:13px; color:var(--ink-2); line-height:1.5;}
   .pdp-head-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
@@ -1019,7 +1114,7 @@
   #pdp .step .st-h{font-size:17px; font-weight:700; margin-bottom:8px; letter-spacing:-.01em; color:#fff;}
   #pdp .step .st-p{color:var(--mut); font-size:13px; line-height:1.55; max-width:100%;}
   @media(max-width:720px){#pdp .steps{gap:10px;} #pdp .step,#pdp .step:first-child{border:1px solid var(--line); border-top:1px solid var(--line); padding:20px;}}
-  .signin{border:1px solid #7C3AED; background:#7C3AED; color:#fff; padding:10px 22px; font-size:13px; cursor:pointer; flex:0 0 auto; border-radius:8px; font-weight:600;}
+  div#rzpModal{position:fixed; inset:0; z-index:200; background:rgba(6,7,10,.7); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:16px;}
   .rzp-box{width:1000px; max-width:100%; height:670px; max-height:94vh; display:grid; grid-template-columns:360px 1fr; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 34px 90px rgba(0,0,0,.55); color:#1b1f2a; font-family:var(--font);}
   .rzp-left{background:#3c3c9e; color:#fff; padding:26px 22px; display:flex; flex-direction:column; gap:18px; overflow:auto;}
   .rzp-brand{display:flex; align-items:center; gap:13px;}
@@ -1108,8 +1203,11 @@
   <div class="sk-nav-in">
 
     <!-- LEFT: brand -->
-    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" aria-label="Sevkaan's store home">
-      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar.jpg" alt="Sevkaan"></span>
+    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" style="cursor:pointer;">
+      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar2.png" alt="Sevkaan"></span>
+      <span class="sk-nav-name">Sevkaan's Store</span>
+      <span class="sk-nav-check"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 1.5 13.18 3.6l3-.52 1.04 2.88 2.88 1.04-.52 3L21.5 11l-1.92 2.08.52 3-2.88 1.04-1.04 2.88-3-.52L11 21.5l-2.18-2.02-3 .52-1.04-2.88-2.88-1.04.52-3L.5 11l1.92-2.08-.52-3 2.88-1.04L5.82 2l3 .52Z" fill="#5B21B6"/><path d="M7.5 11.5l2.5 2.5 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="sk-nav-divider">|</span>
       <span class="sk-nav-powered">Powered by <strong>Athena Gaming</strong></span>
     </div>
 
@@ -1165,10 +1263,110 @@
   <span class="ot-x" id="timerClose">&times;</span>
   <div class="ot-tag">Best offer ends in</div>
   <div class="ot-title">Extra 8% off Steam Wallet</div>
-  <div class="ot-clock"><span class="seg" id="otH">02</span><span class="colon">:</span><span class="seg" id="otM">59</span><span class="colon">:</span><span class="seg" id="otS">59</span></div>
+  <div class="ot-clock">
+    <div class="seg-wrap"><span class="seg" id="otH">02</span><span class="seg-lbl">HRS</span></div>
+    <span class="colon">:</span>
+    <div class="seg-wrap"><span class="seg" id="otM">59</span><span class="seg-lbl">MIN</span></div>
+    <span class="colon">:</span>
+    <div class="seg-wrap"><span class="seg" id="otS">59</span><span class="seg-lbl">SEC</span></div>
+  </div>
 </div>
 
 <!-- update settings: region / language / currency -->
+<div class="gmodal" id="eligModal">
+  <div class="co-box">
+    <div class="co-head"><span id="eligModalTitle">Where this card works</span><span class="co-x" id="eligClose">&times;</span></div>
+    <div class="em-search-wrap"><input type="text" id="eligSearch" class="em-search" placeholder="Search countries…" autocomplete="off"></div>
+    <div class="co-body">
+      <div class="elig-all" id="eligAll"></div>
+      <div class="elig-note" id="eligNote"></div>
+    </div>
+  </div>
+</div>
+
+<!-- signed-in checkout: Razorpay-style overlay -->
+<div class="rzp" id="rzpModal" style="display:none;">
+  <div class="rzp-box">
+    <!-- brand / summary panel -->
+    <div class="rzp-left">
+      <div class="rzp-brand">
+        <span class="lg"><img src="assets/sevkaan-avatar.jpg" alt=""></span>
+        <div>
+          <div class="rzp-bn">Sevkaan</div>
+          <div class="rzp-trust"><svg viewBox="0 0 24 24" fill="#22c55e" width="14" height="14"><path d="M12 2 4 5v6c0 5 3.4 7.7 8 9 4.6-1.3 8-4 8-9V5l-8-3z"/></svg> Razorpay Trusted Business</div>
+        </div>
+      </div>
+      <div class="rzp-card">
+        <div class="rzp-card-h">Order summary <span>&rsaquo;</span></div>
+        <div class="rzp-os">
+          <div class="rzp-os-thumb" id="rzpThumb">V</div>
+          <div class="rzp-os-main">
+            <div class="rzp-os-t" id="rzpItem">Valorant · 1000 VP</div>
+            <div class="rzp-os-q" id="rzpQty">Qty. 1</div>
+          </div>
+          <div class="rzp-os-p" id="rzpPrice">€9.49</div>
+        </div>
+      </div>
+      <div class="rzp-card rzp-coupons">
+        <span class="rzp-coup-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M20 12a2 2 0 0 1 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3a2 2 0 0 1 0 4v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 1-2-2z"/></svg></span>
+        <div><div class="rzp-coup-t">Coupons and offers</div><div class="rzp-coup-s">6 offers available</div></div>
+        <span class="rzp-coup-car">&rsaquo;</span>
+      </div>
+      <div class="rzp-foot">Secured by <b>Razorpay</b></div>
+    </div>
+
+    <!-- step panel -->
+    <div class="rzp-right">
+      <span class="rzp-x" id="rzpClose">&times;</span>
+      <div class="rzp-steps">
+        <span class="rzp-step on" data-step="contact">Contact</span><span class="rzp-sep">&rsaquo;</span>
+        <span class="rzp-step" data-step="address">Address</span><span class="rzp-sep">&rsaquo;</span>
+        <span class="rzp-step" data-step="payment">Payment</span>
+      </div>
+
+      <!-- step 1: contact -->
+      <div class="rzp-pane on" data-pane="contact">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <div class="rzp-h">Contact details</div>
+        <div class="rzp-sub">Confirm your details to continue</div>
+        <div class="rzp-row">
+          <div class="rzp-input rzp-cc">🇮🇳 +91 &#9662;</div>
+          <input class="rzp-input" id="rzpPhone" placeholder="Mobile number" value="9664458289" inputmode="numeric">
+        </div>
+        <input class="rzp-input" id="rzpEmail" placeholder="Email address" value="alex@gmail.com">
+        <label class="rzp-chk"><input type="checkbox" checked> Send me offers and order updates</label>
+        <button class="rzp-cont" data-next="address">Continue</button>
+        <div class="rzp-mbp"><svg viewBox="0 0 24 24" width="16" height="16" fill="#3d3dab"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="12" fill="#fff" text-anchor="middle">₹</text></svg> Money Back Promise by <b>Razorpay</b></div>
+      </div>
+
+      <!-- step 2: address -->
+      <div class="rzp-pane" data-pane="address">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="rzp-h">Billing address</div>
+        <div class="rzp-sub">Gift cards are delivered by email, this is for your receipt</div>
+        <input class="rzp-input" placeholder="Full name" value="Alex Gamer">
+        <input class="rzp-input" placeholder="Address line">
+        <div class="rzp-row"><input class="rzp-input" placeholder="City"><input class="rzp-input" placeholder="Postal code"></div>
+        <button class="rzp-cont" data-next="payment">Continue</button>
+      </div>
+
+      <!-- step 3: payment -->
+      <div class="rzp-pane" data-pane="payment">
+        <div class="rzp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1b1f2a" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div class="rzp-h">Payment</div>
+        <div class="rzp-sub">Choose how you'd like to pay</div>
+        <div class="rzp-pay-opt sel"><span class="rzp-po-ic">💳</span> Card · Visa, Mastercard, Amex</div>
+        <div class="rzp-pay-opt"><span class="rzp-po-ic">📱</span> UPI · GPay, PhonePe, Paytm</div>
+        <div class="rzp-pay-opt"><span class="rzp-po-ic">🏦</span> Netbanking</div>
+        <button class="rzp-cont" id="rzpPay">Pay €9.49</button>
+        <div class="rzp-mbp"><svg viewBox="0 0 24 24" width="16" height="16" fill="#3d3dab"><circle cx="12" cy="12" r="10"/></svg> 256-bit encrypted · secured by Razorpay</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 24/7 refunds popup -->
+
 <div class="gmodal" id="settingsModal">
   <div class="co-box" style="width:440px;">
     <div class="co-head"><span>Update your settings</span><span class="co-x" id="setClose">&times;</span></div>
@@ -1216,25 +1414,85 @@
 </div>
 
 <!-- my orders popup -->
-<div class="gmodal" id="ordersModal">
-  <div class="co-box">
-    <div class="co-head"><span>My orders</span><span class="co-x" id="ordersClose">&times;</span></div>
-    <div class="co-body">
-      <div class="ord-row">
-        <div class="art">CARD</div>
-        <div class="meta"><div class="t">Xbox · €50</div><div class="s">Jun 14, 2026 · code XXXX-XXXX</div><div class="ord-status">Delivered</div></div>
-        <div class="amt">€47.00</div>
+<section class="screen" id="orders">
+  <div class="ord-pg-wrap">
+    <div class="ord-pg-hd">
+      <button class="ord-pg-back" id="ordersClose">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <div>
+        <div class="ord-pg-title">My Account</div>
+        <div class="ord-pg-sub">Manage your orders</div>
       </div>
-      <div class="ord-row">
-        <div class="art">CARD</div>
-        <div class="meta"><div class="t">Steam Wallet · €25</div><div class="s">Jun 02, 2026 · code XXXX-XXXX</div><div class="ord-status">Delivered</div></div>
-        <div class="amt">€23.75</div>
+    </div>
+    <div class="ord-v2-body" id="ordersBody"><!-- filled by JS --></div>
+  </div>
+</section>
+
+<!-- support ticket modal -->
+<div class="gmodal" id="ticketModal">
+  <div class="tick-box">
+    <div class="tick-hd" id="ticketHd">
+      <div class="tick-hd-left">
+        <div class="tick-hd-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="tick-title">Report an Issue</div>
       </div>
-      <div class="ord-row">
-        <div class="art">CARD</div>
-        <div class="meta"><div class="t">Netflix · €25</div><div class="s">May 21, 2026 · code XXXX-XXXX</div><div class="ord-status">Delivered</div></div>
-        <div class="amt">€24.00</div>
+      <span class="tick-close" id="ticketClose">&times;</span>
+    </div>
+    <div class="tick-sub" id="ticketSub">Create a support ticket for your order. We'll get back to you as soon as possible.</div>
+
+    <div id="ticketForm">
+      <!-- category -->
+      <div class="tick-field">
+        <div class="tick-lbl">Category <span class="tick-req">*</span></div>
+        <select class="tick-sel" id="ticketCategory">
+          <option value="">What's this about?</option>
+          <option value="order">Order Issue</option>
+          <option value="other">Other</option>
+        </select>
       </div>
+
+      <!-- order pick (shown when category = order) -->
+      <div class="tick-field" id="ticketOrderField" style="display:none;">
+        <div class="tick-lbl">Select Order <span class="tick-req">*</span></div>
+        <div class="tick-dd" id="ticketOrderDD">
+          <button type="button" class="tick-dd-trigger" id="ticketOrderTrigger">
+            <span class="tick-dd-tx" id="ticketOrderLabel"><span class="ph">Select an order</span></span>
+            <svg class="tick-dd-chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tick-dd-menu" id="ticketOrderPick"><!-- filled by JS --></div>
+        </div>
+      </div>
+
+      <!-- subject -->
+      <div class="tick-field">
+        <div class="tick-lbl">Subject <span class="tick-req">*</span></div>
+        <input type="text" class="tick-input" id="ticketSubject" maxlength="200" placeholder="Brief summary of your issue">
+        <div class="tick-counter"><span id="ticketSubjectCount">0</span>/200</div>
+      </div>
+
+      <!-- description -->
+      <div class="tick-field">
+        <div class="tick-lbl">Description <span class="tick-req">*</span></div>
+        <textarea class="tick-input tick-textarea" id="ticketDesc" maxlength="2000" placeholder="Please describe your issue in detail. Include any relevant information such as error messages, steps to reproduce, etc."></textarea>
+        <div class="tick-counter"><span id="ticketDescCount">0</span>/2000</div>
+      </div>
+
+      <div class="tick-footer">
+        <button class="tick-cancel" id="ticketCancel">Cancel</button>
+        <button class="tick-submit" id="ticketSubmit">Submit Ticket</button>
+      </div>
+    </div>
+
+    <div class="tick-success" id="ticketSuccess" style="display:none;">
+      <div class="tick-success-ic">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Ticket Submitted</h3>
+      <p>We've received your request and will respond within 24 hours.<br>Check your email for a confirmation.</p>
+      <button class="tick-submit" id="ticketDone" style="margin-top:8px;">Done</button>
     </div>
   </div>
 </div>
@@ -1355,7 +1613,7 @@
         <div class="sec-head">
           <div><div class="sec-over">Top up</div><div class="sec-h">Featured: Valorant Points</div>
           <div class="sec-sub" style="margin-bottom:0;">Top up instantly. Pick an amount and buy in one tap.</div></div>
-          <a class="feat-cat-btn" onclick="goScreen('s1')">View full catalogue &#8594;</a>
+          <a class="feat-cat-btn" id="viewCatalogueBtn">View full catalogue &#8594;</a>
         </div>
         <div class="feat-sku">
           <div class="val-fx"><span class="vc tl"></span><span class="vc tr"></span><span class="vc bl"></span><span class="vc br"></span></div>
@@ -1372,21 +1630,17 @@
       </div>
 
       <!-- section title -->
-      <div class="sec-head" style="margin-top:56px;">
+      <div class="sec-head" style="margin-top:56px;" id="catalogueSection">
         <div>
           <div class="sec-over">Catalogue</div>
           <div class="sec-h">All gift cards</div>
-        </div>
-        <div class="view-toggle" id="viewToggle">
-          <button type="button" class="vt-btn on" data-view="grid" aria-label="Grid view"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></button>
-          <button type="button" class="vt-btn" data-view="list" aria-label="List view"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="3.5" rx="1.5"/><rect x="3" y="10.25" width="18" height="3.5" rx="1.5"/><rect x="3" y="16.5" width="18" height="3.5" rx="1.5"/></svg></button>
         </div>
       </div>
 
       <!-- product grid: each card carries logo · discount · category · title · delivery · denominations · strike+now price · save% · View -->
       <div class="grid nu-grid" id="productGrid"><!-- populated by JS --></div>
       <div style="display:flex; justify-content:center; margin-top:32px;">
-        <button class="view-more-btn">View more gift cards</button>
+        <button class="view-more-btn" id="viewMoreBtn">View more gift cards</button>
       </div>
 
       <!-- ===== STATS BAND: fans served · avg discount · value sold · rating ===== -->
@@ -1515,17 +1769,17 @@
           <div class="review">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p class="rtext">"Code hit my inbox before I'd closed the tab. Saved a few euros too, won't buy VP anywhere else now."</p>
-            <div class="who"><span class="av" style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">L</span><div><div class="who-n">Liam R.</div><div class="who-m">Verified buyer</div></div></div>
+            <div class="who"><span class="av" style="background:#7c4dff;">L</span><div><div class="who-n">Liam R.</div><div class="who-m">Verified buyer</div></div></div>
           </div>
           <div class="review">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p class="rtext">"Nervous about region cards, but the eligibility note made it obvious. Picked Global, worked first try."</p>
-            <div class="who"><span class="av" style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">A</span><div><div class="who-n">Aanya S.</div><div class="who-m">Verified buyer</div></div></div>
+            <div class="who"><span class="av" style="background:#9d5cff;">A</span><div><div class="who-n">Aanya S.</div><div class="who-m">Verified buyer</div></div></div>
           </div>
           <div class="review">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p class="rtext">"Refund on an unused code at 2am, no questions. That's the part nobody else gets right."</p>
-            <div class="who"><span class="av" style="background:linear-gradient(135deg,#1db954,#0a5c2a);">M</span><div><div class="who-n">Mateo G.</div><div class="who-m">Verified buyer</div></div></div>
+            <div class="who"><span class="av" style="background:#1db954;">M</span><div><div class="who-n">Mateo G.</div><div class="who-m">Verified buyer</div></div></div>
           </div>
         </div>
       </div>
@@ -1561,9 +1815,8 @@
             <div class="logo"><span class="mark"><img src="assets/sevkaan-avatar.jpg" alt=""></span>Sevkaan</div>
             <p class="ft-tag">Official gift cards and game top-ups, delivered in seconds. Built by gamers, priced for everyone.</p>
           </div>
-          <div class="ft-col"><h4>Shop</h4><a>Steam Wallet</a><a>Valorant</a><a>Xbox</a><a>Roblox</a><a>Minecraft</a><a>Robux</a></div>
-          <div class="ft-col"><h4>Support</h4><a>Help center</a><a>24/7 Refunds</a><a>Track an order</a><a>Contact us</a></div>
-          <div class="ft-col"><h4>Company</h4><a>About</a><a>Careers</a><a>Terms</a><a>Privacy</a></div>
+          <div class="ft-col"><h4>Shop</h4><a data-sku="Steam Wallet">Steam Wallet</a><a data-sku="Valorant">Valorant</a><a data-sku="Xbox">Xbox</a><a data-sku="Roblox">Roblox</a><a data-sku="Minecraft">Minecraft</a><a data-sku="Robux">Robux</a></div>
+          <div class="ft-col"><h4>Support</h4><a data-ft="support">24/7 Support</a><a data-ft="orders">Track an order</a></div>
         </div>
         <div class="ft-word">SEVKAAN</div>
         <div class="ft-bottom">
@@ -1588,8 +1841,7 @@
       <div class="twocol">
         <!-- left: card visual + surfaced info -->
         <div class="pdp-left">
-          <div class="pdp-art" id="pdpArt" style="background:linear-gradient(180deg, rgba(11,13,18,.1), rgba(11,13,18,.8)), url('assets/valorant.jpg') center 18%/cover;">
-            <div class="pdp-arttitle" id="pdpArtTitle">VALORANT</div>
+          <div class="pdp-art" id="pdpArt" style="background:url('assets/valorant.jpg') center 18%/cover;">
           </div>
 
           <!-- country eligibility: where this card works -->
@@ -1639,53 +1891,6 @@
         </div>
       </div>
 
-      <!-- ===== TRUST BENTO (full width) ===== -->
-      <div class="tband">
-        <div class="tband-head">
-          <span class="tband-pill">Why Sevkaan</span>
-          <h2 class="tband-title">One promise:<br>instant, official, protected.</h2>
-        </div>
-
-        <div class="tband-grid">
-          <!-- tall rating card -->
-          <div class="tcard tcard-rating">
-            <div class="travatars">
-              <span style="background:linear-gradient(135deg,#ff4655,#7a1020);">J</span>
-              <span style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">P</span>
-              <span style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">D</span>
-              <span class="more">+8k</span>
-            </div>
-            <div class="trate-num">4.9<span>/ 5</span></div>
-            <div class="trate-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="tcard-sub">Rated by 8,400+ verified buyers worldwide</div>
-          </div>
-
-          <div class="tcard">
-            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
-            <div class="tcard-t">Instant delivery</div>
-            <div class="tcard-sub">Code in your inbox within 60 seconds.</div>
-          </div>
-
-          <div class="tcard">
-            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
-            <div class="tcard-t">100% official codes</div>
-            <div class="tcard-sub">Authorized distributors, every code verified.</div>
-          </div>
-
-          <div class="tcard">
-            <div class="tstat-num">100%</div>
-            <div class="tcard-t">Money-back guarantee</div>
-            <div class="tcard-sub">Encrypted checkout. Full refund on any issue, no questions asked.</div>
-          </div>
-
-          <div class="tcard">
-            <div class="tstat-num">24/7</div>
-            <div class="tcard-t">Always on</div>
-            <div class="tcard-sub">Live chat in every time zone.</div>
-          </div>
-        </div>
-      </div>
-
       <!-- ===== HOW TO REDEEM ===== -->
       <div class="sec">
         <div class="sec-h">How to redeem</div>
@@ -1710,9 +1915,9 @@
         <div class="sec-h">Reviews</div>
         <div class="sec-sub">4.9 / 5 · 8,400+ buyers</div>
         <div class="reviews">
-          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Cheapest VP I've found and it actually arrives instantly. Bought three times now."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#ff4655,#7a1020);">J</span><div><div class="who-n">Jordan K.</div><div class="who-m">Verified buyer</div></div></div></div>
-          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Region eligibility was crystal clear, no guesswork. Code worked on my EU account right away."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">P</span><div><div class="who-n">Priya N.</div><div class="who-m">Verified buyer</div></div></div></div>
-          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Checkout took ten seconds with Google sign-in. Smoothest top-up I've used."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">D</span><div><div class="who-n">Deniz A.</div><div class="who-m">Verified buyer</div></div></div></div>
+          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Cheapest VP I've found and it actually arrives instantly. Bought three times now."</p><div class="who"><span class="av" style="background:#ff4655;">J</span><div><div class="who-n">Jordan K.</div><div class="who-m">Verified buyer</div></div></div></div>
+          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Region eligibility was crystal clear, no guesswork. Code worked on my EU account right away."</p><div class="who"><span class="av" style="background:#9d5cff;">P</span><div><div class="who-n">Priya N.</div><div class="who-m">Verified buyer</div></div></div></div>
+          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Checkout took ten seconds with Google sign-in. Smoothest top-up I've used."</p><div class="who"><span class="av" style="background:#7c4dff;">D</span><div><div class="who-n">Deniz A.</div><div class="who-m">Verified buyer</div></div></div></div>
         </div>
       </div>
 
@@ -1729,9 +1934,8 @@
             <div class="logo"><span class="mark"><img src="assets/sevkaan-avatar.jpg" alt=""></span>Sevkaan</div>
             <p class="ft-tag">Official gift cards and game top-ups, delivered in seconds. Built by gamers, priced for everyone.</p>
           </div>
-          <div class="ft-col"><h4>Shop</h4><a>Valorant</a><a>Steam Wallet</a><a>PlayStation</a><a>Xbox</a><a>Netflix</a></div>
-          <div class="ft-col"><h4>Support</h4><a>Help center</a><a>24/7 Refunds</a><a>Track an order</a><a>Contact us</a></div>
-          <div class="ft-col"><h4>Company</h4><a>About</a><a>Careers</a><a>Terms</a><a>Privacy</a></div>
+          <div class="ft-col"><h4>Shop</h4><a data-sku="Steam Wallet">Steam Wallet</a><a data-sku="Valorant">Valorant</a><a data-sku="Xbox">Xbox</a><a data-sku="Roblox">Roblox</a><a data-sku="Minecraft">Minecraft</a><a data-sku="Robux">Robux</a></div>
+          <div class="ft-col"><h4>Support</h4><a data-ft="support">24/7 Support</a><a data-ft="orders">Track an order</a></div>
         </div>
         <div class="ft-bottom">
           <span>© 2026 Sevkaan. All rights reserved.</span>
@@ -1807,45 +2011,78 @@
 
 <!-- ============ 4. CONFIRMATION ============ -->
 <section class="screen" id="confirm">
-  <div class="frame">
-    <div class="frame-label">Screen 4 — Confirmation / Delivery <span>order success</span></div>
-    <div class="pad">
+  <div class="cf-back-bar">
+    <button class="cf-back-btn" id="confirmBackToOrders">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to My Orders
+    </button>
+  </div>
+  <div style="max-width:560px; margin:0 auto; padding:24px 16px 48px;">
+    <div class="cf-wrap">
 
-
-      <div style="max-width:560px; margin:10px auto;" class="stack">
-        <div style="text-align:center;" class="stack">
-          <div class="success-check" id="successCheck">
-            <svg viewBox="0 0 52 52"><circle class="sc-ring" cx="26" cy="26" r="24"/><path class="sc-tick" d="M14 27l8 8 16-16"/></svg>
-          </div>
-          <div class="cf-h" id="confirmTitle" style="font-family:var(--font-display); font-size:28px; font-weight:700; letter-spacing:-.025em;">Order confirmed</div>
-          <div class="muted" id="confirmSub">1 gift card delivered · receipt sent to your email</div>
-          <div class="cf-order" id="confirmOrderNo">Order #VG-00427</div>
+      <!-- hero -->
+      <div class="cf-hero">
+        <div class="success-check" id="successCheck">
+          <svg viewBox="0 0 52 52"><circle class="sc-ring" cx="26" cy="26" r="24"/><path class="sc-tick" d="M14 27l8 8 16-16"/></svg>
         </div>
-
-        <!-- "redeem all" appears only for multi-card orders -->
-        <div class="cf-bulk" id="confirmBulk" style="display:none;">
-          <span id="confirmBulkText">3 codes delivered</span>
-          <div class="btn ghost" style="padding:7px 12px;" id="copyAll">Copy all codes</div>
-        </div>
-
-        <!-- one code block per gift card -->
-        <div class="stack" id="confirmCodes"><!-- filled by JS --></div>
-
-        <!-- receipt summary -->
-        <div class="card stack" style="text-align:left;">
-          <div class="lbl">Receipt</div>
-          <div class="row"><div class="muted" style="flex:1;" id="confirmReceiptLine">Valorant 1000 VP × 1</div><div style="font-weight:700;" id="confirmReceiptTotal">€9.49</div></div>
-          <div class="muted">A copy of every code was emailed instantly.</div>
-        </div>
-
-        <div class="btn ghost" style="margin-top:4px;" id="confirmBack">Back to store</div>
+        <div class="cf-title" id="confirmTitle">Order Complete!</div>
+        <div class="cf-sub" id="confirmSub">Your gift card has been delivered successfully. A copy has been sent to your email address.</div>
       </div>
+
+      <hr class="cf-divider">
+
+      <!-- order metadata grid -->
+      <div class="cf-meta">
+        <div class="cf-field">
+          <div class="cf-field-lbl">Order Number</div>
+          <div class="cf-field-val mono" id="confirmOrderNo">INF-0000000000000-0000</div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Status</div>
+          <div><span class="cf-fulfilled">Fulfilled</span></div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Amount Paid</div>
+          <div class="cf-field-val" id="confirmAmountPaid">€9.49</div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Order ID</div>
+          <div class="cf-field-val mono" id="confirmOrderId">—</div>
+        </div>
+      </div>
+
+      <hr class="cf-divider">
+
+      <!-- items -->
+      <div style="padding:20px 0 4px;">
+        <div class="cf-items-lbl">Items</div>
+        <div id="confirmItems"><!-- filled by JS --></div>
+      </div>
+
+      <!-- bulk copy bar (multi-card only) -->
+      <div class="cf-bulk" id="confirmBulk" style="display:none;">
+        <span id="confirmBulkText">3 codes delivered</span>
+        <button class="cf-copy-btn" style="flex:0 0 auto; padding:7px 14px;" id="copyAll">Copy all codes</button>
+      </div>
+
+      <!-- code blocks (one per card) -->
+      <div id="confirmCodes"></div>
+
+      <!-- email notification -->
+      <div class="cf-email-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        <span>A copy of your gift card code has been sent to your email address.</span>
+      </div>
+
+      <!-- support -->
+      <div class="cf-support">Need help? Contact us at <a href="mailto:hi@athenagaming.gg">hi@athenagaming.gg</a></div>
+
+      <!-- CTA -->
+      <button class="cf-cta" id="confirmBack">Continue Shopping</button>
 
     </div>
   </div>
 </section>
-
-<div class="note muted" style="text-align:center; margin:30px auto;">Lo-fi wireframe · grayscale · structure only · no final styling</div>
 <div class="toast" id="toast">Copied!</div>
 
 <script>
@@ -1943,7 +2180,7 @@
   var curItems    = CUR_LIST.map(function(c){ return {value:c.code,label:c.name}; });
   var csLang, csCur;
   var csRegion = makeSelect(document.getElementById('csRegion'), regionItems, selected, function(v){
-    csLang.set(suggestLang(v)); csCur.set(curOf(v));   // region pre-fills language + currency
+    csCur.set(curOf(v));   // region pre-fills currency; language is nudged after save (not forced)
   }, function(val, opt){
     // selected pinned, then preferred countries, then all A–Z
     var h = '<div class="cs-head">Selected</div>' + opt(val);
@@ -1961,6 +2198,7 @@
     setModal.classList.add('open');
   }
   document.getElementById('setSave').addEventListener('click', function(){
+    var prevRegion = selected;
     selected = csRegion.get(); selLang = csLang.get(); selCur = csCur.get();
     currentLang = selLang;
     setRegionLabel();
@@ -1968,6 +2206,8 @@
     if(typeof refreshPdpForRegion === 'function') refreshPdpForRegion();
     setModal.classList.remove('open');
     toast('Settings saved');
+    // nudge a language switch if the new region has a language we support
+    if(selected !== prevRegion) setTimeout(function(){ maybeOfferLanguage(selected); }, 350);
   });
   document.getElementById('setCancel').addEventListener('click', function(){ setModal.classList.remove('open'); });
   document.getElementById('setClose').addEventListener('click', function(){ setModal.classList.remove('open'); });
@@ -1980,9 +2220,12 @@
     {mono:"S", art:"assets/cards/steam-card.png",    c1:"#1b3a5c", c2:"#0e1b2e", cat:"Wallet",  title:"Steam Wallet",   sub:"The world's biggest PC gaming store.", denoms:["€5","€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%",  rating:"4.9", sold:"42k", blocked:[], offer:null},
     {mono:"V", art:"assets/cards/valorant-card.png", c1:"#c03030", c2:"#500a0a", cat:"Gaming",  title:"Valorant",       sub:"Top up your VP and get new skins.", denoms:["€5","€10","€20","€50"],        strike:"€10.00", now:"€8.80",  save:"12%", rating:"4.9", sold:"38k", blocked:[], offer:{type:"sku", label:"12% off all denominations"}},
     {mono:"X", art:"assets/cards/xbox-card.png",     c1:"#1a6e1a", c2:"#0a3d0a", cat:"Gaming",  title:"Xbox",           sub:"Games, DLC, and Game Pass credits.", denoms:["€15","€25","€50","€100"],      strike:"€50.00", now:"€47.00", save:"6%",  rating:"4.9", sold:"18k", blocked:["China","UAE","United States"], offer:null},
-    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Buy Robux and unlock avatar items.", denoms:["€5","€10","€25","€50"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:[], offer:{type:"sku", label:"7% off all denominations"}},
+    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Buy Robux and unlock avatar items.", denoms:["€5","€10","€25","€50"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:["Turkey"], offer:{type:"sku", label:"7% off all denominations"}},
     {mono:"M", art:"assets/cards/minecraft-card.png",c1:"#3a6e2a", c2:"#1a3a10", cat:"Gaming",  title:"Minecraft",      sub:"Sandbox adventure. Endless possibilities.", denoms:["€10","€20","€50"],             strike:"€20.00", now:"€19.00", save:"5%",  rating:"4.8", sold:"21k", blocked:[], offer:null},
-    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Premium Robux packs for every player.", denoms:["€5","€10","€25","€50"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:[], offer:{type:"sku", label:"8% off all denominations"}}
+    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Premium Robux packs for every player.", denoms:["€5","€10","€25","€50"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:["Turkey"], offer:{type:"sku", label:"8% off all denominations"}},
+    {mono:"G", art:"assets/cards/genshin-card.png", c1:"#1f4e8c", c2:"#0c1f3a", cat:"Gaming",  title:"Genshin Impact",  sub:"Top up Genesis Crystals for wishes and gear.", denoms:["€5","€10","€25","€50"],   strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.9", sold:"27k", blocked:["Mexico"], offer:null},
+    {mono:"M", art:"assets/cards/marvel-rivals-card.png", pos:"center 20%", c1:"#5a2a8c", c2:"#1a0a33", cat:"Gaming", title:"Marvel Rivals", sub:"Buy Units for heroes, skins, and battle passes.", denoms:["€5","€10","€20","€50"], strike:"€20.00", now:"€18.40", save:"8%",  rating:"4.8", sold:"24k", blocked:["Turkey"], offer:{type:"sku", label:"8% off all denominations"}},
+    {mono:"B", art:"assets/cards/bgmi-card.png", pos:"center 22%", c1:"#8a5a1a", c2:"#3a2408", cat:"Gaming",  title:"Battlegrounds Mobile India", sub:"Top up UC for skins, crates, and the royale pass.", denoms:["€5","€10","€25","€50"], strike:"€25.00", now:"€23.25", save:"7%",  rating:"4.9", sold:"31k", blocked:["United States","United Kingdom","Europe","Turkey","Brazil","Mexico"], offer:{type:"sku", label:"7% off all denominations"}}
   ];
   // contextual tags computed from data (one badge per category leader)
   (function tagProducts(){
@@ -2029,18 +2272,11 @@
     var denomPills = p.denoms.slice(0,DENOM_CAP).map(function(d){ return '<span class="nu-denom">'+d+'</span>'; }).join('')+(extra>0?'<span class="nu-denom nu-denom-more">+'+extra+' more</span>':'');
     return ''+
     '<article class="pcard nu'+(off?' disabled':'')+'" data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'">'+
-      '<div class="nu-hero'+(p.art?' nu-hero-img':'')+'" style="'+(p.art?'background-image:url('+p.art+');':'background:radial-gradient(circle at top right,'+p.c1+' 0%,'+p.c2+' 52%,#04112d 100%)')+'">' +
-        (p.art ? '' :
-          '<div class="nu-top">'+
-            '<div class="nu-title">'+p.title+'</div>'+
-            (off ? '' : '<div class="nu-badge"><div class="v">'+parseInt(p.save,10)+'<span class="pct">%</span><span class="off">OFF</span></div>'+(p.offer&&p.offer.type==='sku'?'<div class="nu-badge-sub">ALL DENOMINATIONS</div>':'')+'</div>')+
-          '</div>'+
-          (off ? '<div class="nu-meta">Not available in your region yet</div>' : '')
-        )+
-        (!p.art ? '<div class="nu-art" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>' : '')+
+      '<div class="nu-hero'+(p.art?' nu-hero-img':'')+'" style="'+(p.art?'background-image:url('+p.art+');'+(p.pos?'background-position:'+p.pos+';':''):'background:radial-gradient(circle at top right,'+p.c1+' 0%,'+p.c2+' 52%,#04112d 100%)')+'">' +
+        (off ? '<div class="nu-not-avail"><span>Not available for your region</span></div>' : '')+
       '</div>'+
       '<div class="nu-foot">'+
-        (p.art ? '<div class="nu-foot-header"><div class="nu-foot-title">'+p.title+'</div><span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span></div>' : '')+
+        '<div class="nu-foot-header"><div class="nu-foot-title">'+p.title+'</div><span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span></div>'+
         '<div class="nu-vsub"><svg class="nu-tag-ico" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h5.172a1 1 0 0 1 .707.293l5.657 5.657a1 1 0 0 1 0 1.414l-3.586 3.586a1 1 0 0 1-1.414 0L2.293 7.293A1 1 0 0 1 2 6.586V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="5" cy="5" r="1" fill="currentColor"/></svg>'+p.denoms.length+' denominations</div>'+
         '<div class="nu-foot-bottom">'+
           '<div class="nu-denoms">'+denomPills+'</div>'+
@@ -2066,33 +2302,34 @@
       '<div class="lrow-cta">'+(off?'Unavailable':'View <span class="pc-arrow">&#8250;</span>')+'</div>'+
     '</article>';
   }
+  var gridLimit = 6; // show first 6, "View more" reveals the rest
   function renderGrid(region){
     gridList = PRODUCTS.slice().sort(function(a,b){
       var ao = a.blocked.indexOf(region) !== -1 ? 1 : 0;
       var bo = b.blocked.indexOf(region) !== -1 ? 1 : 0;
       return ao - bo; // available first, blocked last
     });
+    var shown = gridList.slice(0, gridLimit);
     var el = document.getElementById('productGrid');
     el.className = 'grid' + (viewMode==='grid' ? ' nu-grid' : ' list-grid');
     el.innerHTML = viewMode==='grid'
-      ? gridList.map(function(p,i){ return card(p, region, i, 'full'); }).join('')
-      : gridList.map(function(p,i){ return listRow(p, region, i); }).join('');
+      ? shown.map(function(p,i){ return card(p, region, i, 'full'); }).join('')
+      : shown.map(function(p,i){ return listRow(p, region, i); }).join('');
+    var more = document.getElementById('viewMoreBtn');
+    if(more) more.parentElement.style.display = (gridLimit >= gridList.length) ? 'none' : 'flex';
   }
   renderGrid(selected);
-  document.getElementById('viewToggle').addEventListener('click', function(e){
-    var b = e.target.closest('.vt-btn'); if(!b) return;
-    viewMode = b.getAttribute('data-view');
-    this.querySelectorAll('.vt-btn').forEach(function(x){ x.classList.toggle('on', x===b); });
+  document.getElementById('viewMoreBtn').addEventListener('click', function(){
+    gridLimit = PRODUCTS.length;
     renderGrid(selected);
   });
 
   /* ---- View -> Product Detail Page ---- */
   function openPDP(p){
     document.getElementById('pdpArt').style.background = p.art
-      ? 'linear-gradient(to top,rgba(11,13,18,.88) 0%,rgba(11,13,18,0) 20%), url(\''+p.art+'\') center/cover'
+      ? 'url(\''+p.art+'\') center/cover'
       : 'linear-gradient(150deg,'+p.c1+','+p.c2+')';
     document.getElementById('pdpTitle').textContent    = p.title;
-    document.getElementById('pdpArtTitle').textContent = p.title.toUpperCase();
     document.getElementById('pdpSub').textContent      = p.sub;
     goScreen('pdp');
   }
@@ -2226,14 +2463,24 @@
     // country eligibility: where the selected card works
     renderEligible(SKUS[pdpSkuIdx].region);
   }
-  // flag + name lists per region version (top = most populous shown first)
-  var ELIGIBILITY = {
-    "Global":        ["Worldwide, any account"],
-    "United States": ["United States","Canada"],
-    "Europe":        ["UK","Germany","France","Italy","Spain","Netherlands","+ EU"],
-    "India":         ["India"],
-    "Turkey":        ["Turkey"]
+  var REGION_COUNTRIES = {
+    "Global": {
+      total: 190,
+      top: [["🇮🇳","India"],["🇺🇸","United States"],["🇮🇩","Indonesia"],["🇧🇷","Brazil"],["🇯🇵","Japan"]],
+      all: [["🇮🇳","India"],["🇺🇸","United States"],["🇮🇩","Indonesia"],["🇧🇷","Brazil"],["🇯🇵","Japan"],["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"],["🇨🇦","Canada"],["🇦🇺","Australia"],["🇲🇽","Mexico"],["🇰🇷","South Korea"],["🇹🇷","Turkiye"],["🇸🇦","Saudi Arabia"],["🇦🇪","UAE"],["🇿🇦","South Africa"],["🇸🇪","Sweden"],["🇳🇱","Netherlands"],["🇵🇱","Poland"],["🇦🇷","Argentina"],["🇵🇭","Philippines"],["🇻🇳","Vietnam"]],
+      note: "Activates worldwide on any account, plus 165+ more countries."
+    },
+    "United States": { total: 2, top: [["🇺🇸","United States"],["🇨🇦","Canada"]], all: [["🇺🇸","United States"],["🇨🇦","Canada"]] },
+    "Europe": {
+      total: 27,
+      top: [["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"]],
+      all: [["🇩🇪","Germany"],["🇫🇷","France"],["🇬🇧","United Kingdom"],["🇮🇹","Italy"],["🇪🇸","Spain"],["🇳🇱","Netherlands"],["🇧🇪","Belgium"],["🇦🇹","Austria"],["🇮🇪","Ireland"],["🇵🇹","Portugal"],["🇵🇱","Poland"],["🇸🇪","Sweden"],["🇩🇰","Denmark"],["🇫🇮","Finland"],["🇳🇴","Norway"],["🇨🇭","Switzerland"],["🇬🇷","Greece"],["🇨🇿","Czechia"],["🇭🇺","Hungary"],["🇷🇴","Romania"]],
+      note: "Activates across the EU and EEA."
+    },
+    "India":  { total: 1, top: [["🇮🇳","India"]], all: [["🇮🇳","India"]] },
+    "Turkey": { total: 1, top: [["🇹🇷","Turkiye"]], all: [["🇹🇷","Turkiye"]] }
   };
+  var elig = document.getElementById('pdpEligible');
   function flagChip(f){ return '<span class="elig-flag"><span class="fl">'+f[0]+'</span>'+f[1]+'</span>'; }
   function renderEligible(reg){
     var data = REGION_COUNTRIES[reg] || REGION_COUNTRIES["Global"];
@@ -2268,7 +2515,8 @@
     document.getElementById('eligSearch').value = '';
   });
   document.getElementById('eligModal').addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.getElementById('eligSearch').value=''; } });
-  function renderQty(){ qtyVal.textContent = pdpQty; }
+  var qtyVal = document.getElementById('pdpQtyVal');
+  function renderQty(){ if(qtyVal) qtyVal.textContent = pdpQty; }
   function setRzpStep(step){
     document.querySelectorAll('#rzpModal .rzp-step').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-step')===step); });
     document.querySelectorAll('#rzpModal .rzp-pane').forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-pane')===step); });
@@ -2276,16 +2524,17 @@
   function openRzp(){
     var d = DENOMS[pdpDenomIdx];
     var total = d.price * pdpQty;
-    document.getElementById('rzpThumb').textContent = document.getElementById('pdpLogo').textContent;
+    var titleEl = document.getElementById('pdpTitle');
+    document.getElementById('rzpThumb').textContent = titleEl ? titleEl.textContent.charAt(0) : 'V';
     document.getElementById('rzpItem').textContent  = document.getElementById('pdpTitle').textContent + ' · ' + d.vp;
     document.getElementById('rzpQty').textContent   = 'Qty. ' + pdpQty;
     document.getElementById('rzpPrice').textContent = '€' + total.toFixed(2);
     document.getElementById('rzpPay').textContent   = 'Pay €' + total.toFixed(2);
     document.getElementById('rzpEmail').value        = currentEmail || 'alex@gmail.com';
     setRzpStep('contact');
-    rzpModal.classList.add('open');
+    rzpModal.style.display = 'flex';
   }
-  function closeRzp(){ rzpModal.classList.remove('open'); }
+  function closeRzp(){ rzpModal.style.display = 'none'; }
   document.getElementById('rzpClose').addEventListener('click', closeRzp);
   rzpModal.addEventListener('click', function(e){ if(e.target===rzpModal) closeRzp(); });
   // step pills are clickable to go back
@@ -2307,12 +2556,14 @@
   document.getElementById('rzpPay').addEventListener('click', function(){
     closeRzp();
     var d = DENOMS[pdpDenomIdx];
+    var on = fakeOrderNo();
     renderConfirmation({
-      title: document.getElementById('pdpTitle').textContent,
-      sku:   SKUS[pdpSkuIdx].name,
-      vp:    d.vp,
-      qty:   pdpQty,
-      price: d.price
+      title:   document.getElementById('pdpTitle').textContent,
+      sku:     SKUS[pdpSkuIdx].name,
+      vp:      d.vp,
+      qty:     pdpQty,
+      price:   d.price,
+      orderNo: on
     });
     goScreen('confirm');
   });
@@ -2351,6 +2602,9 @@
   document.getElementById('rwCancel').addEventListener('click', function(){
     pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
   });
+  document.getElementById('rwClose').addEventListener('click', function(){
+    pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
+  });
   document.getElementById('regionWarn').addEventListener('click', function(e){
     if(e.target===this){ pendingSku=null; this.classList.remove('open'); }
   });
@@ -2359,7 +2613,6 @@
     vpGrid.innerHTML = DENOMS.map(function(d,i){
       var on = i===pdpDenomIdx;
       return '<div class="vp'+(on?' on':'')+'" data-d="'+i+'">'+
-        (d.tag?'<span class="tag">'+d.tag+'</span>':'')+
         '<div class="amt">'+d.vp+'</div>'+
         '<div class="vp-prices">'+
           (d.face?'<span class="vp-face">€'+d.face.toFixed(2)+'</span>':'')+
@@ -2373,19 +2626,24 @@
   }
   function updateBuy(){
     var total = DENOMS[pdpDenomIdx].price * pdpQty;
-    buyBtn.textContent = 'Buy now · €'+total.toFixed(2)+(pdpQty>1?' ('+pdpQty+' cards)':'');
+    var d = DENOMS[pdpDenomIdx];
+    var saveStr = d.save ? ' · Save '+d.save : '';
+    buyBtn.textContent = 'Buy now · €'+total.toFixed(2)+(pdpQty>1?' ('+pdpQty+' cards)':'')+saveStr;
   }
   var MAX_QTY = 5;   // per-person purchase limit
   vpGrid.addEventListener('click', function(e){
-    if(e.target.closest('.q-minus')){ if(pdpQty>1){pdpQty--; renderDenoms(); updateBuy();} return; }
-    if(e.target.closest('.q-plus')){
-      if(pdpQty < MAX_QTY){ pdpQty++; renderDenoms(); updateBuy(); }
-      else { toast('Limit reached: 5 cards per person'); }
-      return;
-    }
     var t = e.target.closest('.vp'); if(!t) return;
     var i = parseInt(t.getAttribute('data-d'),10);
     if(i!==pdpDenomIdx){ pdpDenomIdx = i; pdpQty = 1; renderDenoms(); updateBuy(); }
+  });
+  // quantity stepper lives in its own .pdp-qty block (not inside vpGrid)
+  var pdpQtyCtl = document.querySelector('.pdp-qty');
+  if(pdpQtyCtl) pdpQtyCtl.addEventListener('click', function(e){
+    if(e.target.closest('.q-minus')){ if(pdpQty>1){ pdpQty--; renderQty(); renderDenoms(); updateBuy(); } return; }
+    if(e.target.closest('.q-plus')){
+      if(pdpQty < MAX_QTY){ pdpQty++; renderQty(); renderDenoms(); updateBuy(); }
+      else { toast('Limit reached: 5 cards per person'); }
+    }
   });
 
   // when global region changes: auto-switch the SKU to a card valid for that region
@@ -2415,11 +2673,11 @@
       return '<div class="fs-denom">'+
         '<div class="fs-denom-top">'+
           '<div class="amt"><span class="amt-n">'+num+'</span><span class="amt-u">VP</span></div>'+
-          '<div class="fs-disc-badge">-'+d.disc+'%</div>'+
+          '<div class="fs-disc-badge">'+d.save+'</div>'+
         '</div>'+
         '<div class="fs-prices">'+
           '<span class="fs-now">€'+d.price.toFixed(2)+'</span>'+
-          '<span class="fs-orig">€'+d.orig.toFixed(2)+'</span>'+
+          '<span class="fs-orig">€'+d.face.toFixed(2)+'</span>'+
         '</div>'+
         '<div class="btn fs-buy" data-d="'+i+'">Buy now</div>'+
       '</div>';
@@ -2451,7 +2709,7 @@
   var crossList = PRODUCTS.slice(0,3);
   function miniCard(p,i){
     return '<article class="xcard" data-i="'+i+'" role="button" tabindex="0" aria-label="View '+p.title+'">'+
-      '<div class="xcard-logo" style="background:linear-gradient(135deg,'+p.c1+','+p.c2+')"><img src="'+p.glyph+'" alt=""></div>'+
+      '<div class="xcard-logo" style="'+(p.art?'background:#14161b center/cover url(\''+p.art+'\');':'background:linear-gradient(135deg,'+p.c1+','+p.c2+');')+'">'+(p.art?'':'<img src="'+p.glyph+'" alt="">')+'</div>'+
       '<div class="xcard-main"><div class="xcard-t">'+p.title+'</div>'+
         '<div class="xcard-from">from <b>'+p.now+'</b> <span class="xcard-off">&minus;'+p.save+'</span></div></div>'+
       '<span class="xcard-arrow">&#8250;</span>'+
@@ -2464,8 +2722,14 @@
   crossEl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ var c=e.target.closest('.xcard'); if(c){ e.preventDefault(); openCross(c); } } });
 
   /* ===== screen router (stitched flow) ===== */
+  var siteNav = document.querySelector('.site-nav');
   function goScreen(id){
     document.querySelectorAll('.screen').forEach(function(s){ s.classList.toggle('active', s.id===id); });
+    var hero = document.getElementById('skHeroBanner');
+    if(hero) hero.style.display = (id === 'home') ? '' : 'none';
+    var timer = document.getElementById('offerTimer');
+    if(timer) timer.style.display = (id === 'home') ? '' : 'none';
+    if(siteNav) siteNav.style.display = (id === 'confirm') ? 'none' : '';
     window.scrollTo({top:0, behavior:'smooth'});
   }
   // navigation like a real site
@@ -2481,6 +2745,7 @@
   document.getElementById('checkoutPay').addEventListener('click', function(){ goScreen('confirm'); });
   document.getElementById('checkoutBack').addEventListener('click', function(){ goScreen('pdp'); });
   document.getElementById('confirmBack').addEventListener('click', function(){ goScreen('home'); });
+  document.getElementById('confirmBackToOrders').addEventListener('click', function(){ openOrdersModal(); });
 
   /* ===== buy flow: sign-in mandatory, then checkout popup ===== */
   var coModal = document.getElementById('coModal');
@@ -2505,7 +2770,7 @@
       openAuth();
       return;
     }
-    openCheckoutPopup();
+    openRzp();
   }
   document.getElementById('pdpBuy').addEventListener('click', startBuy);
   document.getElementById('coClose').addEventListener('click', function(){ coModal.classList.remove('open'); });
@@ -2528,34 +2793,59 @@
     var seg = ['AB7K','9XQM','4F2P','KD8R','7TNW','3JQ2'];
     return seg[i%seg.length]+' · '+seg[(i+2)%seg.length]+' · '+seg[(i+4)%seg.length];
   }
+  function fakeOrderNo(){
+    var ts = Date.now ? String(Date.now()) : '1782308242063';
+    var sfx = Math.floor(1000+Math.random()*9000);
+    return 'INF-'+ts+'-'+sfx;
+  }
+  function fakeOrderId(){
+    function s4(){ return Math.floor((1+Math.random())*0x10000).toString(16).slice(1); }
+    return s4()+s4()+'-'+s4()+'-'+s4()+'-'+s4()+'-'+s4()+s4()+s4();
+  }
   function renderConfirmation(o){
     var n = o.qty;
-    var sc = document.getElementById('successCheck');   // replay success animation
+    var sc = document.getElementById('successCheck');
     if(sc){ sc.classList.remove('go'); void sc.offsetWidth; sc.classList.add('go'); }
-    document.getElementById('confirmTitle').textContent = 'Order confirmed';
-    document.getElementById('confirmSub').textContent =
-      n+' gift card'+(n>1?'s':'')+' delivered · receipt sent to your email';
-    // bulk bar only when more than one card
+    // order meta
+    var orderNo = o.orderNo || fakeOrderNo();
+    var orderId = fakeOrderId();
+    document.getElementById('confirmOrderNo').textContent = orderNo;
+    document.getElementById('confirmAmountPaid').textContent = '€'+(o.price*n).toFixed(2);
+    document.getElementById('confirmOrderId').textContent = orderId.slice(0,26)+'...';
+    // item row
+    var itemName = (o.title || 'Sevkaan Gift Card');
+    var itemDesc = itemName+' '+o.vp+' × '+n;
+    document.getElementById('confirmItems').innerHTML =
+      '<div class="cf-item">'+
+        '<div class="cf-item-ic">'+
+          '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>'+
+        '</div>'+
+        '<div>'+
+          '<div class="cf-item-name">'+itemName+'</div>'+
+          '<div class="cf-item-desc">'+itemDesc+'</div>'+
+        '</div>'+
+      '</div>';
+    // bulk bar
     var bulk = document.getElementById('confirmBulk');
     if(n>1){
       bulk.style.display = 'flex';
       document.getElementById('confirmBulkText').textContent = n+' codes delivered';
     } else { bulk.style.display = 'none'; }
-    // one code block per unit
+    // code blocks
     var html = ''; lastCodes = [];
     for(var i=0;i<n;i++){
       var code = fakeCode(i); lastCodes.push(code);
       html += '<div class="cf-code">'+
-        (n>1?'<div class="cf-idx">Card '+(i+1)+' of '+n+'</div>':'')+
-        '<div class="cf-cardname"><span>'+o.title+' · '+o.vp+'</span><span class="ord-status">Delivered</span></div>'+
+        (n>1?'<div style="font-size:11px;color:var(--mut);margin-bottom:6px;">Card '+(i+1)+' of '+n+'</div>':'')+
+        '<div style="font-size:13px;font-weight:700;margin-bottom:4px;">'+itemName+' · '+o.vp+'</div>'+
         '<div class="cf-codebox">'+code+'</div>'+
-        '<div class="row"><div class="btn ghost cf-copy" data-code="'+code+'">Copy code</div><div class="btn ghost">Resend email</div></div>'+
+        '<div class="cf-copy-row">'+
+          '<button class="cf-copy-btn cf-copy" data-code="'+code+'">Copy code</button>'+
+          '<button class="cf-copy-btn">Resend email</button>'+
+        '</div>'+
       '</div>';
     }
     document.getElementById('confirmCodes').innerHTML = html;
-    // receipt
-    document.getElementById('confirmReceiptLine').textContent = o.title+' '+o.vp+' × '+n+' ('+o.sku+')';
-    document.getElementById('confirmReceiptTotal').textContent = '€'+(o.price*n).toFixed(2);
   }
 
   /* ---- copy + toast ---- */
@@ -2589,10 +2879,11 @@
 
   /* ---- 24/7 refunds modal ---- */
   var refundsModal = document.getElementById('refundsModal');
-  document.getElementById('refundsLink').addEventListener('click', function(){ refundsModal.classList.add('open'); });
   document.getElementById('refundsClose').addEventListener('click', function(){ refundsModal.classList.remove('open'); });
-  document.getElementById('refundsCta').addEventListener('click', function(){ refundsModal.classList.remove('open'); toast('Support chat coming soon'); });
+  document.getElementById('refundsCta').addEventListener('click', function(){ refundsModal.classList.remove('open'); openTicketModal(); });
   refundsModal.addEventListener('click', function(e){ if(e.target===refundsModal) refundsModal.classList.remove('open'); });
+  // 24/7 Support Available -> ticket modal (login gate)
+  document.getElementById('refundsLink').addEventListener('click', function(){ openTicketModal(); });
 
   /* ---- region change -> offer language switch ---- */
   var LANG_OF = {
@@ -2605,14 +2896,16 @@
   var langModal = document.getElementById('langModal'), pendingLang = null;
   function maybeOfferLanguage(country){
     var lang = LANG_OF[country] || "English";
-    if(lang === currentLang) return;          // already that language / English region
+    if(lang === selLang) return;               // already in that language
+    if(!LANG_SHORT[lang]) return;              // only nudge for languages we actually offer
     pendingLang = lang;
     document.getElementById('langText').innerHTML =
       'You changed your region to <b>'+country+'</b>. Want the site in <b>'+lang+'</b>?';
+    document.getElementById('langKeep').textContent = 'Keep '+selLang;
     langModal.classList.add('open');
   }
   document.getElementById('langSwitch').addEventListener('click', function(){
-    if(pendingLang){ currentLang = pendingLang; toast('Language set to '+currentLang); setRegionLabel(); }
+    if(pendingLang){ selLang = pendingLang; currentLang = pendingLang; toast('Language set to '+selLang); setRegionLabel(); }
     langModal.classList.remove('open');
   });
   document.getElementById('langKeep').addEventListener('click', function(){ langModal.classList.remove('open'); });
@@ -2652,14 +2945,20 @@
     document.getElementById('gvVerify').style.display = which==='verify' ? 'block' : 'none';
   }
   function openAuth(){ showAuthView('choose'); var e=document.getElementById('gEmail'); if(e) e.value=''; gModal.classList.add('open'); }
+  var currentEmail = null;
   function completeLogin(name, email){
     if(email && !knownEmails[email]) knownEmails[email] = name;   // remember new account
+    currentEmail = email || null;
     gModal.classList.remove('open');
     isLoggedIn = true;
     document.getElementById('signinBtn').style.display = 'none';
     document.getElementById('userMenu').classList.add('on');
     document.getElementById('userName').textContent = name;
-    if(pendingBuy){ pendingBuy = false; openCheckoutPopup(); }    // resume purchase
+    var uav = document.querySelector('#userChip .av');
+    if(uav) uav.textContent = (name||'U').trim().charAt(0).toUpperCase();
+    var cav = document.querySelector('.co-signed .av');
+    if(cav) cav.textContent = (name||'U').trim().charAt(0).toUpperCase();
+    if(pendingBuy){ pendingBuy = false; openRzp(); }    // resume purchase
   }
   document.getElementById('signinBtn').addEventListener('click', function(){
     pendingBuy = false;               // plain sign-in, not a buy
@@ -2702,23 +3001,367 @@
     e.stopPropagation(); userMenu.classList.toggle('open');
   });
   document.addEventListener('click', function(e){ if(!userMenu.contains(e.target)) userMenu.classList.remove('open'); });
-  var ordersModal = document.getElementById('ordersModal');
+  var ordersModal = document.getElementById('orders'); // now a screen, not a modal
   document.getElementById('umOrders').addEventListener('click', function(){
-    userMenu.classList.remove('open'); ordersModal.classList.add('open');
+    userMenu.classList.remove('open'); openOrdersModal();
   });
-  document.getElementById('ordersClose').addEventListener('click', function(){ ordersModal.classList.remove('open'); });
-  ordersModal.addEventListener('click', function(e){ if(e.target===ordersModal) ordersModal.classList.remove('open'); });
+  document.getElementById('ordersClose').addEventListener('click', function(){ goScreen('home'); });
   document.getElementById('umLogout').addEventListener('click', function(){
     isLoggedIn = false;
     userMenu.classList.remove('open');
     userMenu.classList.remove('on');
     document.getElementById('signinBtn').style.display = '';
   });
-  document.getElementById('rwClose').addEventListener('click', function(){
-    pendingSku=null; document.getElementById('regionWarn').classList.remove('open');
+
+  /* ---- fake orders store ---- */
+  function fmtDate(d){
+    var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' at '+
+      String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' '+
+      (d.getHours()>=12?'PM':'AM');
+  }
+  var FAKE_ORDERS = [
+    {id:'INF-1782308242063-7490', status:'fulfilled', product:'Valorant',  sku:'Valorant Global',  vp:'1000 VP', qty:1, price:9.49,  placed:new Date(Date.now()-2*3600000)},
+    {id:'INF-1782308223302-4830', status:'cancelled', product:'Steam',     sku:'Steam Wallet',     vp:'€25',     qty:1, price:23.75, placed:new Date(Date.now()-5*3600000)},
+    {id:'INF-1782224437278-6425', status:'cancelled', product:'Valorant',  sku:'Valorant Global',  vp:'5350 VP', qty:1, price:46.99, placed:new Date(Date.now()-26*3600000)}
+  ];
+
+  function addFakeOrder(o){
+    FAKE_ORDERS.unshift({
+      id: o.orderNo,
+      status: 'fulfilled',
+      product: o.title,
+      sku: o.sku || o.title+' Global',
+      vp: o.vp,
+      qty: o.qty,
+      price: o.price * o.qty,
+      placed: new Date()
+    });
+  }
+
+  function renderOrderCard(ord, idx){
+    var ok = ord.status === 'fulfilled';
+    var ic = ok
+      ? '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    var badge = ok
+      ? '<span class="ord-badge fulfilled">Fulfilled</span>'
+      : '<span class="ord-badge cancelled">Payment Cancelled</span>';
+    var amt = '€'+ord.price.toFixed(2);
+    var dateStr = fmtDate(ord.placed);
+    var orderId = (ord.orderId || ord.id.replace('INF-','').split('-').join('').toLowerCase().slice(0,8)+'-'+
+      ['9eee','16bb','819e','f9d9','82973cfc'].join('-'));
+
+    return '<div class="ord-v2-card" data-oidx="'+idx+'">'+
+      '<div class="ord-v2-row" onclick="toggleOrdCard(this.closest(\'.ord-v2-card\'))">'+
+        '<div class="ord-v2-ic '+(ok?'ok':'fail')+'">'+ic+'</div>'+
+        '<div class="ord-v2-main">'+
+          '<div class="ord-v2-num">'+ord.id+' '+badge+'</div>'+
+          '<div class="ord-v2-meta">'+ord.product+' &middot; '+dateStr+'</div>'+
+        '</div>'+
+        '<div class="ord-v2-right">'+
+          '<div class="ord-v2-amt">'+amt+'</div>'+
+          '<div class="ord-v2-items-ct">'+ord.qty+' item(s)</div>'+
+          (ok ? '<div class="ord-v2-gethelp" onclick="event.stopPropagation();openTicketForOrder('+idx+')">'+
+            '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Get Help</div>' : '')+
+        '</div>'+
+        '<div class="ord-v2-chevron">&#8964;</div>'+
+      '</div>'+
+      (ok ?
+        '<div class="ord-v2-detail">'+
+          '<div class="ord-v2-section-lbl">Order Items</div>'+
+          '<div class="ord-v2-item">'+
+            '<div class="ord-v2-item-info"><div class="name">'+ord.product+'</div><div class="desc">'+ord.sku+' '+ord.vp+'</div></div>'+
+            '<div>x'+ord.qty+'</div>'+
+          '</div>'+
+          '<div class="ord-v2-email-bar">'+
+            '<div class="ord-v2-email-note">Gift card codes have been sent to your email.</div>'+
+            '<div class="ord-v2-resend">'+
+              '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'+
+              'Resend to Email'+
+            '</div>'+
+          '</div>'+
+          '<div class="ord-v2-grid">'+
+            '<div class="ord-v2-gfield"><div class="ord-v2-glbl">Order ID</div><div class="ord-v2-gval">'+orderId+'</div></div>'+
+            '<div class="ord-v2-gfield"><div class="ord-v2-glbl">Payment</div><div class="ord-v2-gval pay-ok">SUCCESS</div></div>'+
+            '<div class="ord-v2-gfield"><div class="ord-v2-glbl">Placed</div><div class="ord-v2-gval">'+dateStr+'</div></div>'+
+            '<div class="ord-v2-gfield"><div class="ord-v2-glbl">Updated</div><div class="ord-v2-gval">'+dateStr+'</div></div>'+
+          '</div>'+
+          '<div class="ord-v2-foot-help"><div class="ord-v2-gethelp" style="display:inline-flex;" onclick="openTicketForOrder('+idx+')">'+
+            '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Get Help</div></div>'+
+        '</div>'
+      : '') +
+    '</div>';
+  }
+
+  function toggleOrdCard(card){
+    card.classList.toggle('expanded');
+  }
+  // expose globally for inline onclick
+  window.toggleOrdCard = toggleOrdCard;
+
+  function openOrdersModal(){
+    var body = document.getElementById('ordersBody');
+    if(FAKE_ORDERS.length === 0){
+      body.innerHTML = '<div style="text-align:center;padding:32px;color:var(--mut);">No orders yet.</div>';
+    } else {
+      body.innerHTML = FAKE_ORDERS.map(renderOrderCard).join('');
+      // auto-expand first fulfilled order
+      var first = body.querySelector('.ord-v2-card');
+      if(first) first.classList.add('expanded');
+    }
+    goScreen('orders');
+  }
+
+  /* ---- support ticket modal ---- */
+  var ticketModal = document.getElementById('ticketModal');
+  var ticketSelOrdIdx = null;
+
+  function openTicketModal(){
+    if(!isLoggedIn){
+      pendingBuy = false;
+      // store intent and open login
+      gModal.classList.add('open');
+      // after login, re-open ticket
+      var _orig = completeLogin;
+      // just open ticket after any login
+      return;
+    }
+    // reset form
+    document.getElementById('ticketForm').style.display = '';
+    document.getElementById('ticketHd').style.display = '';
+    document.getElementById('ticketSub').style.display = '';
+    document.getElementById('ticketSuccess').style.display = 'none';
+    document.getElementById('ticketCategory').value = '';
+    document.getElementById('ticketOrderField').style.display = 'none';
+    document.getElementById('ticketSubject').value = '';
+    document.getElementById('ticketDesc').value = '';
+    document.getElementById('ticketSubjectCount').textContent = '0';
+    document.getElementById('ticketDescCount').textContent = '0';
+    ticketSelOrdIdx = null;
+    renderTicketOrders(null);
+    ticketModal.classList.add('open');
+  }
+
+  function openTicketForOrder(idx){
+    goScreen('orders');
+    openTicketModal();
+    if(isLoggedIn){
+      setTimeout(function(){
+        document.getElementById('ticketCategory').value = 'order';
+        document.getElementById('ticketOrderField').style.display = '';
+        renderTicketOrders(idx);
+      }, 50);
+    }
+  }
+  window.openTicketForOrder = openTicketForOrder;
+
+  var ORD_IC = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 012 2v6a2 2 0 01-2 2h-4"/><path d="M12 17v4"/><path d="M8 17v4"/></svg>';
+
+  function ticketOrderLabelHTML(o){
+    return '<div class="tick-order-ic">'+ORD_IC+'</div>'+
+      '<div class="tick-dd-tx" style="flex:1;min-width:0;">'+
+        '<div class="tick-order-num">'+o.id+'</div>'+
+        '<div class="tick-order-meta">'+o.product+' &middot; €'+o.price.toFixed(2)+'</div>'+
+      '</div>';
+  }
+
+  function setTicketTriggerLabel(idx){
+    var trig = document.getElementById('ticketOrderTrigger');
+    var lbl = document.getElementById('ticketOrderLabel');
+    if(idx === null || idx === undefined || !FAKE_ORDERS[idx]){
+      lbl.innerHTML = '<span class="ph">Select an order</span>';
+    } else {
+      lbl.innerHTML = ticketOrderLabelHTML(FAKE_ORDERS[idx]);
+    }
+  }
+
+  function renderTicketOrders(selIdx){
+    var pick = document.getElementById('ticketOrderPick');
+    var fulfilled = FAKE_ORDERS.filter(function(o){ return o.status === 'fulfilled'; });
+    if(fulfilled.length === 0){
+      pick.innerHTML = '<div style="padding:12px 16px;font-size:13px;color:var(--mut);">No fulfilled orders found.</div>';
+      ticketSelOrdIdx = null;
+      setTicketTriggerLabel(null);
+      return;
+    }
+    pick.innerHTML = fulfilled.map(function(o, i){
+      var realIdx = FAKE_ORDERS.indexOf(o);
+      var sel = realIdx === selIdx;
+      return '<div class="tick-order-opt'+(sel?' sel':'')+'" data-ridx="'+realIdx+'" onclick="selectTicketOrder('+realIdx+',this)">'+
+        '<div class="tick-order-ic">'+ORD_IC+'</div>'+
+        '<div style="flex:1;min-width:0;">'+
+          '<div class="tick-order-num">'+o.id+'</div>'+
+          '<div class="tick-order-meta">'+o.product+' &middot; €'+o.price.toFixed(2)+'</div>'+
+        '</div>'+
+        '<svg class="tick-order-check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'+
+      '</div>';
+    }).join('');
+    // sync state + trigger label to pre-selection (if any)
+    ticketSelOrdIdx = (selIdx === null || selIdx === undefined) ? null : selIdx;
+    setTicketTriggerLabel(ticketSelOrdIdx);
+  }
+
+  function toggleTicketDD(){
+    document.getElementById('ticketOrderDD').classList.toggle('open');
+  }
+  window.toggleTicketDD = toggleTicketDD;
+
+  window.selectTicketOrder = function(idx, el){
+    ticketSelOrdIdx = idx;
+    document.querySelectorAll('.tick-order-opt').forEach(function(x){ x.classList.remove('sel'); });
+    el.classList.add('sel');
+    setTicketTriggerLabel(idx);
+    document.getElementById('ticketOrderDD').classList.remove('open');
+  };
+
+  // wire trigger + close-on-outside
+  document.getElementById('ticketOrderTrigger').addEventListener('click', function(e){ e.stopPropagation(); toggleTicketDD(); });
+  document.addEventListener('click', function(e){
+    var dd = document.getElementById('ticketOrderDD');
+    if(dd && dd.classList.contains('open') && !dd.contains(e.target)) dd.classList.remove('open');
   });
+
+  document.getElementById('ticketCategory').addEventListener('change', function(){
+    var v = this.value;
+    var orderField = document.getElementById('ticketOrderField');
+    if(v === 'order'){
+      orderField.style.display = '';
+      renderTicketOrders(null);
+    } else {
+      orderField.style.display = 'none';
+      ticketSelOrdIdx = null;
+    }
+  });
+
+  document.getElementById('ticketSubject').addEventListener('input', function(){
+    document.getElementById('ticketSubjectCount').textContent = this.value.length;
+  });
+  document.getElementById('ticketDesc').addEventListener('input', function(){
+    document.getElementById('ticketDescCount').textContent = this.value.length;
+  });
+
+  document.getElementById('ticketClose').addEventListener('click', function(){ ticketModal.classList.remove('open'); });
+  document.getElementById('ticketCancel').addEventListener('click', function(){ ticketModal.classList.remove('open'); });
+  ticketModal.addEventListener('click', function(e){ if(e.target===ticketModal) ticketModal.classList.remove('open'); });
+
+  document.getElementById('ticketSubmit').addEventListener('click', function(){
+    var cat = document.getElementById('ticketCategory').value;
+    var subj = document.getElementById('ticketSubject').value.trim();
+    var desc = document.getElementById('ticketDesc').value.trim();
+    if(!cat){ toast('Pick a category'); return; }
+    if(cat === 'order' && ticketSelOrdIdx === null){ toast('Select an order'); return; }
+    if(!subj){ toast('Add a subject'); return; }
+    if(!desc){ toast('Add a description'); return; }
+    document.getElementById('ticketForm').style.display = 'none';
+    document.getElementById('ticketHd').style.display = 'none';
+    document.getElementById('ticketSub').style.display = 'none';
+    document.getElementById('ticketSuccess').style.display = 'flex';
+  });
+
+  document.getElementById('ticketDone').addEventListener('click', function(){ ticketModal.classList.remove('open'); });
+
+  /* ---- footer links -> real destinations ---- */
+  document.querySelectorAll('.site-footer').forEach(function(ft){
+    ft.addEventListener('click', function(e){
+      var a = e.target.closest('a[data-sku],a[data-ft]'); if(!a) return;
+      e.preventDefault();
+      var sku = a.getAttribute('data-sku');
+      if(sku){
+        var p = PRODUCTS.filter(function(x){ return x.title === sku; })[0];
+        if(p) openPDP(p);
+        return;
+      }
+      var ft2 = a.getAttribute('data-ft');
+      if(ft2 === 'orders') openOrdersModal();
+      else if(ft2 === 'support') openTicketModal();
+    });
+  });
+
+  /* ---- view catalogue scroll ---- */
+  document.getElementById('viewCatalogueBtn').addEventListener('click', function(){
+    if(!document.getElementById('home').classList.contains('active')) goScreen('home');
+    setTimeout(function(){
+      var el = document.getElementById('catalogueSection');
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  });
+
+  /* ---- currency FX ---- */
+  var FX = {USD:1, EUR:0.92, INR:83.2, TRY:32.1, BRL:5.0, MXN:17.5, ARS:900};
+  var CUR_SYM = {USD:'$', EUR:'€', INR:'₹', TRY:'₺', BRL:'R$', MXN:'$', ARS:'$'};
+  function fmtPrice(eurPrice){
+    var rate = FX[selCur] || 1;
+    var baseRate = FX['EUR'] || 0.92;
+    var converted = eurPrice * (rate / baseRate);
+    var sym = CUR_SYM[selCur] || selCur+' ';
+    return sym + converted.toFixed(2);
+  }
+
+  // patch renderDenoms to use fmtPrice
+  var _origRenderDenoms = renderDenoms;
+  renderDenoms = function(){
+    vpGrid.innerHTML = DENOMS.map(function(d,i){
+      var on = i===pdpDenomIdx;
+      return '<div class="vp'+(on?' on':'')+'" data-d="'+i+'">'+
+        '<div class="amt">'+d.vp+'</div>'+
+        '<div class="vp-prices">'+
+          (d.face?'<span class="vp-face">'+fmtPrice(d.face)+'</span>':'')+
+          '<div class="vp-row">'+
+            '<span class="vp-cur">'+fmtPrice(d.price)+'</span>'+
+            (d.save?'<span class="vp-save">'+d.save+'</span>':'')+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+  };
+
+  // patch updateBuy to use fmtPrice
+  var _origUpdateBuy = updateBuy;
+  updateBuy = function(){
+    var total = DENOMS[pdpDenomIdx].price * pdpQty;
+    var d = DENOMS[pdpDenomIdx];
+    var saveStr = d.save ? ' · Save '+d.save : '';
+    buyBtn.textContent = 'Buy now · '+fmtPrice(total)+(pdpQty>1?' ('+pdpQty+' cards)':'')+saveStr;
+  };
+
+  // patch renderFeatured to use fmtPrice
+  var _origRenderFeatured = renderFeatured;
+  renderFeatured = function(){
+    document.getElementById('featSkuDenoms').innerHTML = DENOMS.map(function(d,i){
+      var num = d.vp.replace(/\s*VP/i,'');
+      return '<div class="fs-denom">'+
+        '<div class="fs-denom-top">'+
+          '<div class="amt"><span class="amt-n">'+num+'</span><span class="amt-u">VP</span></div>'+
+          '<div class="fs-disc-badge">'+d.save+'</div>'+
+        '</div>'+
+        '<div class="fs-prices">'+
+          '<span class="fs-now">'+fmtPrice(d.price)+'</span>'+
+          '<span class="fs-orig">'+fmtPrice(d.face)+'</span>'+
+        '</div>'+
+        '<div class="btn fs-buy" data-d="'+i+'">Buy now</div>'+
+      '</div>';
+    }).join('');
+  };
+
+  // on settings save: re-render prices
+  var _origSetSave = document.getElementById('setSave');
+  document.getElementById('setSave').addEventListener('click', function(){
+    renderDenoms(); updateBuy(); renderFeatured();
+  });
+
+  // also patch renderConfirmation to add order to FAKE_ORDERS
+  var _origRenderConf = renderConfirmation;
+  renderConfirmation = function(o){
+    _origRenderConf(o);
+    // store order
+    if(o.orderNo) addFakeOrder(o);
+  };
+
 })();
 </script>
 
+<!-- agentation: visual feedback toolbar for design requests -->
+<script src="agentation.bundle.js"></script>
 </body>
 </html>
