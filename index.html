@@ -2411,7 +2411,6 @@
     vpGrid.innerHTML = DENOMS.map(function(d,i){
       var on = i===pdpDenomIdx;
       return '<div class="vp'+(on?' on':'')+'" data-d="'+i+'">'+
-        (d.tag?'<span class="tag">'+d.tag+'</span>':'')+
         '<div class="amt">'+d.vp+'</div>'+
         '<div class="vp-prices">'+
           (d.face?'<span class="vp-face">€'+d.face.toFixed(2)+'</span>':'')+
@@ -2425,7 +2424,9 @@
   }
   function updateBuy(){
     var total = DENOMS[pdpDenomIdx].price * pdpQty;
-    buyBtn.textContent = 'Buy now · €'+total.toFixed(2)+(pdpQty>1?' ('+pdpQty+' cards)':'');
+    var d = DENOMS[pdpDenomIdx];
+    var saveStr = d.save ? ' · Save '+d.save : '';
+    buyBtn.textContent = 'Buy now · €'+total.toFixed(2)+(pdpQty>1?' ('+pdpQty+' cards)':'')+saveStr;
   }
   var MAX_QTY = 5;   // per-person purchase limit
   vpGrid.addEventListener('click', function(e){
