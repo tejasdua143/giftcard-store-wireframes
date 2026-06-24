@@ -778,24 +778,44 @@
     pointer-events:none; transition:opacity .2s, transform .2s;}
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
-  /* confirmation: multi-card codes */
-  .cf-order{display:inline-block; margin-top:4px; font-size:12px; color:var(--mut); letter-spacing:.06em; font-variant-numeric:tabular-nums; border:1px solid var(--line); border-radius:3px; padding:4px 10px; background:var(--surface2);}
-  .success-check{width:66px; height:66px; margin:0 auto 6px;}
-  .success-check svg{width:66px; height:66px;}
+  /* confirmation screen */
+  .success-check{width:72px; height:72px; margin:0 auto 8px; background:rgba(66,179,71,.12); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .success-check svg{width:44px; height:44px;}
   .sc-ring{fill:none; stroke:var(--success); stroke-width:2; stroke-dasharray:151; stroke-dashoffset:151;}
   .sc-tick{fill:none; stroke:var(--success); stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40; stroke-dashoffset:40;}
-  .success-check.go{animation:scPop .4s var(--ease-out);}
   .success-check.go .sc-ring{animation:scDraw .5s var(--ease-out) forwards;}
   .success-check.go .sc-tick{animation:scDraw .35s var(--ease-out) .42s forwards;}
   @keyframes scDraw{to{stroke-dashoffset:0;}}
-  @keyframes scPop{from{transform:scale(.8);} to{transform:scale(1);}}
-  .cf-bulk{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:4px; background:var(--surface); padding:12px 14px; font-size:13px; font-weight:600;}
-  .cf-code{border:1px solid var(--line); border-radius:5px; padding:16px; text-align:left; background:var(--surface);}
-  .cf-code .cf-cardname{font-weight:600; font-size:13px; margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; gap:8px;}
-  .cf-code .cf-cardname .ord-status{margin-top:0;}
-  .cf-code .cf-codebox{height:48px; border:1px dashed rgba(124,58,237,.45); border-radius:4px; background:rgba(124,58,237,.07); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; letter-spacing:4px; color:#ede9fe; font-variant-numeric:tabular-nums;}
-  .cf-code .row{margin-top:8px;}
-  .cf-idx{font-size:11px; color:var(--mut); margin-bottom:6px;}
+  .cf-wrap{max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:0;}
+  .cf-hero{text-align:center; padding:32px 0 28px; display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .cf-title{font-size:26px; font-weight:800; letter-spacing:-.025em;}
+  .cf-sub{font-size:14px; color:var(--mut);}
+  .cf-divider{border:none; border-top:1px solid var(--line); margin:0;}
+  .cf-meta{padding:24px 0; display:grid; grid-template-columns:1fr 1fr; gap:20px 32px;}
+  .cf-field{}
+  .cf-field-lbl{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); margin-bottom:6px;}
+  .cf-field-val{font-size:14px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .cf-field-val.mono{font-size:13px; color:var(--ink-2); word-break:break-all;}
+  .cf-fulfilled{display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:var(--success); border:1.5px solid rgba(66,179,71,.4); background:rgba(66,179,71,.08); border-radius:20px; padding:4px 12px;}
+  .cf-fulfilled::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--success); flex:0 0 auto;}
+  .cf-items-lbl{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); margin-bottom:10px;}
+  .cf-item{border:1px solid var(--line); border-radius:8px; background:var(--surface); padding:14px 16px; display:flex; align-items:center; gap:12px;}
+  .cf-item-ic{width:36px; height:36px; border-radius:8px; background:var(--surface2); display:flex; align-items:center; justify-content:center; flex:0 0 auto; color:var(--mut);}
+  .cf-item-name{font-size:14px; font-weight:700;}
+  .cf-item-desc{font-size:12px; color:var(--mut); margin-top:2px;}
+  .cf-email-note{border:1px solid rgba(66,179,71,.35); background:rgba(66,179,71,.06); border-radius:10px; padding:14px 16px; display:flex; align-items:center; gap:12px; font-size:13px; color:var(--success); margin-top:20px;}
+  .cf-email-note svg{flex:0 0 auto; width:20px; height:20px;}
+  .cf-support{text-align:center; font-size:13px; color:var(--mut); margin-top:16px;}
+  .cf-support a{color:var(--brand-2); text-decoration:none;}
+  .cf-support a:hover{text-decoration:underline;}
+  .cf-cta{margin-top:20px; background:transparent; border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:14px; font-size:15px; font-weight:700; cursor:pointer; width:100%; transition:border-color .15s, background .15s;}
+  .cf-cta:hover{border-color:var(--line-2); background:var(--surface);}
+  .cf-code{border:1px solid var(--line); border-radius:5px; padding:16px; text-align:left; background:var(--surface); margin-top:12px;}
+  .cf-codebox{height:48px; border:1px dashed rgba(124,58,237,.45); border-radius:4px; background:rgba(124,58,237,.07); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; letter-spacing:4px; color:#ede9fe; font-variant-numeric:tabular-nums; margin:10px 0;}
+  .cf-copy-row{display:flex; gap:8px; margin-top:6px;}
+  .cf-copy-btn{flex:1; border:1px solid var(--line); background:var(--surface2); color:var(--ink); border-radius:7px; padding:9px; font-size:12px; font-weight:600; cursor:pointer; transition:border-color .15s;}
+  .cf-copy-btn:hover{border-color:var(--line-2);}
+  .cf-bulk{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:4px; background:var(--surface); padding:12px 14px; font-size:13px; font-weight:600; margin-top:12px;}
   .twocol{display:grid; grid-template-columns:1.2fr 1fr; gap:24px;}
   @media(max-width:720px){ .twocol{grid-template-columns:1fr;} .grid{grid-template-columns:repeat(2,1fr);} }
 
@@ -1843,39 +1863,68 @@
 
 <!-- ============ 4. CONFIRMATION ============ -->
 <section class="screen" id="confirm">
-  <div class="frame">
-    <div class="frame-label">Screen 4 — Confirmation / Delivery <span>order success</span></div>
-    <div class="pad">
+  <div style="max-width:560px; margin:0 auto; padding:24px 16px 48px;">
+    <div class="cf-wrap">
 
-
-      <div style="max-width:560px; margin:10px auto;" class="stack">
-        <div style="text-align:center;" class="stack">
-          <div class="success-check" id="successCheck">
-            <svg viewBox="0 0 52 52"><circle class="sc-ring" cx="26" cy="26" r="24"/><path class="sc-tick" d="M14 27l8 8 16-16"/></svg>
-          </div>
-          <div class="cf-h" id="confirmTitle" style="font-family:var(--font-display); font-size:28px; font-weight:700; letter-spacing:-.025em;">Order confirmed</div>
-          <div class="muted" id="confirmSub">1 gift card delivered · receipt sent to your email</div>
-          <div class="cf-order" id="confirmOrderNo">Order #VG-00427</div>
+      <!-- hero -->
+      <div class="cf-hero">
+        <div class="success-check" id="successCheck">
+          <svg viewBox="0 0 52 52"><circle class="sc-ring" cx="26" cy="26" r="24"/><path class="sc-tick" d="M14 27l8 8 16-16"/></svg>
         </div>
-
-        <!-- "redeem all" appears only for multi-card orders -->
-        <div class="cf-bulk" id="confirmBulk" style="display:none;">
-          <span id="confirmBulkText">3 codes delivered</span>
-          <div class="btn ghost" style="padding:7px 12px;" id="copyAll">Copy all codes</div>
-        </div>
-
-        <!-- one code block per gift card -->
-        <div class="stack" id="confirmCodes"><!-- filled by JS --></div>
-
-        <!-- receipt summary -->
-        <div class="card stack" style="text-align:left;">
-          <div class="lbl">Receipt</div>
-          <div class="row"><div class="muted" style="flex:1;" id="confirmReceiptLine">Valorant 1000 VP × 1</div><div style="font-weight:700;" id="confirmReceiptTotal">€9.49</div></div>
-          <div class="muted">A copy of every code was emailed instantly.</div>
-        </div>
-
-        <div class="btn ghost" style="margin-top:4px;" id="confirmBack">Back to store</div>
+        <div class="cf-title" id="confirmTitle">Order Complete!</div>
+        <div class="cf-sub" id="confirmSub">Your gift card has been delivered successfully.</div>
       </div>
+
+      <hr class="cf-divider">
+
+      <!-- order metadata grid -->
+      <div class="cf-meta">
+        <div class="cf-field">
+          <div class="cf-field-lbl">Order Number</div>
+          <div class="cf-field-val mono" id="confirmOrderNo">INF-0000000000000-0000</div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Status</div>
+          <div><span class="cf-fulfilled">Fulfilled</span></div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Amount Paid</div>
+          <div class="cf-field-val" id="confirmAmountPaid">€9.49</div>
+        </div>
+        <div class="cf-field">
+          <div class="cf-field-lbl">Order ID</div>
+          <div class="cf-field-val mono" id="confirmOrderId">—</div>
+        </div>
+      </div>
+
+      <hr class="cf-divider">
+
+      <!-- items -->
+      <div style="padding:20px 0 4px;">
+        <div class="cf-items-lbl">Items</div>
+        <div id="confirmItems"><!-- filled by JS --></div>
+      </div>
+
+      <!-- bulk copy bar (multi-card only) -->
+      <div class="cf-bulk" id="confirmBulk" style="display:none;">
+        <span id="confirmBulkText">3 codes delivered</span>
+        <button class="cf-copy-btn" style="flex:0 0 auto; padding:7px 14px;" id="copyAll">Copy all codes</button>
+      </div>
+
+      <!-- code blocks (one per card) -->
+      <div id="confirmCodes"></div>
+
+      <!-- email notification -->
+      <div class="cf-email-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        <span>A copy of your gift card code has been sent to your email address.</span>
+      </div>
+
+      <!-- support -->
+      <div class="cf-support">Need help? Contact us at <a href="mailto:hi@athenagaming.gg">hi@athenagaming.gg</a></div>
+
+      <!-- CTA -->
+      <button class="cf-cta" id="confirmBack">Continue Shopping</button>
 
     </div>
   </div>
@@ -2585,34 +2634,59 @@
     var seg = ['AB7K','9XQM','4F2P','KD8R','7TNW','3JQ2'];
     return seg[i%seg.length]+' · '+seg[(i+2)%seg.length]+' · '+seg[(i+4)%seg.length];
   }
+  function fakeOrderNo(){
+    var ts = Date.now ? String(Date.now()) : '1782308242063';
+    var sfx = Math.floor(1000+Math.random()*9000);
+    return 'INF-'+ts+'-'+sfx;
+  }
+  function fakeOrderId(){
+    function s4(){ return Math.floor((1+Math.random())*0x10000).toString(16).slice(1); }
+    return s4()+s4()+'-'+s4()+'-'+s4()+'-'+s4()+'-'+s4()+s4()+s4();
+  }
   function renderConfirmation(o){
     var n = o.qty;
-    var sc = document.getElementById('successCheck');   // replay success animation
+    var sc = document.getElementById('successCheck');
     if(sc){ sc.classList.remove('go'); void sc.offsetWidth; sc.classList.add('go'); }
-    document.getElementById('confirmTitle').textContent = 'Order confirmed';
-    document.getElementById('confirmSub').textContent =
-      n+' gift card'+(n>1?'s':'')+' delivered · receipt sent to your email';
-    // bulk bar only when more than one card
+    // order meta
+    var orderNo = fakeOrderNo();
+    var orderId = fakeOrderId();
+    document.getElementById('confirmOrderNo').textContent = orderNo;
+    document.getElementById('confirmAmountPaid').textContent = '€'+(o.price*n).toFixed(2);
+    document.getElementById('confirmOrderId').textContent = orderId.slice(0,26)+'...';
+    // item row
+    var itemName = (o.title || 'Sevkaan Gift Card');
+    var itemDesc = itemName+' '+o.vp+' × '+n;
+    document.getElementById('confirmItems').innerHTML =
+      '<div class="cf-item">'+
+        '<div class="cf-item-ic">'+
+          '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>'+
+        '</div>'+
+        '<div>'+
+          '<div class="cf-item-name">'+itemName+'</div>'+
+          '<div class="cf-item-desc">'+itemDesc+'</div>'+
+        '</div>'+
+      '</div>';
+    // bulk bar
     var bulk = document.getElementById('confirmBulk');
     if(n>1){
       bulk.style.display = 'flex';
       document.getElementById('confirmBulkText').textContent = n+' codes delivered';
     } else { bulk.style.display = 'none'; }
-    // one code block per unit
+    // code blocks
     var html = ''; lastCodes = [];
     for(var i=0;i<n;i++){
       var code = fakeCode(i); lastCodes.push(code);
       html += '<div class="cf-code">'+
-        (n>1?'<div class="cf-idx">Card '+(i+1)+' of '+n+'</div>':'')+
-        '<div class="cf-cardname"><span>'+o.title+' · '+o.vp+'</span><span class="ord-status">Delivered</span></div>'+
+        (n>1?'<div style="font-size:11px;color:var(--mut);margin-bottom:6px;">Card '+(i+1)+' of '+n+'</div>':'')+
+        '<div style="font-size:13px;font-weight:700;margin-bottom:4px;">'+itemName+' · '+o.vp+'</div>'+
         '<div class="cf-codebox">'+code+'</div>'+
-        '<div class="row"><div class="btn ghost cf-copy" data-code="'+code+'">Copy code</div><div class="btn ghost">Resend email</div></div>'+
+        '<div class="cf-copy-row">'+
+          '<button class="cf-copy-btn cf-copy" data-code="'+code+'">Copy code</button>'+
+          '<button class="cf-copy-btn">Resend email</button>'+
+        '</div>'+
       '</div>';
     }
     document.getElementById('confirmCodes').innerHTML = html;
-    // receipt
-    document.getElementById('confirmReceiptLine').textContent = o.title+' '+o.vp+' × '+n+' ('+o.sku+')';
-    document.getElementById('confirmReceiptTotal').textContent = '€'+(o.price*n).toFixed(2);
   }
 
   /* ---- copy + toast ---- */
