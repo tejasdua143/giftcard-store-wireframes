@@ -928,6 +928,162 @@
   .panel.active .hero-cta{animation-delay:.15s;}
   @keyframes heroRise{from{opacity:0; transform:translateY(10px); filter:blur(4px);} to{opacity:1; transform:none; filter:blur(0);}}
   @media(max-width:720px){ .hero-acc{flex-direction:column; height:auto;} .panel{min-height:84px;} .panel.active{min-height:240px;} .panel .mini{writing-mode:horizontal-tb; transform:none; top:16px; bottom:auto;} }
+  .sk-nav-in{max-width:var(--maxw); margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:20px; box-sizing:border-box;}
+  .sk-nav-brand{display:flex; align-items:center; gap:8px; flex:0 0 auto; user-select:none; cursor:pointer;}
+  .sk-nav-avatar{width:34px; height:34px; border-radius:50%; overflow:hidden; flex:0 0 auto; border:2px solid rgba(255,255,255,.15);}
+  .sk-nav-avatar img{width:100%; height:100%; object-fit:cover;}
+  .sk-nav-name{font-size:14px; font-weight:700; color:#fff;}
+  .sk-nav-check{display:flex; align-items:center; flex:0 0 auto;}
+  .sk-nav-divider{color:rgba(255,255,255,.2); font-size:16px; margin:0 6px;}
+  .sk-nav-powered{font-size:12px; color:rgba(255,255,255,.45);}
+  .sk-nav-powered strong{color:rgba(255,255,255,.8); font-weight:600;}
+  .sk-nav-support{margin:0 auto; padding:9px 18px; border:1px solid rgba(255,255,255,.14); border-radius:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.8); display:flex; align-items:center; gap:9px; white-space:nowrap; cursor:pointer; transition:border-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .sk-nav-support:hover{border-color:rgba(255,255,255,.3); color:#fff;}
+  .sk-nav-right{display:flex; align-items:center; gap:10px; flex:0 0 auto;}
+  .sk-nav-region{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(255,255,255,.85); cursor:pointer; padding:9px 16px; border-radius:8px; background:#1a1a1a; border:1px solid rgba(255,255,255,.1); transition:background-color .15s var(--ease-out);}
+  .sk-nav-region:hover{background:#222;}
+  .sk-nav-sep{color:rgba(255,255,255,.2); margin:0 2px;}
+  .sk-caret{font-size:14px; color:rgba(255,255,255,.5); margin-left:2px;}
+    .signin{padding:8px 12px;}
+  .pdp-art{position:relative; aspect-ratio:4/5; min-height:0; background:#14161b; padding:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .pdp-art .pc-logo{width:40px; height:40px;}
+  .pdp-art .pc-cat{font-size:11px;}
+  .pdp-elig{margin-top:0;}
+  .elig-h{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--mut); margin-bottom:8px;}
+  .elig-flags{display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
+  .elig-flag{display:inline-flex; align-items:center; gap:6px; font-size:12px; border:1px solid var(--line); background:var(--surface2); padding:5px 10px; border-radius:8px; color:var(--ink-2);}
+  .elig-flag .fl{font-size:14px; line-height:1;}
+  .elig-more{display:inline-flex; align-items:center; font-size:12px; font-weight:600; color:var(--ink-2); border:1px solid var(--line); background:var(--surface2); padding:5px 11px; border-radius:8px; cursor:pointer; transition:background-color .15s var(--ease-out), color .15s var(--ease-out);}
+  .elig-more:hover{background:var(--fill); color:#fff;}
+  .elig-all{display:grid; grid-template-columns:repeat(2,1fr); gap:8px;}
+  .elig-note{font-size:12px; color:var(--mut); margin-top:4px;}
+  #eligModal .elig-all{grid-template-columns:repeat(3,1fr); gap:0;}
+  .em-search-wrap{padding:12px 18px 0; position:sticky; top:0; background:var(--surface); z-index:1;}
+  .em-search{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:9px 14px 9px 36px; font-size:13px; color:#fff; font-family:"Sora",sans-serif; outline:none; transition:border-color .15s var(--ease-out); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238F97A3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:12px center;}
+  .em-search:focus{border-color:var(--brand);}
+  .em-search::placeholder{color:var(--mut);}
+  .em-item{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-2); padding:8px 10px; border-radius:8px; transition:background-color .12s var(--ease-out); cursor:default;}
+  .em-item:hover{background:var(--surface2); color:#fff;}
+  .em-flag{font-size:16px; line-height:1; flex:0 0 auto;}
+  .em-empty{font-size:13px; color:var(--mut); text-align:center; padding:28px 0; grid-column:1/-1;}
+  .tband-pill{display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--mut);}
+  .tband-pill::before{content:""; width:18px; height:2px; background:var(--brand-2); flex:0 0 auto;}
+  .tband-title{font-family:var(--font-display); font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.03em; line-height:1.08; margin:16px 0 32px; color:#fff;}
+  .tband-grid{display:grid; grid-template-columns:1.25fr 1fr 1fr; grid-auto-rows:1fr; gap:20px;}
+  .tcard-t{font-size:15px; font-weight:700; color:#fff; letter-spacing:-.01em; margin-top:18px;}
+  .tcard-sub{font-size:13px; color:var(--mut); line-height:1.5; margin-top:6px;}
+  .tcard-rating{grid-row:span 2; justify-content:flex-start; gap:0; background:linear-gradient(148deg, rgba(124,58,237,.72) 0%, rgba(109,40,217,.38) 38%, rgba(50,30,90,.22) 65%, var(--surface2) 85%); border-color:rgba(124,58,237,.5); box-shadow:inset 0 1px 0 rgba(167,139,250,.25), 0 16px 48px rgba(124,58,237,.22);}
+  .travatars{display:flex; align-items:center; margin-bottom:auto;}
+  .travatars span{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:700; color:#fff; border:2px solid var(--surface2); margin-left:-9px;}
+  .travatars span:first-child{margin-left:0;}
+  .travatars .more{background:#23262f; color:var(--ink-2); font-size:11px;}
+  .trate-num{font-family:var(--font-display); font-size:54px; font-weight:800; letter-spacing:-.03em; color:#fff; line-height:1; margin-top:26px;}
+  .trate-num span{font-size:22px; color:var(--mut); font-weight:700; margin-left:4px;}
+  .trate-stars{color:#f5b301; font-size:17px; letter-spacing:2px; margin-top:12px;}
+  @media(max-width:860px){ .tband-grid{grid-template-columns:repeat(2,1fr);} .tcard-rating{grid-row:auto; grid-column:span 2;} }
+  @media(max-width:520px){ .tband-grid{grid-template-columns:1fr;} .tcard-rating{grid-column:auto;} }
+  .sku-opt .act{font-size:10px; font-weight:600; padding:3px 9px; border-radius:10px; white-space:nowrap; border:1px solid transparent;}
+  .sku-opt.ok .act{background:rgba(34,197,94,.12); color:#4ade80; border-color:rgba(34,197,94,.28);}
+  .sku-opt.cross .act{background:rgba(245,158,11,.1); color:#fbbf24; border-color:rgba(245,158,11,.25);}
+  .sku-flag{font-size:20px; line-height:1; flex:0 0 auto;}
+  .sku-info{display:flex; flex-direction:column; gap:2px; flex:1; min-width:0;}
+  .sku-name{font-size:13px; font-weight:500; color:#fff; line-height:1.2;}
+  .sku-desc{font-size:11px; color:var(--mut); line-height:1.3;}
+  .vp-prices{display:flex; flex-direction:column; gap:2px; margin-top:5px;}
+  .vp-face{font-size:11px; color:var(--mut); text-decoration:line-through; font-variant-numeric:tabular-nums; line-height:1;}
+  .vp-row{display:flex; align-items:center; justify-content:space-between; gap:6px;}
+  .vp-cur{font-size:14px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums; letter-spacing:-.01em; line-height:1;}
+  .vp-save{font-size:10px; font-weight:700; color:#0d1a04; background:#c4ff3d; padding:2px 7px; border-radius:4px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; line-height:1.4;}
+  .pdp-qty{display:flex; align-items:center; gap:12px;}
+  .qstep{display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .qstep .q-btn{width:38px; padding:9px 0; text-align:center; font-size:16px; font-weight:600; color:var(--ink-2); background:var(--surface2); cursor:pointer; user-select:none; transition:background-color .12s var(--ease-out);}
+  .qstep .q-btn:hover{background:var(--fill); color:#fff;}
+  .qstep .q-val{min-width:46px; text-align:center; font-size:14px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .pdp-arttitle{position:absolute; left:18px; bottom:18px; color:#fff; font-size:26px; font-weight:800; letter-spacing:-.02em; text-shadow:0 2px 14px rgba(0,0,0,.5);}
+  .lribbon{position:absolute; top:12px; left:-27px; width:90px; background:#c4ff3d; color:#0a1f06; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; text-align:center; line-height:1.35; padding:4px 0; transform:rotate(-45deg); z-index:4; pointer-events:none;}
+  .pdp-buy{display:flex; flex-direction:column; gap:18px;}
+  .pdp-buy-head{display:flex; flex-direction:column; gap:5px;}
+  .pdp-field{display:flex; flex-direction:column; gap:9px;}
+  .pdp-field .lbl{margin-bottom:0;}
+  .pdp-cta{display:flex; flex-direction:column; gap:8px; margin-top:8px;}
+  .pdp-head-title{font-family:var(--font-display); font-size:30px; font-weight:800; letter-spacing:-.025em; line-height:1.1; color:#fff;}
+  .pdp-head-sub{font-size:13px; color:var(--ink-2); line-height:1.5;}
+  .pdp-head-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .pdp-save-tag{background:#c4ff3d; color:#0d1a04; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:5px; white-space:nowrap; flex:0 0 auto; line-height:1.4;}
+  #pdp .vp.on{border-color:rgba(255,255,255,.45); background:rgba(255,255,255,.04);}
+  #pdp .vp.on::before{display:none;}
+  #pdp .pdp-cta .btn{background:#fff; border-color:#fff; color:#0a0b0e; font-weight:700; letter-spacing:.01em;}
+  #pdp .pdp-cta .btn:hover{filter:brightness(.92);}
+  .tstat-num{font-family:var(--font-display); font-size:40px; font-weight:800; letter-spacing:-.04em; color:var(--brand-2); line-height:1; margin-bottom:auto;}
+  .signin{border:1px solid #7C3AED; background:#7C3AED; color:#fff; padding:10px 22px; font-size:13px; cursor:pointer; flex:0 0 auto; border-radius:8px; font-weight:600;}
+  .rzp-box{width:1000px; max-width:100%; height:670px; max-height:94vh; display:grid; grid-template-columns:360px 1fr; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 34px 90px rgba(0,0,0,.55); color:#1b1f2a; font-family:var(--font);}
+  .rzp-left{background:#3c3c9e; color:#fff; padding:26px 22px; display:flex; flex-direction:column; gap:18px; overflow:auto;}
+  .rzp-brand{display:flex; align-items:center; gap:13px;}
+  .rzp-brand .lg{width:54px; height:54px; border-radius:13px; background:#fff; overflow:hidden; flex:0 0 auto;}
+  .rzp-brand .lg img{width:100%; height:100%; object-fit:cover;}
+  .rzp-bn{font-size:21px; font-weight:800; letter-spacing:-.01em;}
+  .rzp-trust{display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#d7d7f4; margin-top:3px;}
+  .rzp-card{background:rgba(255,255,255,.12); border-radius:14px; padding:15px 16px;}
+  .rzp-card-h{display:flex; justify-content:space-between; align-items:center; font-size:13px; font-weight:600; color:#e6e6fb; margin-bottom:12px;}
+  .rzp-os{display:flex; align-items:center; gap:12px;}
+  .rzp-os-thumb{width:46px; height:46px; border-radius:9px; background:rgba(255,255,255,.9); color:#3c3c9e; font-weight:800; display:grid; place-items:center; font-size:18px; flex:0 0 auto;}
+  .rzp-os-main{flex:1; min-width:0;}
+  .rzp-os-t{font-size:14px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .rzp-os-q{font-size:12px; color:#c5c5ec; margin-top:2px;}
+  .rzp-os-p{font-size:18px; font-weight:800;}
+  .rzp-coupons{display:flex; align-items:center; gap:12px;}
+  .rzp-coup-ic{width:34px; height:34px; border-radius:9px; background:rgba(255,255,255,.12); display:grid; place-items:center; flex:0 0 auto;}
+  .rzp-coup-ic svg{width:18px; height:18px;}
+  .rzp-coup-t{font-size:14px; font-weight:700;}
+  .rzp-coup-s{font-size:12px; color:#c5c5ec; margin-top:1px;}
+  .rzp-coup-car{margin-left:auto; color:#c5c5ec; font-size:20px;}
+  .rzp-foot{margin-top:auto; font-size:12px; color:#c5c5ec;}
+  .rzp-foot b{color:#fff;}
+  .rzp-right{background:#fff; padding:20px 28px 28px; display:flex; flex-direction:column; position:relative; overflow:auto;}
+  .rzp-x{position:absolute; top:18px; right:22px; cursor:pointer; color:#9aa0ad; font-size:22px; line-height:1;}
+  .rzp-x:hover{color:#1b1f2a;}
+  .rzp-steps{display:flex; align-items:center; justify-content:center; gap:8px; padding:4px 0 6px;}
+  .rzp-step{font-size:14px; font-weight:600; color:#9aa0ad; padding:7px 15px; border-radius:20px;}
+  .rzp-step.on{background:#ececfb; color:#3c3c9e;}
+  .rzp-sep{color:#cfd3db; font-size:15px;}
+  .rzp-pane{display:none; flex-direction:column; gap:13px; width:100%; max-width:520px; margin:26px auto 0;}
+  .rzp-pane.on{display:flex;}
+  .rzp-ico{width:56px; height:56px; border:1px solid #e5e7eb; border-radius:13px; display:grid; place-items:center; margin:0 auto 4px;}
+  .rzp-ico svg{width:24px; height:24px;}
+  .rzp-h{font-size:26px; font-weight:800; text-align:center; letter-spacing:-.02em;}
+  .rzp-sub{color:#6b7280; text-align:center; font-size:14px; margin-top:-8px;}
+  .rzp-input{border:1px solid #e2e5ea; border-radius:12px; padding:15px 16px; font-size:15px; color:#1b1f2a; width:100%; background:#fff; outline:none;}
+  .rzp-input:focus{border-color:#3c3c9e;}
+  .rzp-input::placeholder{color:#9aa0ad;}
+  .rzp-cc{flex:0 0 116px; display:flex; align-items:center; gap:6px; cursor:pointer; color:#1b1f2a;}
+  .rzp-row{display:flex; gap:10px;}
+  .rzp-chk{display:flex; align-items:center; gap:10px; color:#4b5563; font-size:14px; cursor:pointer;}
+  .rzp-chk input{width:18px; height:18px; accent-color:#0b0e17;}
+  .rzp-cont{background:#0b0e17; color:#fff; border:none; border-radius:12px; padding:16px; font-size:16px; font-weight:700; cursor:pointer; width:100%; margin-top:4px; transition:opacity .15s ease;}
+  .rzp-cont:hover{opacity:.9;}
+  .rzp-mbp{display:flex; align-items:center; justify-content:center; gap:8px; color:#4b5563; font-size:13px; margin-top:2px;}
+  .rzp-mbp b{color:#1b1f2a;}
+  .rzp-pay-opt{border:1px solid #e2e5ea; border-radius:12px; padding:15px 16px; display:flex; align-items:center; gap:12px; cursor:pointer; font-size:15px; transition:border-color .15s ease, background-color .15s ease;}
+  .rzp-pay-opt:hover{border-color:#c7cad2;}
+  .rzp-pay-opt.sel{border-color:#3c3c9e; background:#f5f5fe;}
+  .rzp-po-ic{font-size:18px;}
+  @media(max-width:760px){ .rzp-box{grid-template-columns:1fr; height:auto; max-height:94vh;} .rzp-left{display:none;} }
+  .rw-box{text-align:left; width:460px; max-width:calc(100vw - 32px); padding:26px 26px 24px; position:relative;}
+  .rw-close{position:absolute; top:16px; right:16px; color:var(--mut); font-size:18px; line-height:1; cursor:pointer; padding:3px 7px; border-radius:6px; transition:color .15s var(--ease-out);}
+  .rw-close:hover{color:#fff;}
+  .rw-header{display:flex; align-items:center; gap:14px; margin-bottom:16px; padding-right:28px;}
+  .rw-icon{width:44px; height:44px; border-radius:50%; background:rgba(245,158,11,.18); display:flex; align-items:center; justify-content:center; font-size:18px; color:#fbbf24; flex:0 0 auto;}
+  .rw-title{font-size:20px; font-weight:700; color:#fff; letter-spacing:-.02em; line-height:1.15;}
+  .rw-body{font-size:14px; color:var(--ink-2); line-height:1.65; margin-bottom:14px;}
+  .rw-sku{color:#fbbf24; font-style:normal;}
+  .rw-hint{display:flex; align-items:center; gap:12px; background:var(--surface2); border-radius:10px; padding:12px 14px; font-size:13px; color:var(--mut); margin-bottom:18px; line-height:1.45;}
+  .rw-globe{width:17px; height:17px; flex:0 0 auto; opacity:.55;}
+  .rw-divider{height:1px; background:var(--line); margin-bottom:18px;}
+  .rw-actions{display:flex; gap:10px;}
+  .rw-actions .btn{flex:1; padding:12px 14px; white-space:nowrap;}
+  .rw-confirm{background:#f59e0b; border-color:#f59e0b; color:#0a0800; font-weight:700;}
+  .rw-confirm:hover{filter:brightness(1.08);}
+  .pdp-left{display:flex; flex-direction:column; gap:16px;}
 </style>
 </head>
 <body>
@@ -946,23 +1102,38 @@
 <!-- persistent global site header -->
 <header class="site-nav">
   <div class="sk-nav-in">
-    <!-- left: brand -->
-    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" style="cursor:pointer;">
-      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar2.png" alt="Sevkaan"></span>
-      <span class="sk-nav-name">Sevkaan's Store</span>
-      <span class="sk-nav-check"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 1.5 13.18 3.6l3-.52 1.04 2.88 2.88 1.04-.52 3L21.5 11l-1.92 2.08.52 3-2.88 1.04-1.04 2.88-3-.52L11 21.5l-2.18-2.02-3 .52-1.04-2.88-2.88-1.04.52-3L.5 11l1.92-2.08-.52-3 2.88-1.04L5.82 2l3 .52Z" fill="#5B21B6"/><path d="M7.5 11.5l2.5 2.5 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="sk-nav-divider">|</span>
+
+    <!-- LEFT: brand -->
+    <div class="sk-nav-brand kbtn" id="navLogo" role="button" tabindex="0" aria-label="Sevkaan's store home">
+      <span class="sk-nav-avatar"><img src="assets/sevkaan-avatar.jpg" alt="Sevkaan"></span>
       <span class="sk-nav-powered">Powered by <strong>Athena Gaming</strong></span>
     </div>
-    <!-- center: support pill -->
-    <div class="sk-nav-support">
-      <svg class="sk-nav-headset" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M3 12a9 9 0 0 1 18 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="2" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="18" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M20 17v1.5A3.5 3.5 0 0 1 16.5 22H13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="22" r="1.2" fill="currentColor"/></svg> 24/7 Support Available
+
+    <!-- CENTER: support pill -->
+    <div class="sk-nav-support kbtn" id="refundsLink" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+        <path d="M3 12a9 9 0 0 1 18 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <rect x="2" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/>
+        <rect x="18" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M20 17v1.5A3.5 3.5 0 0 1 16.5 22H13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="12" cy="22" r="1.2" fill="currentColor"/>
+      </svg>
+      24/7 Support Available
     </div>
-    <!-- right: region + signin -->
+
+    <!-- hidden search (JS still uses it) -->
+    <div class="search" id="searchWrap" style="display:none;">
+      <span class="mag"></span>
+      <input id="searchInput" type="text" placeholder="Search gift cards…" autocomplete="off">
+      <span class="clr" id="searchClear" title="clear">&times;</span>
+      <div class="search-dd" id="searchDD"></div>
+    </div>
+
+    <!-- RIGHT: region + sign in -->
     <div class="sk-nav-right">
       <div class="region" id="region">
-        <div class="sk-nav-region kbtn" id="regionToggle" role="button" tabindex="0">
-          <span id="navFlagEmoji" style="font-size:18px; line-height:1;">🇺🇸</span>
+        <div class="sk-nav-region kbtn" id="regionToggle" role="button" tabindex="0" aria-label="Region, currency and language">
+          <span id="navFlagEmoji" style="font-size:18px; line-height:1;">&#127482;&#127480;</span>
           <span id="regionLabel">USA</span>
           <span class="sk-nav-sep">|</span>
           <span id="navCur">USD</span>
@@ -970,7 +1141,7 @@
           <span id="navLang">EN</span>
           <span class="sk-caret">&#8964;</span>
         </div>
-        <div class="region-menu" id="regionMenu"><!-- populated by JS --></div>
+        <div class="region-menu" id="regionMenu"></div>
       </div>
       <div class="signin kbtn" id="signinBtn" role="button" tabindex="0">Sign in</div>
       <div class="usermenu" id="userMenu">
@@ -981,10 +1152,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- hidden search preserved for JS compatibility -->
-  <div style="display:none">
-    <div class="search" id="searchWrap"><input id="searchInput" type="text"><span id="searchClear"></span><div class="search-dd" id="searchDD"></div></div>
+
   </div>
 </header>
 
@@ -1120,14 +1288,20 @@
 
 <!-- cross-region purchase warning -->
 <div class="gmodal" id="regionWarn">
-  <div class="gbox gbox-warn" style="text-align:left;">
-    <div class="gh" style="display:flex; gap:8px; align-items:center; color:#f0c986;">&#9888; Different region</div>
-    <div style="font-size:13px; color:var(--ink); line-height:1.5;" id="regionWarnText">
-      You're shopping from <b>United States</b> but picked <b>Valorant India</b>. This card may not activate on your account. Global and your-region cards activate normally.
+  <div class="gbox rw-box">
+    <div class="rw-close" id="rwClose">&times;</div>
+    <div class="rw-header">
+      <div class="rw-title">Different region</div>
     </div>
-    <div class="row" style="margin-top:18px;">
-      <div class="btn ghost" id="rwCancel" style="flex:1;">Choose another version</div>
-      <div class="btn" id="rwOk" style="flex:1;">Buy it anyway</div>
+    <div class="rw-body" id="regionWarnText">You're shopping from <b>United States</b> but picked <b class="rw-sku">Valorant India</b>. This card may not activate on your account.</div>
+    <div class="rw-hint">
+      <svg class="rw-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Global and your-region cards activate normally.
+    </div>
+    <div class="rw-divider"></div>
+    <div class="rw-actions">
+      <div class="btn ghost" id="rwCancel">Choose another version</div>
+      <div class="btn rw-confirm" id="rwOk">Buy it anyway</div>
     </div>
   </div>
 </div>
@@ -1408,20 +1582,24 @@
       <div class="crumb"><span class="crumb-link" id="pdpBack">Home</span> <span class="crumb-sep">/</span> <span class="crumb-link" id="pdpBack2">Gift cards</span> <span class="crumb-sep">/</span> <span class="crumb-cur">Valorant</span></div>
 
       <div class="twocol">
-        <!-- left: big card visual -->
-        <div class="pdp-art" id="pdpArt" style="min-height:380px; background:linear-gradient(180deg, rgba(11,13,18,.1), rgba(11,13,18,.8)), url('assets/valorant.jpg') center 18%/cover;">
-          <div class="pc-mono" id="pdpMono" style="font-size:170px;"></div>
-          <div class="pc-logo" id="pdpLogo">V</div>
-          <div class="pc-badge" id="pdpBadge">&minus;6%</div>
-          <div class="pc-cat" id="pdpCat" style="top:18px; right:16px; bottom:auto; left:auto;">Gaming</div>
-          <div class="pdp-arttitle" id="pdpArtTitle">VALORANT</div>
+        <!-- left: card visual + surfaced info -->
+        <div class="pdp-left">
+          <div class="pdp-art" id="pdpArt" style="background:linear-gradient(180deg, rgba(11,13,18,.1), rgba(11,13,18,.8)), url('assets/valorant.jpg') center 18%/cover;">
+            <div class="pdp-arttitle" id="pdpArtTitle">VALORANT</div>
+          </div>
+
+          <!-- country eligibility: where this card works -->
+          <div class="pdp-elig" id="pdpEligible"></div>
+
+          <!-- cross-region disclaimer -->
+          <div class="pdp-disc" id="pdpDisc">&#9888; Heads up: this version may not activate in your region.</div>
         </div>
 
-        <!-- right: buy panel -->
+        <!-- right: purchase actions only -->
         <div class="pdp-buy">
           <div class="pdp-buy-head">
-            <div class="pc-title" id="pdpTitle" style="font-size:24px;">Valorant</div>
-            <div class="pc-sub" id="pdpSub">instant delivery · official top-up</div>
+            <div class="pdp-head-title" id="pdpTitle">Valorant</div>
+            <div class="pdp-head-sub" id="pdpSub">instant delivery · official top-up</div>
           </div>
 
           <!-- region / SKU selector -->
@@ -1435,28 +1613,71 @@
             </div>
           </div>
 
-          <!-- country eligibility: where this card works -->
-          <div class="pdp-elig" id="pdpEligible"></div>
-
-          <!-- cross-region disclaimer -->
-          <div class="pdp-disc" id="pdpDisc">&#9888; Heads up: this version may not activate in your region.</div>
-
-          <!-- VP denominations (qty stepper lives inside the selected tile) -->
+          <!-- VP denominations -->
           <div class="pdp-field">
-            <div class="lbl">Choose amount &amp; quantity</div>
+            <div class="lbl">Choose amount</div>
             <div class="vp-grid" id="vpGrid"><!-- VP tiles --></div>
+          </div>
+
+          <!-- quantity (single compact control) -->
+          <div class="pdp-field">
+            <div class="lbl">Quantity</div>
+            <div class="pdp-qty">
+              <div class="qstep"><span class="q-btn q-minus">&minus;</span><span class="q-val" id="pdpQtyVal">1</span><span class="q-btn q-plus">+</span></div>
+              <span class="q-hint">max 5 per person</span>
+            </div>
           </div>
 
           <!-- buy -->
           <div class="pdp-cta">
             <div class="btn" id="pdpBuy">Buy now · €9.49</div>
-            <div class="muted">Code emailed in seconds · secure checkout · max 5 per person</div>
-            <div class="trust-row">
-              <div class="trust-item"><span class="trust-ic">&#9889;</span><span>Instant<br>delivery</span></div>
-              <div class="trust-item"><span class="trust-ic">&#10003;</span><span>Official<br>codes</span></div>
-              <div class="trust-item"><span class="trust-ic">&#128274;</span><span>Buyer<br>protection</span></div>
-              <div class="trust-item"><span class="trust-ic">&#8635;</span><span>24/7<br>refunds</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TRUST BENTO (full width) ===== -->
+      <div class="tband">
+        <div class="tband-head">
+          <span class="tband-pill">Why Sevkaan</span>
+          <h2 class="tband-title">One promise:<br>instant, official, protected.</h2>
+        </div>
+
+        <div class="tband-grid">
+          <!-- tall rating card -->
+          <div class="tcard tcard-rating">
+            <div class="travatars">
+              <span style="background:linear-gradient(135deg,#ff4655,#7a1020);">J</span>
+              <span style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">P</span>
+              <span style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">D</span>
+              <span class="more">+8k</span>
             </div>
+            <div class="trate-num">4.9<span>/ 5</span></div>
+            <div class="trate-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="tcard-sub">Rated by 8,400+ verified buyers worldwide</div>
+          </div>
+
+          <div class="tcard">
+            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+            <div class="tcard-t">Instant delivery</div>
+            <div class="tcard-sub">Code in your inbox within 60 seconds.</div>
+          </div>
+
+          <div class="tcard">
+            <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+            <div class="tcard-t">100% official codes</div>
+            <div class="tcard-sub">Authorized distributors, every code verified.</div>
+          </div>
+
+          <div class="tcard">
+            <div class="tstat-num">100%</div>
+            <div class="tcard-t">Money-back guarantee</div>
+            <div class="tcard-sub">Encrypted checkout. Full refund on any issue, no questions asked.</div>
+          </div>
+
+          <div class="tcard">
+            <div class="tstat-num">24/7</div>
+            <div class="tcard-t">Always on</div>
+            <div class="tcard-sub">Live chat in every time zone.</div>
           </div>
         </div>
       </div>
@@ -1474,11 +1695,9 @@
       <!-- ===== DESCRIPTION ===== -->
       <div class="sec">
         <div class="sec-h">About this card</div>
-        <p style="max-width:680px; color:var(--ink-2); line-height:1.6; font-size:14px;">
-          Valorant Points (VP) are the in-game currency for Riot's tactical shooter, used for skins,
-          the battle pass, and agent unlocks. Every code is sourced from official, authorized channels
-          and is region-tagged, so it activates exactly like one bought in-client. Pick a Global version
-          if you're unsure which region applies to your account.
+        <p style="max-width:620px; color:var(--ink-2); line-height:1.6; font-size:14px;">
+          Valorant Points (VP) buy skins, the battle pass, and agent unlocks. Every code is official and
+          region-tagged, so it activates just like one bought in-client. Unsure of your region? Pick Global.
         </p>
       </div>
 
@@ -1487,7 +1706,7 @@
         <div class="sec-h">Reviews</div>
         <div class="sec-sub">4.9 / 5 · 8,400+ buyers</div>
         <div class="reviews">
-          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Cheapest VP I've found and it actually arrives instantly. Bought three times now."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#7C3AED,#4c1d95);">J</span><div><div class="who-n">Jordan K.</div><div class="who-m">Verified buyer</div></div></div></div>
+          <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Cheapest VP I've found and it actually arrives instantly. Bought three times now."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#ff4655,#7a1020);">J</span><div><div class="who-n">Jordan K.</div><div class="who-m">Verified buyer</div></div></div></div>
           <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Region eligibility was crystal clear, no guesswork. Code worked on my EU account right away."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#9d5cff,#4c1d95);">P</span><div><div class="who-n">Priya N.</div><div class="who-m">Verified buyer</div></div></div></div>
           <div class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rtext">"Checkout took ten seconds with Google sign-in. Smoothest top-up I've used."</p><div class="who"><span class="av" style="background:linear-gradient(135deg,#7c4dff,#3b1f9e);">D</span><div><div class="who-n">Deniz A.</div><div class="who-m">Verified buyer</div></div></div></div>
         </div>
@@ -1506,14 +1725,12 @@
             <div class="logo"><span class="mark"><img src="assets/sevkaan-avatar.jpg" alt=""></span>Sevkaan</div>
             <p class="ft-tag">Official gift cards and game top-ups, delivered in seconds. Built by gamers, priced for everyone.</p>
           </div>
-          <div class="ft-col"><h4>Shop</h4><a>Steam Wallet</a><a>Valorant</a><a>Xbox</a><a>Roblox</a><a>Minecraft</a><a>Robux</a></div>
+          <div class="ft-col"><h4>Shop</h4><a>Valorant</a><a>Steam Wallet</a><a>PlayStation</a><a>Xbox</a><a>Netflix</a></div>
           <div class="ft-col"><h4>Support</h4><a>Help center</a><a>24/7 Refunds</a><a>Track an order</a><a>Contact us</a></div>
           <div class="ft-col"><h4>Company</h4><a>About</a><a>Careers</a><a>Terms</a><a>Privacy</a></div>
         </div>
-        <div class="ft-word">SEVKAAN</div>
         <div class="ft-bottom">
           <span>© 2026 Sevkaan. All rights reserved.</span>
-          <a class="ft-email" href="mailto:hi@athenagaming.gg">hi@athenagaming.gg</a>
           <div class="ft-pay"><span>VISA</span><span>MASTERCARD</span><span>PAYPAL</span><span>APPLE PAY</span></div>
         </div>
       </div>
@@ -1867,11 +2084,9 @@
 
   /* ---- View -> Product Detail Page ---- */
   function openPDP(p){
-    document.getElementById('pdpLogo').textContent     = p.mono;
-    document.getElementById('pdpMono').textContent     = p.mono;
-    document.getElementById('pdpArt').style.background = 'linear-gradient(150deg,'+p.c1+','+p.c2+')';
-    document.getElementById('pdpBadge').innerHTML      = '&minus;'+p.save;
-    document.getElementById('pdpCat').textContent      = p.cat;
+    document.getElementById('pdpArt').style.background = p.art
+      ? 'linear-gradient(to top,rgba(11,13,18,.88) 0%,rgba(11,13,18,0) 20%), url(\''+p.art+'\') center/cover'
+      : 'linear-gradient(150deg,'+p.c1+','+p.c2+')';
     document.getElementById('pdpTitle').textContent    = p.title;
     document.getElementById('pdpArtTitle').textContent = p.title.toUpperCase();
     document.getElementById('pdpSub').textContent      = p.sub;
@@ -1947,11 +2162,11 @@
 
   /* ===== PDP: SKUs, denominations, quantity, buy ===== */
   var SKUS = [
-    {name:"Valorant Global",        region:"Global"},
-    {name:"Valorant United States", region:"United States"},
-    {name:"Valorant Europe",        region:"Europe"},
-    {name:"Valorant India",         region:"India"},
-    {name:"Valorant Turkey",        region:"Turkey"}
+    {name:"Valorant Global",        region:"Global",         flag:"🌍", desc:"For players in most regions worldwide."},
+    {name:"Valorant United States", region:"United States",  flag:"🇺🇸", desc:"For players in the United States."},
+    {name:"Valorant Europe",        region:"Europe",         flag:"🇪🇺", desc:"For players in Europe."},
+    {name:"Valorant India",         region:"India",          flag:"🇮🇳", desc:"For players in India."},
+    {name:"Valorant Turkey",        region:"Turkey",         flag:"🇹🇷", desc:"For players in Turkey."}
   ];
   // map a selected country to its activation zone
   function zoneOf(country){
@@ -1967,12 +2182,12 @@
   }
 
   var DENOMS = [
-    {vp:"475 VP",   price:4.49,  orig:4.99,   disc:10},
-    {vp:"1000 VP",  price:9.49,  orig:10.79,  disc:12, tag:"popular"},
-    {vp:"2050 VP",  price:18.99, orig:22.09,  disc:14},
-    {vp:"3650 VP",  price:32.99, orig:38.81,  disc:15, tag:"best value"},
-    {vp:"5350 VP",  price:47.99, orig:57.82,  disc:17},
-    {vp:"11000 VP", price:94.99, orig:109.19, disc:13}
+    {vp:"475 VP",   price:4.25,  face:5.00,   save:"15%"},
+    {vp:"1000 VP",  price:9.49,  face:10.00,  save:"5%",  tag:"popular"},
+    {vp:"2050 VP",  price:18.49, face:20.00,  save:"8%"},
+    {vp:"3650 VP",  price:32.49, face:35.00,  save:"7%",  tag:"best value"},
+    {vp:"5350 VP",  price:46.99, face:50.00,  save:"6%"},
+    {vp:"11000 VP", price:91.99, face:100.00, save:"8%"}
   ];
   var pdpSkuIdx = 0, pdpDenomIdx = 1, pdpQty = 1;
   var isLoggedIn = false, pendingBuy = false;   // purchase requires sign in
@@ -1987,13 +2202,13 @@
   function renderSkus(){
     var zone = zoneOf(selected);
     // dropdown menu with activation badges
-    skuMenu.innerHTML = '<div class="rm-head">Choose region version</div>' +
-      SKUS.map(function(s,i){
+    skuMenu.innerHTML = SKUS.map(function(s,i){
         var ok = activates(s, zone);
         return '<div class="rm-item sku-opt '+(ok?'ok':'cross')+(i===pdpSkuIdx?' sel':'')+'" data-s="'+i+'">'+
           '<span class="dot"></span>'+
-          '<span style="flex:1;">'+s.name+'</span>'+
-          '<span class="act">'+(ok?'Activates here':'Won’t activate')+'</span>'+
+          '<span class="sku-flag">'+s.flag+'</span>'+
+          '<span class="sku-info"><span class="sku-name">'+s.name+'</span><span class="sku-desc">'+s.desc+'</span></span>'+
+          '<span class="act">'+(ok?'&#10003; Activates here':'&#9888; Won&#39;t activate')+'</span>'+
         '</div>';
       }).join('');
     skuLabel.textContent = SKUS[pdpSkuIdx].name;
@@ -2005,13 +2220,9 @@
       disc.classList.remove('on');
     }
     // country eligibility: where the selected card works
-    var elig = document.getElementById('pdpEligible');
-    var reg = SKUS[pdpSkuIdx].region;
-    var list = ELIGIBILITY[reg] || ["Worldwide"];
-    elig.innerHTML = '<div class="elig-h">&#127758; Works in</div>' +
-      '<div class="elig-tags">' + list.map(function(c){ return '<span class="elig-tag">'+c+'</span>'; }).join('') + '</div>';
+    renderEligible(SKUS[pdpSkuIdx].region);
   }
-  // which countries each region version activates in
+  // flag + name lists per region version (top = most populous shown first)
   var ELIGIBILITY = {
     "Global":        ["Worldwide, any account"],
     "United States": ["United States","Canada"],
@@ -2019,13 +2230,97 @@
     "India":         ["India"],
     "Turkey":        ["Turkey"]
   };
+  function flagChip(f){ return '<span class="elig-flag"><span class="fl">'+f[0]+'</span>'+f[1]+'</span>'; }
+  function renderEligible(reg){
+    var data = REGION_COUNTRIES[reg] || REGION_COUNTRIES["Global"];
+    var more = data.total - data.top.length;
+    var html = '<div class="elig-h">&#127758; Works in</div><div class="elig-flags">' +
+      data.top.map(flagChip).join('') +
+      (more > 0 ? '<span class="elig-more" id="eligMore">+'+more+' countries</span>' : '') +
+      '</div>';
+    elig.innerHTML = html;
+    var mb = document.getElementById('eligMore');
+    if(mb){ mb.addEventListener('click', function(){ openEligModal(reg); }); }
+  }
+  function renderEligList(q){
+    var items = q ? eligCurrentAll.filter(function(c){ return c[1].toLowerCase().indexOf(q.toLowerCase())>-1; }) : eligCurrentAll;
+    document.getElementById('eligAll').innerHTML = items.length
+      ? items.map(function(c){ return '<div class="em-item"><span class="em-flag">'+c[0]+'</span>'+c[1]+'</div>'; }).join('')
+      : '<div class="em-empty">No results for "'+q+'"</div>';
+  }
+  function openEligModal(reg){
+    var data = REGION_COUNTRIES[reg] || REGION_COUNTRIES["Global"];
+    document.getElementById('eligModalTitle').textContent = 'Works in ' + data.total + (data.total >= 190 ? '+' : '') + ' countries';
+    eligCurrentAll = data.all.slice().sort(function(a,b){ return a[1].localeCompare(b[1]); });
+    document.getElementById('eligNote').textContent = data.note || '';
+    var s = document.getElementById('eligSearch'); if(s) s.value = '';
+    renderEligList('');
+    document.getElementById('eligModal').classList.add('open');
+    if(s) setTimeout(function(){ s.focus(); }, 120);
+  }
+  document.getElementById('eligSearch').addEventListener('input', function(){ renderEligList(this.value.trim()); });
+  document.getElementById('eligClose').addEventListener('click', function(){
+    document.getElementById('eligModal').classList.remove('open');
+    document.getElementById('eligSearch').value = '';
+  });
+  document.getElementById('eligModal').addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.getElementById('eligSearch').value=''; } });
+  function renderQty(){ qtyVal.textContent = pdpQty; }
+  function setRzpStep(step){
+    document.querySelectorAll('#rzpModal .rzp-step').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-step')===step); });
+    document.querySelectorAll('#rzpModal .rzp-pane').forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-pane')===step); });
+  }
+  function openRzp(){
+    var d = DENOMS[pdpDenomIdx];
+    var total = d.price * pdpQty;
+    document.getElementById('rzpThumb').textContent = document.getElementById('pdpLogo').textContent;
+    document.getElementById('rzpItem').textContent  = document.getElementById('pdpTitle').textContent + ' · ' + d.vp;
+    document.getElementById('rzpQty').textContent   = 'Qty. ' + pdpQty;
+    document.getElementById('rzpPrice').textContent = '€' + total.toFixed(2);
+    document.getElementById('rzpPay').textContent   = 'Pay €' + total.toFixed(2);
+    document.getElementById('rzpEmail').value        = currentEmail || 'alex@gmail.com';
+    setRzpStep('contact');
+    rzpModal.classList.add('open');
+  }
+  function closeRzp(){ rzpModal.classList.remove('open'); }
+  document.getElementById('rzpClose').addEventListener('click', closeRzp);
+  rzpModal.addEventListener('click', function(e){ if(e.target===rzpModal) closeRzp(); });
+  // step pills are clickable to go back
+  rzpModal.querySelectorAll('.rzp-step').forEach(function(s){
+    s.addEventListener('click', function(){ setRzpStep(s.getAttribute('data-step')); });
+  });
+  // Continue buttons advance steps
+  rzpModal.querySelectorAll('.rzp-cont[data-next]').forEach(function(b){
+    b.addEventListener('click', function(){ setRzpStep(b.getAttribute('data-next')); });
+  });
+  // payment method selection
+  rzpModal.querySelectorAll('.rzp-pay-opt').forEach(function(o){
+    o.addEventListener('click', function(){
+      rzpModal.querySelectorAll('.rzp-pay-opt').forEach(function(x){ x.classList.remove('sel'); });
+      o.classList.add('sel');
+    });
+  });
+  // Pay -> confirmation
+  document.getElementById('rzpPay').addEventListener('click', function(){
+    closeRzp();
+    var d = DENOMS[pdpDenomIdx];
+    renderConfirmation({
+      title: document.getElementById('pdpTitle').textContent,
+      sku:   SKUS[pdpSkuIdx].name,
+      vp:    d.vp,
+      qty:   pdpQty,
+      price: d.price
+    });
+    goScreen('confirm');
+  });
+
+  // build the success screen — one code per gift card (handles multi-card orders)
   function selectSku(i, fromUser){
     var zone = zoneOf(selected);
     var sku = SKUS[i];
     if(fromUser && !activates(sku, zone)){
       // cross-region warning popup
       document.getElementById('regionWarnText').innerHTML =
-        'You’re shopping from <b>'+selected+'</b> but picked <b>'+sku.name+'</b>. This card may not activate on your account. Global and your-region cards activate normally.';
+        'You&#39;re shopping from <b>'+selected+'</b> but picked <b class="rw-sku">'+sku.name+'</b>. This card may not activate on your account.';
       pendingSku = i;
       document.getElementById('regionWarn').classList.add('open');
       return;
@@ -2062,8 +2357,13 @@
       return '<div class="vp'+(on?' on':'')+'" data-d="'+i+'">'+
         (d.tag?'<span class="tag">'+d.tag+'</span>':'')+
         '<div class="amt">'+d.vp+'</div>'+
-        '<div class="pr">€'+d.price.toFixed(2)+'</div>'+
-        (on?'<div class="vp-qty"><span class="q-btn q-minus">&minus;</span><span class="q-val">'+pdpQty+'</span><span class="q-btn q-plus">+</span></div>':'')+
+        '<div class="vp-prices">'+
+          (d.face?'<span class="vp-face">€'+d.face.toFixed(2)+'</span>':'')+
+          '<div class="vp-row">'+
+            '<span class="vp-cur">€'+d.price.toFixed(2)+'</span>'+
+            (d.save?'<span class="vp-save">−'+d.save+'</span>':'')+
+          '</div>'+
+        '</div>'+
       '</div>';
     }).join('');
   }
@@ -2102,7 +2402,7 @@
     renderSkus();
   }
 
-  renderSkus(); renderDenoms(); updateBuy();
+  renderSkus(); renderDenoms(); renderQty(); updateBuy();
 
   /* ---- featured single SKU: buy any denomination directly ---- */
   function renderFeatured(){
@@ -2414,4 +2714,13 @@
 </script>
 
 </body>
-</html>
+</html><div class="gmodal" id="eligModal">
+  <div class="co-box">
+    <div class="co-head"><span id="eligModalTitle">Where this card works</span><span class="co-x" id="eligClose">&times;</span></div>
+    <div class="em-search-wrap"><input type="text" id="eligSearch" class="em-search" placeholder="Search countries…" autocomplete="off"></div>
+    <div class="co-body">
+      <div class="elig-all" id="eligAll"></div>
+      <div class="elig-note" id="eligNote"></div>
+    </div>
+  </div>
+</div>
