@@ -1183,6 +1183,86 @@
   .rw-confirm{background:#f59e0b; border-color:#f59e0b; color:#0a0800; font-weight:700;}
   .rw-confirm:hover{filter:brightness(1.08);}
   .pdp-left{display:flex; flex-direction:column; gap:16px;}
+
+  /* #9 PDP region/SKU selector — make it read as a clickable control */
+  #pdpSkuToggle{border:1px solid var(--line) !important; background:var(--surface2); padding:13px 14px; border-radius:10px; font-size:14px; color:var(--ink); transition:border-color .15s var(--ease-out), background-color .15s var(--ease-out);}
+  #pdpSkuToggle:hover{border-color:var(--mut); background:var(--fill);}
+  #pdpSku.open #pdpSkuToggle{border-color:var(--brand-2) !important;}
+  #pdpSkuToggle #pdpSkuLabel{font-weight:600;}
+  #pdpSkuToggle .car{color:var(--mut); transition:transform .18s var(--ease-out);}
+  #pdpSku.open #pdpSkuToggle .car{transform:rotate(180deg);}
+
+  /* #10 "Works in N countries" — clearer clickable affordance */
+  .elig-more{gap:5px;}
+  .elig-more::after{content:"\203A"; font-size:14px; line-height:1; color:var(--brand-2); transition:transform .15s var(--ease-out);}
+  .elig-more:hover{border-color:var(--brand-2); color:#fff;}
+  .elig-more:hover::after{transform:translateX(2px);}
+
+  /* #11 SKU dropdown eligible / ineligible grouping */
+  .sku-grp-head{font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:var(--mut); padding:9px 12px 5px; font-weight:700;}
+  .sku-opt.cross{opacity:.5;}
+  .sku-opt.cross:hover{opacity:.72;}
+  .sku-opt.ok{background:rgba(66,179,71,.05);}
+
+  /* #12 no-cards (IP exclusion) modal */
+  .nc-box{background:var(--surface); width:440px; max-width:100%; border:1px solid var(--line); border-radius:16px; padding:28px 26px 24px; box-shadow:0 24px 70px rgba(0,0,0,.6); text-align:center;}
+  .nc-ic{width:60px; height:60px; border-radius:50%; background:rgba(229,72,77,.12); display:flex; align-items:center; justify-content:center; color:var(--danger); margin:0 auto 16px;}
+  .nc-title{font-size:19px; font-weight:800; letter-spacing:-.02em; margin-bottom:8px;}
+  .nc-sub{font-size:13.5px; color:var(--mut); line-height:1.55; margin-bottom:22px;}
+  .nc-sub b{color:var(--ink);}
+  .nc-lbl{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--mut); margin-bottom:10px; font-weight:700;}
+  .nc-regions{display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
+  .nc-region{display:inline-flex; align-items:center; gap:7px; border:1px solid var(--line); background:var(--surface2); color:var(--ink); font-size:13px; font-weight:600; padding:10px 16px; border-radius:10px; cursor:pointer; transition:border-color .15s, background-color .15s;}
+  .nc-region:hover{border-color:var(--brand-2); background:var(--fill);}
+
+  /* ===== #1 MOBILE OPTIMISATION (desktop layout untouched above) ===== */
+  @media(max-width:768px){
+    .sk-nav-in{padding:10px 14px; gap:10px;}
+    .sk-nav-powered, .sk-nav-brand .sk-nav-sep{display:none;}
+    .sk-nav-support{margin:0 auto 0 0; padding:9px 11px; font-size:0; gap:0;}
+    .sk-nav-support svg{width:20px; height:20px;}
+    .sk-nav-right{gap:8px;}
+    .signin{padding:9px 13px; font-size:13px;}
+    .pad{padding-left:14px; padding-right:14px;}
+    .frame-label{display:none;}
+    .nu-grid{grid-template-columns:1fr 1fr; gap:12px;}
+    .twocol{grid-template-columns:1fr; gap:18px;}
+    .sec-head{flex-wrap:wrap; gap:12px;}
+    .sec-h{font-size:24px;}
+    .feat-cat-btn{align-self:flex-start; padding:11px 18px; font-size:13px;}
+    .co-box, .ord-v2-box, .tick-box, .nc-box{width:100% !important;}
+    .ord-pg-wrap{padding:22px 14px 44px;}
+    .cf-back-bar{padding:16px 14px 0 14px !important; width:auto !important; margin-left:0 !important;}
+    .reviews{grid-template-columns:1fr;}
+    .rzp-box{grid-template-columns:1fr; height:auto; max-height:92vh; width:94%;}
+    .rzp-left{display:none;}
+    .pdp-art{aspect-ratio:16/10; max-height:260px;}
+    .steps{grid-template-columns:1fr;}
+    .nc-regions{flex-direction:column;}
+    .nc-region{width:100%; justify-content:center;}
+    /* PDP: lighter hero, compact denom tiles, sticky buy bar for easy tapping */
+    #pdp .pdp-art{aspect-ratio:16/9; max-height:184px; min-height:0; padding:12px;}
+    #pdp .pdp-left{gap:12px;}
+    #pdp .vp-grid{gap:8px;}
+    #pdp .vp{padding:10px 11px;}
+    #pdp .vp .amt{font-size:14px;}
+    #pdp .pdp-buy{gap:14px;}
+    #pdp .pdp-cta{position:sticky; bottom:0; z-index:45; margin:0 -14px; padding:12px 14px calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(to top, var(--bg) 76%, rgba(10,10,10,0)); }
+    #pdp .pdp-cta .btn{padding:16px; font-size:16px; box-shadow:0 -2px 24px rgba(0,0,0,.5);}
+  }
+  @media(max-width:520px){
+    .nu-grid{grid-template-columns:1fr;}
+    .sk-nav-region #navLang, .sk-nav-region #navCur{display:none;}
+    .sk-nav-region .sk-nav-sep{display:none;}
+    .sk-nav-in{gap:7px; padding:10px 12px;}
+    .sk-nav-check{display:none;}
+    .sk-nav-region{padding:6px 8px;}
+    .signin{padding:8px 11px; font-size:12.5px;}
+  }
+  @media(max-width:400px){
+    .sk-nav-brand .sk-nav-bn, .sk-nav-brand strong{font-size:13.5px;}
+    .signin{padding:7px 10px;}
+  }
 </style>
 </head>
 <body>
@@ -1367,14 +1447,27 @@
 
 <!-- 24/7 refunds popup -->
 
+<!-- no gift cards in region (IP exclusion) -->
+<div class="gmodal" id="noCardsModal">
+  <div class="nc-box">
+    <div class="nc-ic">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+    </div>
+    <div class="nc-title">No gift cards in your region</div>
+    <div class="nc-sub">We don't have any gift cards valid in <b id="ncRegion">your country</b> yet. Pick another region to keep shopping.</div>
+    <div class="nc-lbl">Switch region</div>
+    <div class="nc-regions" id="ncRegions"></div>
+  </div>
+</div>
+
 <div class="gmodal" id="settingsModal">
   <div class="co-box" style="width:440px;">
     <div class="co-head"><span>Update your settings</span><span class="co-x" id="setClose">&times;</span></div>
     <div class="co-body">
       <div class="muted" style="margin-top:-2px;">Set your preferred region, language and currency.</div>
       <div><div class="lbl">Region</div><div class="cs" id="csRegion"></div></div>
-      <div><div class="lbl">Language</div><div class="cs" id="csLang"></div></div>
       <div><div class="lbl">Currency</div><div class="cs" id="csCur"></div></div>
+      <div><div class="lbl">Language</div><div class="cs" id="csLang"></div></div>
     </div>
     <div class="co-foot" style="display:flex; gap:10px;">
       <div class="btn ghost" id="setCancel" style="flex:1;">Cancel</div>
@@ -1573,7 +1666,7 @@
   <div class="gbox" style="text-align:left;">
     <!-- choose method -->
     <div id="gvChoose">
-      <div class="gh">Sign in to buy</div>
+      <div class="gh" id="ghTitle">Sign in to buy</div>
       <div class="gbtn" id="gContinue"><span class="g">G</span> Continue with Google</div>
       <div class="gor"><span>or</span></div>
       <div class="lbl">Email address</div>
@@ -1678,16 +1771,6 @@
         </div>
       </div>
 
-      <!-- ===== HOW TO BUY (3 steps) ===== -->
-      <div class="sec">
-        <div class="sec-over">How it works</div><div class="sec-h">How to buy a gift card</div>
-        <div class="sec-sub">Three steps, instant delivery.</div>
-        <div class="steps">
-          <div class="step"><div class="n">1</div><div class="st-h">Pick a card</div><div class="st-p">Choose brand and amount.</div></div>
-          <div class="step"><div class="n">2</div><div class="st-h">Pay securely</div><div class="st-p">Card or wallet, protected checkout.</div></div>
-          <div class="step"><div class="n">3</div><div class="st-h">Get your code</div><div class="st-p">Delivered to your email instantly.</div></div>
-        </div>
-      </div>
 
       <!-- ===== CREATOR CONTENT ===== -->
       <div class="sec">
@@ -2088,7 +2171,8 @@
 <script>
 (function(){
   var TOP7 = ["United States","United Kingdom","India","Europe","Turkey","Brazil","Mexico","Global"];
-  var REST = [];
+  var REST = ["China","Iran","North Korea","Russia"];   // regions we don't sell into (IP-excluded)
+  var NO_CARDS = {"China":1,"Iran":1,"North Korea":1,"Russia":1};
 
   var region = document.getElementById('region');
   var toggle = document.getElementById('regionToggle');
@@ -2206,8 +2290,12 @@
     if(typeof refreshPdpForRegion === 'function') refreshPdpForRegion();
     setModal.classList.remove('open');
     toast('Settings saved');
-    // nudge a language switch if the new region has a language we support
-    if(selected !== prevRegion) setTimeout(function(){ maybeOfferLanguage(selected); }, 350);
+    if(NO_CARDS[selected]){
+      setTimeout(function(){ openNoCardsModal(selected); }, 300);   // IP-exclusion popup
+    } else if(selected !== prevRegion){
+      // nudge a language switch if the new region has a language we support
+      setTimeout(function(){ maybeOfferLanguage(selected); }, 350);
+    }
   });
   document.getElementById('setCancel').addEventListener('click', function(){ setModal.classList.remove('open'); });
   document.getElementById('setClose').addEventListener('click', function(){ setModal.classList.remove('open'); });
@@ -2218,14 +2306,14 @@
   /* ---- storefront product cards ---- */
   var PRODUCTS = [
     {mono:"S", art:"assets/cards/steam-card.png",    c1:"#1b3a5c", c2:"#0e1b2e", cat:"Wallet",  title:"Steam Wallet",   sub:"The world's biggest PC gaming store.", denoms:["€5","€10","€25","€50","€100"], strike:"€10.00", now:"€9.20",  save:"8%",  rating:"4.9", sold:"42k", blocked:[], offer:null},
-    {mono:"V", art:"assets/cards/valorant-card.png", c1:"#c03030", c2:"#500a0a", cat:"Gaming",  title:"Valorant",       sub:"Top up your VP and get new skins.", denoms:["€5","€10","€20","€50"],        strike:"€10.00", now:"€8.80",  save:"12%", rating:"4.9", sold:"38k", blocked:[], offer:{type:"sku", label:"12% off all denominations"}},
+    {mono:"V", art:"assets/cards/valorant-card.png", c1:"#c03030", c2:"#500a0a", cat:"Gaming",  title:"Valorant",       sub:"Top up your VP and get new skins.", denoms:["€5","€10","€20","€50"], units:["475 VP","1000 VP","2050 VP","5350 VP"],        strike:"€10.00", now:"€8.80",  save:"12%", rating:"4.9", sold:"38k", blocked:[], offer:{type:"sku", label:"12% off all denominations"}},
     {mono:"X", art:"assets/cards/xbox-card.png",     c1:"#1a6e1a", c2:"#0a3d0a", cat:"Gaming",  title:"Xbox",           sub:"Games, DLC, and Game Pass credits.", denoms:["€15","€25","€50","€100"],      strike:"€50.00", now:"€47.00", save:"6%",  rating:"4.9", sold:"18k", blocked:["China","UAE","United States"], offer:null},
-    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Buy Robux and unlock avatar items.", denoms:["€5","€10","€25","€50"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:["Turkey"], offer:{type:"sku", label:"7% off all denominations"}},
-    {mono:"M", art:"assets/cards/minecraft-card.png",c1:"#3a6e2a", c2:"#1a3a10", cat:"Gaming",  title:"Minecraft",      sub:"Sandbox adventure. Endless possibilities.", denoms:["€10","€20","€50"],             strike:"€20.00", now:"€19.00", save:"5%",  rating:"4.8", sold:"21k", blocked:[], offer:null},
-    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Premium Robux packs for every player.", denoms:["€5","€10","€25","€50"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:["Turkey"], offer:{type:"sku", label:"8% off all denominations"}},
-    {mono:"G", art:"assets/cards/genshin-card.png", c1:"#1f4e8c", c2:"#0c1f3a", cat:"Gaming",  title:"Genshin Impact",  sub:"Top up Genesis Crystals for wishes and gear.", denoms:["€5","€10","€25","€50"],   strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.9", sold:"27k", blocked:["Mexico"], offer:null},
+    {mono:"R", art:"assets/cards/roblox-card.png",   c1:"#111111", c2:"#222222", cat:"Gaming",  title:"Roblox",         sub:"Buy Robux and unlock avatar items.", denoms:["€5","€10","€25","€50"], units:["400 Robux","800 Robux","2000 Robux","4500 Robux"],        strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.8", sold:"29k", blocked:["Turkey"], offer:{type:"sku", label:"7% off all denominations"}},
+    {mono:"M", art:"assets/cards/minecraft-card.png",c1:"#3a6e2a", c2:"#1a3a10", cat:"Gaming",  title:"Minecraft",      sub:"Sandbox adventure. Endless possibilities.", denoms:["€10","€20","€50"], units:["1020 Minecoins","3500 Minecoins","8000 Minecoins"],             strike:"€20.00", now:"€19.00", save:"5%",  rating:"4.8", sold:"21k", blocked:[], offer:null},
+    {mono:"R", art:"assets/cards/robux-card.png",    c1:"#5a1a8a", c2:"#220a40", cat:"Gaming",  title:"Robux",          sub:"Premium Robux packs for every player.", denoms:["€5","€10","€25","€50"], units:["400 Robux","800 Robux","2000 Robux","4500 Robux"],        strike:"€25.00", now:"€23.00", save:"8%",  rating:"4.9", sold:"33k", blocked:["Turkey"], offer:{type:"sku", label:"8% off all denominations"}},
+    {mono:"G", art:"assets/cards/genshin-card.png", c1:"#1f4e8c", c2:"#0c1f3a", cat:"Gaming",  title:"Genshin Impact",  sub:"Top up Genesis Crystals for wishes and gear.", denoms:["€5","€10","€25","€50"], units:["300 Crystals","980 Crystals","2240 Crystals","4900 Crystals"],   strike:"€10.00", now:"€9.30",  save:"7%",  rating:"4.9", sold:"27k", blocked:["Mexico"], offer:null},
     {mono:"R", art:"assets/cards/razer-gold-card.png", c1:"#1a3a14", c2:"#0a1a08", cat:"Wallet",  title:"Razer Gold", sub:"Universal game credit for 4,000+ games.", denoms:["€5","€10","€25","€50","€100"], strike:"€25.00", now:"€23.25", save:"7%",  rating:"4.8", sold:"24k", blocked:["Turkey"], offer:{type:"sku", label:"7% off all denominations"}},
-    {mono:"G", art:"assets/cards/garena-card.png", c1:"#3a0a0a", c2:"#1a0404", cat:"Gaming",  title:"Garena", sub:"Shells for Free Fire and Garena titles.", denoms:["€5","€10","€20","€50"], strike:"€20.00", now:"€18.40", save:"8%",  rating:"4.9", sold:"31k", blocked:["United States","United Kingdom","Europe","Brazil","Mexico"], offer:{type:"sku", label:"8% off all denominations"}}
+    {mono:"G", art:"assets/cards/garena-card.png", c1:"#3a0a0a", c2:"#1a0404", cat:"Gaming",  title:"Garena", sub:"Shells for Free Fire and Garena titles.", denoms:["€5","€10","€20","€50"], units:["110 Shells","220 Shells","440 Shells","1100 Shells"], strike:"€20.00", now:"€18.40", save:"8%",  rating:"4.9", sold:"31k", blocked:["United States","United Kingdom","Europe","Brazil","Mexico"], offer:{type:"sku", label:"8% off all denominations"}}
   ];
   // contextual tags computed from data (one badge per category leader)
   (function tagProducts(){
@@ -2268,8 +2356,9 @@
       '</div>';
     }
     var DENOM_CAP = 2;
-    var extra = p.denoms.length - DENOM_CAP;
-    var denomPills = p.denoms.slice(0,DENOM_CAP).map(function(d){ return '<span class="nu-denom">'+d+'</span>'; }).join('')+(extra>0?'<span class="nu-denom nu-denom-more">+'+extra+' more</span>':'');
+    var pillVals = p.units || p.denoms;   // show game units (VP/Robux/etc) when present, else currency
+    var extra = pillVals.length - DENOM_CAP;
+    var denomPills = pillVals.slice(0,DENOM_CAP).map(function(d){ return '<span class="nu-denom">'+d+'</span>'; }).join('')+(extra>0?'<span class="nu-denom nu-denom-more">+'+extra+' more</span>':'');
     return ''+
     '<article class="pcard nu'+(off?' disabled':'')+'" data-i="'+idx+'" role="button" tabindex="0" aria-label="View '+p.title+'">'+
       '<div class="nu-hero'+(p.art?' nu-hero-img':'')+'" style="'+(p.art?'background-image:url('+p.art+');'+(p.pos?'background-position:'+p.pos+';':''):'background:radial-gradient(circle at top right,'+p.c1+' 0%,'+p.c2+' 52%,#04112d 100%)')+'">' +
@@ -2277,7 +2366,6 @@
       '</div>'+
       '<div class="nu-foot">'+
         '<div class="nu-foot-header"><div class="nu-foot-title">'+p.title+'</div><span class="nu-foot-save">UPTO '+parseInt(p.save,10)+'% OFF</span></div>'+
-        '<div class="nu-vsub"><svg class="nu-tag-ico" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h5.172a1 1 0 0 1 .707.293l5.657 5.657a1 1 0 0 1 0 1.414l-3.586 3.586a1 1 0 0 1-1.414 0L2.293 7.293A1 1 0 0 1 2 6.586V2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="5" cy="5" r="1" fill="currentColor"/></svg>'+p.denoms.length+' denominations</div>'+
         '<div class="nu-foot-bottom">'+
           '<div class="nu-denoms">'+denomPills+'</div>'+
           '<div class="nu-cta">View</div>'+
@@ -2304,20 +2392,47 @@
   }
   var gridLimit = 6; // show first 6, "View more" reveals the rest
   function renderGrid(region){
+    var el = document.getElementById('productGrid');
+    var more = document.getElementById('viewMoreBtn');
+    if(NO_CARDS[region]){
+      el.className = 'grid';
+      el.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 16px; color:var(--mut); font-size:14px;">No gift cards are available in '+region+'.</div>';
+      if(more) more.parentElement.style.display = 'none';
+      return;
+    }
     gridList = PRODUCTS.slice().sort(function(a,b){
       var ao = a.blocked.indexOf(region) !== -1 ? 1 : 0;
       var bo = b.blocked.indexOf(region) !== -1 ? 1 : 0;
       return ao - bo; // available first, blocked last
     });
     var shown = gridList.slice(0, gridLimit);
-    var el = document.getElementById('productGrid');
     el.className = 'grid' + (viewMode==='grid' ? ' nu-grid' : ' list-grid');
     el.innerHTML = viewMode==='grid'
       ? shown.map(function(p,i){ return card(p, region, i, 'full'); }).join('')
       : shown.map(function(p,i){ return listRow(p, region, i); }).join('');
-    var more = document.getElementById('viewMoreBtn');
     if(more) more.parentElement.style.display = (gridLimit >= gridList.length) ? 'none' : 'flex';
   }
+  // IP-exclusion popup: fire when the selected region has no cards
+  function openNoCardsModal(region){
+    document.getElementById('ncRegion').textContent = region;
+    var quick = [["🌐","Global"],["🇺🇸","United States"],["🇮🇳","India"],["🇪🇺","Europe"]];
+    document.getElementById('ncRegions').innerHTML = quick.map(function(r){
+      return '<button type="button" class="nc-region" data-region="'+r[1]+'"><span>'+r[0]+'</span>'+r[1]+'</button>';
+    }).join('');
+    document.getElementById('noCardsModal').classList.add('open');
+  }
+  document.getElementById('ncRegions').addEventListener('click', function(e){
+    var b = e.target.closest('.nc-region'); if(!b) return;
+    selected = b.getAttribute('data-region');
+    selCur = curOf(selected);
+    setRegionLabel();
+    renderGrid(selected);
+    if(typeof refreshPdpForRegion === 'function') refreshPdpForRegion();
+    if(typeof renderDenoms === 'function'){ renderDenoms(); updateBuy(); renderFeatured(); }
+    document.getElementById('noCardsModal').classList.remove('open');
+    toast('Region set to '+selected);
+  });
+  document.getElementById('noCardsModal').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
   renderGrid(selected);
   document.getElementById('viewMoreBtn').addEventListener('click', function(){
     gridLimit = PRODUCTS.length;
@@ -2442,16 +2557,23 @@
 
   function renderSkus(){
     var zone = zoneOf(selected);
-    // dropdown menu with activation badges
-    skuMenu.innerHTML = SKUS.map(function(s,i){
-        var ok = activates(s, zone);
-        return '<div class="rm-item sku-opt '+(ok?'ok':'cross')+(i===pdpSkuIdx?' sel':'')+'" data-s="'+i+'">'+
-          '<span class="dot"></span>'+
-          '<span class="sku-flag">'+s.flag+'</span>'+
-          '<span class="sku-info"><span class="sku-name">'+s.name+'</span><span class="sku-desc">'+s.desc+'</span></span>'+
-          '<span class="act">'+(ok?'&#10003; Activates here':'&#9888; Won&#39;t activate')+'</span>'+
-        '</div>';
-      }).join('');
+    // dropdown menu grouped: eligible (activates in region) first, then ineligible
+    function skuOpt(s,i,ok){
+      return '<div class="rm-item sku-opt '+(ok?'ok':'cross')+(i===pdpSkuIdx?' sel':'')+'" data-s="'+i+'">'+
+        '<span class="dot"></span>'+
+        '<span class="sku-flag">'+s.flag+'</span>'+
+        '<span class="sku-info"><span class="sku-name">'+s.name+'</span><span class="sku-desc">'+s.desc+'</span></span>'+
+        '<span class="act">'+(ok?'&#10003; Activates here':'&#9888; Won&#39;t activate')+'</span>'+
+      '</div>';
+    }
+    var eligible = '', ineligible = '';
+    SKUS.forEach(function(s,i){
+      if(activates(s, zone)) eligible += skuOpt(s,i,true);
+      else ineligible += skuOpt(s,i,false);
+    });
+    skuMenu.innerHTML =
+      (eligible ? '<div class="sku-grp-head">Activates in '+selected+'</div>'+eligible : '') +
+      (ineligible ? '<div class="sku-grp-head">Other regions (won\'t activate here)</div>'+ineligible : '');
     skuLabel.textContent = SKUS[pdpSkuIdx].name;
     // disclaimer
     if(!activates(SKUS[pdpSkuIdx], zone)){
@@ -2485,9 +2607,10 @@
   function renderEligible(reg){
     var data = REGION_COUNTRIES[reg] || REGION_COUNTRIES["Global"];
     var more = data.total - data.top.length;
+    var moreLabel = more > 0 ? ('+'+more+' countries') : 'View all '+data.total+' countries';
     var html = '<div class="elig-h">&#127758; Works in</div><div class="elig-flags">' +
       data.top.map(flagChip).join('') +
-      (more > 0 ? '<span class="elig-more" id="eligMore">+'+more+' countries</span>' : '') +
+      '<span class="elig-more" id="eligMore">'+moreLabel+'</span>' +
       '</div>';
     elig.innerHTML = html;
     var mb = document.getElementById('eligMore');
@@ -2686,11 +2809,12 @@
   renderFeatured();
   document.getElementById('featSkuDenoms').addEventListener('click', function(e){
     var b = e.target.closest('.fs-buy'); if(!b) return;
+    // go to PDP with the tapped denomination pre-selected
+    var valorant = PRODUCTS.filter(function(x){ return x.title === 'Valorant'; })[0];
+    if(valorant) openPDP(valorant);
     pdpDenomIdx = parseInt(b.getAttribute('data-d'),10);
     pdpQty = 1;
-    document.getElementById('pdpTitle').textContent = 'Valorant';
-    renderDenoms(); updateBuy();
-    startBuy();   // sign-in gate -> checkout popup
+    renderDenoms(); renderQty(); updateBuy();
   });
 
   /* ---- hero offers: activate on tap (not hover) ---- */
@@ -2944,7 +3068,7 @@
     document.getElementById('gvChoose').style.display = which==='choose' ? 'block' : 'none';
     document.getElementById('gvVerify').style.display = which==='verify' ? 'block' : 'none';
   }
-  function openAuth(){ showAuthView('choose'); var e=document.getElementById('gEmail'); if(e) e.value=''; gModal.classList.add('open'); }
+  function openAuth(){ showAuthView('choose'); var gh=document.getElementById('ghTitle'); if(gh) gh.textContent='Sign in to buy'; var e=document.getElementById('gEmail'); if(e) e.value=''; gModal.classList.add('open'); }
   var currentEmail = null;
   function completeLogin(name, email){
     if(email && !knownEmails[email]) knownEmails[email] = name;   // remember new account
@@ -3120,11 +3244,11 @@
   function openTicketModal(){
     if(!isLoggedIn){
       pendingBuy = false;
-      // store intent and open login
+      // open login with support-specific heading
+      if(typeof showAuthView === 'function') showAuthView('choose');
+      var gh = document.getElementById('ghTitle');
+      if(gh) gh.textContent = 'Log in to create a support ticket';
       gModal.classList.add('open');
-      // after login, re-open ticket
-      var _orig = completeLogin;
-      // just open ticket after any login
       return;
     }
     // reset form
